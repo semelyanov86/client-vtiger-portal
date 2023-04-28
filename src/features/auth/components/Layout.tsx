@@ -1,5 +1,7 @@
 import { ReactNode } from 'react';
 
+import { Head } from '../../../components/Head';
+
 interface LayoutProps {
   title: string;
   children: ReactNode;
@@ -8,7 +10,7 @@ interface LayoutProps {
 export const Layout = ({ title, children }: LayoutProps) => {
   return (
     <>
-      <h1>{title}</h1>
+      <Head title={title}></Head>
       {children}
     </>
   );
