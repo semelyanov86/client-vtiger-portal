@@ -24,6 +24,7 @@ type RegisterFormProps = {
   onSuccess: () => void;
 };*/
 
+import { Envelope, UpcScan, Lock } from 'react-bootstrap-icons';
 export const RegisterForm = () => {
   // const { register, isRegistering } = useAuth();
 
@@ -38,16 +39,15 @@ export const RegisterForm = () => {
               <div className="w-100 w-lg-75 w-xxl-50">
                 <div>
                   <div className="mb-5">
-                    <h1 className="display-3 text-white">Multiple Niches</h1>
-                    <h1 className="display-3 text-white">Ready for Your Project</h1>
+                    <h1 className="display-3 text-white">Welcome to our customer portal</h1>
+                    <h1 className="display-3 text-white">Start manage your tickets</h1>
                   </div>
                   <p className="h6 text-white lh-1-5 mb-5">
-                    Dynamically target high-payoff intellectual capital for customized technologies.
-                    Objectively integrate emerging core competencies before process-centric
-                    communities...
+                    Full set of features to manage your business data with our company. See your
+                    tickets, track your budget, manage invoices and more!
                   </p>
                   <div className="mb-5">
-                    <a className="btn btn-lg btn-outline-white" href="index.html">
+                    <a className="btn btn-lg btn-outline-white" href="https://itvolga.com">
                       Learn More
                     </a>
                   </div>
@@ -72,24 +72,24 @@ export const RegisterForm = () => {
                   <p className="h6">Please use the form to register.</p>
                   <p className="h6">
                     If you are a member, please
-                    <a href="Pages.Authentication.Login.html">login</a>.
+                    <a href="Pages.Authentication.Login.html"> login</a>.
                   </p>
                 </div>
                 <div>
                   <form id="registerForm" className="tooltip-end-bottom" noValidate>
                     <div className="mb-3 filled form-group tooltip-end-top">
-                      <i data-acorn-icon="user"></i>
-                      <input className="form-control" placeholder="Name" name="registerName" />
+                      <Envelope />
+                      <input className="form-control" placeholder="Email" name="email" />
                     </div>
                     <div className="mb-3 filled form-group tooltip-end-top">
-                      <i data-acorn-icon="email"></i>
-                      <input className="form-control" placeholder="Email" name="registerEmail" />
+                      <UpcScan />
+                      <input className="form-control" placeholder="Code" name="code" />
                     </div>
                     <div className="mb-3 filled form-group tooltip-end-top">
-                      <i data-acorn-icon="lock-off"></i>
+                      <Lock></Lock>
                       <input
                         className="form-control"
-                        name="registerPassword"
+                        name="password"
                         type="password"
                         placeholder="Password"
                       />
@@ -103,7 +103,7 @@ export const RegisterForm = () => {
                           name="registerCheck"
                         />
                         <label className="form-check-label" htmlFor="registerCheck">
-                          I have read and accept the
+                          I have read and accept the &nbsp;
                           <a href="index.html" target="_blank">
                             terms and conditions.
                           </a>
