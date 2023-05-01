@@ -7,16 +7,16 @@
 */
 
 .introjs-helperLayer {
-  padding: 1rem;
-  transform: translate(-1rem, -1rem);
-  border-radius: var(--border-radius-lg);
+  padding: 1rem !important;
+  transform: translate(-1rem, -1rem) !important;
+  border-radius: var(--border-radius-lg) !important;
   box-shadow: var(--primary) 0px 0px 0 0, rgba(0, 0, 0, 0.6) 0px 0px 0px 5000px !important;
 }
 
 .introjs-tooltip {
-  border-radius: var(--border-radius-lg);
-  padding: var(--card-spacing-xs);
-  background: var(--foreground);
+  border-radius: var(--border-radius-lg) !important;
+  padding: var(--card-spacing-xs) !important;
+  background: var(--foreground) !important;
 }
 
 .introjs-overlay {
@@ -24,40 +24,40 @@
 }
 
 .introjs-button {
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  font-family: var(--font);
-  padding: 9px 20px;
-  height: var(--input-height);
-  font-size: 1em;
-  line-height: 1rem;
-  border-radius: var(--border-radius-md);
+  -webkit-box-sizing: border-box !important;
+  box-sizing: border-box !important;
+  font-family: var(--font) !important;
+  padding: 9px 20px !important;
+  height: var(--input-height) !important;
+  font-size: 1em !important;
+  line-height: 1rem !important;
+  border-radius: var(--border-radius-md) !important;
   border: initial !important;
   box-shadow: initial !important;
-  transition: all var(--transition-time-short);
-  transition-property: color, background-color, background-image, background;
-  border-radius: var(--border-radius-md);
+  transition: all var(--transition-time-short) !important;
+  transition-property: color, background-color, background-image, background !important;
+  border-radius: var(--border-radius-md) !important;
   color: var(--light-text) !important;
   background-color: initial !important;
   background-image: initial !important;
-  text-shadow: initial;
+  text-shadow: initial !important;
   box-shadow: inset 0px 0px 0px 1px var(--primary) !important;
   color: var(--primary) !important;
-  margin: 3px;
-  margin-bottom: 0;
+  margin: 3px !important;
+  margin-bottom: 0 !important;
 
   i {
-    font-size: 14px;
-    width: 14px;
-    vertical-align: middle;
-    display: inline-block;
+    font-size: 14px !important;
+    width: 14px !important;
+    vertical-align: middle !important;
+    display: inline-block !important;
   }
 
   span {
-    vertical-align: middle;
-    display: inline-block;
-    margin-left: 4px;
-    margin-right: 4px;
+    vertical-align: middle !important;
+    display: inline-block !important;
+    margin-left: 4px !important;
+    margin-right: 4px !important;
   }
 
   &:hover {
@@ -67,78 +67,88 @@
   }
 
   &.introjs-disabled {
-    opacity: 0.5;
-    cursor: initial;
-    pointer-events: none;
+    opacity: 0.5 !important;
+    cursor: initial !important;
+    pointer-events: none !important;
+  }
+}
+
+.introjs-tooltipReferenceLayer {
+  i[class^="cs"] {
+    font-family: "CS-Interface" !important;
   }
 }
 
 .introjs-bullets {
-  margin-bottom: 15px;
+  margin-bottom: 15px !important;
 }
 
 .introjs-tooltiptext {
-  font-family: var(--font-heading);
-  margin-bottom: 15px;
+  font-family: var(--font-heading) !important;
+  margin-bottom: 15px !important;
 }
 
 .introjs-tooltipbuttons {
-  border-top: 1px solid var(--separator);
-  text-align: center;
+  border-top: 1px solid var(--separator) !important;
+  text-align: center !important;
 }
 
 .introjs-bullets ul li a {
-  background: var(--separator);
+  background: var(--separator) !important;
 }
 
 .introjs-bullets ul li a.active {
-  background: var(--primary);
+  background: var(--primary) !important;
 }
 
 .introjs-tooltipReferenceLayer *,
 .introjs-tooltipReferenceLayer {
-  font-family: var(--font);
+  font-family: var(--font) !important;
 }
 
 .introjs-tooltip-title {
-  font-family: var(--font-heading);
-  font-weight: 400;
-  font-size: 1.1rem;
+  font-family: var(--font-heading) !important;
+  font-weight: 400 !important;
+  font-size: 1.1rem !important;
 }
 
 .introjs-tooltip-header {
-  padding-right: 10px;
+  padding-right: 10px !important;
 }
 
 .introjs-arrow.top {
-  left: 15px;
+  left: 15px !important;
 }
 
 .introjs-arrow.left {
-  top: 15px;
-  border-right-color: var(--foreground);
+  top: 15px !important;
+  border-right-color: var(--foreground) !important;
 }
 
 .introjs-arrow.right-bottom {
-  bottom: 15px;
-  border-left-color: var(--foreground);
+  bottom: 15px !important;
+  border-left-color: var(--foreground) !important;
 }
 
 .introjs-arrow.bottom {
-  left: 15px;
-  border-top-color: var(--foreground);
+  left: 15px !important;
+  border-top-color: var(--foreground) !important;
 }
 
 .introjs-arrow.top,
 .introjs-arrow.top-middle,
 .introjs-arrow.top-right {
-  border-bottom-color: var(--foreground);
+  border-bottom-color: var(--foreground) !important;
 }
 
 .introjs-skipbutton {
-  color: var(--alternate);
+  color: var(--alternate) !important;
 
   &:hover {
-    color: var(--primary);
+    color: var(--primary) !important;
   }
+}
+
+.introjs-bullets ul li a.active, .introjs-bullets ul li a:focus, .introjs-bullets ul li a:hover {
+  width: 6px !important;
 }

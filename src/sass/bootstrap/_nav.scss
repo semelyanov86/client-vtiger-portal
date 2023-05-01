@@ -222,7 +222,7 @@
 
   .nav-link.active::before,
   .nav-item.show .nav-link::before {
-    content: ' ';
+    content: " ";
     border-radius: 10px;
     position: absolute;
     width: 100%;
@@ -238,7 +238,7 @@
   line-height: 1.5;
   font-size: 1em;
   height: var(--input-height);
-
+  cursor: pointer;
   border-radius: var(--border-radius-md);
 }
 
@@ -267,6 +267,7 @@
     border: initial;
     position: relative;
     padding-top: 20px;
+    cursor: pointer;
     color: var(--body);
     &:hover,
     &.active {
@@ -277,7 +278,7 @@
   > div > .nav-link.active {
     border: initial;
     &::before {
-      content: ' ';
+      content: " ";
       background: var(--primary);
       color: var(--foreground);
       border-radius: 10px;
@@ -321,6 +322,7 @@
     padding: 12px;
     padding-top: initial !important;
     padding-bottom: initial !important;
+    cursor: pointer;
     &:hover,
     &.active {
       color: var(--primary);
@@ -364,7 +366,7 @@
   > li > .nav-link.active,
   > div > .nav-link.active {
     &:after {
-      content: ' ';
+      content: " ";
       left: 0;
       bottom: calc(-1px + var(--small-title-height) / 3);
       position: absolute;
@@ -407,7 +409,7 @@
   font-size: 0.85em;
   margin-bottom: 0.25rem;
   .breadcrumb-item + .breadcrumb-item::before {
-    content: '|';
+    content: "|";
     color: var(--alternate);
   }
 
@@ -424,7 +426,7 @@
 .breadcrumb-back {
   span {
     display: inline-block;
-    padding-top: 1px;
+    padding-top: 2px;
   }
 }
 
@@ -504,16 +506,20 @@ html .nav-container .mobile-buttons-container .dropdown-menu {
   }
 }
 
-html[data-placement='horizontal'] {
+html[data-placement="horizontal"] {
   #scrollSpyMenu {
     top: calc(var(--nav-size-slim) + calc(var(--main-spacing-horizontal) / 2));
-    height: calc(100vh - calc(calc(var(--nav-size-slim) * 2) + calc(var(--main-spacing-horizontal) + var(--card-spacing))));
+    height: calc(
+      100vh - calc(calc(var(--nav-size-slim) * 2) + calc(var(--main-spacing-horizontal) + var(--card-spacing)))
+    );
   }
 }
 
-html[data-placement='vertical'] {
+html[data-placement="vertical"] {
   #scrollSpyMenu {
     top: var(--main-spacing-horizontal);
-    height: calc(100vh - calc(calc(var(--nav-size-slim) * 2) + calc(var(--main-spacing-horizontal) + var(--card-spacing))));
+    height: calc(
+      100vh - calc(calc(var(--nav-size-slim) * 2) + calc(var(--main-spacing-horizontal) + var(--card-spacing)))
+    );
   }
 }

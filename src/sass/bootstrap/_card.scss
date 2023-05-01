@@ -62,7 +62,7 @@
   }
 
   .card-img-overlay {
-    background: rgba(0, 0, 0, 0.35);
+    background: rgba(0, 0, 0, 0.5);
     border-radius: var(--border-radius-lg);
   }
 
@@ -612,8 +612,4 @@
       opacity: 0.35;
     }
   }
-}
-
-.no-shadow {
-  box-shadow: initial !important;
 }

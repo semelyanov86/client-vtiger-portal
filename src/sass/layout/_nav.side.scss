@@ -46,13 +46,13 @@ html[data-dimension='mobile'] {
 
   a[data-bs-target] {
     color: var(--muted);
-    font-size: 0.65rem !important;
+    font-size: 0.75rem !important;
     line-height: 1.1rem !important;
     font-weight: initial !important;
     text-transform: uppercase;
     padding-bottom: 0.5rem;
-    cursor: initial !important;
-    pointer-events: none;
+    cursor: default !important;
+    pointer-events: none !important;
     .icon {
       display: none !important;
     }

@@ -32,8 +32,8 @@ html[data-color='dark-red'] {
   --separator-rgb: 71, 71, 71;
   --separator-light-rgb: 46, 46, 46;
 
-  --background: #121212;
-  --foreground: #1d1d1d;
+  --background: #1d1d1d;
+  --foreground: #242424;
   --background-rgb: 29, 29, 29;
   --foreground-rgb: 36, 36, 36;
 
@@ -85,5 +85,5 @@ html[data-color='dark-red'] {
   --background-navcolor-light: #fff;
   --background-navcolor-dark: #242424;
 
-  --theme-image-filter: hue-rotate(158deg) contrast(1.1) brightness(0.9);
+  --theme-image-filter: hue-rotate(158deg) contrast(1.5) brightness(0.8);
 }

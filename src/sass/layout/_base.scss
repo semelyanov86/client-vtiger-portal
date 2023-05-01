@@ -6,7 +6,6 @@
 *
 */
 
-
 :root {
   scroll-behavior: initial;
 }
@@ -28,11 +27,9 @@ body {
   font-size: 87.5%;
 }
 
-/*
 #root {
   opacity: 0;
 }
-*/
 
 html:not([data-show='true']) body.spinner {
   #root {
@@ -51,4 +48,3 @@ html[data-show='true'] {
     opacity: 1;
   }
 }
-

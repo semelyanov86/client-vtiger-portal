@@ -5,11 +5,13 @@ import { QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
 import { RouterProvider } from 'react-router-dom';
 
-import { Spinner } from '../components/Elements';
+import { Loading } from '../components/Loading/Loading.tsx';
 import { Notifications } from '../components/Notifications';
 import { AuthProvider } from '../lib/auth.tsx';
 import { queryClient } from '../lib/react-query';
 import { AppRoutes } from '../routes';
+
+import { LangProvider } from './LangProvider.tsx';
 
 const ErrorFallback = () => {
   return (
@@ -27,20 +29,16 @@ const ErrorFallback = () => {
 
 export const AppProvider = () => {
   return (
-    <React.Suspense
-      fallback={
-        <div className="flex items-center justify-center w-screen h-screen">
-          <Spinner />
-        </div>
-      }
-    >
+    <React.Suspense fallback={<Loading></Loading>}>
       <ErrorBoundary FallbackComponent={ErrorFallback}>
         <QueryClientProvider client={queryClient} contextSharing={true}>
           <HelmetProvider>
             {import.meta.env.NODE_ENV !== 'test' && <ReactQueryDevtools />}
             <Notifications />
             <AuthProvider>
-              <RouterProvider router={AppRoutes()}></RouterProvider>
+              <LangProvider>
+                <RouterProvider router={AppRoutes()}></RouterProvider>
+              </LangProvider>
             </AuthProvider>
           </HelmetProvider>
         </QueryClientProvider>

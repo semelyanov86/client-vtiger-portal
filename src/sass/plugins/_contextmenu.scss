@@ -6,70 +6,40 @@
 *
 */
 
-.context-menu-list {
-  box-shadow: initial;
-  border-color: var(--separator);
-  padding: 0.5rem 0;
-  background-color: var(--foreground);
-  border-radius: var(--border-radius-md);
-
-  &:before {
-    content: '';
-  }
+.react-contexify {
+  box-shadow: initial !important;
+  border: 1px solid var(--separator) !important;
+  padding: 0.5rem 0 !important;
+  background-color: var(--foreground) !important;
+  border-radius: var(--border-radius-md) !important;
 }
 
-.context-menu-item {
-  text-decoration: initial;
-  color: var(--body);
+.react-contexify__item__content {
+  color: var(--body) !important;
   background: initial !important;
   border: initial !important;
-  padding: 0.5rem 1.5rem;
-  line-height: 1;
   font-size: 1em !important;
-  span {
-    display: inline-block;
-    font-family: var(--font);
-    color: var(--body);
-    font-weight: 400;
-    font-size: 1em !important;
-    vertical-align: top;
-    padding-top: 2px;
-  }
-
-  &:before {
-    margin-right: 8px;
-  }
-
-  &.context-menu-hover {
-    color: var(--primary);
-    text-decoration: none;
-    background-color: var(--foreground);
-    & > span {
-      color: var(--primary);
-    }
-  }
+  line-height: 1;
+  padding: 0.5rem 1.5rem !important;
+  font-family: var(--font);
 }
 
-.context-menu-item.context-menu-disabled,
-.context-menu-item.context-menu-disabled span {
-  color: var(--muted);
+.react-contexify__item:not(.react-contexify__item--disabled):hover > .react-contexify__item__content,
+.react-contexify__item:not(.react-contexify__item--disabled):focus > .react-contexify__item__content {
+  color: var(--primary) !important;
 }
 
-.context-menu-item > .context-menu-list {
-  margin-left: 10px;
-}
-
-.context-menu-submenu:after {
-  content: '';
+.submenu-arrow {
+  content: "";
   border: initial;
   border-width: initial;
-  right: 1em;
+  right: 1rem;
   width: 5px;
   height: 5px;
   border-top: 1px solid var(--body);
   border-right: 1px solid var(--body);
   transform: rotate(45deg);
   order: 3;
-  margin-left: 5px;
-  margin-top: 3px;
+  margin-top: -2px;
+  position: absolute;
 }

@@ -24,7 +24,7 @@ div.error {
   line-height: 1.5;
   padding: calc(var(--card-spacing-xs) / 3 * 2) var(--card-spacing-xs);
   &::before {
-    content: '';
+    content: "";
     position: absolute;
     top: 50%;
     top: -4px;
@@ -92,7 +92,7 @@ div.error {
 
   &::before {
     margin-top: initial;
-    content: '';
+    content: "";
     position: absolute;
     top: initial;
     bottom: -4px;
@@ -111,7 +111,7 @@ div.error {
   right: 0;
 
   &::before {
-    content: '';
+    content: "";
     margin-top: initial;
     position: absolute;
     top: initial;
@@ -134,7 +134,7 @@ div.error {
   right: initial;
 
   &::before {
-    content: '';
+    content: "";
     margin-top: initial;
     position: absolute;
     top: initial;
@@ -155,7 +155,7 @@ div.error {
   bottom: initial;
   right: initial;
   &::before {
-    content: '';
+    content: "";
     position: absolute;
     left: -5px;
     right: initial;
@@ -209,6 +209,45 @@ div.error {
   color: var(danger);
 }
 
+// .was-validated .form-control:invalid,
+// .form-control.is-invalid,
+// .was-validated .custom-select:invalid,
+// .custom-select.is-invalid {
+//   border-color: var(--separator) !important;
+// }
+
+// .was-validated .form-control:valid,
+// .form-control.is-valid,
+// .was-validated .custom-select:valid,
+// .custom-select.is-valid {
+//   border-color: var(--separator) !important;
+// }
+
+// .was-validated .form-control:valid:focus,
+// .form-control.is-valid:focus,
+// .was-validated .custom-select:valid:focus,
+// .custom-select.is-valid:focus {
+//   border-color: rgba(var(--primary), 0.6);
+// }
+
+// .was-validated .form-control:invalid:focus,
+// .form-control.is-invalid:focus,
+// .was-validated .custom-select:invalid:focus,
+// .custom-select.is-invalid:focus {
+//   border-color: rgba(var(--primary), 0.6);
+// }
+
+// .was-validated .form-control:invalid,
+// .form-control.is-invalid,
+// .was-validated .form-control:valid,
+// .form-control.is-valid,
+// .was-validated .custom-select:invalid,
+// .custom-select.is-invalid,
+// .was-validated .custom-select:valid,
+// .custom-select.is-valid {
+//   background-image: initial;
+// }
+
 .tooltip-end-top,
 .tooltip-center-top,
 .tooltip-start-top {
@@ -253,4 +292,32 @@ div.error {
       bottom: initial;
     }
   }
+}
+
+.was-validated .form-check-input:invalid ~ .form-check-label,
+.form-check-input.is-invalid ~ .form-check-label,
+.was-validated .form-check-input:valid ~ .form-check-label,
+.form-check-input.is-valid ~ .form-check-label {
+  color: var(--body);
+}
+
+.was-validated .form-check-input:valid:checked,
+.form-check-input.is-valid:checked {
+  background-color: var(--primary);
+}
+
+.valid-tooltip {
+  display: none !important;
+}
+
+.form-check.tooltip-end-top .invalid-tooltip,
+.form-check.tooltip-end-top .valid-tooltip,
+.form-check.tooltip-end-top div.error,
+.form-check.tooltip-center-top .invalid-tooltip,
+.form-check.tooltip-center-top .valid-tooltip,
+.form-check.tooltip-center-top div.error,
+.form-check.tooltip-start-top .invalid-tooltip,
+.form-check.tooltip-start-top .valid-tooltip,
+.form-check.tooltip-start-top div.error {
+  top: -2.5rem;
 }
