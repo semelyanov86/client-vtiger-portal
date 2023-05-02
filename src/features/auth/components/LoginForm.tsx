@@ -30,7 +30,7 @@ export const LoginForm = () => {
         <div className="mb-5">
           <p className="h6">Please use your credentials to login.</p>
           <p className="h6">
-            If you are not a member, please <NavLink to="/register">register</NavLink>.
+            If you are not a member, please <NavLink to="/auth/register">register</NavLink>.
           </p>
         </div>
         <div>
@@ -42,7 +42,7 @@ export const LoginForm = () => {
             <div className="mb-3 filled form-group tooltip-end-top">
               <Lock></Lock>
               <Form.Control type="password" name="password" placeholder="Password" />
-              <NavLink className="text-small position-absolute t-3 e-3" to="/forgot-password">
+              <NavLink className="text-small position-absolute t-3 e-3" to="/auth/forgot">
                 Forgot?
               </NavLink>
             </div>

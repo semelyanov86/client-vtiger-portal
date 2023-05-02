@@ -5,11 +5,11 @@ import { FieldValues, useForm } from 'react-hook-form';
 import { NavLink } from 'react-router-dom';
 import { z } from 'zod';
 
+import { NotifyError } from '../../../components/Notifications/Notification.tsx';
 import { useAuthContext } from '../../../lib/auth.tsx';
 import { RegisterCredentialsDTO } from '../api/register.ts';
 
 import { LogoAuth } from './LogoAuth.tsx';
-import { NotifyError } from '../../../components/Notifications/Notification.tsx';
 
 const schema = z
   .object({
