@@ -1,12 +1,21 @@
 export type AuthUser = {
   id: string;
   email: string;
-  firstName: string;
-  lastName: string;
+  firstname: string;
+  lastname: string;
   crmid: string;
-};
-
-export type UserResponse = {
-  jwt: string;
-  user: AuthUser;
+  description: string;
+  account_id: string;
+  account_name: string;
+  title: string;
+  department: string;
+  created_at: string;
+  updated_at: string;
+  is_active: boolean;
+  mailingcity: string;
+  mailingstreet: string;
+  mailingcountry: string;
+  mailingstate: string;
+  image: string;
+  imagecontent: string;
 };

@@ -1,9 +1,17 @@
-// import { useNotificationStore } from '../../stores/notifications';
-
 import { Slide, ToastContainer } from 'react-toastify';
 
 export const Notifications = () => {
-  // const { notifications, dismissNotification } = useNotificationStore();
-
-  return <ToastContainer transition={Slide} newestOnTop />;
+  return (
+    <ToastContainer
+      transition={Slide}
+      newestOnTop
+      position="top-right"
+      autoClose={5000}
+      hideProgressBar={false}
+      closeOnClick
+      rtl={false}
+      pauseOnHover
+      theme="light"
+    />
+  );
 };

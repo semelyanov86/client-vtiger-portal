@@ -2,15 +2,13 @@ import { Button, Form } from 'react-bootstrap';
 import { Envelope } from 'react-bootstrap-icons';
 import { NavLink } from 'react-router-dom';
 
+import { LogoAuth } from './LogoAuth.tsx';
+
 export const ForgotPasswordForm = () => {
   return (
     <div className="sw-lg-70 min-h-100 bg-foreground d-flex justify-content-center align-items-center shadow-deep py-5 full-page-content-right-border">
       <div className="sw-lg-50 px-5">
-        <div className="sh-11">
-          <NavLink to="/">
-            <div className="logo-default" />
-          </NavLink>
-        </div>
+        <LogoAuth></LogoAuth>
         <div className="mb-5">
           <h2 className="cta-1 mb-0 text-primary">Password is gone?</h2>
           <h2 className="cta-1 text-primary">Let's reset it!</h2>

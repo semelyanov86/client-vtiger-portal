@@ -1,5 +1,6 @@
 import { Transition } from '@headlessui/react';
 import { Fragment } from 'react';
+import { toast } from 'react-toastify';
 
 const icons = {
   info: <p>Information message</p>,
@@ -60,3 +61,9 @@ export const Notification = ({
     </div>
   );
 };
+
+export const Notify = (message: string) => toast(message);
+
+export const NotifyError = (message: string) => toast.error(message);
+
+export const NotifySuccess = (message: string) => toast.success(message);
