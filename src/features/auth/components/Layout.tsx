@@ -5,8 +5,8 @@ import useLayout from '../../../hooks/useLayout.ts';
 
 interface LayoutProps {
   title: string;
-  left: ReactNode;
   right: ReactNode;
+  left?: ReactNode;
 }
 
 export const Layout = ({ title, left, right }: LayoutProps) => {
