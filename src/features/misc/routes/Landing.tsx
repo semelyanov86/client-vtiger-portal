@@ -1,3 +1,10 @@
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router';
+
 export const Landing = () => {
-  return <h1>This is Landing Page</h1>;
+  const navigate = useNavigate();
+  useEffect(() => {
+    navigate('/auth/login');
+  }, []);
+  return <h1>Welcome to customer portal!</h1>;
 };
