@@ -2,16 +2,20 @@ import { createContext, ReactNode, useContext, useState } from 'react';
 
 import {
   AuthUser,
+  LoginCredentialsDTO,
+  loginWithEmailAndPassword,
   RegisterCredentialsDTO,
   registerWithEmailAndPassword,
   resetPassword,
   ResetPasswordDTO,
+  Token,
 } from '../features/auth';
 import {
   RestorePasswordDTO,
   RestorePasswordResponse,
   sendPasswordResetToken,
 } from '../features/auth/api/restore.ts';
+import { removeToken } from './token.ts';
 
 interface AuthProps {
   children: ReactNode;
@@ -19,7 +23,7 @@ interface AuthProps {
 
 interface AuthContextType {
   user: AuthUser;
-  login: (user: AuthUser) => void;
+  login: (login: LoginCredentialsDTO) => Promise<Token>;
   logout: () => void;
   register: (data: RegisterCredentialsDTO) => Promise<AuthUser>;
   restore: (data: RestorePasswordDTO) => Promise<RestorePasswordResponse>;
@@ -28,9 +32,11 @@ interface AuthContextType {
 
 const AuthContext = createContext<AuthContextType>({} as AuthContextType);
 export const AuthProvider = ({ children }: AuthProps) => {
-  const [user, setUser] = useState<AuthUser>({} as AuthUser);
-  const login = (user: AuthUser) => setUser(user);
-  const logout = () => setUser({} as AuthUser);
+  const [user] = useState<AuthUser>({} as AuthUser);
+  const login = (login: LoginCredentialsDTO) => {
+    return loginWithEmailAndPassword(login);
+  };
+  const logout = () => removeToken();
   const register = (data: RegisterCredentialsDTO) => {
     return registerWithEmailAndPassword(data);
   };
