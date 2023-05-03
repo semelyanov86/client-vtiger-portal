@@ -46,6 +46,7 @@ const initialState = {
 interface PlacementStatus {
   placementHtmlData: string;
   dimensionHtmlData: string;
+  view: string;
 }
 
 interface BehaviourStatus {
