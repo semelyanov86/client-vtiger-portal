@@ -2,15 +2,17 @@ import Axios, { InternalAxiosRequestConfig } from 'axios';
 
 import { API_URL } from '../config';
 import { useNotificationStore } from '../stores/notifications';
-import storage from '../utils/storage';
+
+import { getToken } from './token.ts';
 
 function authRequestInterceptor(config: InternalAxiosRequestConfig) {
-  const token = storage.getToken();
+  const access_token = getToken()?.value || null;
   if (!config.headers) {
     return config;
   }
-  if (token) {
-    config.headers.authorization = `Bearer ${token}`;
+
+  if (access_token) {
+    config.headers.authorization = `Bearer ${access_token}`;
   }
   config.headers.Accept = 'application/json';
   config.headers['Content-Type'] = 'application/json';

@@ -1,11 +1,11 @@
 import { axios } from '../../../lib/axios';
-import { AuthUser } from '../types';
+import { Token } from '../types';
 
 export type LoginCredentialsDTO = {
   email: string;
   password: string;
 };
 
-export const loginWithEmailAndPassword = (data: LoginCredentialsDTO): Promise<AuthUser> => {
-  return axios.post('/auth/login', data);
+export const loginWithEmailAndPassword = (data: LoginCredentialsDTO): Promise<Token> => {
+  return axios.post('/users/login', data);
 };

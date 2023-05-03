@@ -19,3 +19,9 @@ export type AuthUser = {
   image: string;
   imagecontent: string;
 };
+
+export type Token = {
+  id: number;
+  token: string;
+  expiry: string;
+};
