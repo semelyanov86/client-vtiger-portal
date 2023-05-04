@@ -1,16 +1,17 @@
-import { DEFAULT_SETTINGS } from '../config';
 import { create } from 'zustand';
+
+import { DEFAULT_SETTINGS } from '../config';
 
 export const BREAKPOINTS = { sm: 576, md: 768, lg: 992, xl: 1200, xxl: 1400 };
 
-interface Menus {
+export interface Menus {
   behaviour: string;
   placement: string;
   useSidebar: boolean;
   pinButtonEnable: boolean;
   placementStatus: PlacementStatus;
   behaviourStatus: BehaviourStatus;
-  navClasses: object;
+  navClasses: navClassesInterface;
   attrMobile: boolean;
   attrMenuAnimate: string;
   collapseAll: boolean;
@@ -22,6 +23,14 @@ interface BreakpointsInterface {
   verticalUnpinned: number;
   verticalMobile: number;
   horizontalMobile: number;
+}
+
+interface navClassesInterface {
+  'mobile-side-in': boolean;
+  'mobile-top-out': boolean;
+  'mobile-top-in': boolean;
+  'mobile-top-ready': boolean;
+  'mobile-side-ready': boolean;
 }
 
 const initialState = {
@@ -63,7 +72,7 @@ interface MenuStore {
   menuChangeAttrMenuAnimate: (data: string) => void;
   menuChangeAttrMobile: (data: boolean) => void;
   menuChangeCollapseAll: (data: boolean) => void;
-  menuChangeNavClasses: (data: object) => void;
+  menuChangeNavClasses: (data: navClassesInterface) => void;
   menuChangeBreakpoints: (data: BreakpointsInterface) => void;
   menuResetBreakpoints: () => void;
   menuResetUseSidebar: () => void;
@@ -129,7 +138,7 @@ export const useMenusStore = create<MenuStore>((set) => ({
         collapseAll: data,
       },
     })),
-  menuChangeNavClasses: (data: object) =>
+  menuChangeNavClasses: (data: navClassesInterface) =>
     set((state) => ({
       value: {
         ...state.value,
