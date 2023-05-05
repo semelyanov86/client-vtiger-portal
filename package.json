@@ -16,6 +16,7 @@
     "validate": "npm-run-all --parallel check-types && lint-staged"
   },
   "dependencies": {
+    "@glidejs/glide": "^3.6.0",
     "@hookform/resolvers": "^3.1.0",
     "@storybook/react": "^7.0.7",
     "@types/overlayscrollbars": "^1.12.1",
@@ -45,6 +46,7 @@
   },
   "devDependencies": {
     "@headlessui/react": "^1.7.14",
+    "@types/glidejs__glide": "^3.6.1",
     "@types/react": "^18.0.28",
     "@types/react-dom": "^18.0.11",
     "@types/react-query": "^1.2.9",
