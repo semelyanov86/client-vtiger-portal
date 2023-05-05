@@ -1,6 +1,7 @@
 import classNames from 'classnames';
-import React, { memo, ReactNode, useEffect, useRef, useState } from 'react';
+import React, { memo, useEffect, useRef, useState } from 'react';
 import { Collapse, Dropdown } from 'react-bootstrap';
+import { Icon } from 'react-bootstrap-icons';
 import { useIntl } from 'react-intl';
 import { NavLink, useLocation } from 'react-router-dom';
 
@@ -34,7 +35,7 @@ export const MainMenuItem = memo(
     const [verticalMenuCollapseExpanded, setVerticalMenuCollapseExpanded] = useState(isActive);
     const [horizontalDropdownIsOpen, setHorizontalDropdownIsOpen] = useState(false);
 
-    const getLabel = (label: string, icon?: ReactNode) => (
+    const getLabel = (label: string, icon?: Icon) => (
       <>
         {icon && <>{icon} </>}
         <span className="label">{USE_MULTI_LANGUAGE ? f({ id: label }) : label}</span>
@@ -78,7 +79,7 @@ export const MainMenuItem = memo(
             href={item.path}
             active={isActive}
           >
-            {getLabel(item.label, item.icon)}
+            {getLabel(item.label ?? '', item.icon)}
           </Dropdown.Toggle>
           <Dropdown.Menu
             ref={dropdownMenuRef as React.RefObject<HTMLUListElement>}
@@ -129,7 +130,7 @@ export const MainMenuItem = memo(
       return (
         <li className="dropdown col d-flex flex-column">
           <NavLink to={item.path} className={classNames('dropdown-toggle', { active: isActive })}>
-            {getLabel(item.label, item.icon)}
+            {getLabel(item.label ?? '', item.icon)}
           </NavLink>
           <ul>
             <MainMenuItems menuItems={item.subs} menuPlacement={menuPlacement} isSubItem />
@@ -148,7 +149,7 @@ export const MainMenuItem = memo(
             aria-expanded={verticalMenuCollapseExpanded && !collapseAll}
             onClick={onVerticalMenuCollapseClick}
           >
-            {getLabel(item.label, item.icon)}
+            {getLabel(item.label ?? '', item.icon)}
           </a>
           <Collapse in={verticalMenuCollapseExpanded && !collapseAll}>
             <ul>
@@ -162,7 +163,7 @@ export const MainMenuItem = memo(
       return (
         <li key={id}>
           <a href={item.path} target="_blank" rel="noopener noreferrer">
-            {getLabel(item.label, item.icon)}
+            {getLabel(item.label ?? '', item.icon)}
           </a>
         </li>
       );
@@ -171,7 +172,7 @@ export const MainMenuItem = memo(
       return (
         <li>
           <NavLink to={item.path} className={classNames({ active: isActive })}>
-            {getLabel(item.label, item.icon)}
+            {getLabel(item.label ?? '', item.icon)}
           </NavLink>
         </li>
       );
@@ -180,7 +181,7 @@ export const MainMenuItem = memo(
       return (
         <li className="col d-flex flex-column">
           <NavLink to={item.path} className={classNames({ active: isActive })}>
-            {getLabel(item.label, item.icon)}
+            {getLabel(item.label ?? '', item.icon)}
           </NavLink>
         </li>
       );
@@ -188,7 +189,7 @@ export const MainMenuItem = memo(
     return (
       <Dropdown.Item as="li">
         <NavLink to={item.path} className={classNames({ active: isActive })}>
-          {getLabel(item.label, item.icon)}
+          {getLabel(item.label ?? '', item.icon)}
         </NavLink>
       </Dropdown.Item>
     );

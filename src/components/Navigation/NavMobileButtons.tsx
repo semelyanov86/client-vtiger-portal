@@ -1,8 +1,9 @@
-import { MenuButton } from 'react-bootstrap-icons';
 import React, { useEffect } from 'react';
-import ScrollspyMobile from '../Scrollspy/ScrollspyMobile.tsx';
+import { MenuButton } from 'react-bootstrap-icons';
+
 import { useMenusStore } from '../../stores/menus.ts';
 import { useScrollSpyStore } from '../../stores/scrollspy.ts';
+import ScrollspyMobile from '../Scrollspy/ScrollspyMobile.tsx';
 
 export const NavMobileButtons = () => {
   const { navClasses } = useMenusStore().value;
@@ -18,6 +19,8 @@ export const NavMobileButtons = () => {
       'mobile-top-out': true,
       'mobile-top-in': false,
       'mobile-top-ready': false,
+      'mobile-side-in': false,
+      'mobile-side-ready': false,
     };
     menuChangeNavClasses(newNavClasses);
     setTimeout(() => {
@@ -46,6 +49,7 @@ export const NavMobileButtons = () => {
       'mobile-side-in': false,
       'mobile-top-ready': false,
       'mobile-top-in': false,
+      'mobile-top-out': false,
     };
     menuChangeNavClasses(newNavClasses);
     setTimeout(() => {

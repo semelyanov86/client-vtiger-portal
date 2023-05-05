@@ -5,27 +5,27 @@ import { DEFAULT_SETTINGS } from '../config';
 export const BREAKPOINTS = { sm: 576, md: 768, lg: 992, xl: 1200, xxl: 1400 };
 
 export interface Menus {
-  behaviour: string;
+  behaviour?: string;
   placement: string;
-  useSidebar: boolean;
-  pinButtonEnable: boolean;
+  useSidebar?: boolean;
+  pinButtonEnable?: boolean;
   placementStatus: PlacementStatus;
   behaviourStatus: BehaviourStatus;
-  navClasses: navClassesInterface;
-  attrMobile: boolean;
-  attrMenuAnimate: string;
-  collapseAll: boolean;
+  navClasses?: navClassesInterface;
+  attrMobile?: boolean;
+  attrMenuAnimate?: string;
+  collapseAll?: boolean;
   breakpoints: BreakpointsInterface;
-  menuPadding: number;
+  menuPadding?: number;
 }
 
-interface BreakpointsInterface {
+export interface BreakpointsInterface {
   verticalUnpinned: number;
   verticalMobile: number;
   horizontalMobile: number;
 }
 
-interface navClassesInterface {
+export interface navClassesInterface {
   'mobile-side-in': boolean;
   'mobile-top-out': boolean;
   'mobile-top-in': boolean;
@@ -52,13 +52,15 @@ const initialState = {
   menuPadding: 0,
 } as Menus;
 
-interface PlacementStatus {
+export interface PlacementStatus {
+  status?: number;
   placementHtmlData: string;
   dimensionHtmlData: string;
   view: string;
 }
 
-interface BehaviourStatus {
+export interface BehaviourStatus {
+  status?: number;
   behaviourHtmlData: string;
 }
 

@@ -1,15 +1,22 @@
-import React, { ReactNode } from 'react';
-import { MainMenuItem } from './MainMenuItem.tsx';
+import React, { LazyExoticComponent, ReactElement } from 'react';
+import { Icon } from 'react-bootstrap-icons';
+
 import { DEFAULT_SETTINGS } from '../../../config';
+
+import { MainMenuItem } from './MainMenuItem.tsx';
 
 export type MenuItem = {
   path: string;
-  icon: ReactNode;
-  label: string;
-  subs: MenuItem[];
-  isExternal: boolean;
-  megaParent: boolean;
-  mega: string;
+  icon?: Icon;
+  component?: LazyExoticComponent<() => ReactElement>;
+  label?: string;
+  subs?: MenuItem[];
+  redirect?: boolean;
+  exact?: boolean;
+  to?: string;
+  isExternal?: boolean;
+  megaParent?: boolean;
+  mega?: string;
 };
 
 interface MainMenuItemsProps {
