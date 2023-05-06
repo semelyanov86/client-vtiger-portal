@@ -1,5 +1,5 @@
-import React, { LazyExoticComponent, ReactElement } from 'react';
-import { Icon } from 'react-bootstrap-icons';
+import React from 'react';
+import * as icons from 'react-bootstrap-icons';
 
 import { DEFAULT_SETTINGS } from '../../../config';
 
@@ -7,8 +7,8 @@ import { MainMenuItem } from './MainMenuItem.tsx';
 
 export type MenuItem = {
   path: string;
-  icon?: Icon;
-  component?: LazyExoticComponent<() => ReactElement>;
+  icon?: keyof typeof icons;
+  component?: () => JSX.Element;
   label?: string;
   subs?: MenuItem[];
   redirect?: boolean;
@@ -26,7 +26,11 @@ interface MainMenuItemsProps {
 }
 
 export const MainMenuItems = React.memo<MainMenuItemsProps>(
-  ({ menuItems = [], menuPlacement = DEFAULT_SETTINGS.MENU_PLACEMENT, isSubItem = false }) => (
+  ({
+    menuItems = [],
+    menuPlacement = DEFAULT_SETTINGS.MENU_PLACEMENT,
+    isSubItem = false,
+  }: MainMenuItemsProps) => (
     <>
       {menuItems.map((item, index) => (
         <MainMenuItem

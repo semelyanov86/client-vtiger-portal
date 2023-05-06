@@ -1,8 +1,6 @@
-import { lazy } from 'react';
-import { House } from 'react-bootstrap-icons';
-
 import { MenuItem } from '../components/Navigation/main-menu/MainMenuItems.tsx';
 import { DEFAULT_PATHS } from '../config';
+import { lazyImport } from '../utils/lazyImport.ts';
 
 export interface MenuRoutesInterface {
   mainMenuItems: MenuItem[];
@@ -13,7 +11,7 @@ const appRoot = DEFAULT_PATHS.APP.endsWith('/')
   ? DEFAULT_PATHS.APP.slice(1, DEFAULT_PATHS.APP.length)
   : DEFAULT_PATHS.APP;
 
-const Home = lazy(() => import('../features/home/routes/Home.tsx'));
+const { Home } = lazyImport(() => import('../features/home/routes/Home.tsx'), 'Home');
 
 export const menuRoutes: MenuRoutesInterface = {
   mainMenuItems: [
@@ -27,7 +25,7 @@ export const menuRoutes: MenuRoutesInterface = {
       path: `${appRoot}/dashboards`,
       component: Home,
       label: 'Dashboards',
-      icon: House,
+      icon: 'House',
     },
   ],
   sidebarItems: [],

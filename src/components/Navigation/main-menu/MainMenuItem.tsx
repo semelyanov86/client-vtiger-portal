@@ -1,14 +1,13 @@
 import classNames from 'classnames';
 import React, { memo, useEffect, useRef, useState } from 'react';
 import { Collapse, Dropdown } from 'react-bootstrap';
-import { Icon } from 'react-bootstrap-icons';
-import { useIntl } from 'react-intl';
 import { NavLink, useLocation } from 'react-router-dom';
 
-import { DEFAULT_SETTINGS, USE_MULTI_LANGUAGE } from '../../../config';
+import { DEFAULT_SETTINGS } from '../../../config';
 import { MENU_PLACEMENT } from '../../../config/constants.ts';
 import { useLayoutsStore } from '../../../stores/layouts.ts';
 import { useMenusStore } from '../../../stores/menus.ts';
+import { getLabel } from '../../../utils/text.tsx';
 
 import HorizontalMenuDropdownToggle from './HorizontalMenuDropdownToggle.tsx';
 import { MainMenuItems, MenuItem } from './MainMenuItems.tsx';
@@ -31,16 +30,8 @@ export const MainMenuItem = memo(
       ? false
       : pathname === item.path || pathname.indexOf(`${item.path}/`) > -1;
 
-    const { formatMessage: f } = useIntl();
     const [verticalMenuCollapseExpanded, setVerticalMenuCollapseExpanded] = useState(isActive);
     const [horizontalDropdownIsOpen, setHorizontalDropdownIsOpen] = useState(false);
-
-    const getLabel = (label: string, icon?: Icon) => (
-      <>
-        {icon && <>{icon} </>}
-        <span className="label">{USE_MULTI_LANGUAGE ? f({ id: label }) : label}</span>
-      </>
-    );
 
     const onToggleItem = (isOpen: boolean) => {
       setHorizontalDropdownIsOpen(isOpen);
@@ -63,7 +54,6 @@ export const MainMenuItem = memo(
         onToggleItem(false);
       }
     }, [showingNavMenu, horizontalDropdownIsOpen]);
-
     if (item.subs && menuPlacement === MENU_PLACEMENT.Horizontal && !item.megaParent) {
       return (
         <Dropdown
@@ -168,15 +158,17 @@ export const MainMenuItem = memo(
         </li>
       );
     }
+
     if (!isSubItem || menuPlacement === MENU_PLACEMENT.Vertical) {
       return (
         <li>
           <NavLink to={item.path} className={classNames({ active: isActive })}>
-            {getLabel(item.label ?? '', item.icon)}
+            <>{getLabel(item.label ?? '', item.icon)}</>
           </NavLink>
         </li>
       );
     }
+
     if (menuPlacement === MENU_PLACEMENT.Horizontal && item.megaParent) {
       return (
         <li className="col d-flex flex-column">
@@ -186,6 +178,7 @@ export const MainMenuItem = memo(
         </li>
       );
     }
+
     return (
       <Dropdown.Item as="li">
         <NavLink to={item.path} className={classNames({ active: isActive })}>

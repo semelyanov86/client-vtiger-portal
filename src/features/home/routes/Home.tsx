@@ -27,9 +27,11 @@ import { NavLink } from 'react-router-dom';
 import { BreadcrumbList } from '../../../components/Elements/Breadcrumbs/BreadcrumbList.tsx';
 import { Glide } from '../../../components/Elements/Carousel/Glide.tsx';
 import { Head } from '../../../components/Head';
+import { useIntl } from 'react-intl';
 
-const Home = () => {
+export const Home = () => {
   const title = 'Dashboard';
+  const { formatMessage: f } = useIntl();
 
   const breadcrumbs = [
     { to: '', text: 'Home' },
@@ -60,7 +62,7 @@ const Home = () => {
           <Card className="mb-2 h-auto sh-xl-24" id="introFirst">
             <Card.Body>
               <Row className="g-0 h-100">
-                <p>Here will be some widget</p>
+                <p>{f({ id: 'menu.detail' })}</p>
               </Row>
             </Card.Body>
           </Card>
@@ -838,5 +840,3 @@ const Home = () => {
     </>
   );
 };
-
-export default Home;

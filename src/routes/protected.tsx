@@ -6,7 +6,7 @@ import { MainLayout } from '../components/Layout';
 import WithAuth from '../features/auth/components/WithAuth.tsx';
 import { lazyImport } from '../utils/lazyImport';
 
-const { Dashboard } = lazyImport(() => import('../features/misc'), 'Dashboard');
+const { Home } = lazyImport(() => import('../features/home/routes/Home.tsx'), 'Home');
 
 const App = () => {
   return (
@@ -34,12 +34,8 @@ export const protectedRoutes = [
     ),
     children: [
       {
-        path: '/',
-        element: (
-          <WithAuth>
-            <Dashboard />
-          </WithAuth>
-        ),
+        path: '',
+        element: <Home />,
       },
       { path: '*', element: <Navigate to="." /> },
     ],

@@ -9,6 +9,7 @@ import { NavLanguageSwitcher } from './NavLanguageSwitcher.tsx';
 import { NavLogo } from './NavLogo.tsx';
 import { NavMobileButtons } from './NavMobileButtons.tsx';
 import { NavUserMenu } from './NavUserMenu.tsx';
+import MainMenu from './main-menu/MainMenu.tsx';
 
 const DELAY = 80;
 
@@ -79,7 +80,7 @@ const Nav: React.FC = () => {
         <NavLanguageSwitcher />
         <NavUserMenu />
         <NavIconMenu />
-        {/*<MainMenu />*/}
+        <MainMenu />
         <NavMobileButtons />
       </div>
       <div className="nav-shadow" />

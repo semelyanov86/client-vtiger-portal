@@ -1,9 +1,9 @@
 import { Route, Routes } from 'react-router-dom';
 
+import { Forgot } from './Forgot.tsx';
 import { Login } from './Login';
 import { Register } from './Register';
 import { Reset } from './Reset.tsx';
-import { Forgot } from './Forgot.tsx';
 
 export const AuthRoutes = () => {
   return (

@@ -148,7 +148,7 @@ const MainMenu = () => {
   // Initializes the horizontal menu
   // Customizes dropdown clicks to prevent auto closing and making sure all sub menus are closed when parent is closed
   if (menuItemsMemo) {
-    if (placementStatus.view === MENU_PLACEMENT.Horizontal) {
+    if (placement === MENU_PLACEMENT.Horizontal) {
       return (
         <div className="menu-container flex-grow-1">
           <ul id="menu" className={classNames('menu show')}>

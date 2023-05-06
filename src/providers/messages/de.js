@@ -1,5 +1,5 @@
 const deMessages = {
-  'menu.dashboards': 'Dashboards',
+  Dashboards: 'Dashboards',
   'menu.default': 'Default',
   'menu.visual': 'Visual',
   'menu.analytic': 'Analytic',
