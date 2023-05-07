@@ -14,7 +14,7 @@ interface Languages {
 
 export const languageList = [
   { code: 'EN', locale: 'en-US', direction: 'ltr' },
-  { code: 'ES', locale: 'es-ES', direction: 'ltr' },
+  { code: 'RU', locale: 'ru-RU', direction: 'ltr' },
   { code: 'DE', locale: 'de-DE', direction: 'ltr' },
 ] as Language[];
 

@@ -1,7 +1,7 @@
 import { Modal } from 'react-bootstrap';
 import { ArrowBarDown, ArrowLeft } from 'react-bootstrap-icons';
 
-import { SearchInput } from './SearchInput.tsx';
+import SearchInput from './SearchInput.tsx';
 
 export interface SearchModalProps {
   show: boolean;

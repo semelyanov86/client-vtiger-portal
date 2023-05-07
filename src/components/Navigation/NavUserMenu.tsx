@@ -2,7 +2,7 @@ import { ToggleMetadata } from '@restart/ui/Dropdown';
 import classNames from 'classnames';
 import React, { CSSProperties, useEffect } from 'react';
 import { Col, Dropdown, Row } from 'react-bootstrap';
-import { Question, File, Gear, Lock, Person } from 'react-bootstrap-icons';
+import { Question, File, Gear, Lock, PersonFill } from 'react-bootstrap-icons';
 
 import { MENU_PLACEMENT } from '../../config/constants.ts';
 import { AuthUser } from '../../features/auth';
@@ -186,14 +186,20 @@ const NavUserMenuDropdownToggle = React.memo(
           onClick(e);
         }}
       >
-        {user.imagecontent} ?{' '}
-        <img
-          className="profile"
-          alt={user.firstname + ' ' + user.lastname}
-          src={'data:image/png;base64, ' + user.imagecontent}
-        />{' '}
-        : <Person />
-        <div className="name">{user.firstname + ' ' + user.lastname}</div>
+        {user.imagecontent ? (
+          <img
+            className="profile"
+            alt={user.firstname + ' ' + user.lastname + ' Image'}
+            src={'data:image/png;base64, ' + user.imagecontent}
+          />
+        ) : (
+          <PersonFill size={17} color="primary" />
+        )}
+        <div className="name ms-2">
+          {user.lastname && user.lastname != 'undefined'
+            ? user.firstname + ' ' + user.lastname
+            : ''}
+        </div>
       </a>
     )
   )

@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import React, { useState } from 'react';
-import { Search, Lock, LockFill, Lightning, LightningFill } from 'react-bootstrap-icons';
+import { Search, Pin, PinAngle, Moon, MoonFill } from 'react-bootstrap-icons';
 
 import { MENU_BEHAVIOUR } from '../../config/constants.ts';
 import { useMenusStore } from '../../stores/menus.ts';
@@ -17,15 +17,9 @@ export const NavIconMenu = () => {
   const onPinButtonClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
     e.stopPropagation();
-    if (pinButtonEnable) {
-      menuChangeBehaviour(
-        behaviour === MENU_BEHAVIOUR.Pinned ? MENU_BEHAVIOUR.Unpinned : MENU_BEHAVIOUR.Pinned
-      );
-    }
-  };
-  const onDisabledPinButtonClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault();
-    e.stopPropagation();
+    menuChangeBehaviour(
+      behaviour === MENU_BEHAVIOUR.Pinned ? MENU_BEHAVIOUR.Unpinned : MENU_BEHAVIOUR.Pinned
+    );
   };
 
   const onLightDarkModeClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
@@ -54,20 +48,21 @@ export const NavIconMenu = () => {
           <a
             href="#/"
             id="pinButton"
-            onClick={pinButtonEnable ? onPinButtonClick : onDisabledPinButtonClick}
+            onClick={onPinButtonClick}
             className={classNames('pin-button', { disabled: !pinButtonEnable })}
           >
-            <LockFill size={18}></LockFill>
-            <Lock size={18}></Lock>
+            {behaviour === MENU_BEHAVIOUR.Pinned ? (
+              <Pin size={18}></Pin>
+            ) : (
+              <PinAngle size={18}></PinAngle>
+            )}
           </a>
         </li>
         <li className="list-inline-item">
           <a href="#/" id="colorButton" onClick={onLightDarkModeClick}>
-            <Lightning size={18}></Lightning>
-            <LightningFill size={18}></LightningFill>
+            {color.includes('light') ? <Moon size={18}></Moon> : <MoonFill size={18}></MoonFill>}
           </a>
         </li>
-        {/*<IconMenuNotifications />*/}
       </ul>
       <SearchModal show={showSearchModal} setShow={setShowSearchModal} />
     </>
