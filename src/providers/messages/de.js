@@ -24,6 +24,11 @@ const deMessages = {
   'company.okpo': 'OKPO',
   'layout.go-to-website': 'Our Website',
 
+  'user.info': 'User Info',
+  'user.description': 'Description',
+  'user.about': 'About',
+  'user.department': 'Department',
+
   'menu.default': 'Default',
   'menu.visual': 'Visual',
   'menu.analytic': 'Analytic',

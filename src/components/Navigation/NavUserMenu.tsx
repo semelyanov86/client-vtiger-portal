@@ -1,8 +1,10 @@
 import { ToggleMetadata } from '@restart/ui/Dropdown';
 import classNames from 'classnames';
+import { NavLink } from 'react-router-dom';
 import React, { CSSProperties, useEffect } from 'react';
 import { Col, Dropdown, Row } from 'react-bootstrap';
 import { Question, File, Gear, Lock, PersonFill } from 'react-bootstrap-icons';
+import { useNavigate } from 'react-router';
 
 import { MENU_PLACEMENT } from '../../config/constants.ts';
 import { AuthUser } from '../../features/auth';
@@ -10,7 +12,7 @@ import { useAuthContext } from '../../lib/auth.tsx';
 import { useLayoutsStore } from '../../stores/layouts.ts';
 import { useMenusStore } from '../../stores/menus.ts';
 import { useSettingsStore } from '../../stores/settings.ts';
-import { useNavigate } from 'react-router';
+import { FormattedMessage } from 'react-intl';
 
 const MENU_NAME = 'NavUserMenu';
 
@@ -91,7 +93,9 @@ const NavUserMenuContent = () => {
         <Col xs="6" className="ps-1 pe-1">
           <ul className="list-unstyled">
             <li>
-              <a href="#/!">User Info</a>
+              <NavLink to="/app/user/info">
+                <FormattedMessage id="user.info"></FormattedMessage>
+              </NavLink>
             </li>
             <li>
               <a href="#/!">Preferences</a>

@@ -7,7 +7,7 @@ import { useUser } from '../api/getUser.ts';
 export const LoadUser = () => {
   const { data, error, isError } = useUser();
   const { setUser } = useUserStore();
-  console.log(error);
+
   useEffect(() => {
     if (data) {
       setUser(data);
