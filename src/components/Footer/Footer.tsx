@@ -1,7 +1,10 @@
 import React, { useEffect } from 'react';
 import { Container, Row, Col, Breadcrumb } from 'react-bootstrap';
+import useCompanyStore from '../../features/company/stores/company.ts';
+import { FormattedMessage } from 'react-intl';
 
 export const Footer = React.memo(() => {
+  const { value: company } = useCompanyStore();
   useEffect(() => {
     document.documentElement.setAttribute('data-footer', 'true');
     return () => {
@@ -15,30 +18,18 @@ export const Footer = React.memo(() => {
         <Container>
           <Row>
             <Col xs="12" sm="6">
-              <p className="mb-0 text-muted text-medium">Colored Strategies 2021</p>
+              <p className="mb-0 text-muted text-medium">
+                {company.organizationname} {new Date().getFullYear()}
+              </p>
             </Col>
             <Col sm="6" className="d-none d-sm-block">
               <Breadcrumb className="pt-0 pe-0 mb-0 float-end">
                 <Breadcrumb.Item
                   className="mb-0 text-medium"
-                  href="#/"
+                  href={company.website}
                   linkProps={{ className: 'btn-link' }}
                 >
-                  Review
-                </Breadcrumb.Item>
-                <Breadcrumb.Item
-                  className="mb-0 text-medium"
-                  href="#/"
-                  linkProps={{ className: 'btn-link' }}
-                >
-                  Purchase
-                </Breadcrumb.Item>
-                <Breadcrumb.Item
-                  className="mb-0 text-medium"
-                  href="#/"
-                  linkProps={{ className: 'btn-link' }}
-                >
-                  Docs
+                  <FormattedMessage id="layout.go-to-website" />
                 </Breadcrumb.Item>
               </Breadcrumb>
             </Col>

@@ -1,4 +1,4 @@
-import { createContext, ReactNode, useContext, useState } from 'react';
+import { createContext, ReactNode, useContext } from 'react';
 
 import {
   AuthUser,
@@ -15,6 +15,8 @@ import {
   RestorePasswordResponse,
   sendPasswordResetToken,
 } from '../features/auth/api/restore.ts';
+import { useUserStore } from '../stores/user.ts';
+
 import { removeToken } from './token.ts';
 
 interface AuthProps {
@@ -32,7 +34,7 @@ interface AuthContextType {
 
 const AuthContext = createContext<AuthContextType>({} as AuthContextType);
 export const AuthProvider = ({ children }: AuthProps) => {
-  const [user] = useState<AuthUser>({} as AuthUser);
+  const { value: user } = useUserStore();
   const login = (login: LoginCredentialsDTO) => {
     return loginWithEmailAndPassword(login);
   };

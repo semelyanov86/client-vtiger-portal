@@ -15,5 +15,6 @@ export const useCompany = () => {
     retry: 3,
     cacheTime: ms('10 days'),
     staleTime: ms('7 days'),
+    useErrorBoundary: false,
   });
 };

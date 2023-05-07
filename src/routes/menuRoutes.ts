@@ -19,10 +19,10 @@ export const menuRoutes: MenuRoutesInterface = {
       path: DEFAULT_PATHS.APP,
       exact: true,
       redirect: true,
-      to: `${appRoot}/dashboards/default`,
+      to: `${appRoot}/app`,
     },
     {
-      path: `${appRoot}/dashboards`,
+      path: `${appRoot}/app`,
       component: Home,
       label: 'Dashboards',
       icon: 'House',

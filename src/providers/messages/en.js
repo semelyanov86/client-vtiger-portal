@@ -22,6 +22,7 @@ const enMessages = {
   'company.enterpreneur': 'Enterpreneur',
   'company.enterpreneurreg': 'Enterpreneur Registration number',
   'company.okpo': 'OKPO',
+  'layout.go-to-website': 'Our Website',
 
   'menu.default': 'Default',
   'menu.visual': 'Visual',
