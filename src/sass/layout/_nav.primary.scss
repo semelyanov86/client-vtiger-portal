@@ -204,8 +204,8 @@ html[data-placement="vertical"] {
     .logo {
       img,
       .img {
-        width: 100px;
-        min-height: 35px;
+        width: 150px;
+        min-height: 38px;
         object-position: left;
         object-fit: cover;
         transition: width var(--transition-time), height var(--transition-time);
@@ -1336,8 +1336,8 @@ html[data-navcolor="dark"] {
 }
 
 .logo-default {
-  width: 100px;
-  min-height: 35px;
+  width: 150px;
+  min-height: 38px;
   object-position: left;
   object-fit: cover;
   background-repeat: no-repeat;

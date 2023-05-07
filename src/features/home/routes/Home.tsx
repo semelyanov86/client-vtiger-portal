@@ -22,6 +22,7 @@ import { NavLink } from 'react-router-dom';
 import { BreadcrumbList } from '../../../components/Elements/Breadcrumbs/BreadcrumbList.tsx';
 import { Glide } from '../../../components/Elements/Carousel/Glide.tsx';
 import { Head } from '../../../components/Head';
+import { CompanyWidget } from '../../company/components/CompanyWidget.tsx';
 
 export const Home = () => {
   const title = 'Dashboard';
@@ -733,27 +734,7 @@ export const Home = () => {
               </Card>
             </Col>
           </Row>
-          <h2 className="small-title mt-2">Our requisites</h2>
-          <div
-            data-bs-spy="scroll"
-            data-bs-target="#navbar-example2"
-            data-bs-offset="0"
-            className="scrollspy-example"
-          >
-            <Card className="mb-2 sh-16 sh-md-10" body>
-              <Card.Text>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. A consequatur dolorum fuga
-                laudantium necessitatibus praesentium, qui sint sit? Asperiores in minus porro
-                similique sint. Cupiditate eum illum perferendis repellat sequi! Lorem ipsum dolor
-                sit amet, consectetur adipisicing elit. A consequatur dolorum fuga laudantium
-                necessitatibus praesentium, qui sint sit? Asperiores in minus porro similique sint.
-                Cupiditate eum illum perferendis repellat sequi! Lorem ipsum dolor sit amet,
-                consectetur adipisicing elit. A consequatur dolorum fuga laudantium necessitatibus
-                praesentium, qui sint sit? Asperiores in minus porro similique sint. Cupiditate eum
-                illum perferendis repellat sequi!
-              </Card.Text>
-            </Card>
-          </div>
+          <CompanyWidget></CompanyWidget>
         </Col>
         {/* Categories End */}
       </Row>

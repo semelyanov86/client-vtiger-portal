@@ -1,0 +1,26 @@
+export type Company = {
+  id: string;
+  organizationname: string;
+  address: string;
+  city: string;
+  state: string;
+  country: string;
+  code: string;
+  phone: string;
+  fax: string;
+  website: string;
+  logoname: string;
+  logo: string;
+  vatid: string;
+  inn?: string;
+  kpp?: string;
+  bankaccount?: string;
+  bankname?: string;
+  bankid?: string;
+  corraccount?: string;
+  director?: string;
+  bookkeeper?: string;
+  enterpreneur?: string;
+  enterpreneurreg?: string;
+  okpo?: string;
+};
