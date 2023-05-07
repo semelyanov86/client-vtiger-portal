@@ -1,5 +1,6 @@
 const enMessages = {
   Dashboards: 'Dashboards',
+  latestRegistration: 'Users from your company',
   'menu.default': 'Default',
   'menu.visual': 'Visual',
   'menu.analytic': 'Analytic',

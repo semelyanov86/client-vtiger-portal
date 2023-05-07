@@ -1,4 +1,3 @@
-import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
 import { Col, Button, Row, Card } from 'react-bootstrap';
 import {
   Alarm,
@@ -10,24 +9,19 @@ import {
   Pencil,
   Recycle,
   PencilSquare,
-  Circle,
-  Square,
-  Triangle,
-  Cup,
-  Magic,
-  Tree,
-  Fan,
-  Scissors,
-  Water,
   ArrowBarRight,
   ChevronBarRight,
+  ThreeDotsVertical,
+  SignTurnRight,
+  BagCheck,
+  ArrowRepeat,
 } from 'react-bootstrap-icons';
+import { useIntl } from 'react-intl';
 import { NavLink } from 'react-router-dom';
 
 import { BreadcrumbList } from '../../../components/Elements/Breadcrumbs/BreadcrumbList.tsx';
 import { Glide } from '../../../components/Elements/Carousel/Glide.tsx';
 import { Head } from '../../../components/Head';
-import { useIntl } from 'react-intl';
 
 export const Home = () => {
   const title = 'Dashboard';
@@ -57,26 +51,159 @@ export const Home = () => {
 
       <Row>
         <Col xl="6">
-          {/* Sales & Stocks Charts Start */}
-          <h2 className="small-title">Sales & Stocks</h2>
-          <Card className="mb-2 h-auto sh-xl-24" id="introFirst">
+          <h2 className="small-title">{f({ id: 'latestRegistration' })}</h2>
+          <Card className="h-50-card mb-n2">
             <Card.Body>
-              <Row className="g-0 h-100">
-                <p>{f({ id: 'menu.detail' })}</p>
+              <Row className="g-0 sh-10 sh-sm-7 mb-2">
+                <Col xs="auto">
+                  <img
+                    src="/img/profile/profile-1.webp"
+                    className="card-img rounded-xl sh-6 sw-6"
+                    alt="thumb"
+                  />
+                </Col>
+                <Col>
+                  <div className="d-flex flex-column flex-sm-row ps-4 h-100 align-items-sm-center justify-content-sm-between">
+                    <div className="d-flex flex-column mb-2 mb-sm-0">
+                      <div>Joisse Kaycee</div>
+                      <div className="text-small text-muted">UX Designer</div>
+                    </div>
+                    <div className="d-flex">
+                      <Button variant="outline-secondary ms-1" size="sm">
+                        Edit
+                      </Button>
+                      <Button
+                        variant="outline-secondary"
+                        size="sm"
+                        className="btn-icon btn-icon-only ms-1"
+                      >
+                        <ThreeDotsVertical></ThreeDotsVertical>
+                      </Button>
+                    </div>
+                  </div>
+                </Col>
+              </Row>
+              <Row className="g-0 sh-10 sh-sm-7 mb-2">
+                <Col xs="auto">
+                  <img
+                    src="/img/profile/profile-2.webp"
+                    className="card-img rounded-xl sh-6 sw-6"
+                    alt="thumb"
+                  />
+                </Col>
+                <Col>
+                  <div className="d-flex flex-column flex-sm-row ps-4 h-100 align-items-sm-center justify-content-sm-between">
+                    <div className="d-flex flex-column mb-2 mb-sm-0">
+                      <div>Zayn Hartley</div>
+                      <div className="text-small text-muted">Frontend Developer</div>
+                    </div>
+                    <div className="d-flex">
+                      <Button variant="outline-secondary ms-1" size="sm">
+                        Edit
+                      </Button>
+                      <Button
+                        variant="outline-secondary"
+                        size="sm"
+                        className="btn-icon btn-icon-only ms-1"
+                      >
+                        <ThreeDotsVertical></ThreeDotsVertical>
+                      </Button>
+                    </div>
+                  </div>
+                </Col>
+              </Row>
+              <Row className="g-0 sh-10 sh-sm-7 mb-2">
+                <Col xs="auto">
+                  <img
+                    src="/img/profile/profile-3.webp"
+                    className="card-img rounded-xl sh-6 sw-6"
+                    alt="thumb"
+                  />
+                </Col>
+                <Col>
+                  <div className="d-flex flex-column flex-sm-row ps-4 h-100 align-items-sm-center justify-content-sm-between">
+                    <div className="d-flex flex-column mb-2 mb-sm-0">
+                      <div>Esperanza Lodge</div>
+                      <div className="text-small text-muted">Project Manager</div>
+                    </div>
+                    <div className="d-flex">
+                      <Button variant="outline-secondary ms-1" size="sm">
+                        Edit
+                      </Button>
+                      <Button
+                        variant="outline-secondary"
+                        size="sm"
+                        className="btn-icon btn-icon-only ms-1"
+                      >
+                        <ThreeDotsVertical></ThreeDotsVertical>
+                      </Button>
+                    </div>
+                  </div>
+                </Col>
+              </Row>
+              <Row className="g-0 sh-10 sh-sm-7 mb-2">
+                <Col xs="auto">
+                  <img
+                    src="/img/profile/profile-4.webp"
+                    className="card-img rounded-xl sh-6 sw-6"
+                    alt="thumb"
+                  />
+                </Col>
+                <Col>
+                  <div className="d-flex flex-column flex-sm-row ps-4 h-100 align-items-sm-center justify-content-sm-between">
+                    <div className="d-flex flex-column mb-2 mb-sm-0">
+                      <div>Kathryn Mengel</div>
+                      <div className="text-small text-muted">Executive Team Leader</div>
+                    </div>
+                    <div className="d-flex">
+                      <Button variant="outline-secondary ms-1" size="sm">
+                        Edit
+                      </Button>
+                      <Button
+                        variant="outline-secondary"
+                        size="sm"
+                        className="btn-icon btn-icon-only ms-1"
+                      >
+                        <ThreeDotsVertical></ThreeDotsVertical>
+                      </Button>
+                    </div>
+                  </div>
+                </Col>
+              </Row>
+              <Row className="g-0 sh-10 sh-sm-7 mb-2">
+                <Col xs="auto">
+                  <img
+                    src="/img/profile/profile-5.webp"
+                    className="card-img rounded-xl sh-6 sw-6"
+                    alt="thumb"
+                  />
+                </Col>
+                <Col>
+                  <div className="d-flex flex-column flex-sm-row ps-4 h-100 align-items-sm-center justify-content-sm-between">
+                    <div className="d-flex flex-column mb-2 mb-sm-0">
+                      <div>Luna Wigglebutt</div>
+                      <div className="text-small text-muted">Security Chief</div>
+                    </div>
+                    <div className="d-flex">
+                      <Button variant="outline-secondary ms-1" size="sm">
+                        Edit
+                      </Button>
+                      <Button
+                        variant="outline-secondary"
+                        size="sm"
+                        className="btn-icon btn-icon-only ms-1"
+                      >
+                        <ThreeDotsVertical></ThreeDotsVertical>
+                      </Button>
+                    </div>
+                  </div>
+                </Col>
               </Row>
             </Card.Body>
           </Card>
-          <Card className="mb-5 h-auto sh-xl-24">
-            <Card.Body>
-              <Row className="g-0 h-100">
-                <p>Another widget</p>
-              </Row>
-            </Card.Body>
-          </Card>
-          {/* Sales & Stocks Charts End */}
 
           {/* Stats Start */}
-          <h2 className="small-title">Stats</h2>
+          <h2 className="small-title mt-3">Stats</h2>
           <Row className="gx-2">
             <Col className="p-0">
               <Glide
@@ -434,334 +561,199 @@ export const Home = () => {
       </Row>
 
       <Row>
-        {/* Logs Start */}
+        {/* Tasks Start */}
         <Col lg="6" className="mb-5">
-          <h2 className="small-title">Logs</h2>
-          <Card className="sh-40 h-lg-100-card">
-            <Card.Body className="mb-n2 scroll-out h-100">
-              <OverlayScrollbarsComponent
-                options={{
-                  scrollbars: { autoHide: 'leave' },
-                  overflow: { x: 'hidden', y: 'scroll' },
-                }}
-                className="h-100"
-              >
-                <Row className="g-0 mb-2">
-                  <Col xs="auto">
-                    <div className="sw-3 d-inline-block d-flex justify-content-start align-items-center h-100">
-                      <div className="sh-3">
-                        <Circle className="text-primary align-top" />
-                      </div>
-                    </div>
-                  </Col>
-                  <Col>
-                    <div className="d-flex flex-column pt-0 pb-0 ps-3 pe-4 h-100 justify-content-center">
-                      <div className="d-flex flex-column">
-                        <div className="text-alternate mt-n1 lh-1-25">New user registiration</div>
-                      </div>
-                    </div>
-                  </Col>
-                  <Col xs="auto">
-                    <div className="d-inline-block d-flex justify-content-end align-items-center h-100">
-                      <div className="text-muted ms-2 mt-n1 lh-1-25">18 Dec</div>
-                    </div>
-                  </Col>
-                </Row>
-                <Row className="g-0 mb-2">
-                  <Col xs="auto">
-                    <div className="sw-3 d-inline-block d-flex justify-content-start align-items-center h-100">
-                      <div className="sh-3">
-                        <Square className="text-secondary align-top" />
-                      </div>
-                    </div>
-                  </Col>
-                  <Col>
-                    <div className="d-flex flex-column pt-0 pb-0 ps-3 pe-4 h-100 justify-content-center">
-                      <div className="d-flex flex-column">
-                        <div className="text-alternate mt-n1 lh-1-25">
-                          Product out of stock: Breadstick
-                        </div>
-                      </div>
-                    </div>
-                  </Col>
-                  <Col xs="auto">
-                    <div className="d-inline-block d-flex justify-content-end align-items-center h-100">
-                      <div className="text-muted ms-2 mt-n1 lh-1-25">15 Dec</div>
-                    </div>
-                  </Col>
-                </Row>
-                <Row className="g-0 mb-2">
-                  <Col xs="auto">
-                    <div className="sw-3 d-inline-block d-flex justify-content-start align-items-center h-100">
-                      <div className="sh-3">
-                        <Triangle className="text-tertiary align-top" />
-                      </div>
-                    </div>
-                  </Col>
-                  <Col>
-                    <div className="d-flex flex-column pt-0 pb-0 ps-3 pe-4 h-100 justify-content-center">
-                      <div className="d-flex flex-column">
-                        <div className="text-alternate mt-n1 lh-1-25">
-                          Category page returned an error
-                        </div>
-                      </div>
-                    </div>
-                  </Col>
-                  <Col xs="auto">
-                    <div className="d-inline-block d-flex justify-content-end align-items-center h-100">
-                      <div className="text-muted ms-2 mt-n1 lh-1-25">14 Dec</div>
-                    </div>
-                  </Col>
-                </Row>
-                <Row className="g-0 mb-2">
-                  <Col xs="auto">
-                    <div className="sw-3 d-inline-block d-flex justify-content-start align-items-center h-100">
-                      <div className="sh-3">
-                        <Hexagon className="text-quaternary align-top" />
-                      </div>
-                    </div>
-                  </Col>
-                  <Col>
-                    <div className="d-flex flex-column pt-0 pb-0 ps-3 pe-4 h-100 justify-content-center">
-                      <div className="d-flex flex-column">
-                        <div className="text-alternate mt-n1 lh-1-25">14 products added</div>
-                      </div>
-                    </div>
-                  </Col>
-                  <Col xs="auto">
-                    <div className="d-inline-block d-flex justify-content-end align-items-center h-100">
-                      <div className="text-muted ms-2 mt-n1 lh-1-25">14 Dec</div>
-                    </div>
-                  </Col>
-                </Row>
-                <Row className="g-0 mb-2">
-                  <Col xs="auto">
-                    <div className="sw-3 d-inline-block d-flex justify-content-start align-items-center h-100">
-                      <div className="sh-3">
-                        <Hexagon className="text-quaternary align-top" />
-                      </div>
-                    </div>
-                  </Col>
-                  <Col>
-                    <div className="d-flex flex-column pt-0 pb-0 ps-3 pe-4 h-100 justify-content-center">
-                      <div className="d-flex flex-column">
-                        <div className="text-alternate mt-n1 lh-1-25">New sale: Soda Bread</div>
-                      </div>
-                    </div>
-                  </Col>
-                  <Col xs="auto">
-                    <div className="d-inline-block d-flex justify-content-end align-items-center h-100">
-                      <div className="text-muted ms-2 mt-n1 lh-1-25">14 Dec</div>
-                    </div>
-                  </Col>
-                </Row>
-                <Row className="g-0 mb-2">
-                  <Col xs="auto">
-                    <div className="sw-3 d-inline-block d-flex justify-content-start align-items-center h-100">
-                      <div className="sh-3">
-                        <Square className="text-secondary align-top" />
-                      </div>
-                    </div>
-                  </Col>
-                  <Col>
-                    <div className="d-flex flex-column pt-0 pb-0 ps-3 pe-4 h-100 justify-content-center">
-                      <div className="d-flex flex-column">
-                        <div className="text-alternate mt-n1 lh-1-25">
-                          Product out of stock: Breadstick
-                        </div>
-                      </div>
-                    </div>
-                  </Col>
-                  <Col xs="auto">
-                    <div className="d-inline-block d-flex justify-content-end align-items-center h-100">
-                      <div className="text-muted ms-2 mt-n1 lh-1-25">15 Dec</div>
-                    </div>
-                  </Col>
-                </Row>
-                <Row className="g-0 mb-2">
-                  <Col xs="auto">
-                    <div className="sw-3 d-inline-block d-flex justify-content-start align-items-center h-100">
-                      <div className="sh-3">
-                        <Triangle className="text-tertiary align-top" />
-                      </div>
-                    </div>
-                  </Col>
-                  <Col>
-                    <div className="d-flex flex-column pt-0 pb-0 ps-3 pe-4 h-100 justify-content-center">
-                      <div className="d-flex flex-column">
-                        <div className="text-alternate mt-n1 lh-1-25">
-                          Product page returned an error
-                        </div>
-                      </div>
-                    </div>
-                  </Col>
-                  <Col xs="auto">
-                    <div className="d-inline-block d-flex justify-content-end align-items-center h-100">
-                      <div className="text-muted ms-2 mt-n1 lh-1-25">14 Dec</div>
-                    </div>
-                  </Col>
-                </Row>
-                <Row className="g-0 mb-2">
-                  <Col xs="auto">
-                    <div className="sw-3 d-inline-block d-flex justify-content-start align-items-center h-100">
-                      <div className="sh-3">
-                        <Hexagon className="text-quaternary align-top" />
-                      </div>
-                    </div>
-                  </Col>
-                  <Col>
-                    <div className="d-flex flex-column pt-0 pb-0 ps-3 pe-4 h-100 justify-content-center">
-                      <div className="d-flex flex-column">
-                        <div className="text-alternate mt-n1 lh-1-25">New sale: Steirer Brot</div>
-                      </div>
-                    </div>
-                  </Col>
-                  <Col xs="auto">
-                    <div className="d-inline-block d-flex justify-content-end align-items-center h-100">
-                      <div className="text-muted ms-2 mt-n1 lh-1-25">13 Dec</div>
-                    </div>
-                  </Col>
-                </Row>
-                <Row className="g-0 mb-2">
-                  <Col xs="auto">
-                    <div className="sw-3 d-inline-block d-flex justify-content-start align-items-center h-100">
-                      <div className="sh-3">
-                        <Hexagon className="text-quaternary align-top" />
-                      </div>
-                    </div>
-                  </Col>
-                  <Col>
-                    <div className="d-flex flex-column pt-0 pb-0 ps-3 pe-4 h-100 justify-content-center">
-                      <div className="d-flex flex-column">
-                        <div className="text-alternate mt-n1 lh-1-25">Recived a support ticket</div>
-                      </div>
-                    </div>
-                  </Col>
-                  <Col xs="auto">
-                    <div className="d-inline-block d-flex justify-content-end align-items-center h-100">
-                      <div className="text-muted ms-2 mt-n1 lh-1-25">13 Dec</div>
-                    </div>
-                  </Col>
-                </Row>
-                <Row className="g-0 mb-2">
-                  <Col xs="auto">
-                    <div className="sw-3 d-inline-block d-flex justify-content-start align-items-center h-100">
-                      <div className="sh-3">
-                        <Hexagon className="text-quaternary align-top" />
-                      </div>
-                    </div>
-                  </Col>
-                  <Col>
-                    <div className="d-flex flex-column pt-0 pb-0 ps-3 pe-4 h-100 justify-content-center">
-                      <div className="d-flex flex-column">
-                        <div className="text-alternate mt-n1 lh-1-25">Recived a support ticket</div>
-                      </div>
-                    </div>
-                  </Col>
-                  <Col xs="auto">
-                    <div className="d-inline-block d-flex justify-content-end align-items-center h-100">
-                      <div className="text-muted ms-2 mt-n1 lh-1-25">13 Dec</div>
-                    </div>
-                  </Col>
-                </Row>
-                <Row className="g-0 mb-2">
-                  <Col xs="auto">
-                    <div className="sw-3 d-inline-block d-flex justify-content-start align-items-center h-100">
-                      <div className="sh-3">
-                        <Hexagon className="text-quaternary align-top" />
-                      </div>
-                    </div>
-                  </Col>
-                  <Col>
-                    <div className="d-flex flex-column pt-0 pb-0 ps-3 pe-4 h-100 justify-content-center">
-                      <div className="d-flex flex-column">
-                        <div className="text-alternate mt-n1 lh-1-25">Recived a comment</div>
-                      </div>
-                    </div>
-                  </Col>
-                  <Col xs="auto">
-                    <div className="d-inline-block d-flex justify-content-end align-items-center h-100">
-                      <div className="text-muted ms-2 mt-n1 lh-1-25">13 Dec</div>
-                    </div>
-                  </Col>
-                </Row>
-              </OverlayScrollbarsComponent>
+          <h2 className="small-title">Project Tasks</h2>
+          <Card className="h-100-card">
+            <Card.Body className="mb-n2 h-100">
+              <div className="mb-2">
+                <label className="form-check w-100 checked-line-through checked-opacity-75">
+                  <input type="checkbox" className="form-check-input" defaultChecked />
+                  <span className="form-check-label d-block">
+                    <span>Create Wireframes</span>
+                    <span className="text-muted d-block text-small mt-0">Today 09:00</span>
+                  </span>
+                </label>
+              </div>
+              <div className="mb-2">
+                <label className="form-check w-100 checked-line-through checked-opacity-75">
+                  <input type="checkbox" className="form-check-input" defaultChecked />
+                  <span className="form-check-label d-block">
+                    <span>Meeting with the team</span>
+                    <span className="text-muted d-block text-small mt-0">Today 13:00</span>
+                  </span>
+                </label>
+              </div>
+              <div className="mb-2">
+                <label className="form-check w-100 checked-line-through checked-opacity-75">
+                  <input type="checkbox" className="form-check-input" defaultChecked />
+                  <span className="form-check-label d-block">
+                    <span>Business lunch with clients</span>
+                    <span className="text-muted d-block text-small mt-0">Today 14:00</span>
+                  </span>
+                </label>
+              </div>
+              <div className="mb-2">
+                <label className="form-check w-100 checked-line-through checked-opacity-75">
+                  <input type="checkbox" className="form-check-input" defaultChecked />
+                  <span className="form-check-label d-block">
+                    <span>Training with the team</span>
+                    <span className="text-muted d-block text-small mt-0">Today 15:00</span>
+                  </span>
+                </label>
+              </div>
+              <div className="mb-2">
+                <label className="form-check w-100 checked-line-through checked-opacity-75">
+                  <input type="checkbox" className="form-check-input" />
+                  <span className="form-check-label d-block">
+                    <span>Account meeting</span>
+                    <span className="text-muted d-block text-small mt-0">Today 17:00</span>
+                  </span>
+                </label>
+              </div>
+              <div className="mb-2">
+                <label className="form-check w-100 checked-line-through checked-opacity-75">
+                  <input type="checkbox" className="form-check-input" />
+                  <span className="form-check-label d-block">
+                    <span>Gym</span>
+                    <span className="text-muted d-block text-small mt-0">Today 17:30</span>
+                  </span>
+                </label>
+              </div>
+              <div className="mb-2">
+                <label className="form-check w-100 checked-line-through checked-opacity-75">
+                  <input type="checkbox" className="form-check-input" />
+                  <span className="form-check-label d-block">
+                    <span>Dinner with the family</span>
+                    <span className="text-muted d-block text-small mt-0">Today 19:30</span>
+                  </span>
+                </label>
+              </div>
             </Card.Body>
           </Card>
         </Col>
-        {/* Logs End */}
+        {/* Tasks End */}
 
-        {/* Categories Start */}
+        {/* Invoice Statistics */}
         <Col lg="6" className="mb-5">
-          <h2 className="small-title">Categories</h2>
+          <h2 className="small-title">Invoice Statistics</h2>
           <Row className="g-2">
-            <Col xs="6" xl="4" className="sh-19">
-              <Card className="h-100 hover-scale-up" id="introThird">
-                <Card.Body className="text-center">
-                  <NavLink to="#">
-                    <Cup className="text-primary" />
-                    <p className="heading mt-3 text-body">Cupcakes</p>
-                    <div className="text-extra-small fw-medium text-muted">14 PRODUCTS</div>
-                  </NavLink>
+            <Col sm="6">
+              <Card className="sh-11 hover-scale-up cursor-pointer">
+                <Card.Body className="h-100 py-3 align-items-center">
+                  <Row className="g-0 h-100 align-items-center">
+                    <Col xs="auto" className="pe-3">
+                      <div className="bg-gradient-light sh-5 sw-5 rounded-xl d-flex justify-content-center align-items-center">
+                        <SignTurnRight className="text-white"></SignTurnRight>
+                      </div>
+                    </Col>
+                    <Col>
+                      <Row className="gx-2 d-flex align-content-center">
+                        <Col xs="12" className="col-12 d-flex">
+                          <div className="d-flex align-items-center lh-1-25">Shipped Orders</div>
+                        </Col>
+                        <Col xl="auto" className="col-12">
+                          <div className="cta-2 text-primary">22</div>
+                        </Col>
+                      </Row>
+                    </Col>
+                  </Row>
                 </Card.Body>
               </Card>
             </Col>
-            <Col xs="6" xl="4" className="sh-19">
-              <Card className="h-100 hover-scale-up">
-                <Card.Body className="text-center">
-                  <NavLink to="#">
-                    <Magic className="text-primary" />
-                    <p className="heading mt-3 text-body">Breads</p>
-                    <div className="text-extra-small fw-medium text-muted">3 PRODUCTS</div>
-                  </NavLink>
+            <Col sm="6">
+              <Card className="sh-11 hover-scale-up cursor-pointer">
+                <Card.Body className="h-100 py-3 align-items-center">
+                  <Row className="g-0 h-100 align-items-center">
+                    <Col xs="auto" className="pe-3">
+                      <div className="bg-gradient-light sh-5 sw-5 rounded-xl d-flex justify-content-center align-items-center">
+                        <BagCheck className="text-white"></BagCheck>
+                      </div>
+                    </Col>
+                    <Col>
+                      <Row className="gx-2 d-flex align-content-center">
+                        <Col xs="12" className="col-12 d-flex">
+                          <div className="d-flex align-items-center lh-1-25">Delivered Orders</div>
+                        </Col>
+                        <Col xl="auto" className="col-12">
+                          <div className="cta-2 text-primary">35</div>
+                        </Col>
+                      </Row>
+                    </Col>
+                  </Row>
                 </Card.Body>
               </Card>
             </Col>
-            <Col xs="6" xl="4" className="sh-19">
-              <Card className="h-100 hover-scale-up">
-                <Card.Body className="text-center">
-                  <NavLink to="#">
-                    <Tree className="text-primary" />
-                    <p className="heading mt-3 text-body">Vegetables</p>
-                    <div className="text-extra-small fw-medium text-muted">8 PRODUCTS</div>
-                  </NavLink>
+            <Col sm="6">
+              <Card className="sh-11 hover-scale-up cursor-pointer">
+                <Card.Body className="h-100 py-3 align-items-center">
+                  <Row className="g-0 h-100 align-items-center">
+                    <Col xs="auto" className="pe-3">
+                      <div className="bg-gradient-light sh-5 sw-5 rounded-xl d-flex justify-content-center align-items-center">
+                        <Alarm className="text-white"></Alarm>
+                      </div>
+                    </Col>
+                    <Col>
+                      <Row className="gx-2 d-flex align-content-center">
+                        <Col xs="12" className="col-12 d-flex">
+                          <div className="d-flex align-items-center lh-1-25">Pending Orders</div>
+                        </Col>
+                        <Col xl="auto" className="col-12">
+                          <div className="cta-2 text-primary">22</div>
+                        </Col>
+                      </Row>
+                    </Col>
+                  </Row>
                 </Card.Body>
               </Card>
             </Col>
-            <Col xs="6" xl="4" className="sh-19">
-              <Card className="h-100 hover-scale-up">
-                <Card.Body className="text-center">
-                  <NavLink to="#">
-                    <Fan className="text-primary" />
-                    <p className="heading mt-3 text-body">Fruits</p>
-                    <div className="text-extra-small fw-medium text-muted">9 PRODUCTS</div>
-                  </NavLink>
-                </Card.Body>
-              </Card>
-            </Col>
-            <Col xs="6" xl="4" className="sh-19">
-              <Card className="h-100 hover-scale-up">
-                <Card.Body className="text-center">
-                  <NavLink to="#">
-                    <Scissors className="text-primary" />
-                    <p className="heading mt-3 text-body">Mushrooms</p>
-                    <div className="text-extra-small fw-medium text-muted">3 PRODUCTS</div>
-                  </NavLink>
-                </Card.Body>
-              </Card>
-            </Col>
-            <Col xs="6" xl="4" className="sh-19">
-              <Card className="h-100 hover-scale-up">
-                <Card.Body className="text-center">
-                  <NavLink to="#">
-                    <Water className="text-primary" />
-                    <p className="heading mt-3 text-body">Drinks</p>
-                    <div className="text-extra-small fw-medium text-muted">4 PRODUCTS</div>
-                  </NavLink>
+            <Col sm="6">
+              <Card className="sh-11 hover-scale-up cursor-pointer">
+                <Card.Body className="h-100 py-3 align-items-center">
+                  <Row className="g-0 h-100 align-items-center">
+                    <Col xs="auto" className="pe-3">
+                      <div className="bg-gradient-light sh-5 sw-5 rounded-xl d-flex justify-content-center align-items-center">
+                        <ArrowRepeat className="text-white"></ArrowRepeat>
+                      </div>
+                    </Col>
+                    <Col>
+                      <Row className="gx-2 d-flex align-content-center">
+                        <Col xs="12" className="col-12 d-flex">
+                          <div className="d-flex align-items-center lh-1-25">
+                            Unconfirmed Orders
+                          </div>
+                        </Col>
+                        <Col xl="auto" className="col-12">
+                          <div className="cta-2 text-primary">3</div>
+                        </Col>
+                      </Row>
+                    </Col>
+                  </Row>
                 </Card.Body>
               </Card>
             </Col>
           </Row>
+          <h2 className="small-title mt-2">Our requisites</h2>
+          <div
+            data-bs-spy="scroll"
+            data-bs-target="#navbar-example2"
+            data-bs-offset="0"
+            className="scrollspy-example"
+          >
+            <Card className="mb-2 sh-16 sh-md-10" body>
+              <Card.Text>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. A consequatur dolorum fuga
+                laudantium necessitatibus praesentium, qui sint sit? Asperiores in minus porro
+                similique sint. Cupiditate eum illum perferendis repellat sequi! Lorem ipsum dolor
+                sit amet, consectetur adipisicing elit. A consequatur dolorum fuga laudantium
+                necessitatibus praesentium, qui sint sit? Asperiores in minus porro similique sint.
+                Cupiditate eum illum perferendis repellat sequi! Lorem ipsum dolor sit amet,
+                consectetur adipisicing elit. A consequatur dolorum fuga laudantium necessitatibus
+                praesentium, qui sint sit? Asperiores in minus porro similique sint. Cupiditate eum
+                illum perferendis repellat sequi!
+              </Card.Text>
+            </Card>
+          </div>
         </Col>
         {/* Categories End */}
       </Row>
@@ -771,12 +763,6 @@ export const Home = () => {
         <h2 className="small-title">Extend Your Knowledge</h2>
         <Col md="4" className="mb-5">
           <Card className="w-100 sh-20 sh-md-22 hover-img-scale-up">
-            {/* eslint-disable-next-line jsx-a11y/img-redundant-alt */}
-            <img
-              src="/img/banner/cta-standard-1.webp"
-              className="card-img h-100 scale"
-              alt="card image"
-            />
             <div className="card-img-overlay d-flex flex-column justify-content-between bg-transparent">
               <div className="d-flex flex-column h-100 justify-content-between align-items-start">
                 <div className="cta-3 text-black">
@@ -793,12 +779,6 @@ export const Home = () => {
         </Col>
         <Col md="4" className="mb-5">
           <Card className="w-100 sh-20 sh-md-22 hover-img-scale-up">
-            {/* eslint-disable-next-line jsx-a11y/img-redundant-alt */}
-            <img
-              src="/img/banner/cta-standard-2.webp"
-              className="card-img h-100 scale"
-              alt="card image"
-            />
             <div className="card-img-overlay d-flex flex-column justify-content-between bg-transparent">
               <div className="d-flex flex-column h-100 justify-content-between align-items-start">
                 <div className="cta-3 text-black">
@@ -815,12 +795,6 @@ export const Home = () => {
         </Col>
         <Col md="4" className="mb-5">
           <Card className="w-100 sh-20 sh-md-22 hover-img-scale-up">
-            {/* eslint-disable-next-line jsx-a11y/img-redundant-alt */}
-            <img
-              src="/img/banner/cta-standard-3.webp"
-              className="card-img h-100 scale"
-              alt="card image"
-            />
             <div className="card-img-overlay d-flex flex-column justify-content-between bg-transparent">
               <div className="d-flex flex-column h-100 justify-content-between align-items-start">
                 <div className="cta-3 text-black">

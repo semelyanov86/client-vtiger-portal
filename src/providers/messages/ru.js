@@ -1,5 +1,6 @@
 const ruMessages = {
   Dashboards: 'Dashboards',
+  latestRegistration: 'Users from your company',
   'menu.default': 'Default',
   'menu.visual': 'Visual',
   'menu.analytic': 'Analytic',
