@@ -1,5 +1,5 @@
 import { Card } from 'react-bootstrap';
-import { CalendarDate, EnvelopeAt } from 'react-bootstrap-icons';
+import { CalendarDate, EnvelopeAt, Phone } from 'react-bootstrap-icons';
 import { FormattedMessage } from 'react-intl';
 import { NavLink } from 'react-router-dom';
 
@@ -10,7 +10,10 @@ interface UserSidebarProps {
 }
 
 export const UserAbout = ({ user }: UserSidebarProps) => {
-  const registerDate = new Date(user.created_at);
+  let registerDate = new Date();
+  if (user.created_at) {
+    registerDate = new Date(user.created_at);
+  }
   return (
     <Card>
       <Card.Body>
@@ -37,6 +40,10 @@ export const UserAbout = ({ user }: UserSidebarProps) => {
           <NavLink to="#" className="d-block body-link mb-1">
             <EnvelopeAt className="me-2" size="17" />
             <span className="align-middle">{user.email}</span>
+          </NavLink>
+          <NavLink to="#" className="d-block body-link mb-1">
+            <Phone className="me-2" size="17" />
+            <span className="align-middle">{user.phone}</span>
           </NavLink>
         </div>
       </Card.Body>

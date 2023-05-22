@@ -18,6 +18,8 @@ export type AuthUser = {
   mailingstate: string;
   image: string;
   imagecontent: string;
+  assigned_user_id: string;
+  phone: string;
 };
 
 export type Token = {

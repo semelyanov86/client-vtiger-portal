@@ -3,8 +3,8 @@ import '@glidejs/glide/dist/css/glide.core.min.css';
 import React, { useEffect, useRef } from 'react';
 import { ChevronBarRight, ChevronBarLeft } from 'react-bootstrap-icons';
 
-import { useMenusStore } from '../../../stores/menus.ts';
 import { useWindowSize } from '../../../hooks/useWindowSize.ts';
+import { useMenusStore } from '../../../stores/menus.ts';
 
 interface Options {
   type?: 'slider' | 'carousel';

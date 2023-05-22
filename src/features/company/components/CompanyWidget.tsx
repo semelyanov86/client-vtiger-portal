@@ -1,9 +1,9 @@
 import { Card } from 'react-bootstrap';
+import { FormattedMessage } from 'react-intl';
 
 import useCompanyStore from '../stores/company.ts';
 
 import styles from './CompanyWidget.module.css';
-import { FormattedMessage } from 'react-intl';
 
 export const CompanyWidget = () => {
   const { value: company } = useCompanyStore();
@@ -61,105 +61,104 @@ export const CompanyWidget = () => {
             <FormattedMessage id="company.vatid" />
           </b>
           : {company.vatid}
-          <br />
-          {company.inn &&
-            (
+          {company.inn && (
+            <>
               <b>
                 <FormattedMessage id="company.inn" />
               </b>
-            ) +
-              ': ' +
-              company.inn}
-          <br />
-          {company.kpp &&
-            (
+            </>
+          )}
+          {company.inn && ': ' + company.inn}
+          {company.kpp && (
+            <>
+              <br />
               <b>
                 <FormattedMessage id="company.kpp" />
               </b>
-            ) +
-              ': ' +
-              company.kpp}
-          <br />
-          {company.bankaccount &&
-            (
+            </>
+          )}
+          {company.kpp && ': ' + company.kpp}
+          {company.bankaccount && (
+            <>
+              <br />
               <b>
                 <FormattedMessage id="company.bankaccount" />
               </b>
-            ) +
-              ': ' +
-              company.bankaccount}
-          <br />
-          {company.bankname &&
-            (
+            </>
+          )}
+          {company.bankaccount && ': ' + company.bankaccount}
+          {company.bankname && (
+            <>
+              <br />
               <b>
                 <FormattedMessage id="company.bankname" />
               </b>
-            ) +
-              ': ' +
-              company.bankname}
-          <br />
-          {company.bankid &&
-            (
+            </>
+          )}
+          {company.bankname && ': ' + company.bankname}
+          {company.bankid && (
+            <>
+              <br />
               <b>
                 <FormattedMessage id="company.bankid" />
               </b>
-            ) +
-              ': ' +
-              company.bankid}
-          <br />
-          {company.corraccount &&
-            (
+            </>
+          )}
+          {company.bankid && ': ' + company.bankid}
+          {company.corraccount && (
+            <>
+              <br />
               <b>
                 <FormattedMessage id="company.corraccount" />
               </b>
-            ) +
-              ': ' +
-              company.corraccount}
-          <br />
-          {company.director &&
-            (
+            </>
+          )}
+          {company.corraccount && ': ' + company.corraccount}
+          {company.director && (
+            <>
+              <br />
               <b>
                 <FormattedMessage id="company.director" />
               </b>
-            ) +
-              ': ' +
-              company.director}
-          <br />
-          {company.bookkeeper &&
-            (
+            </>
+          )}
+          {company.director && ': ' + company.director}
+          {company.bookkeeper && (
+            <>
+              <br />
               <b>
                 <FormattedMessage id="company.bookkeeper" />
               </b>
-            ) +
-              ': ' +
-              company.bookkeeper}
-          <br />
-          {company.enterpreneur &&
-            (
+            </>
+          )}
+          {company.bookkeeper && ': ' + company.bookkeeper}
+          {company.enterpreneur && (
+            <>
+              <br />
               <b>
                 <FormattedMessage id="company.enterpreneur" />
               </b>
-            ) +
-              ': ' +
-              company.enterpreneur}
-          <br />
-          {company.enterpreneurreg &&
-            (
+            </>
+          )}
+          {company.enterpreneur && ': ' + company.enterpreneur}
+          {company.enterpreneurreg && (
+            <>
+              <br />
               <b>
                 <FormattedMessage id="company.enterpreneurreg" />
               </b>
-            ) +
-              ': ' +
-              company.enterpreneurreg}
-          <br />
-          {company.okpo &&
-            (
+            </>
+          )}
+          {company.enterpreneurreg && ': ' + company.enterpreneurreg}
+          {company.okpo && (
+            <>
+              <br />
               <b>
                 <FormattedMessage id="company.okpo" />
               </b>
-            ) +
-              ': ' +
-              company.okpo}
+            </>
+          )}
+          {company.okpo && ': ' + company.okpo}
           <br />
         </Card.Text>
       </Card>

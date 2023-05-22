@@ -8,6 +8,8 @@ import { useUserStore } from '../../../stores/user.ts';
 import { UserSidebar } from '../components/UserSidebar.tsx';
 
 import { UserAbout } from './UserAbout.tsx';
+import { ManagerInfo } from '../../manager/components/ManagerInfo.tsx';
+import { LoadManager } from '../../manager/LoadManager.tsx';
 
 export const UserInfo = () => {
   const { value: user } = useUserStore();
@@ -43,7 +45,7 @@ export const UserInfo = () => {
         </Row>
       </div>
       {/* Title and Top Buttons End */}
-
+      <LoadManager></LoadManager>
       <Row className="g-5">
         <Col xl="4" xxl="3">
           <h2 className="small-title">
@@ -58,6 +60,10 @@ export const UserInfo = () => {
           </h2>
           <UserAbout user={user}></UserAbout>
           {/* About End */}
+          <h2 className="small-title mt-2">
+            <FormattedMessage id="manager.info"></FormattedMessage>
+          </h2>
+          <ManagerInfo></ManagerInfo>
         </Col>
       </Row>
     </>
