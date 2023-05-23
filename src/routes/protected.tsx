@@ -6,6 +6,7 @@ import { MainLayout } from '../components/Layout';
 import WithAuth from '../features/auth/components/WithAuth.tsx';
 import { lazyImport } from '../utils/lazyImport';
 import { UserInfo } from '../features/auth/routes/UserInfo.tsx';
+import { Tickets } from '../features/help-desk/routes/Tickets.tsx';
 
 const { Home } = lazyImport(() => import('../features/home/routes/Home.tsx'), 'Home');
 
@@ -42,6 +43,10 @@ export const protectedRoutes = [
       {
         path: 'user/info',
         element: <UserInfo />,
+      },
+      {
+        path: 'tickets',
+        element: <Tickets />,
       },
     ],
   },

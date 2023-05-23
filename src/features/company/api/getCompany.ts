@@ -1,11 +1,13 @@
 import ms from 'ms';
 import { useQuery } from 'react-query';
 
-import { axios } from '../../../lib/axios';
+import { axios, DataResponse } from '../../../lib/axios';
 import { Company } from '../types';
 
 export const getCompany = (): Promise<Company> => {
-  return axios.get<Company>(`/company/`).then((res) => res.data);
+  return axios.get<DataResponse<Company>>(`/company/`).then((res) => {
+    return res.data.data;
+  });
 };
 
 export const useCompany = () => {

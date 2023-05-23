@@ -46,3 +46,5 @@ export const USER_ROLE = {
   Admin: 'admin',
   Editor: 'editor',
 };
+
+export const DEFAULT_PAGE_COUNT = 10;

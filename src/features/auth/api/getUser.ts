@@ -1,13 +1,13 @@
 import ms from 'ms';
 import { useQuery } from 'react-query';
 
-import { axios } from '../../../lib/axios';
+import { axios, DataResponse } from '../../../lib/axios';
 import { AuthUser } from '../types';
 
 export const getUser = (): Promise<AuthUser> => {
   return axios
-    .get<AuthUser>('/users/my')
-    .then((res) => res.data)
+    .get<DataResponse<AuthUser>>('/users/my')
+    .then((res) => res.data.data)
     .catch((error) => {
       throw new Error(`Error fetching user data: ${error.message}`);
     });
