@@ -100,9 +100,10 @@ export const Tickets = () => {
 
   const [pageCount, setPageCount] = useState(0);
   const [term, setTerm] = useState('');
+  const [page, setPage] = useState(1);
 
   const { data, error, isLoading } = useTickets({
-    page: 1,
+    page: page,
     size: currentPageSize,
     search: term,
   });
@@ -113,7 +114,7 @@ export const Tickets = () => {
     }
     setPageCount(Math.ceil(data.count / data.size));
     return data.data;
-  }, [data, currentPageSize]);
+  }, [data, currentPageSize, page]);
 
   if (isLoading) {
     document.body.classList.add('spinner');
@@ -154,9 +155,17 @@ export const Tickets = () => {
     useRowState
   );
 
-  const { setPageSize } = tableInstance;
+  const { setPageSize, gotoPage } = tableInstance;
+
+  const onChangePage = (pageIndex: number) => {
+    gotoPage(pageIndex);
+    setPage(pageIndex);
+  };
 
   const searchItem = (val: string) => {
+    if (!val) {
+      setTerm('');
+    }
     if (val.length > 3) {
       setTerm(val || '');
     }
@@ -214,7 +223,7 @@ export const Tickets = () => {
                 <Table className="react-table rows" tableInstance={tableInstance} />
               </Col>
               <Col xs="12">
-                <TablePagination tableInstance={tableInstance} />
+                <TablePagination page={page} pageCount={pageCount} gotoPage={onChangePage} />
               </Col>
             </Row>
           </div>
