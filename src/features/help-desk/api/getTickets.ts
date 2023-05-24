@@ -4,7 +4,7 @@ import { useQuery } from 'react-query';
 import { axios } from '../../../lib/axios';
 import HelpDesk from '../types';
 
-interface HelpDeskQuery {
+export interface HelpDeskQuery {
   page: number;
   size: number;
   search: string;

@@ -26,6 +26,7 @@ import { TablePagination } from '../../../components/Table/TablePagination.tsx';
 import { DEFAULT_PAGE_COUNT } from '../../../config/constants.ts';
 import { useTickets } from '../api/getTickets.ts';
 import HelpDesk from '../types';
+import { LoadHelpDesk } from '../../module/LoadHelpDesk.tsx';
 
 export const Tickets = () => {
   const { formatMessage: f } = useIntl();
@@ -182,7 +183,7 @@ export const Tickets = () => {
   return (
     <>
       <Head title={title} />
-
+      <LoadHelpDesk></LoadHelpDesk>
       <Row>
         <Col>
           <div className="page-title-container">
