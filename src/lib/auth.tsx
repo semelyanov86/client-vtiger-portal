@@ -18,6 +18,7 @@ import {
 import { useUserStore } from '../stores/user.ts';
 
 import { removeToken } from './token.ts';
+import { DataResponse } from './axios.ts';
 
 interface AuthProps {
   children: ReactNode;
@@ -25,7 +26,7 @@ interface AuthProps {
 
 interface AuthContextType {
   user: AuthUser;
-  login: (login: LoginCredentialsDTO) => Promise<Token>;
+  login: (login: LoginCredentialsDTO) => Promise<DataResponse<Token>>;
   logout: () => void;
   register: (data: RegisterCredentialsDTO) => Promise<AuthUser>;
   restore: (data: RestorePasswordDTO) => Promise<RestorePasswordResponse>;

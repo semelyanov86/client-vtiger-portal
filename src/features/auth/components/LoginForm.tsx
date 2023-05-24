@@ -34,7 +34,7 @@ export const LoginForm = ({ onSuccess }: LoginFormProps) => {
   const onSubmit = (data: FieldValues) => {
     login(data as LoginCredentialsDTO)
       .then((data) => {
-        setToken(data.token);
+        setToken(data.data.token);
         onSuccess();
       })
       .catch((err) => NotifyError(err.message));

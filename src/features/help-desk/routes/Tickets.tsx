@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 import { Badge, Button, Col, Row } from 'react-bootstrap';
 import { FormattedMessage, useIntl } from 'react-intl';
 import {
@@ -14,6 +14,7 @@ import {
 
 import { BreadcrumbList } from '../../../components/Elements/Breadcrumbs/BreadcrumbList.tsx';
 import { Head } from '../../../components/Head';
+import { NotifyError } from '../../../components/Notifications/Notification.tsx';
 import { ButtonsAddNew } from '../../../components/Table/ButtonsAddNew.tsx';
 import { ButtonsCheckAll } from '../../../components/Table/ButtonsCheckAll.tsx';
 import { ControlsAdd } from '../../../components/Table/ControlsAdd.tsx';
@@ -25,11 +26,11 @@ import { TablePagination } from '../../../components/Table/TablePagination.tsx';
 import { DEFAULT_PAGE_COUNT } from '../../../config/constants.ts';
 import { useTickets } from '../api/getTickets.ts';
 import HelpDesk from '../types';
-import { NotifyError } from '../../../components/Notifications/Notification.tsx';
 
 export const Tickets = () => {
   const { formatMessage: f } = useIntl();
   const title = f({ id: 'tickets.list' });
+  const [currentPageSize, setCurrentPageSize] = useState(DEFAULT_PAGE_COUNT);
 
   const breadcrumbs = [
     { to: '', text: 'Home' },
@@ -102,7 +103,7 @@ export const Tickets = () => {
 
   const { data, error, isLoading } = useTickets({
     page: 1,
-    size: DEFAULT_PAGE_COUNT,
+    size: currentPageSize,
     search: term,
   });
 
@@ -112,7 +113,7 @@ export const Tickets = () => {
     }
     setPageCount(Math.ceil(data.count / data.size));
     return data.data;
-  }, [data]);
+  }, [data, currentPageSize]);
 
   if (isLoading) {
     document.body.classList.add('spinner');
@@ -153,11 +154,21 @@ export const Tickets = () => {
     useRowState
   );
 
+  const { setPageSize } = tableInstance;
+
   const searchItem = (val: string) => {
     if (val.length > 3) {
       setTerm(val || '');
     }
   };
+
+  const onSelectPageSize = useCallback(
+    (size: number) => {
+      setPageSize(size);
+      setCurrentPageSize(size);
+    },
+    [setPageSize]
+  );
 
   return (
     <>
@@ -191,7 +202,10 @@ export const Tickets = () => {
                   <ControlsEdit tableInstance={tableInstance} />{' '}
                 </div>
                 <div className="d-inline-block">
-                  <ControlsPageSize tableInstance={tableInstance} />
+                  <ControlsPageSize
+                    onSelectPageSize={onSelectPageSize}
+                    pageSize={currentPageSize}
+                  />
                 </div>
               </Col>
             </Row>

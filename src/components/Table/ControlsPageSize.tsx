@@ -1,25 +1,14 @@
 import { Dropdown, OverlayTrigger, Tooltip } from 'react-bootstrap';
 import { FormattedMessage } from 'react-intl';
-import { TableInstance } from 'react-table';
-
-import HelpDesk from '../../features/help-desk/types';
 
 interface ControlsPageSizeProps {
-  tableInstance: TableInstance<HelpDesk>;
+  onSelectPageSize: (size: number) => void;
+  pageSize: number;
 }
 
-export const ControlsPageSize = ({ tableInstance }: ControlsPageSizeProps) => {
-  const {
-    setPageSize,
-    gotoPage,
-    state: { pageSize },
-  } = tableInstance;
+export const ControlsPageSize = ({ onSelectPageSize, pageSize }: ControlsPageSizeProps) => {
   const options = [5, 10, 20];
 
-  const onSelectPageSize = (size: number) => {
-    setPageSize(size);
-    gotoPage(0);
-  };
   return (
     <OverlayTrigger
       placement="top"
@@ -57,9 +46,11 @@ export const ControlsPageSize = ({ tableInstance }: ControlsPageSizeProps) => {
               <Dropdown.Item
                 key={`pageSize.${pSize}`}
                 active={pSize === pageSize}
-                onSelect={() => onSelectPageSize(pSize)}
+                onClick={() => {
+                  onSelectPageSize(pSize);
+                }}
               >
-                {pSize} Items
+                {pSize} <FormattedMessage id="general.items"></FormattedMessage>
               </Dropdown.Item>
             ))}
           </Dropdown.Menu>
