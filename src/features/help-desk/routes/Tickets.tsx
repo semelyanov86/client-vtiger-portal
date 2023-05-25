@@ -1,8 +1,7 @@
 import { useCallback, useMemo, useState } from 'react';
-import { Badge, Button, Col, Row } from 'react-bootstrap';
-import { FormattedMessage, useIntl } from 'react-intl';
+import { Col, Row } from 'react-bootstrap';
+import { useIntl } from 'react-intl';
 import {
-  CellProps,
   Column,
   useGlobalFilter,
   usePagination,
@@ -24,9 +23,11 @@ import { ControlsSearch } from '../../../components/Table/ControlsSearch.tsx';
 import { Table } from '../../../components/Table/Table.tsx';
 import { TablePagination } from '../../../components/Table/TablePagination.tsx';
 import { DEFAULT_PAGE_COUNT } from '../../../config/constants.ts';
-import { useTickets } from '../api/getTickets.ts';
-import HelpDesk from '../types';
+import { convertSortingToSort } from '../../../lib/requests.ts';
 import { LoadHelpDesk } from '../../module/LoadHelpDesk.tsx';
+import { useTickets } from '../api/getTickets.ts';
+import { getColumns } from '../table/getColumns.tsx';
+import HelpDesk from '../types';
 
 export const Tickets = () => {
   const { formatMessage: f } = useIntl();
@@ -38,75 +39,18 @@ export const Tickets = () => {
     { to: 'tickets', text: 'Tickets' },
   ];
 
-  const columns: Column<HelpDesk>[] = useMemo(() => {
-    return [
-      {
-        Header: f({ id: 'tickets.ticket_no' }),
-        accessor: 'ticket_no',
-        sortable: true,
-        headerClassName: 'text-muted text-small text-uppercase w-30',
-        Cell: ({ cell: { value } }: CellProps<HelpDesk>) => {
-          return (
-            <a
-              className="list-item-heading body"
-              href="#!"
-              onClick={(e) => {
-                e.preventDefault();
-              }}
-            >
-              {value}
-            </a>
-          );
-        },
-      },
-      {
-        Header: f({ id: 'tickets.ticket_title' }),
-        accessor: 'ticket_title',
-        sortable: true,
-        headerClassName: 'text-muted text-small text-uppercase w-10',
-      },
-      {
-        Header: f({ id: 'tickets.ticketstatus' }),
-        accessor: 'ticketstatus',
-        sortable: true,
-        Cell: ({ cell: { value } }: CellProps<HelpDesk>) => {
-          return <FormattedMessage id={'tickets.' + value}></FormattedMessage>;
-        },
-        headerClassName: 'text-muted text-small text-uppercase w-10',
-      },
-      {
-        Header: f({ id: 'tickets.createdtime' }),
-        accessor: 'createdtime',
-        sortable: true,
-        headerClassName: 'text-muted text-small text-uppercase w-20',
-      },
-      {
-        Header: f({ id: 'tickets.tags' }),
-        accessor: 'tags',
-        sortable: true,
-        headerClassName: 'text-muted text-small text-uppercase w-10',
-        Cell: ({ cell: { value } }: CellProps<HelpDesk>) => {
-          return <Badge bg="outline-primary">{value}</Badge>;
-        },
-      },
-      {
-        Header: 'Actions',
-        accessor: 'id',
-        sortable: false,
-        headerClassName: 'empty w-10',
-        Cell: () => <Button>Edit</Button>,
-      },
-    ];
-  }, [f]);
+  const columns: Column<HelpDesk>[] = useMemo(getColumns, [f]);
 
   const [pageCount, setPageCount] = useState(0);
   const [term, setTerm] = useState('');
   const [page, setPage] = useState(1);
+  const [sort, setSort] = useState({ id: 'ticket_no', desc: true });
 
   const { data, error, isLoading } = useTickets({
     page: page,
     size: currentPageSize,
     search: term,
+    sort: convertSortingToSort(sort),
   });
 
   const tickets = useMemo(() => {
@@ -115,7 +59,7 @@ export const Tickets = () => {
     }
     setPageCount(Math.ceil(data.count / data.size));
     return data.data;
-  }, [data, currentPageSize, page]);
+  }, [data, currentPageSize, page, sort]);
 
   if (isLoading) {
     document.body.classList.add('spinner');
@@ -145,7 +89,7 @@ export const Tickets = () => {
       pageCount,
       initialState: {
         pageIndex: 0,
-        sortBy: [{ id: 'ticket_no', desc: false }],
+        sortBy: [sort],
         hiddenColumns: ['id'],
       },
     },
@@ -156,7 +100,17 @@ export const Tickets = () => {
     useRowState
   );
 
-  const { setPageSize, gotoPage } = tableInstance;
+  const { setPageSize, gotoPage, state } = tableInstance;
+
+  useMemo(() => {
+    const sorting = state.sortBy[0];
+    if (sorting) {
+      setSort({
+        id: sorting.id,
+        desc: sorting.desc ?? false,
+      });
+    }
+  }, [state.sortBy]);
 
   const onChangePage = (pageIndex: number) => {
     gotoPage(pageIndex);

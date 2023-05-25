@@ -8,6 +8,7 @@ export interface HelpDeskQuery {
   page: number;
   size: number;
   search: string;
+  sort: string;
 }
 
 interface HelpDeskResult {
@@ -24,6 +25,7 @@ export const getTickets = (query: HelpDeskQuery): Promise<HelpDeskResult> => {
         page: query.page,
         size: query.size,
         search: query.search,
+        sort: query.sort,
       },
     })
     .then((res) => {
