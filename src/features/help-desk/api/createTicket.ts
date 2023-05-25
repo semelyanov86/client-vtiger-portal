@@ -1,9 +1,11 @@
-import HelpDesk from '../types';
+import { useMutation } from 'react-query';
+
+import { NotifySuccess } from '../../../components/Notifications/Notification.tsx';
 import { axios } from '../../../lib/axios';
 import { MutationConfig, queryClient } from '../../../lib/react-query.ts';
-import { useMutation } from 'react-query';
+import HelpDesk from '../types';
+
 import { HelpDeskQuery } from './getTickets.ts';
-import { NotifySuccess } from '../../../components/Notifications/Notification.tsx';
 
 export type CreateTicketDTO = {
   data: {
@@ -16,7 +18,7 @@ export type CreateTicketDTO = {
 };
 
 export const createTicket = ({ data }: CreateTicketDTO): Promise<HelpDesk> => {
-  return axios.post('/tickets/', data);
+  return axios.post<HelpDesk>('/tickets/', data).then((res) => res.data);
 };
 
 type UseCreateTicketOptions = {
@@ -26,20 +28,13 @@ type UseCreateTicketOptions = {
 
 export const useCreateTicket = ({ config, query }: UseCreateTicketOptions) => {
   return useMutation({
-    onMutate: async (newTicket) => {
-      await queryClient.cancelQueries(['tickets', query]);
-      const previousTickets = queryClient.getQueryData<HelpDesk[]>(['tickets', query]);
-
-      queryClient.setQueryData(['tickets', query], [...(previousTickets || []), newTicket.data]);
-      return { previousTickets };
-    },
     onError: (_, __, context: any) => {
       if (context?.previousTickets) {
         queryClient.setQueryData(['tickets', query], context.previousTickets);
       }
     },
     onSuccess: () => {
-      queryClient.invalidateQueries(['tickets', query]);
+      queryClient.invalidateQueries({ queryKey: ['tickets', query] });
       NotifySuccess('Ticket created!');
     },
     ...config,

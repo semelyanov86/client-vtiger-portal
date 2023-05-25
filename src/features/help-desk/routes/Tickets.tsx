@@ -26,6 +26,7 @@ import { DEFAULT_PAGE_COUNT } from '../../../config/constants.ts';
 import { convertSortingToSort } from '../../../lib/requests.ts';
 import { LoadHelpDesk } from '../../module/LoadHelpDesk.tsx';
 import { useTickets } from '../api/getTickets.ts';
+import { AddTicketModal } from '../components/AddTicketModal.tsx';
 import { getColumns } from '../table/getColumns.tsx';
 import HelpDesk from '../types';
 
@@ -46,12 +47,14 @@ export const Tickets = () => {
   const [page, setPage] = useState(1);
   const [sort, setSort] = useState({ id: 'ticket_no', desc: true });
 
-  const { data, error, isLoading } = useTickets({
+  const query = {
     page: page,
     size: currentPageSize,
     search: term,
     sort: convertSortingToSort(sort),
-  });
+  };
+
+  const { data, error, isLoading } = useTickets(query);
 
   const tickets = useMemo(() => {
     if (data === undefined) {
@@ -76,7 +79,7 @@ export const Tickets = () => {
   const tableInstance = useTable(
     {
       columns,
-      data: tickets,
+      data: tickets ?? [],
       isOpenAddEditModal,
       setIsOpenAddEditModal,
       manualPagination: true,
@@ -100,7 +103,7 @@ export const Tickets = () => {
     useRowState
   );
 
-  const { setPageSize, gotoPage, state } = tableInstance;
+  const { setPageSize, gotoPage, state, toggleAllPageRowsSelected } = tableInstance;
 
   useMemo(() => {
     const sorting = state.sortBy[0];
@@ -134,6 +137,11 @@ export const Tickets = () => {
     [setPageSize]
   );
 
+  const addButtonClick = () => {
+    toggleAllPageRowsSelected(false);
+    setIsOpenAddEditModal(true);
+  };
+
   return (
     <>
       <Head title={title} />
@@ -147,7 +155,7 @@ export const Tickets = () => {
                 <BreadcrumbList items={breadcrumbs} />
               </Col>
               <Col xs="12" md="5" className="d-flex align-items-start justify-content-end">
-                <ButtonsAddNew tableInstance={tableInstance} />{' '}
+                <ButtonsAddNew onClick={addButtonClick} />{' '}
                 <ButtonsCheckAll tableInstance={tableInstance} />
               </Col>
             </Row>
@@ -182,6 +190,11 @@ export const Tickets = () => {
               </Col>
             </Row>
           </div>
+          <AddTicketModal
+            isModalOpen={isOpenAddEditModal}
+            onHide={setIsOpenAddEditModal}
+            query={query}
+          />
         </Col>
       </Row>
     </>

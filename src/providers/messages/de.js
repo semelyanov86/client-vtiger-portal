@@ -68,6 +68,10 @@ const deMessages = {
   'tickets.Low': 'Low',
   'tickets.Normal': 'Normal',
   'tickets.High': 'High',
+  'tickets.Высокий': 'High',
+  'tickets.Особенная': 'Extreme',
+  'tickets.Незначительная': 'Super Low',
+  'tickets.Другая проблема': 'Other problem',
   'tickets.Urgent': 'Urgent',
   'tickets.Minor': 'Minor',
   'tickets.Major': 'Major',
@@ -80,6 +84,8 @@ const deMessages = {
   'tickets.Big Problem': 'Big Problem',
   'tickets.Small Problem': 'Small Problem',
   'tickets.Other Problem': 'Other Problem',
+  'tickets.add': 'Add new Ticket',
+  'tickets.save': 'Create Ticket',
 
   'menu.default': 'Default',
   'menu.visual': 'Visual',
@@ -160,6 +166,8 @@ const deMessages = {
   'general.item-count': 'Item Count',
   'general.items': 'Items',
   'general.search': 'Search',
+  'general.add-new': 'Add New',
+  'general.cancel': 'Cancel',
 };
 
 export default deMessages;

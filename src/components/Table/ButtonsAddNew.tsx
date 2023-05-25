@@ -1,27 +1,22 @@
 import { Button } from 'react-bootstrap';
 import { Plus } from 'react-bootstrap-icons';
-import { TableInstance } from 'react-table';
-
-import HelpDesk from '../../features/help-desk/types';
+import { FormattedMessage } from 'react-intl';
 
 interface ButtonsAddNewProps {
-  tableInstance: TableInstance<HelpDesk>;
+  onClick: () => void;
 }
 
-export const ButtonsAddNew = ({ tableInstance }: ButtonsAddNewProps) => {
-  const { toggleAllPageRowsSelected, setIsOpenAddEditModal } = tableInstance;
-
-  const addButtonClick = () => {
-    toggleAllPageRowsSelected(false);
-    setIsOpenAddEditModal(true);
-  };
+export const ButtonsAddNew = ({ onClick }: ButtonsAddNewProps) => {
   return (
     <Button
       variant="outline-primary"
       className="btn-icon btn-icon-start w-100 w-md-auto add-datatable"
-      onClick={addButtonClick}
+      onClick={onClick}
     >
-      <Plus></Plus> <span>Add New</span>
+      <Plus></Plus>{' '}
+      <span>
+        <FormattedMessage id="general.add-new"></FormattedMessage>
+      </span>
     </Button>
   );
 };

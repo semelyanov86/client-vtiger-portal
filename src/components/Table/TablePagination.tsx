@@ -8,7 +8,7 @@ interface TablePaginationProps {
 }
 
 export const TablePagination = ({ page, pageCount, gotoPage }: TablePaginationProps) => {
-  if (pageCount <= 1) {
+  if (!pageCount || pageCount <= 1) {
     return <></>;
   }
 
