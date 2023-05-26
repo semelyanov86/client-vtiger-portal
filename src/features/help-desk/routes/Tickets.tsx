@@ -29,6 +29,7 @@ import { useTickets } from '../api/getTickets.ts';
 import { AddTicketModal } from '../components/AddTicketModal.tsx';
 import { getColumns } from '../table/getColumns.tsx';
 import HelpDesk from '../types';
+import { EditTicketModal } from '../components/EditTicketModal.tsx';
 
 export const Tickets = () => {
   const { formatMessage: f } = useIntl();
@@ -39,8 +40,9 @@ export const Tickets = () => {
     { to: '', text: 'Home' },
     { to: 'tickets', text: 'Tickets' },
   ];
+  const [editTicketId, setEditTicketId] = useState('');
 
-  const columns: Column<HelpDesk>[] = useMemo(getColumns, [f]);
+  const columns: Column<HelpDesk>[] = getColumns({ onEdit: setEditTicketId });
 
   const [pageCount, setPageCount] = useState(0);
   const [term, setTerm] = useState('');
@@ -93,7 +95,7 @@ export const Tickets = () => {
       initialState: {
         pageIndex: 0,
         sortBy: [sort],
-        hiddenColumns: ['id'],
+        hiddenColumns: ['description'],
       },
     },
     useGlobalFilter,
@@ -195,6 +197,7 @@ export const Tickets = () => {
             onHide={setIsOpenAddEditModal}
             query={query}
           />
+          <EditTicketModal ticketId={editTicketId} onHide={setEditTicketId} query={query} />
         </Col>
       </Row>
     </>

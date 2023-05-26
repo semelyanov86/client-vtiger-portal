@@ -58,7 +58,7 @@ export const Table = ({ tableInstance, className = 'react-table boxed' }: TableP
                   {...cell.getCellProps()}
                   key={`td.${cellIndex}`}
                   onClick={() => {
-                    if (cell.column.id === 'name') {
+                    if (cell.column.id === 'ticket_no') {
                       toggleAllPageRowsSelected(false);
                       row.toggleRowSelected();
                       setIsOpenAddEditModal(true);
@@ -70,7 +70,7 @@ export const Table = ({ tableInstance, className = 'react-table boxed' }: TableP
                     // Add a keyboard event listener
                     if (e.key === 'Enter' || e.key === ' ') {
                       e.preventDefault();
-                      if (cell.column.id === 'name') {
+                      if (cell.column.id === 'ticket_no') {
                         toggleAllPageRowsSelected(false);
                         row.toggleRowSelected();
                         setIsOpenAddEditModal(true);

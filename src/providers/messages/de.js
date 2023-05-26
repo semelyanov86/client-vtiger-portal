@@ -86,6 +86,7 @@ const deMessages = {
   'tickets.Other Problem': 'Other Problem',
   'tickets.add': 'Add new Ticket',
   'tickets.save': 'Create Ticket',
+  'tickets.update': 'Update Ticket',
 
   'menu.default': 'Default',
   'menu.visual': 'Visual',
@@ -168,6 +169,7 @@ const deMessages = {
   'general.search': 'Search',
   'general.add-new': 'Add New',
   'general.cancel': 'Cancel',
+  'general.edit': 'Edit',
 };
 
 export default deMessages;

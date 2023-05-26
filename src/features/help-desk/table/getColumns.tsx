@@ -4,7 +4,11 @@ import { CellProps, Column } from 'react-table';
 
 import HelpDesk from '../types';
 
-export function getColumns(): Column<HelpDesk>[] {
+interface getColumnsOptions {
+  onEdit: (ticketId: string) => void;
+}
+
+export function getColumns({ onEdit }: getColumnsOptions): Column<HelpDesk>[] {
   return [
     {
       Header: <FormattedMessage id="tickets.ticket_no" />,
@@ -66,15 +70,17 @@ export function getColumns(): Column<HelpDesk>[] {
       headerClassName: 'text-muted text-small text-uppercase w-10',
     },
     {
-      Header: 'Actions',
+      Header: '',
       accessor: 'id',
       sortable: false,
       headerClassName: 'empty w-10',
-      Cell: () => (
-        <Button>
-          <FormattedMessage id="general.edit" />
-        </Button>
-      ),
+      Cell: ({ cell: { value } }: CellProps<HelpDesk>) => {
+        return (
+          <Button variant="warning" onClick={() => onEdit(value)}>
+            <FormattedMessage id="general.edit" />
+          </Button>
+        );
+      },
     },
   ];
 }
