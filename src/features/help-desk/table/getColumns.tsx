@@ -1,8 +1,10 @@
 import { Button } from 'react-bootstrap';
 import { FormattedMessage } from 'react-intl';
+import { Link } from 'react-router-dom';
 import { CellProps, Column } from 'react-table';
 
 import HelpDesk from '../types';
+import { formatToUserReadableDate } from '../../misc/services/Dates.ts';
 
 interface getColumnsOptions {
   onEdit: (ticketId: string) => void;
@@ -15,17 +17,11 @@ export function getColumns({ onEdit }: getColumnsOptions): Column<HelpDesk>[] {
       accessor: 'ticket_no',
       sortable: true,
       headerClassName: 'text-muted text-small text-uppercase w-30',
-      Cell: ({ cell: { value } }: CellProps<HelpDesk>) => {
+      Cell: ({ cell: { value }, row: { values } }: CellProps<HelpDesk>) => {
         return (
-          <a
-            className="list-item-heading body"
-            href="#!"
-            onClick={(e) => {
-              e.preventDefault();
-            }}
-          >
+          <Link to={'/app/tickets/' + values.id} className="list-item-heading body">
             {value}
-          </a>
+          </Link>
         );
       },
     },
@@ -50,16 +46,7 @@ export function getColumns({ onEdit }: getColumnsOptions): Column<HelpDesk>[] {
       sortable: true,
       headerClassName: 'text-muted text-small text-uppercase w-20',
       Cell: ({ cell: { value } }: CellProps<HelpDesk>) => {
-        const date = new Date(value);
-
-        const year = date.getFullYear();
-        const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are 0-based, add 1 and pad with '0' if needed
-        const day = String(date.getDate()).padStart(2, '0');
-        const hours = String(date.getHours()).padStart(2, '0');
-        const minutes = String(date.getMinutes()).padStart(2, '0');
-        const seconds = String(date.getSeconds()).padStart(2, '0');
-
-        return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+        return formatToUserReadableDate(value);
         return value;
       },
     },

@@ -4,11 +4,11 @@ import { Navigate, Outlet } from 'react-router-dom';
 import { Spinner } from '../components/Elements';
 import { MainLayout } from '../components/Layout';
 import WithAuth from '../features/auth/components/WithAuth.tsx';
-import { lazyImport } from '../utils/lazyImport';
 import { UserInfo } from '../features/auth/routes/UserInfo.tsx';
-import { Tickets } from '../features/help-desk/routes/Tickets.tsx';
+import { lazyImport } from '../utils/lazyImport';
 
 const { Home } = lazyImport(() => import('../features/home/routes/Home.tsx'), 'Home');
+const { TicketsRoutes } = lazyImport(() => import('../features/help-desk'), 'TicketsRoutes');
 
 const App = () => {
   return (
@@ -45,8 +45,8 @@ export const protectedRoutes = [
         element: <UserInfo />,
       },
       {
-        path: 'tickets',
-        element: <Tickets />,
+        path: 'tickets/*',
+        element: <TicketsRoutes />,
       },
     ],
   },

@@ -6,6 +6,6 @@ export type Entity = {
   tags: string[];
   starred: boolean;
   description: string;
-  createdtime: Date;
-  modifiedtime: Date;
+  createdtime: string;
+  modifiedtime: string;
 };

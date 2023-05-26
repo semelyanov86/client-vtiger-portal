@@ -27,9 +27,9 @@ import { convertSortingToSort } from '../../../lib/requests.ts';
 import { LoadHelpDesk } from '../../module/LoadHelpDesk.tsx';
 import { useTickets } from '../api/getTickets.ts';
 import { AddTicketModal } from '../components/AddTicketModal.tsx';
+import { EditTicketModal } from '../components/EditTicketModal.tsx';
 import { getColumns } from '../table/getColumns.tsx';
 import HelpDesk from '../types';
-import { EditTicketModal } from '../components/EditTicketModal.tsx';
 
 export const Tickets = () => {
   const { formatMessage: f } = useIntl();
