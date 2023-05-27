@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { Badge, Card, Col, Dropdown, Row } from 'react-bootstrap';
 import {
   Asterisk,
@@ -14,6 +15,8 @@ import { useParams } from 'react-router';
 import { Spinner } from '../../../components/Elements';
 import { BreadcrumbList } from '../../../components/Elements/Breadcrumbs/BreadcrumbList.tsx';
 import { Head } from '../../../components/Head';
+import { useManager } from '../../manager/api/getManager.ts';
+import { ManagerInfo } from '../../manager/components/ManagerInfo.tsx';
 import { formatToUserReadableDate } from '../../misc/services/Dates.ts';
 import { LoadHelpDesk } from '../../module/LoadHelpDesk.tsx';
 import { getPicklistValues } from '../../module/services/fields.ts';
@@ -24,6 +27,14 @@ import { StatCard } from '../components/StatCard.tsx';
 export const Ticket = () => {
   const { ticketId } = useParams();
   const ticketQuery = useTicket({ ticketId: ticketId ?? '' });
+  const [isManagerQueryEnabled, setIsManagerQueryEnabled] = useState(false);
+  useEffect(() => {
+    if (ticketQuery.data) {
+      setIsManagerQueryEnabled(true);
+    }
+  }, [ticketQuery.data]);
+
+  const managerQuery = useManager(ticketQuery.data?.assigned_user_id ?? '', isManagerQueryEnabled);
   const { formatMessage: f } = useIntl();
   const { HelpDesk } = useModulesStore();
 
@@ -178,6 +189,14 @@ export const Ticket = () => {
                 <Tag className="text-primary"></Tag>
               </StatCard>
             </Row>
+          </Col>
+        </Row>
+        <Row className="g-2 mb-5">
+          <Col>
+            <h2 className="small-title">
+              <FormattedMessage id="tickets.assigned_user_id" />
+            </h2>
+            <ManagerInfo manager={managerQuery.data} />
           </Col>
         </Row>
       </div>

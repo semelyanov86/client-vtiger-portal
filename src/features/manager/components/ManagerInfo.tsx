@@ -3,11 +3,16 @@ import { Phone, EnvelopeAt, Geo } from 'react-bootstrap-icons';
 import { FormattedMessage } from 'react-intl';
 import { NavLink } from 'react-router-dom';
 
-import useManagerStore from '../stores/manager.ts';
+import { Manager } from '../types';
 
-export const ManagerInfo = () => {
-  const { manager } = useManagerStore();
+interface ManagerInfoProps {
+  manager: Manager | undefined;
+}
 
+export const ManagerInfo = ({ manager }: ManagerInfoProps) => {
+  if (!manager) {
+    return null;
+  }
   return (
     <Card>
       <Card.Body>

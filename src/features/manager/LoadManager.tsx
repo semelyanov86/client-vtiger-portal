@@ -9,7 +9,7 @@ import useManagerStore from './stores/manager.ts';
 export const LoadManager: React.FC = () => {
   const { setManager } = useManagerStore();
   const { value } = useUserStore();
-  const { data, error } = useManager(value.assigned_user_id ?? '19x1');
+  const { data, error } = useManager(value.assigned_user_id ?? '19x1', true);
 
   useEffect(() => {
     if (data) {

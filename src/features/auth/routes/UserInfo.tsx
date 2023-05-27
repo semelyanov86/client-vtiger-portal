@@ -5,14 +5,16 @@ import { FormattedMessage } from 'react-intl';
 import { BreadcrumbList } from '../../../components/Elements/Breadcrumbs/BreadcrumbList.tsx';
 import { Head } from '../../../components/Head';
 import { useUserStore } from '../../../stores/user.ts';
+import { ManagerInfo } from '../../manager/components/ManagerInfo.tsx';
+import { LoadManager } from '../../manager/LoadManager.tsx';
+import useManagerStore from '../../manager/stores/manager.ts';
 import { UserSidebar } from '../components/UserSidebar.tsx';
 
 import { UserAbout } from './UserAbout.tsx';
-import { ManagerInfo } from '../../manager/components/ManagerInfo.tsx';
-import { LoadManager } from '../../manager/LoadManager.tsx';
 
 export const UserInfo = () => {
   const { value: user } = useUserStore();
+  const { manager } = useManagerStore();
   const title = 'Your profile: ' + user.firstname + ' ' + user.lastname;
   const breadcrumbs = [
     { to: '', text: 'Home' },
@@ -63,7 +65,7 @@ export const UserInfo = () => {
           <h2 className="small-title mt-2">
             <FormattedMessage id="manager.info"></FormattedMessage>
           </h2>
-          <ManagerInfo></ManagerInfo>
+          <ManagerInfo manager={manager}></ManagerInfo>
         </Col>
       </Row>
     </>

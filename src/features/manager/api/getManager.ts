@@ -1,14 +1,14 @@
 import ms from 'ms';
 import { useQuery } from 'react-query';
 
-import { axios } from '../../../lib/axios';
+import { axios, DataResponse } from '../../../lib/axios';
 import { Manager } from '../types';
 
 export const getManager = (id: string): Promise<Manager> => {
-  return axios.get<Manager>('/managers/' + id).then((res) => res.data);
+  return axios.get<DataResponse<Manager>>('/managers/' + id).then((res) => res.data.data);
 };
 
-export const useManager = (id: string) => {
+export const useManager = (id: string, enabled = true) => {
   return useQuery<Manager, Error>({
     queryKey: ['manager', id],
     queryFn: () => getManager(id),
@@ -16,5 +16,6 @@ export const useManager = (id: string) => {
     cacheTime: ms('10 days'),
     staleTime: ms('7 days'),
     useErrorBoundary: false,
+    enabled: enabled,
   });
 };
