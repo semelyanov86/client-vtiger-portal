@@ -89,6 +89,8 @@ const deMessages = {
   'tickets.update': 'Update Ticket',
   'tickets.detail': 'Tickets detail: ',
   'tickets.was-updated': 'Last update of ticket was: ',
+  'tickets.additional-information': 'Additional Information',
+  'tickets.no-tags': 'No tags available for this ticket',
 
   'menu.default': 'Default',
   'menu.visual': 'Visual',

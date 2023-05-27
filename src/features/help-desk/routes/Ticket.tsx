@@ -1,5 +1,13 @@
-import { Card, Col, Dropdown, Row } from 'react-bootstrap';
-import { Calendar, Clipboard, ShieldPlus, Tag } from 'react-bootstrap-icons';
+import { Badge, Card, Col, Dropdown, Row } from 'react-bootstrap';
+import {
+  Asterisk,
+  Calendar,
+  CalendarDate,
+  Clipboard,
+  Clock,
+  Files,
+  Tag,
+} from 'react-bootstrap-icons';
 import { FormattedMessage, useIntl } from 'react-intl';
 import { useParams } from 'react-router';
 
@@ -11,6 +19,7 @@ import { LoadHelpDesk } from '../../module/LoadHelpDesk.tsx';
 import { getPicklistValues } from '../../module/services/fields.ts';
 import useModulesStore from '../../module/stores/module.ts';
 import { useTicket } from '../api/getTicket.ts';
+import { StatCard } from '../components/StatCard.tsx';
 
 export const Ticket = () => {
   const { ticketId } = useParams();
@@ -48,7 +57,7 @@ export const Ticket = () => {
           <Col className="mb-2">
             <h1 className="mb-0 pb-0 display-4">{title}</h1>
             <div className="text-muted font-heading text-small">
-              <FormattedMessage id="tickets.was-updated"></FormattedMessage> +{' '}
+              <FormattedMessage id="tickets.was-updated"></FormattedMessage>{' '}
               {formatToUserReadableDate(ticketQuery.data.modifiedtime)}
             </div>
             <BreadcrumbList items={breadcrumbs} />
@@ -112,76 +121,62 @@ export const Ticket = () => {
         </Row>
         <Row className="g-2 mb-5">
           <Col>
-            <h2 className="small-title">Additional Information</h2>
+            <h2 className="small-title">
+              <FormattedMessage id="tickets.additional-information" />
+            </h2>
             <Row className="g-2 mb-5">
-              <Col sm="6">
-                <Card className="sh-13 sh-lg-15 sh-xl-14">
-                  <Card.Body className="h-100 py-3 d-flex align-items-center">
-                    <Row className="g-0 align-items-center">
-                      <Col xs="auto" className="pe-3">
-                        <div className="border border-primary sw-6 sh-6 rounded-xl d-flex justify-content-center align-items-center">
-                          <Tag className="text-primary"></Tag>
-                        </div>
-                      </Col>
-                      <Col>
-                        <div className="d-flex align-items-center lh-1-25">Order Id</div>
-                        <div className="text-primary">2241</div>
-                      </Col>
-                    </Row>
-                  </Card.Body>
-                </Card>
-              </Col>
-              <Col sm="6">
-                <Card className="sh-13 sh-lg-15 sh-xl-14">
-                  <Card.Body className="h-100 py-3 d-flex align-items-center">
-                    <Row className="g-0 align-items-center">
-                      <Col xs="auto" className="pe-3">
-                        <div className="border border-primary sw-6 sh-6 rounded-xl d-flex justify-content-center align-items-center">
-                          <Clipboard className="text-primary"></Clipboard>
-                        </div>
-                      </Col>
-                      <Col>
-                        <div className="d-flex align-items-center lh-1-25">Order Status</div>
-                        <div className="text-primary">Delivered</div>
-                      </Col>
-                    </Row>
-                  </Card.Body>
-                </Card>
-              </Col>
-              <Col sm="6">
-                <Card className="sh-13 sh-lg-15 sh-xl-14">
-                  <Card.Body className="h-100 py-3 d-flex align-items-center">
-                    <Row className="g-0 align-items-center">
-                      <Col xs="auto" className="pe-3">
-                        <div className="border border-primary sw-6 sh-6 rounded-xl d-flex justify-content-center align-items-center">
-                          <Calendar className="text-primary"></Calendar>
-                        </div>
-                      </Col>
-                      <Col>
-                        <div className="d-flex align-items-center lh-1-25">Delivery Date</div>
-                        <div className="text-primary">17.11.2020</div>
-                      </Col>
-                    </Row>
-                  </Card.Body>
-                </Card>
-              </Col>
-              <Col sm="6">
-                <Card className="sh-13 sh-lg-15 sh-xl-14">
-                  <Card.Body className="h-100 py-3 d-flex align-items-center">
-                    <Row className="g-0 align-items-center">
-                      <Col xs="auto" className="pe-3">
-                        <div className="border border-primary sw-6 sh-6 rounded-xl d-flex justify-content-center align-items-center">
-                          <ShieldPlus className="text-primary"></ShieldPlus>
-                        </div>
-                      </Col>
-                      <Col>
-                        <div className="d-flex align-items-center lh-1-25">Tracking Code</div>
-                        <div className="text-primary">US4244290109</div>
-                      </Col>
-                    </Row>
-                  </Card.Body>
-                </Card>
-              </Col>
+              <StatCard
+                header={<FormattedMessage id="tickets.ticketpriorities" />}
+                value={<FormattedMessage id={'tickets.' + ticketQuery.data.ticketpriorities} />}
+              >
+                <Asterisk className="text-primary"></Asterisk>
+              </StatCard>
+              <StatCard
+                header={<FormattedMessage id="tickets.ticketseverities" />}
+                value={<FormattedMessage id={'tickets.' + ticketQuery.data.ticketseverities} />}
+              >
+                <Clipboard className="text-primary"></Clipboard>
+              </StatCard>
+              <StatCard
+                header={<FormattedMessage id="tickets.modifiedtime" />}
+                value={formatToUserReadableDate(ticketQuery.data.modifiedtime)}
+              >
+                <Calendar className="text-primary"></Calendar>
+              </StatCard>
+              <StatCard
+                header={<FormattedMessage id="tickets.ticketcategories" />}
+                value={<FormattedMessage id={'tickets.' + ticketQuery.data.ticketcategories} />}
+              >
+                <Files className="text-primary"></Files>
+              </StatCard>
+              <StatCard
+                header={<FormattedMessage id="tickets.hours" />}
+                value={ticketQuery.data.hours}
+              >
+                <Clock className="text-primary"></Clock>
+              </StatCard>
+              <StatCard
+                header={<FormattedMessage id="tickets.days" />}
+                value={ticketQuery.data.days}
+              >
+                <CalendarDate className="text-primary"></CalendarDate>
+              </StatCard>
+              <StatCard
+                header={<FormattedMessage id="tickets.tags" />}
+                value={
+                  ticketQuery.data.tags.length > 0 && ticketQuery.data.tags[0] != '' ? (
+                    ticketQuery.data.tags.map((tag) => (
+                      <Badge key={tag} bg="outline-primary">
+                        {tag}
+                      </Badge>
+                    ))
+                  ) : (
+                    <FormattedMessage id="tickets.no-tags"></FormattedMessage>
+                  )
+                }
+              >
+                <Tag className="text-primary"></Tag>
+              </StatCard>
             </Row>
           </Col>
         </Row>
