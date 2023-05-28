@@ -2,6 +2,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { Button, FormControl, InputGroup } from 'react-bootstrap';
 import { Send } from 'react-bootstrap-icons';
 import { FieldValues, useForm } from 'react-hook-form';
+import { FormattedMessage } from 'react-intl';
 import * as z from 'zod';
 
 import { NotifyError } from '../../../components/Notifications/Notification.tsx';
@@ -19,7 +20,7 @@ const schema = z.object({
 
 type FormData = z.infer<typeof schema>;
 
-export const AddCommentForm = ({ onAddComment, parentId }: AddCommentFormProps) => {
+export const AddCommentForm = ({ onAddComment, parentId, isLoading }: AddCommentFormProps) => {
   const {
     register,
     handleSubmit,
@@ -54,8 +55,15 @@ export const AddCommentForm = ({ onAddComment, parentId }: AddCommentFormProps) 
           onClick={handleSubmit(onSubmit)}
           variant="outline-primary"
           className="btn-icon btn-icon-end"
+          disabled={isLoading}
         >
-          <span>Send</span>
+          <span>
+            {isLoading ? (
+              <FormattedMessage id="comments.sending" />
+            ) : (
+              <FormattedMessage id="comments.send" />
+            )}
+          </span>
           <Send></Send>
         </Button>
       </InputGroup>

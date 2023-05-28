@@ -94,6 +94,8 @@ const deMessages = {
   'tickets.comments': 'Related Comments',
 
   'comments.no-data': 'No comments available',
+  'comments.send': 'Send',
+  'comments.sending': 'Sending',
 
   'menu.default': 'Default',
   'menu.visual': 'Visual',
