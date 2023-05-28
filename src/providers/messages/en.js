@@ -91,6 +91,9 @@ const enMessages = {
   'tickets.was-updated': 'Last update of ticket was: ',
   'tickets.additional-information': 'Additional Information',
   'tickets.no-tags': 'No tags available for this ticket',
+  'tickets.comments': 'Related Comments',
+
+  'comments.no-data': 'No comments available',
 
   'menu.default': 'Default',
   'menu.visual': 'Visual',

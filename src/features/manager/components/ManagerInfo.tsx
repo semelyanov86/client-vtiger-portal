@@ -46,21 +46,27 @@ export const ManagerInfo = ({ manager }: ManagerInfoProps) => {
           <p className="text-small text-muted mb-2">
             <FormattedMessage id="manager.contact"></FormattedMessage>
           </p>
-          <NavLink to="#" className="d-block body-link mb-1">
-            <Phone className="me-2" size="17" />
-            <span className="align-middle">{manager.phone_work}</span>
-          </NavLink>
-          <NavLink to="#" className="d-block body-link mb-1">
-            <EnvelopeAt className="me-2" size="17" />
-            <span className="align-middle">{manager.email2}</span>
-          </NavLink>
-          <NavLink to="#" className="d-block body-link mb-1">
-            <Geo className="me-2" size="17" />
-            <span className="align-middle">
-              {manager.address_postalcode}, {manager.address_street}, {manager.address_city},{' '}
-              {manager.address_state}, {manager.address_country}
-            </span>
-          </NavLink>
+          {manager.phone_work && (
+            <NavLink to="#" className="d-block body-link mb-1">
+              <Phone className="me-2" size="17" />
+              <span className="align-middle">{manager.phone_work}</span>
+            </NavLink>
+          )}
+          {manager.email2 && (
+            <NavLink to="#" className="d-block body-link mb-1">
+              <EnvelopeAt className="me-2" size="17" />
+              <span className="align-middle">{manager.email2}</span>
+            </NavLink>
+          )}
+          {manager.address_street && (
+            <NavLink to="#" className="d-block body-link mb-1">
+              <Geo className="me-2" size="17" />
+              <span className="align-middle">
+                {manager.address_postalcode}, {manager.address_street}, {manager.address_city},{' '}
+                {manager.address_state}, {manager.address_country}
+              </span>
+            </NavLink>
+          )}
         </div>
       </Card.Body>
     </Card>

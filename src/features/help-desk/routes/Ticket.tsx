@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Badge, Card, Col, Dropdown, Row } from 'react-bootstrap';
+import { Badge, Card, Col, Dropdown, Row, Spinner } from 'react-bootstrap';
 import {
   Asterisk,
   Calendar,
@@ -12,10 +12,13 @@ import {
 import { FormattedMessage, useIntl } from 'react-intl';
 import { useParams } from 'react-router';
 
-import { Spinner } from '../../../components/Elements';
+import { Spinner as Spinner2 } from '../../../components/Elements';
 import { BreadcrumbList } from '../../../components/Elements/Breadcrumbs/BreadcrumbList.tsx';
 import { Head } from '../../../components/Head';
 import { NotifyError } from '../../../components/Notifications/Notification.tsx';
+import { useCreateToTicketComment } from '../../comment/api/createToTicket.ts';
+import { useCommentsFromTicket } from '../../comment/api/getFromTicket.ts';
+import { CommentList } from '../../comment/components/CommentList.tsx';
 import { useManager } from '../../manager/api/getManager.ts';
 import { ManagerInfo } from '../../manager/components/ManagerInfo.tsx';
 import { formatToUserReadableDate } from '../../misc/services/Dates.ts';
@@ -31,6 +34,8 @@ export const Ticket = () => {
   const ticketQuery = useTicket({ ticketId: ticketId ?? '' });
   const [isManagerQueryEnabled, setIsManagerQueryEnabled] = useState(false);
   const changeStatusMutation = useChangeTicketStatus({});
+  const commentsQuery = useCommentsFromTicket({ ticketId: ticketId ?? '' });
+  const createCommentMutation = useCreateToTicketComment({ ticketId: ticketId ?? '' });
   useEffect(() => {
     if (ticketQuery.data) {
       setIsManagerQueryEnabled(true);
@@ -47,7 +52,7 @@ export const Ticket = () => {
   const statuses = getPicklistValues(HelpDesk, 'ticketstatus');
 
   if (ticketQuery.isLoading) {
-    return <Spinner></Spinner>;
+    return <Spinner2></Spinner2>;
   }
 
   const title = f({ id: 'tickets.detail' }) + ' ' + ticketId;
@@ -106,7 +111,7 @@ export const Ticket = () => {
           </Col>
         </Row>
         <Row>
-          <Col className="mb-5 mb-xxl-0">
+          <Col className="mt-2 mb-1 mb-xxl-0">
             <h2 className="small-title">{ticketQuery.data.ticket_title}</h2>
             <Card className="mb-2">
               <Card.Body>
@@ -146,7 +151,7 @@ export const Ticket = () => {
             </Card>
           </Col>
         </Row>
-        <Row className="g-2 mb-5">
+        <Row>
           <Col>
             <h2 className="small-title">
               <FormattedMessage id="tickets.additional-information" />
@@ -213,6 +218,22 @@ export const Ticket = () => {
               <FormattedMessage id="tickets.assigned_user_id" />
             </h2>
             <ManagerInfo manager={managerQuery.data} />
+          </Col>
+        </Row>
+        <Row className="g-2 mb-5">
+          <Col>
+            <h2 className="small-title">
+              <FormattedMessage id="tickets.comments" />
+            </h2>
+            {commentsQuery.isLoading && <Spinner animation="border" variant="primary" />}
+            {commentsQuery.data && (
+              <CommentList
+                comments={commentsQuery.data.data}
+                onAddComment={createCommentMutation.mutateAsync}
+                isAddLoading={createCommentMutation.isLoading}
+                parentId={ticketId ?? ''}
+              ></CommentList>
+            )}
           </Col>
         </Row>
       </div>

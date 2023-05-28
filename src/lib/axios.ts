@@ -9,6 +9,13 @@ export interface DataResponse<T> {
   data: T;
 }
 
+export interface DataPaginationResponse<T> {
+  data: T[];
+  count: number;
+  page: number;
+  size: number;
+}
+
 function authRequestInterceptor(config: InternalAxiosRequestConfig) {
   const access_token = getToken()?.value || null;
   if (!config.headers) {
