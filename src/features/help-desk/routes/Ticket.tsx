@@ -15,12 +15,14 @@ import { useParams } from 'react-router';
 import { Spinner } from '../../../components/Elements';
 import { BreadcrumbList } from '../../../components/Elements/Breadcrumbs/BreadcrumbList.tsx';
 import { Head } from '../../../components/Head';
+import { NotifyError } from '../../../components/Notifications/Notification.tsx';
 import { useManager } from '../../manager/api/getManager.ts';
 import { ManagerInfo } from '../../manager/components/ManagerInfo.tsx';
 import { formatToUserReadableDate } from '../../misc/services/Dates.ts';
 import { LoadHelpDesk } from '../../module/LoadHelpDesk.tsx';
 import { getPicklistValues } from '../../module/services/fields.ts';
 import useModulesStore from '../../module/stores/module.ts';
+import { useChangeTicketStatus } from '../api/changeTicketStatus.ts';
 import { useTicket } from '../api/getTicket.ts';
 import { StatCard } from '../components/StatCard.tsx';
 
@@ -28,6 +30,7 @@ export const Ticket = () => {
   const { ticketId } = useParams();
   const ticketQuery = useTicket({ ticketId: ticketId ?? '' });
   const [isManagerQueryEnabled, setIsManagerQueryEnabled] = useState(false);
+  const changeStatusMutation = useChangeTicketStatus({});
   useEffect(() => {
     if (ticketQuery.data) {
       setIsManagerQueryEnabled(true);
@@ -59,6 +62,19 @@ export const Ticket = () => {
     { to: '/app/tickets/' + ticketId, text: ticketId ?? '' },
   ];
 
+  const onChangeStatus = async (status: string) => {
+    try {
+      await changeStatusMutation.mutateAsync({
+        data: {
+          ticketstatus: status,
+        },
+        id: ticketId ?? '',
+      });
+    } catch (e: any) {
+      NotifyError(e.message);
+    }
+  };
+
   return (
     <>
       <Head title={title} />
@@ -80,7 +96,7 @@ export const Ticket = () => {
               </Dropdown.Toggle>
               <Dropdown.Menu>
                 {statuses.map((item) => (
-                  <Dropdown.Item key={item.value}>
+                  <Dropdown.Item onClick={() => onChangeStatus(item.value)} key={item.value}>
                     <FormattedMessage id="tickets.ticketstatus" />:{' '}
                     <FormattedMessage id={'tickets.' + item.value}></FormattedMessage>
                   </Dropdown.Item>
