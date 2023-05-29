@@ -1,32 +1,26 @@
-import { Col, Button, Row, Card } from 'react-bootstrap';
+import { Col, Button, Row, Card, Spinner } from 'react-bootstrap';
 import {
-  Alarm,
-  Compass,
-  CheckCircle,
-  ArrowBarLeft,
-  Hexagon,
-  Pin,
   Pencil,
   Recycle,
   PencilSquare,
   ArrowBarRight,
   ChevronBarRight,
   ThreeDotsVertical,
-  SignTurnRight,
-  BagCheck,
-  ArrowRepeat,
 } from 'react-bootstrap-icons';
 import { useIntl } from 'react-intl';
 import { NavLink } from 'react-router-dom';
 
 import { BreadcrumbList } from '../../../components/Elements/Breadcrumbs/BreadcrumbList.tsx';
-import { Glide } from '../../../components/Elements/Carousel/Glide.tsx';
 import { Head } from '../../../components/Head';
 import { CompanyWidget } from '../../company/components/CompanyWidget.tsx';
+import { useStatistics } from '../../statistic/api/getStatistics.ts';
+import { InvoiceStatistics } from '../../statistic/components/InvoiceStatistics.tsx';
+import { TicketStatistics } from '../../statistic/components/TicketStatistics.tsx';
 
 export const Home = () => {
   const title = 'Dashboard';
   const { formatMessage: f } = useIntl();
+  const statisticQuery = useStatistics();
 
   const breadcrumbs = [
     { to: '', text: 'Home' },
@@ -205,94 +199,11 @@ export const Home = () => {
 
           {/* Stats Start */}
           <h2 className="small-title mt-3">Stats</h2>
-          <Row className="gx-2">
-            <Col className="p-0">
-              <Glide
-                noControls
-                options={{
-                  gap: 0,
-                  rewind: false,
-                  bound: true,
-                  perView: 6,
-                  breakpoints: {
-                    400: { perView: 1 },
-                    600: { perView: 2 },
-                    1400: { perView: 3 },
-                    1600: { perView: 4 },
-                    1900: { perView: 5 },
-                    3840: { perView: 6 },
-                  },
-                }}
-              >
-                <Glide.Item>
-                  <Card className="sh-20 hover-border-primary mb-5">
-                    <Card.Body className="p-4 text-center align-items-center d-flex flex-column justify-content-between">
-                      <div className="d-flex sh-5 sw-5 bg-gradient-light mb-3 align-items-center justify-content-center rounded-xl">
-                        <Alarm></Alarm>
-                      </div>
-                      <p className="mb-0 lh-1">Pending Orders</p>
-                      <p className="cta-3 mb-0 text-primary">25</p>
-                    </Card.Body>
-                  </Card>
-                </Glide.Item>
-                <Glide.Item>
-                  <Card className="sh-20 hover-border-primary mb-5">
-                    <Card.Body className="p-4 text-center align-items-center d-flex flex-column justify-content-between">
-                      <div className="d-flex sh-5 sw-5 bg-gradient-light mb-3 align-items-center justify-content-center rounded-xl">
-                        <Compass></Compass>
-                      </div>
-                      <p className="mb-0 lh-1">Shipped Orders</p>
-                      <p className="cta-3 mb-0 text-primary">48</p>
-                    </Card.Body>
-                  </Card>
-                </Glide.Item>
-                <Glide.Item>
-                  <Card className="sh-20 hover-border-primary mb-5">
-                    <Card.Body className="p-4 text-center align-items-center d-flex flex-column justify-content-between">
-                      <div className="d-flex sh-5 sw-5 bg-gradient-light mb-3 align-items-center justify-content-center rounded-xl">
-                        <CheckCircle></CheckCircle>
-                      </div>
-                      <p className="mb-0 lh-1">Delivered Orders</p>
-                      <p className="cta-3 mb-0 text-primary">53</p>
-                    </Card.Body>
-                  </Card>
-                </Glide.Item>
-                <Glide.Item>
-                  <Card className="sh-20 hover-border-primary mb-5">
-                    <Card.Body className="p-4 text-center align-items-center d-flex flex-column justify-content-between">
-                      <div className="d-flex sh-5 sw-5 bg-gradient-light mb-3 align-items-center justify-content-center rounded-xl">
-                        <ArrowBarLeft></ArrowBarLeft>
-                      </div>
-                      <p className="mb-0 lh-1">Returned Orders</p>
-                      <p className="cta-3 mb-0 text-primary">4</p>
-                    </Card.Body>
-                  </Card>
-                </Glide.Item>
-                <Glide.Item>
-                  <Card className="sh-20 hover-border-primary mb-5">
-                    <Card.Body className="p-4 text-center align-items-center d-flex flex-column justify-content-between">
-                      <div className="d-flex sh-5 sw-5 bg-gradient-light mb-3 align-items-center justify-content-center rounded-xl">
-                        <Hexagon></Hexagon>
-                      </div>
-                      <p className="mb-0 lh-1">Unconfirmed Orders</p>
-                      <p className="cta-3 mb-0 text-primary">3</p>
-                    </Card.Body>
-                  </Card>
-                </Glide.Item>
-                <Glide.Item>
-                  <Card className="sh-20 hover-border-primary mb-5">
-                    <Card.Body className="p-4 text-center align-items-center d-flex flex-column justify-content-between">
-                      <div className="d-flex sh-5 sw-5 bg-gradient-light mb-3 align-items-center justify-content-center rounded-xl">
-                        <Pin></Pin>
-                      </div>
-                      <p className="mb-0 lh-1">Missing Orders</p>
-                      <p className="cta-3 mb-0 text-primary">2</p>
-                    </Card.Body>
-                  </Card>
-                </Glide.Item>
-              </Glide>
-            </Col>
-          </Row>
+          {statisticQuery.isLoading ? (
+            <Spinner animation="border" variant="primary"></Spinner>
+          ) : (
+            <TicketStatistics stat={statisticQuery.data}></TicketStatistics>
+          )}
           {/* Stats End */}
         </Col>
 
@@ -638,102 +549,11 @@ export const Home = () => {
         {/* Invoice Statistics */}
         <Col lg="6" className="mb-5">
           <h2 className="small-title">Invoice Statistics</h2>
-          <Row className="g-2">
-            <Col sm="6">
-              <Card className="sh-11 hover-scale-up cursor-pointer">
-                <Card.Body className="h-100 py-3 align-items-center">
-                  <Row className="g-0 h-100 align-items-center">
-                    <Col xs="auto" className="pe-3">
-                      <div className="bg-gradient-light sh-5 sw-5 rounded-xl d-flex justify-content-center align-items-center">
-                        <SignTurnRight className="text-white"></SignTurnRight>
-                      </div>
-                    </Col>
-                    <Col>
-                      <Row className="gx-2 d-flex align-content-center">
-                        <Col xs="12" className="col-12 d-flex">
-                          <div className="d-flex align-items-center lh-1-25">Shipped Orders</div>
-                        </Col>
-                        <Col xl="auto" className="col-12">
-                          <div className="cta-2 text-primary">22</div>
-                        </Col>
-                      </Row>
-                    </Col>
-                  </Row>
-                </Card.Body>
-              </Card>
-            </Col>
-            <Col sm="6">
-              <Card className="sh-11 hover-scale-up cursor-pointer">
-                <Card.Body className="h-100 py-3 align-items-center">
-                  <Row className="g-0 h-100 align-items-center">
-                    <Col xs="auto" className="pe-3">
-                      <div className="bg-gradient-light sh-5 sw-5 rounded-xl d-flex justify-content-center align-items-center">
-                        <BagCheck className="text-white"></BagCheck>
-                      </div>
-                    </Col>
-                    <Col>
-                      <Row className="gx-2 d-flex align-content-center">
-                        <Col xs="12" className="col-12 d-flex">
-                          <div className="d-flex align-items-center lh-1-25">Delivered Orders</div>
-                        </Col>
-                        <Col xl="auto" className="col-12">
-                          <div className="cta-2 text-primary">35</div>
-                        </Col>
-                      </Row>
-                    </Col>
-                  </Row>
-                </Card.Body>
-              </Card>
-            </Col>
-            <Col sm="6">
-              <Card className="sh-11 hover-scale-up cursor-pointer">
-                <Card.Body className="h-100 py-3 align-items-center">
-                  <Row className="g-0 h-100 align-items-center">
-                    <Col xs="auto" className="pe-3">
-                      <div className="bg-gradient-light sh-5 sw-5 rounded-xl d-flex justify-content-center align-items-center">
-                        <Alarm className="text-white"></Alarm>
-                      </div>
-                    </Col>
-                    <Col>
-                      <Row className="gx-2 d-flex align-content-center">
-                        <Col xs="12" className="col-12 d-flex">
-                          <div className="d-flex align-items-center lh-1-25">Pending Orders</div>
-                        </Col>
-                        <Col xl="auto" className="col-12">
-                          <div className="cta-2 text-primary">22</div>
-                        </Col>
-                      </Row>
-                    </Col>
-                  </Row>
-                </Card.Body>
-              </Card>
-            </Col>
-            <Col sm="6">
-              <Card className="sh-11 hover-scale-up cursor-pointer">
-                <Card.Body className="h-100 py-3 align-items-center">
-                  <Row className="g-0 h-100 align-items-center">
-                    <Col xs="auto" className="pe-3">
-                      <div className="bg-gradient-light sh-5 sw-5 rounded-xl d-flex justify-content-center align-items-center">
-                        <ArrowRepeat className="text-white"></ArrowRepeat>
-                      </div>
-                    </Col>
-                    <Col>
-                      <Row className="gx-2 d-flex align-content-center">
-                        <Col xs="12" className="col-12 d-flex">
-                          <div className="d-flex align-items-center lh-1-25">
-                            Unconfirmed Orders
-                          </div>
-                        </Col>
-                        <Col xl="auto" className="col-12">
-                          <div className="cta-2 text-primary">3</div>
-                        </Col>
-                      </Row>
-                    </Col>
-                  </Row>
-                </Card.Body>
-              </Card>
-            </Col>
-          </Row>
+          {statisticQuery.isLoading ? (
+            <Spinner animation="border" variant="primary"></Spinner>
+          ) : (
+            <InvoiceStatistics stat={statisticQuery.data}></InvoiceStatistics>
+          )}
           <CompanyWidget></CompanyWidget>
         </Col>
         {/* Categories End */}
