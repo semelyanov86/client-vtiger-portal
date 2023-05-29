@@ -5,7 +5,6 @@ import {
   PencilSquare,
   ArrowBarRight,
   ChevronBarRight,
-  ThreeDotsVertical,
 } from 'react-bootstrap-icons';
 import { useIntl } from 'react-intl';
 import { NavLink } from 'react-router-dom';
@@ -16,6 +15,7 @@ import { CompanyWidget } from '../../company/components/CompanyWidget.tsx';
 import { useStatistics } from '../../statistic/api/getStatistics.ts';
 import { InvoiceStatistics } from '../../statistic/components/InvoiceStatistics.tsx';
 import { TicketStatistics } from '../../statistic/components/TicketStatistics.tsx';
+import { AllUsersWidget } from '../../auth/components/AllUsersWidget.tsx';
 
 export const Home = () => {
   const title = 'Dashboard';
@@ -47,156 +47,7 @@ export const Home = () => {
       <Row>
         <Col xl="6">
           <h2 className="small-title">{f({ id: 'latestRegistration' })}</h2>
-          <Card className="h-50-card mb-n2">
-            <Card.Body>
-              <Row className="g-0 sh-10 sh-sm-7 mb-2">
-                <Col xs="auto">
-                  <img
-                    src="/img/profile/profile-1.webp"
-                    className="card-img rounded-xl sh-6 sw-6"
-                    alt="thumb"
-                  />
-                </Col>
-                <Col>
-                  <div className="d-flex flex-column flex-sm-row ps-4 h-100 align-items-sm-center justify-content-sm-between">
-                    <div className="d-flex flex-column mb-2 mb-sm-0">
-                      <div>Joisse Kaycee</div>
-                      <div className="text-small text-muted">UX Designer</div>
-                    </div>
-                    <div className="d-flex">
-                      <Button variant="outline-secondary ms-1" size="sm">
-                        Edit
-                      </Button>
-                      <Button
-                        variant="outline-secondary"
-                        size="sm"
-                        className="btn-icon btn-icon-only ms-1"
-                      >
-                        <ThreeDotsVertical></ThreeDotsVertical>
-                      </Button>
-                    </div>
-                  </div>
-                </Col>
-              </Row>
-              <Row className="g-0 sh-10 sh-sm-7 mb-2">
-                <Col xs="auto">
-                  <img
-                    src="/img/profile/profile-2.webp"
-                    className="card-img rounded-xl sh-6 sw-6"
-                    alt="thumb"
-                  />
-                </Col>
-                <Col>
-                  <div className="d-flex flex-column flex-sm-row ps-4 h-100 align-items-sm-center justify-content-sm-between">
-                    <div className="d-flex flex-column mb-2 mb-sm-0">
-                      <div>Zayn Hartley</div>
-                      <div className="text-small text-muted">Frontend Developer</div>
-                    </div>
-                    <div className="d-flex">
-                      <Button variant="outline-secondary ms-1" size="sm">
-                        Edit
-                      </Button>
-                      <Button
-                        variant="outline-secondary"
-                        size="sm"
-                        className="btn-icon btn-icon-only ms-1"
-                      >
-                        <ThreeDotsVertical></ThreeDotsVertical>
-                      </Button>
-                    </div>
-                  </div>
-                </Col>
-              </Row>
-              <Row className="g-0 sh-10 sh-sm-7 mb-2">
-                <Col xs="auto">
-                  <img
-                    src="/img/profile/profile-3.webp"
-                    className="card-img rounded-xl sh-6 sw-6"
-                    alt="thumb"
-                  />
-                </Col>
-                <Col>
-                  <div className="d-flex flex-column flex-sm-row ps-4 h-100 align-items-sm-center justify-content-sm-between">
-                    <div className="d-flex flex-column mb-2 mb-sm-0">
-                      <div>Esperanza Lodge</div>
-                      <div className="text-small text-muted">Project Manager</div>
-                    </div>
-                    <div className="d-flex">
-                      <Button variant="outline-secondary ms-1" size="sm">
-                        Edit
-                      </Button>
-                      <Button
-                        variant="outline-secondary"
-                        size="sm"
-                        className="btn-icon btn-icon-only ms-1"
-                      >
-                        <ThreeDotsVertical></ThreeDotsVertical>
-                      </Button>
-                    </div>
-                  </div>
-                </Col>
-              </Row>
-              <Row className="g-0 sh-10 sh-sm-7 mb-2">
-                <Col xs="auto">
-                  <img
-                    src="/img/profile/profile-4.webp"
-                    className="card-img rounded-xl sh-6 sw-6"
-                    alt="thumb"
-                  />
-                </Col>
-                <Col>
-                  <div className="d-flex flex-column flex-sm-row ps-4 h-100 align-items-sm-center justify-content-sm-between">
-                    <div className="d-flex flex-column mb-2 mb-sm-0">
-                      <div>Kathryn Mengel</div>
-                      <div className="text-small text-muted">Executive Team Leader</div>
-                    </div>
-                    <div className="d-flex">
-                      <Button variant="outline-secondary ms-1" size="sm">
-                        Edit
-                      </Button>
-                      <Button
-                        variant="outline-secondary"
-                        size="sm"
-                        className="btn-icon btn-icon-only ms-1"
-                      >
-                        <ThreeDotsVertical></ThreeDotsVertical>
-                      </Button>
-                    </div>
-                  </div>
-                </Col>
-              </Row>
-              <Row className="g-0 sh-10 sh-sm-7 mb-2">
-                <Col xs="auto">
-                  <img
-                    src="/img/profile/profile-5.webp"
-                    className="card-img rounded-xl sh-6 sw-6"
-                    alt="thumb"
-                  />
-                </Col>
-                <Col>
-                  <div className="d-flex flex-column flex-sm-row ps-4 h-100 align-items-sm-center justify-content-sm-between">
-                    <div className="d-flex flex-column mb-2 mb-sm-0">
-                      <div>Luna Wigglebutt</div>
-                      <div className="text-small text-muted">Security Chief</div>
-                    </div>
-                    <div className="d-flex">
-                      <Button variant="outline-secondary ms-1" size="sm">
-                        Edit
-                      </Button>
-                      <Button
-                        variant="outline-secondary"
-                        size="sm"
-                        className="btn-icon btn-icon-only ms-1"
-                      >
-                        <ThreeDotsVertical></ThreeDotsVertical>
-                      </Button>
-                    </div>
-                  </div>
-                </Col>
-              </Row>
-            </Card.Body>
-          </Card>
-
+          <AllUsersWidget></AllUsersWidget>
           {/* Stats Start */}
           <h2 className="small-title mt-3">Stats</h2>
           {statisticQuery.isLoading ? (

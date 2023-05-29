@@ -200,6 +200,8 @@ const enMessages = {
   'general.add-new': 'Add New',
   'general.cancel': 'Cancel',
   'general.edit': 'Edit',
+  'general.view': 'View',
+  'general.no-data': 'No data available',
 };
 
 export default enMessages;

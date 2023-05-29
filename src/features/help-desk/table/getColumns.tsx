@@ -30,6 +30,13 @@ export function getColumns({ onEdit }: getColumnsOptions): Column<HelpDesk>[] {
       accessor: 'ticket_title',
       sortable: true,
       headerClassName: 'text-muted text-small text-uppercase w-10',
+      Cell: ({ cell: { value }, row: { values } }: CellProps<HelpDesk>) => {
+        return (
+          <Link to={'/app/tickets/' + values.id} className="list-item-heading body">
+            {value}
+          </Link>
+        );
+      },
     },
     {
       Header: <FormattedMessage id="tickets.ticketstatus" />,
