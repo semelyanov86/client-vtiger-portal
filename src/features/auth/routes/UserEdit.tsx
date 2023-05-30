@@ -83,7 +83,9 @@ export const UserEdit = () => {
               <Form id="profileEditForm" onSubmit={handleSubmit(onSubmit)}>
                 <Row className="mb-3">
                   <Col lg="2" md="3" sm="4">
-                    <Form.Label className="col-form-label">Name</Form.Label>
+                    <Form.Label className="col-form-label">
+                      <FormattedMessage id="user.firstname"></FormattedMessage>
+                    </Form.Label>
                   </Col>
                   <Col sm="8" md="9" lg="10">
                     <Form.Control
@@ -98,62 +100,110 @@ export const UserEdit = () => {
                 </Row>
                 <Row className="mb-3">
                   <Col lg="2" md="3" sm="4">
-                    <Form.Label className="col-form-label">User Name</Form.Label>
+                    <Form.Label className="col-form-label">
+                      <FormattedMessage id="user.lastname"></FormattedMessage>
+                    </Form.Label>
                   </Col>
                   <Col sm="8" md="9" lg="10">
-                    <Form.Control type="text" defaultValue="writerofrohan" />
+                    <Form.Control
+                      type="text"
+                      {...register('lastname')}
+                      defaultValue={user.lastname}
+                    />
+                    {errors.lastname && (
+                      <div className="d-block invalid-tooltip">{errors.lastname.message}</div>
+                    )}
                   </Col>
                 </Row>
                 <Row className="mb-3">
                   <Col lg="2" md="3" sm="4">
-                    <Form.Label className="col-form-label">Company</Form.Label>
+                    <Form.Label className="col-form-label">
+                      <FormattedMessage id="user.account-name"></FormattedMessage>
+                    </Form.Label>
                   </Col>
                   <Col sm="8" md="9" lg="10">
-                    <Form.Control type="text" />
+                    <Form.Control
+                      type="text"
+                      {...register('account_name')}
+                      defaultValue={user.account_name}
+                    />
+                    {errors.account_name && (
+                      <div className="d-block invalid-tooltip">{errors.account_name.message}</div>
+                    )}
                   </Col>
                 </Row>
                 <Row className="mb-3">
                   <Col lg="2" md="3" sm="4">
-                    <Form.Label className="col-form-label">Location</Form.Label>
+                    <Form.Label className="col-form-label">
+                      <FormattedMessage id="user.title"></FormattedMessage>
+                    </Form.Label>
                   </Col>
                   <Col sm="8" md="9" lg="10">
-                    <Form.Control type="text" />
+                    <Form.Control type="text" {...register('title')} defaultValue={user.title} />
+                    {errors.title && (
+                      <div className="d-block invalid-tooltip">{errors.title.message}</div>
+                    )}
                   </Col>
                 </Row>
                 <Row className="mb-3">
                   <Col lg="2" md="3" sm="4">
-                    <Form.Label className="col-form-label">Birthday</Form.Label>
+                    <Form.Label className="col-form-label">
+                      <FormattedMessage id="user.department"></FormattedMessage>
+                    </Form.Label>
                   </Col>
                   <Col sm="8" md="9" lg="10">
-                    <Form.Control type="text" />
+                    <Form.Control
+                      type="text"
+                      {...register('department')}
+                      defaultValue={user.department}
+                    />
+                    {errors.department && (
+                      <div className="d-block invalid-tooltip">{errors.department.message}</div>
+                    )}
                   </Col>
                 </Row>
                 <Row className="mb-3">
                   <Col lg="2" md="3" sm="4">
-                    <Form.Label className="col-form-label">Gender</Form.Label>
+                    <Form.Label className="col-form-label">
+                      <FormattedMessage id="user.phone"></FormattedMessage>
+                    </Form.Label>
                   </Col>
                   <Col sm="8" md="9" lg="10">
-                    <Form.Control type="text" />
+                    <Form.Control type="text" {...register('phone')} defaultValue={user.phone} />
+                    {errors.phone && (
+                      <div className="d-block invalid-tooltip">{errors.phone.message}</div>
+                    )}
                   </Col>
                 </Row>
                 <Row className="mb-3">
                   <Col lg="2" md="3" sm="4">
-                    <Form.Label className="col-form-label">Bio</Form.Label>
+                    <Form.Label className="col-form-label">
+                      <FormattedMessage id="user.description"></FormattedMessage>
+                    </Form.Label>
                   </Col>
                   <Col sm="8" md="9" lg="10">
                     <Form.Control
                       as="textarea"
                       rows={3}
-                      defaultValue="I'm a Cyborg, But That's OK"
+                      {...register('description')}
+                      defaultValue={user.description}
                     />
+                    {errors.description && (
+                      <div className="d-block invalid-tooltip">{errors.description.message}</div>
+                    )}
                   </Col>
                 </Row>
                 <Row className="mb-3">
                   <Col lg="2" md="3" sm="4">
-                    <Form.Label className="col-form-label">Email</Form.Label>
+                    <Form.Label className="col-form-label">
+                      <FormattedMessage id="user.email"></FormattedMessage>
+                    </Form.Label>
                   </Col>
                   <Col sm="8" md="9" lg="10">
-                    <Form.Control type="email" value="me@lisajackson.com" disabled />
+                    <Form.Control type="email" {...register('email')} defaultValue={user.email} />
+                    {errors.email && (
+                      <div className="d-block invalid-tooltip">{errors.email.message}</div>
+                    )}
                   </Col>
                 </Row>
                 <Row className="mt-5">
