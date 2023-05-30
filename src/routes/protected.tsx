@@ -4,6 +4,7 @@ import { Navigate, Outlet } from 'react-router-dom';
 import { Spinner } from '../components/Elements';
 import { MainLayout } from '../components/Layout';
 import WithAuth from '../features/auth/components/WithAuth.tsx';
+import { UserEdit } from '../features/auth/routes/UserEdit.tsx';
 import { UserInfo } from '../features/auth/routes/UserInfo.tsx';
 import { lazyImport } from '../utils/lazyImport';
 
@@ -43,6 +44,10 @@ export const protectedRoutes = [
       {
         path: 'user/info',
         element: <UserInfo />,
+      },
+      {
+        path: 'user/edit',
+        element: <UserEdit />,
       },
       {
         path: 'tickets/*',

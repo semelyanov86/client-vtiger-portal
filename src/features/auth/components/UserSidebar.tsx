@@ -1,5 +1,5 @@
 import { Card } from 'react-bootstrap';
-import { Geo, Person } from 'react-bootstrap-icons';
+import { Geo } from 'react-bootstrap-icons';
 
 import { AuthUser } from '../types';
 
@@ -8,7 +8,9 @@ interface UserSidebarProps {
 }
 
 export const UserSidebar = ({ user }: UserSidebarProps) => {
-  let image = <Person></Person>;
+  let image = (
+    <img src="/img/profile/profile-11.webp" className="img-fluid rounded-xl" alt={user.lastname} />
+  );
   if (user.imagecontent) {
     image = (
       <img

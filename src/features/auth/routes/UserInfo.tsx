@@ -8,9 +8,9 @@ import { useUserStore } from '../../../stores/user.ts';
 import { ManagerInfo } from '../../manager/components/ManagerInfo.tsx';
 import { LoadManager } from '../../manager/LoadManager.tsx';
 import useManagerStore from '../../manager/stores/manager.ts';
+import { UserAbout } from '../components/UserAbout.tsx';
 import { UserSidebar } from '../components/UserSidebar.tsx';
-
-import { UserAbout } from './UserAbout.tsx';
+import { Link } from 'react-router-dom';
 
 export const UserInfo = () => {
   const { value: user } = useUserStore();
@@ -36,12 +36,17 @@ export const UserInfo = () => {
 
           {/* Top Buttons Start */}
           <Col md="5" className="d-flex align-items-start justify-content-end">
-            <Button
-              variant="outline-primary"
-              className="btn-icon btn-icon-start btn-icon w-100 w-md-auto ms-1"
-            >
-              <PencilSquare /> <span>Edit</span>
-            </Button>
+            <Link to="/app/user/edit">
+              <Button
+                variant="outline-primary"
+                className="btn-icon btn-icon-start btn-icon w-100 w-md-auto ms-1"
+              >
+                <PencilSquare />{' '}
+                <span>
+                  <FormattedMessage id="user.edit"></FormattedMessage>
+                </span>
+              </Button>
+            </Link>
           </Col>
           {/* Top Buttons End */}
         </Row>
