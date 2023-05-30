@@ -19,6 +19,7 @@ import { NotifyError } from '../../../components/Notifications/Notification.tsx'
 import { useCreateToTicketComment } from '../../comment/api/createToTicket.ts';
 import { useCommentsFromTicket } from '../../comment/api/getFromTicket.ts';
 import { CommentList } from '../../comment/components/CommentList.tsx';
+import { DocumentsWidget } from '../../document/components/DocumentsWidget.tsx';
 import { useManager } from '../../manager/api/getManager.ts';
 import { ManagerInfo } from '../../manager/components/ManagerInfo.tsx';
 import { formatToUserReadableDate } from '../../misc/services/Dates.ts';
@@ -147,6 +148,7 @@ export const Ticket = () => {
                     <div className="mt-4">{ticketQuery.data.solution}</div>
                   </div>
                 </div>
+                <DocumentsWidget parentId={ticketId} module="tickets"></DocumentsWidget>
               </Card.Body>
             </Card>
           </Col>

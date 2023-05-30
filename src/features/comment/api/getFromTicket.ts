@@ -1,6 +1,8 @@
 import { useQuery } from 'react-query';
+
+import { NotifyError } from '../../../components/Notifications/Notification.tsx';
 import { axios, DataPaginationResponse } from '../../../lib/axios.ts';
-import { ExtractFnReturnType, QueryConfig } from '../../../lib/react-query.ts';
+import { ExtractFnReturnType } from '../../../lib/react-query.ts';
 import { Comment } from '../types';
 
 export const getCommentsFromTicket = ({
@@ -17,13 +19,14 @@ type QueryFnType = typeof getCommentsFromTicket;
 
 type UseCommentsOptions = {
   ticketId: string;
-  config?: QueryConfig<QueryFnType>;
 };
 
-export const useCommentsFromTicket = ({ ticketId, config }: UseCommentsOptions) => {
-  return useQuery<ExtractFnReturnType<QueryFnType>>({
+export const useCommentsFromTicket = ({ ticketId }: UseCommentsOptions) => {
+  return useQuery<ExtractFnReturnType<QueryFnType>, Error>({
     queryKey: ['comments', ticketId],
     queryFn: () => getCommentsFromTicket({ ticketId }),
-    ...config,
+    onError: (error) => NotifyError(error.message),
+    retry: 3,
+    useErrorBoundary: false,
   });
 };
