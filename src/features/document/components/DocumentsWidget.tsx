@@ -45,7 +45,7 @@ export const DocumentsWidget = ({ parentId, module }: DocumentsWidgetProps) => {
     if (contentQuery.data && selectedDocument == documentId) {
       return (
         <a
-          href={'data:' + contentQuery.data.filetype + ';base64,' + contentQuery.data.filecontenets}
+          href={'data:' + contentQuery.data.filetype + ';base64,' + contentQuery.data.filecontents}
           target="_blank"
           rel="noreferrer"
         >

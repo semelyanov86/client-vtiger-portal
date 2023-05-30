@@ -20,5 +20,5 @@ export interface DocumentContent {
   filename: string;
   filetype: string;
   filesize: number;
-  filecontenets: string;
+  filecontents: string;
 }
