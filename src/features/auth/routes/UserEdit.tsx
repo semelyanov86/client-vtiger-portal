@@ -56,7 +56,31 @@ export const UserEdit = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<FormData>({ resolver: zodResolver(schema) });
+  } = useForm<FormData>({
+    resolver: zodResolver(schema),
+    values: {
+      firstname: user.firstname,
+      lastname: user.lastname,
+      email: user.email,
+      description: user.description,
+      account_name: user.account_name,
+      department: user.department,
+      title: user.title,
+      mailingcity: user.mailingcity,
+      mailingcountry: user.mailingcountry,
+      mailingpobox: user.mailingpobox,
+      mailingstate: user.mailingstate,
+      mailingstreet: user.mailingstreet,
+      mailingzip: user.mailingzip,
+      othercity: user.othercity,
+      othercountry: user.othercountry,
+      otherpobox: user.otherpobox,
+      otherstate: user.otherstate,
+      otherstreet: user.otherstreet,
+      otherzip: user.otherzip,
+      phone: user.phone,
+    },
+  });
 
   return (
     <>
@@ -93,11 +117,7 @@ export const UserEdit = () => {
                     </Form.Label>
                   </Col>
                   <Col sm="8" md="9" lg="10">
-                    <Form.Control
-                      type="text"
-                      {...register('firstname')}
-                      defaultValue={user.firstname}
-                    />
+                    <Form.Control type="text" {...register('firstname')} />
                     {errors.firstname && (
                       <div className="d-block invalid-tooltip">{errors.firstname.message}</div>
                     )}
@@ -110,11 +130,7 @@ export const UserEdit = () => {
                     </Form.Label>
                   </Col>
                   <Col sm="8" md="9" lg="10">
-                    <Form.Control
-                      type="text"
-                      {...register('lastname')}
-                      defaultValue={user.lastname}
-                    />
+                    <Form.Control type="text" {...register('lastname')} />
                     {errors.lastname && (
                       <div className="d-block invalid-tooltip">{errors.lastname.message}</div>
                     )}
@@ -127,11 +143,7 @@ export const UserEdit = () => {
                     </Form.Label>
                   </Col>
                   <Col sm="8" md="9" lg="10">
-                    <Form.Control
-                      type="text"
-                      {...register('account_name')}
-                      defaultValue={user.account_name}
-                    />
+                    <Form.Control type="text" {...register('account_name')} />
                     {errors.account_name && (
                       <div className="d-block invalid-tooltip">{errors.account_name.message}</div>
                     )}
@@ -384,7 +396,7 @@ export const UserEdit = () => {
                 <Row className="mt-5">
                   <Col lg="2" md="3" sm="4" />
                   <Col sm="8" md="9" lg="10">
-                    <Button variant="outline-primary" className="mb-1">
+                    <Button type="submit" variant="outline-primary" className="mb-1">
                       <FormattedMessage id="user.update"></FormattedMessage>
                     </Button>
                   </Col>
