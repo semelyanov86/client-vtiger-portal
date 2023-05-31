@@ -9,6 +9,7 @@ import { lazyImport } from '../utils/lazyImport';
 
 const { Home } = lazyImport(() => import('../features/home/routes/Home.tsx'), 'Home');
 const { TicketsRoutes } = lazyImport(() => import('../features/help-desk'), 'TicketsRoutes');
+const { ProjectRoutes } = lazyImport(() => import('../features/project'), 'ProjectRoutes');
 const { FaqsRoutes } = lazyImport(() => import('../features/faq'), 'FaqsRoutes');
 const { UserEdit } = lazyImport(() => import('../features/auth/routes/UserEdit.tsx'), 'UserEdit');
 
@@ -53,6 +54,10 @@ export const protectedRoutes = [
       {
         path: 'tickets/*',
         element: <TicketsRoutes />,
+      },
+      {
+        path: 'projects/*',
+        element: <ProjectRoutes />,
       },
       {
         path: 'faq/*',
