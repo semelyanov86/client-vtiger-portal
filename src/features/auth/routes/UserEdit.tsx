@@ -11,6 +11,7 @@ import { useUserStore } from '../../../stores/user.ts';
 import { updateUser } from '../api/update.ts';
 import { UserSidebar } from '../components/UserSidebar.tsx';
 import { AuthUser } from '../types';
+import { queryClient } from '../../../lib/react-query.ts';
 
 const schema = z.object({
   email: z.string().min(1, 'Required').email('Should be a valid email address'),
@@ -48,7 +49,10 @@ export const UserEdit = () => {
 
   const onSubmit = (data: FieldValues) => {
     updateUser(data as AuthUser)
-      .then(() => NotifySuccess('Data successfully updated!'))
+      .then(() => {
+        NotifySuccess('Data successfully updated!');
+        queryClient.refetchQueries(['user']);
+      })
       .catch((error) => NotifyError(error.message));
   };
 

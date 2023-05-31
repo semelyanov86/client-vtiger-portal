@@ -120,6 +120,29 @@ const ruMessages = {
   'comments.send': 'Send',
   'comments.sending': 'Sending',
 
+  'faq.faqcategories': 'Category of FAQ',
+  'faq.list': 'Faqs',
+  'faq.General': 'General',
+  'faq.faqstatus': 'Status',
+  'faq.question': 'Question',
+  'faq.faq_answer': 'Answer',
+  'faq.no-faqs': 'No Faqs available',
+  'faq.more-details': 'Need more details?',
+  'faq.read-docs': 'Read our blog!',
+  'faq.docs-content':
+    'Here you can find valuable articles about business automatization and news about IT in B2B market.',
+  'faq.blog': 'Blog',
+  'faq.specific-issue': 'Have a specific issue?',
+  'faq.check-forum': 'Check Vtiger forum!',
+  'faq.forum-text':
+    'We are almost sure, that somebody already had an issue and can tell you an answer about your problem. Just ask a community!',
+  'faq.forums': 'Forums',
+  'faq.look-support': 'Looking for support?',
+  'faq.submit-ticket': 'Submit a ticket!',
+  'faq.ticket-content':
+    'We will try to solve a problem a soon as possible and write a solution for you. Just go to tickets page and sumbit new ticket!',
+  'faq.support': 'Support',
+
   'stat.tickets.total': 'Total Tickets',
   'stat.tickets.total-helper': 'Total number of Tickets',
   'stat.tickets.open': 'Open Tickets',

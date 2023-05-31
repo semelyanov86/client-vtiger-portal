@@ -13,6 +13,7 @@ const appRoot = DEFAULT_PATHS.APP.endsWith('/')
 
 const { Home } = lazyImport(() => import('../features/home/routes/Home.tsx'), 'Home');
 const { Tickets } = lazyImport(() => import('../features/help-desk/routes/Tickets.tsx'), 'Tickets');
+const { Faqs } = lazyImport(() => import('../features/faq/routes/Faqs.tsx'), 'Faqs');
 
 export const menuRoutes: MenuRoutesInterface = {
   mainMenuItems: [
@@ -33,6 +34,12 @@ export const menuRoutes: MenuRoutesInterface = {
       component: Tickets,
       label: 'Tickets',
       icon: 'StickiesFill',
+    },
+    {
+      path: `${appRoot}/app/faq`,
+      component: Faqs,
+      label: 'FAQ',
+      icon: 'QuestionSquare',
     },
   ],
   sidebarItems: [],
