@@ -16,6 +16,14 @@ export type AuthUser = {
   mailingstreet: string;
   mailingcountry: string;
   mailingstate: string;
+  mailingzip: string;
+  mailingpobox: string;
+  othercity: string;
+  otherstreet: string;
+  othercountry: string;
+  otherstate: string;
+  otherpobox: string;
+  otherzip: string;
   image: string;
   imagecontent: string;
   assigned_user_id: string;

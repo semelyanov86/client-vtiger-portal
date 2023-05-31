@@ -42,6 +42,8 @@ const ruMessages = {
   'user.mailing-street': 'Mailing Street',
   'user.mailing-country': 'Mailing Country',
   'user.mailing-state': 'Mailing State',
+  'user.mailing-zip': 'Mailing Zip',
+  'user.mailing-pobox': 'Mailing PO Box',
   'user.phone': 'Phone',
   'user.other-country': 'Other Country',
   'user.other-city': 'Other City',
@@ -49,6 +51,7 @@ const ruMessages = {
   'user.other-zip': 'Other Zip',
   'user.other-street': 'Other Street',
   'user.other-po-box': 'Other PO Box',
+  'user.update': 'Update',
 
   'manager.name': 'Name',
   'manager.email': 'Email',

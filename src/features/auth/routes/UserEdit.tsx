@@ -6,8 +6,11 @@ import { z } from 'zod';
 
 import { BreadcrumbList } from '../../../components/Elements/Breadcrumbs/BreadcrumbList.tsx';
 import { Head } from '../../../components/Head';
+import { NotifyError, NotifySuccess } from '../../../components/Notifications/Notification.tsx';
 import { useUserStore } from '../../../stores/user.ts';
+import { updateUser } from '../api/update.ts';
 import { UserSidebar } from '../components/UserSidebar.tsx';
+import { AuthUser } from '../types';
 
 const schema = z.object({
   email: z.string().min(1, 'Required').email('Should be a valid email address'),
@@ -44,7 +47,9 @@ export const UserEdit = () => {
   ];
 
   const onSubmit = (data: FieldValues) => {
-    console.log(data);
+    updateUser(data as AuthUser)
+      .then(() => NotifySuccess('Data successfully updated!'))
+      .catch((error) => NotifyError(error.message));
   };
 
   const {
@@ -206,11 +211,181 @@ export const UserEdit = () => {
                     )}
                   </Col>
                 </Row>
+                <Row className="mb-3">
+                  <Col lg="2" md="3" sm="4">
+                    <Form.Label className="col-form-label">
+                      <FormattedMessage id="user.mailing-zip"></FormattedMessage>
+                    </Form.Label>
+                  </Col>
+                  <Col sm="8" md="9" lg="10">
+                    <Form.Control
+                      type="text"
+                      {...register('mailingzip')}
+                      defaultValue={user.mailingzip}
+                    />
+                    {errors.mailingzip && (
+                      <div className="d-block invalid-tooltip">{errors.mailingzip.message}</div>
+                    )}
+                  </Col>
+                </Row>
+                <Row className="mb-3">
+                  <Col lg="2" md="3" sm="4">
+                    <Form.Label className="col-form-label">
+                      <FormattedMessage id="user.mailing-pobox"></FormattedMessage>
+                    </Form.Label>
+                  </Col>
+                  <Col sm="8" md="9" lg="10">
+                    <Form.Control
+                      type="text"
+                      {...register('mailingpobox')}
+                      defaultValue={user.mailingpobox}
+                    />
+                    {errors.mailingpobox && (
+                      <div className="d-block invalid-tooltip">{errors.mailingpobox.message}</div>
+                    )}
+                  </Col>
+                </Row>
+                <Row className="mb-3">
+                  <Col lg="2" md="3" sm="4">
+                    <Form.Label className="col-form-label">
+                      <FormattedMessage id="user.mailing-country"></FormattedMessage>
+                    </Form.Label>
+                  </Col>
+                  <Col sm="8" md="9" lg="10">
+                    <Form.Control
+                      type="text"
+                      {...register('mailingcountry')}
+                      defaultValue={user.mailingcountry}
+                    />
+                    {errors.mailingcountry && (
+                      <div className="d-block invalid-tooltip">{errors.mailingcountry.message}</div>
+                    )}
+                  </Col>
+                </Row>
+                <Row className="mb-3">
+                  <Col lg="2" md="3" sm="4">
+                    <Form.Label className="col-form-label">
+                      <FormattedMessage id="user.mailing-state"></FormattedMessage>
+                    </Form.Label>
+                  </Col>
+                  <Col sm="8" md="9" lg="10">
+                    <Form.Control
+                      type="text"
+                      {...register('mailingstate')}
+                      defaultValue={user.mailingstate}
+                    />
+                    {errors.mailingstate && (
+                      <div className="d-block invalid-tooltip">{errors.mailingstate.message}</div>
+                    )}
+                  </Col>
+                </Row>
+                <Row className="mb-3">
+                  <Col lg="2" md="3" sm="4">
+                    <Form.Label className="col-form-label">
+                      <FormattedMessage id="user.mailing-street"></FormattedMessage>
+                    </Form.Label>
+                  </Col>
+                  <Col sm="8" md="9" lg="10">
+                    <Form.Control
+                      type="text"
+                      {...register('mailingstreet')}
+                      defaultValue={user.mailingstreet}
+                    />
+                    {errors.mailingstreet && (
+                      <div className="d-block invalid-tooltip">{errors.mailingstreet.message}</div>
+                    )}
+                  </Col>
+                </Row>
+                <Row className="mb-3">
+                  <Col lg="2" md="3" sm="4">
+                    <Form.Label className="col-form-label">
+                      <FormattedMessage id="user.other-zip"></FormattedMessage>
+                    </Form.Label>
+                  </Col>
+                  <Col sm="8" md="9" lg="10">
+                    <Form.Control
+                      type="text"
+                      {...register('otherzip')}
+                      defaultValue={user.otherzip}
+                    />
+                    {errors.otherzip && (
+                      <div className="d-block invalid-tooltip">{errors.otherzip.message}</div>
+                    )}
+                  </Col>
+                </Row>
+                <Row className="mb-3">
+                  <Col lg="2" md="3" sm="4">
+                    <Form.Label className="col-form-label">
+                      <FormattedMessage id="user.other-po-box"></FormattedMessage>
+                    </Form.Label>
+                  </Col>
+                  <Col sm="8" md="9" lg="10">
+                    <Form.Control
+                      type="text"
+                      {...register('otherpobox')}
+                      defaultValue={user.otherpobox}
+                    />
+                    {errors.otherpobox && (
+                      <div className="d-block invalid-tooltip">{errors.otherpobox.message}</div>
+                    )}
+                  </Col>
+                </Row>
+                <Row className="mb-3">
+                  <Col lg="2" md="3" sm="4">
+                    <Form.Label className="col-form-label">
+                      <FormattedMessage id="user.other-country"></FormattedMessage>
+                    </Form.Label>
+                  </Col>
+                  <Col sm="8" md="9" lg="10">
+                    <Form.Control
+                      type="text"
+                      {...register('othercountry')}
+                      defaultValue={user.othercountry}
+                    />
+                    {errors.othercountry && (
+                      <div className="d-block invalid-tooltip">{errors.othercountry.message}</div>
+                    )}
+                  </Col>
+                </Row>
+                <Row className="mb-3">
+                  <Col lg="2" md="3" sm="4">
+                    <Form.Label className="col-form-label">
+                      <FormattedMessage id="user.other-state"></FormattedMessage>
+                    </Form.Label>
+                  </Col>
+                  <Col sm="8" md="9" lg="10">
+                    <Form.Control
+                      type="text"
+                      {...register('otherstate')}
+                      defaultValue={user.otherstate}
+                    />
+                    {errors.otherstate && (
+                      <div className="d-block invalid-tooltip">{errors.otherstate.message}</div>
+                    )}
+                  </Col>
+                </Row>
+                <Row className="mb-3">
+                  <Col lg="2" md="3" sm="4">
+                    <Form.Label className="col-form-label">
+                      <FormattedMessage id="user.other-street"></FormattedMessage>
+                    </Form.Label>
+                  </Col>
+                  <Col sm="8" md="9" lg="10">
+                    <Form.Control
+                      type="text"
+                      {...register('otherstreet')}
+                      defaultValue={user.otherstreet}
+                    />
+                    {errors.otherstreet && (
+                      <div className="d-block invalid-tooltip">{errors.otherstreet.message}</div>
+                    )}
+                  </Col>
+                </Row>
                 <Row className="mt-5">
                   <Col lg="2" md="3" sm="4" />
                   <Col sm="8" md="9" lg="10">
                     <Button variant="outline-primary" className="mb-1">
-                      Update
+                      <FormattedMessage id="user.update"></FormattedMessage>
                     </Button>
                   </Col>
                 </Row>
