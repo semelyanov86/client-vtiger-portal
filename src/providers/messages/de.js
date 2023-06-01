@@ -144,6 +144,9 @@ const deMessages = {
   'faq.ticket-content':
     'We will try to solve a problem a soon as possible and write a solution for you. Just go to tickets page and sumbit new ticket!',
   'faq.support': 'Support',
+  'faq.view': 'View',
+  'faq.close': 'Close',
+  'faq.extend-knowledge': 'Extend Your Knowledge',
 
   'project.list': 'Project List',
   'project.projectname': 'Project Name',

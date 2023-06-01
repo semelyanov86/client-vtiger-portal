@@ -1,21 +1,16 @@
 import { Col, Button, Row, Card, Spinner } from 'react-bootstrap';
-import {
-  Pencil,
-  Recycle,
-  PencilSquare,
-  ArrowBarRight,
-  ChevronBarRight,
-} from 'react-bootstrap-icons';
-import { useIntl } from 'react-intl';
+import { Pencil, Recycle, PencilSquare } from 'react-bootstrap-icons';
+import { FormattedMessage, useIntl } from 'react-intl';
 import { NavLink } from 'react-router-dom';
 
 import { BreadcrumbList } from '../../../components/Elements/Breadcrumbs/BreadcrumbList.tsx';
 import { Head } from '../../../components/Head';
+import { AllUsersWidget } from '../../auth/components/AllUsersWidget.tsx';
 import { CompanyWidget } from '../../company/components/CompanyWidget.tsx';
+import { ExtendKnowledge } from '../../faq/components/templates/ExtendKnowledge.tsx';
 import { useStatistics } from '../../statistic/api/getStatistics.ts';
 import { InvoiceStatistics } from '../../statistic/components/InvoiceStatistics.tsx';
 import { TicketStatistics } from '../../statistic/components/TicketStatistics.tsx';
-import { AllUsersWidget } from '../../auth/components/AllUsersWidget.tsx';
 
 export const Home = () => {
   const title = 'Dashboard';
@@ -412,55 +407,10 @@ export const Home = () => {
 
       {/* Extend Your Knowledge Start */}
       <Row>
-        <h2 className="small-title">Extend Your Knowledge</h2>
-        <Col md="4" className="mb-5">
-          <Card className="w-100 sh-20 sh-md-22 hover-img-scale-up">
-            <div className="card-img-overlay d-flex flex-column justify-content-between bg-transparent">
-              <div className="d-flex flex-column h-100 justify-content-between align-items-start">
-                <div className="cta-3 text-black">
-                  Introduction
-                  <br />
-                  to Bread Making
-                </div>
-                <Button variant="primary" className="btn-icon btn-icon-start mt-3 stretched-link">
-                  <ArrowBarRight /> <span>View</span>
-                </Button>
-              </div>
-            </div>
-          </Card>
-        </Col>
-        <Col md="4" className="mb-5">
-          <Card className="w-100 sh-20 sh-md-22 hover-img-scale-up">
-            <div className="card-img-overlay d-flex flex-column justify-content-between bg-transparent">
-              <div className="d-flex flex-column h-100 justify-content-between align-items-start">
-                <div className="cta-3 text-black">
-                  Basic Principles
-                  <br />
-                  of Cooking
-                </div>
-                <Button variant="primary" className="btn-icon btn-icon-start mt-3 stretched-link">
-                  <ChevronBarRight /> <span>View</span>
-                </Button>
-              </div>
-            </div>
-          </Card>
-        </Col>
-        <Col md="4" className="mb-5">
-          <Card className="w-100 sh-20 sh-md-22 hover-img-scale-up">
-            <div className="card-img-overlay d-flex flex-column justify-content-between bg-transparent">
-              <div className="d-flex flex-column h-100 justify-content-between align-items-start">
-                <div className="cta-3 text-black">
-                  Easy & Practical
-                  <br />
-                  Recipes
-                </div>
-                <Button variant="primary" className="btn-icon btn-icon-start mt-3 stretched-link">
-                  <ChevronBarRight /> <span>View</span>
-                </Button>
-              </div>
-            </div>
-          </Card>
-        </Col>
+        <h2 className="small-title">
+          <FormattedMessage id="faq.extend-knowledge"></FormattedMessage>
+        </h2>
+        <ExtendKnowledge></ExtendKnowledge>
       </Row>
       {/* Extend Your Knowledge End */}
     </>
