@@ -48,3 +48,5 @@ export const USER_ROLE = {
 };
 
 export const DEFAULT_PAGE_COUNT = 10;
+
+export const DEFAULT_PRODUCT_MODULES = ['services'];

@@ -3,9 +3,8 @@ import { useMutation } from 'react-query';
 import { NotifySuccess } from '../../../components/Notifications/Notification.tsx';
 import { axios } from '../../../lib/axios.ts';
 import { MutationConfig, queryClient } from '../../../lib/react-query.ts';
+import { RequestQuery } from '../../misc/types/query.ts';
 import HelpDesk from '../types';
-
-import { HelpDeskQuery } from './getTickets.ts';
 
 export type ChangeTicketStatusDTO = {
   data: {
@@ -19,7 +18,7 @@ export const changeTicketStatus = ({ data, id }: ChangeTicketStatusDTO): Promise
 };
 
 type UseChangeTicketStatusOptions = {
-  query?: HelpDeskQuery | undefined;
+  query?: RequestQuery | undefined;
   config?: MutationConfig<typeof changeTicketStatus>;
 };
 

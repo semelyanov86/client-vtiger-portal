@@ -5,16 +5,16 @@ import { FormattedMessage } from 'react-intl';
 import { z } from 'zod';
 
 import { NotifyError } from '../../../components/Notifications/Notification.tsx';
+import { RequestQuery } from '../../misc/types/query.ts';
 import { getPicklistValues } from '../../module/services/fields.ts';
 import useModulesStore from '../../module/stores/module.ts';
 import { useTicket } from '../api/getTicket.ts';
-import { HelpDeskQuery } from '../api/getTickets.ts';
 import { useUpdateTicket } from '../api/updateTicket.ts';
 
 interface EditTicketModalProps {
   ticketId: string;
   onHide: (ticketId: string) => void;
-  query: HelpDeskQuery;
+  query: RequestQuery;
 }
 
 const schema = z.object({

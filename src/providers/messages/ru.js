@@ -4,6 +4,8 @@ const ruMessages = {
   Tickets: 'Tickets',
   Projects: 'Projects',
   FAQ: 'FAQ',
+  products: 'Products',
+  services: 'Services',
   'company.name': 'Company Name',
   'company.address': 'Company Address',
   'company.city': 'City',

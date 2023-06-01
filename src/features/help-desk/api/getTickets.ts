@@ -2,14 +2,8 @@ import ms from 'ms';
 import { useQuery } from 'react-query';
 
 import { axios } from '../../../lib/axios';
+import { RequestQuery } from '../../misc/types/query.ts';
 import HelpDesk from '../types';
-
-export interface HelpDeskQuery {
-  page: number;
-  size: number;
-  search: string;
-  sort: string;
-}
 
 interface HelpDeskResult {
   data: HelpDesk[];
@@ -18,7 +12,7 @@ interface HelpDeskResult {
   size: number;
 }
 
-export const getTickets = (query: HelpDeskQuery): Promise<HelpDeskResult> => {
+export const getTickets = (query: RequestQuery): Promise<HelpDeskResult> => {
   return axios
     .get<HelpDeskResult>('/tickets/', {
       params: {
@@ -33,7 +27,7 @@ export const getTickets = (query: HelpDeskQuery): Promise<HelpDeskResult> => {
     });
 };
 
-export const useTickets = (query: HelpDeskQuery) => {
+export const useTickets = (query: RequestQuery) => {
   return useQuery<HelpDeskResult, Error>({
     queryKey: ['tickets', query],
     queryFn: () => getTickets(query),

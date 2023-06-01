@@ -4,29 +4,34 @@ import { useQuery } from 'react-query';
 import { NotifyError } from '../../../components/Notifications/Notification.tsx';
 import { axios, DataPaginationResponse } from '../../../lib/axios.ts';
 import { RequestQuery } from '../../misc/types/query.ts';
-import { Project } from '../types';
+import { Service } from '../types';
 
-export const getProjects = (query: RequestQuery): Promise<DataPaginationResponse<Project>> => {
+export interface ServiceQuery extends RequestQuery {
+  discontinued: boolean;
+}
+
+export const getServices = (query: ServiceQuery): Promise<DataPaginationResponse<Service>> => {
   return axios
-    .get<DataPaginationResponse<Project>>('/projects/', {
+    .get<DataPaginationResponse<Service>>('/services/', {
       params: {
         page: query.page,
         size: query.size,
         search: query.search,
         sort: query.sort,
+        discontinued: query.discontinued,
       },
     })
     .then((res) => res.data);
 };
 
-export const useProjects = (query: RequestQuery) => {
-  return useQuery<DataPaginationResponse<Project>, Error>({
-    queryKey: ['projects', query],
-    queryFn: () => getProjects(query),
+export const useServices = (query: ServiceQuery) => {
+  return useQuery<DataPaginationResponse<Service>, Error>({
+    queryKey: ['services', query],
+    queryFn: () => getServices(query),
     onError: (error) => NotifyError(error.message),
     retry: 3,
-    cacheTime: ms('2 hours'),
-    staleTime: ms('1 hour'),
+    cacheTime: ms('3 days'),
+    staleTime: ms('2 days'),
     useErrorBoundary: false,
   });
 };
