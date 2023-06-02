@@ -6,6 +6,7 @@ export interface Project extends Entity {
   targetenddate: string;
   actualenddate: string;
   projectstatus: string;
+  created_time: string;
   projecttype: string;
   project_no: string;
   targetbudget: string;
@@ -13,4 +14,18 @@ export interface Project extends Entity {
   projectpriority: string;
   progress: string;
   potentialid: string;
+  statistics: CurrentProjectStatistics;
+}
+
+interface CurrentProjectStatistics {
+  total_tasks?: number;
+  total_hours?: number;
+  open_tasks?: number;
+  closed_tasks?: number;
+  in_progress_tasks?: number;
+  deferred_tasks?: number;
+  cancelled_tasks?: number;
+  low_tasks?: number;
+  normal_tasks?: number;
+  high_tasks?: number;
 }

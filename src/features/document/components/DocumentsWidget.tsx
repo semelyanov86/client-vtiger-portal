@@ -15,7 +15,7 @@ interface DocumentsWidgetProps {
 
 export const DocumentsWidget = ({ parentId, module }: DocumentsWidgetProps) => {
   const [selectedDocument, setSelectedDocument] = useState('');
-  const documentsQuery = useDocumentsFromTicket({ ticketId: parentId ?? '' });
+  const documentsQuery = useDocumentsFromTicket({ ticketId: parentId ?? '', module: module });
   const contentQuery = useDocumentContent({
     ticketId: parentId ?? '',
     fileId: selectedDocument,

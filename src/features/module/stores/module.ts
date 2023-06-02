@@ -5,14 +5,21 @@ import { Module } from '../types';
 
 interface ModulesState {
   HelpDesk: Module;
+  Project: Module;
   setHelpDesk: (value: Module) => void;
+  setProject: (value: Module) => void;
 }
 
 const useModulesStore = create<ModulesState>((set) => ({
   HelpDesk: {} as Module,
+  Project: {} as Module,
   setHelpDesk: (value: Module) =>
     set(() => ({
       HelpDesk: value,
+    })),
+  setProject: (value: Module) =>
+    set(() => ({
+      Project: value,
     })),
 }));
 
