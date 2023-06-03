@@ -1,4 +1,4 @@
-import { Col, Row, Card, Spinner } from 'react-bootstrap';
+import { Col, Row, Spinner } from 'react-bootstrap';
 import { FormattedMessage, useIntl } from 'react-intl';
 
 import { BreadcrumbList } from '../../../components/Elements/Breadcrumbs/BreadcrumbList.tsx';
@@ -9,6 +9,7 @@ import { ExtendKnowledge } from '../../faq/components/templates/ExtendKnowledge.
 import { useStatistics } from '../../statistic/api/getStatistics.ts';
 import { InvoiceStatistics } from '../../statistic/components/InvoiceStatistics.tsx';
 import { TicketStatistics } from '../../statistic/components/TicketStatistics.tsx';
+import { ProgressTasks } from '../../task/widgets/ProgressTasks.tsx';
 import { ProductWidget } from '../widgets/ProductWidget.tsx';
 
 export const Home = () => {
@@ -60,74 +61,10 @@ export const Home = () => {
       <Row>
         {/* Tasks Start */}
         <Col lg="6" className="mb-5">
-          <h2 className="small-title">Project Tasks</h2>
-          <Card className="h-100-card">
-            <Card.Body className="mb-n2 h-100">
-              <div className="mb-2">
-                <label className="form-check w-100 checked-line-through checked-opacity-75">
-                  <input type="checkbox" className="form-check-input" defaultChecked />
-                  <span className="form-check-label d-block">
-                    <span>Create Wireframes</span>
-                    <span className="text-muted d-block text-small mt-0">Today 09:00</span>
-                  </span>
-                </label>
-              </div>
-              <div className="mb-2">
-                <label className="form-check w-100 checked-line-through checked-opacity-75">
-                  <input type="checkbox" className="form-check-input" defaultChecked />
-                  <span className="form-check-label d-block">
-                    <span>Meeting with the team</span>
-                    <span className="text-muted d-block text-small mt-0">Today 13:00</span>
-                  </span>
-                </label>
-              </div>
-              <div className="mb-2">
-                <label className="form-check w-100 checked-line-through checked-opacity-75">
-                  <input type="checkbox" className="form-check-input" defaultChecked />
-                  <span className="form-check-label d-block">
-                    <span>Business lunch with clients</span>
-                    <span className="text-muted d-block text-small mt-0">Today 14:00</span>
-                  </span>
-                </label>
-              </div>
-              <div className="mb-2">
-                <label className="form-check w-100 checked-line-through checked-opacity-75">
-                  <input type="checkbox" className="form-check-input" defaultChecked />
-                  <span className="form-check-label d-block">
-                    <span>Training with the team</span>
-                    <span className="text-muted d-block text-small mt-0">Today 15:00</span>
-                  </span>
-                </label>
-              </div>
-              <div className="mb-2">
-                <label className="form-check w-100 checked-line-through checked-opacity-75">
-                  <input type="checkbox" className="form-check-input" />
-                  <span className="form-check-label d-block">
-                    <span>Account meeting</span>
-                    <span className="text-muted d-block text-small mt-0">Today 17:00</span>
-                  </span>
-                </label>
-              </div>
-              <div className="mb-2">
-                <label className="form-check w-100 checked-line-through checked-opacity-75">
-                  <input type="checkbox" className="form-check-input" />
-                  <span className="form-check-label d-block">
-                    <span>Gym</span>
-                    <span className="text-muted d-block text-small mt-0">Today 17:30</span>
-                  </span>
-                </label>
-              </div>
-              <div className="mb-2">
-                <label className="form-check w-100 checked-line-through checked-opacity-75">
-                  <input type="checkbox" className="form-check-input" />
-                  <span className="form-check-label d-block">
-                    <span>Dinner with the family</span>
-                    <span className="text-muted d-block text-small mt-0">Today 19:30</span>
-                  </span>
-                </label>
-              </div>
-            </Card.Body>
-          </Card>
+          <h2 className="small-title">
+            <FormattedMessage id="project.progress-tasks" />
+          </h2>
+          <ProgressTasks></ProgressTasks>
         </Col>
         {/* Tasks End */}
 

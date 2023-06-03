@@ -203,6 +203,7 @@ const deMessages = {
   'project.createdtime': 'Created Time',
   'project.documents': 'Attached documents',
   'project.comments': 'Comments',
+  'project.progress-tasks': 'Tasks at in progress projects',
 
   'tasks.tasks': 'Project Tasks',
 
