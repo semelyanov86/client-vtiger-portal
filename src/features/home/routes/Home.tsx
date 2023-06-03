@@ -6,11 +6,13 @@ import { Head } from '../../../components/Head';
 import { AllUsersWidget } from '../../auth/components/AllUsersWidget.tsx';
 import { CompanyWidget } from '../../company/components/CompanyWidget.tsx';
 import { ExtendKnowledge } from '../../faq/components/templates/ExtendKnowledge.tsx';
+import { LeadForm } from '../../leads/widgets/LeadForm.tsx';
 import { useStatistics } from '../../statistic/api/getStatistics.ts';
 import { InvoiceStatistics } from '../../statistic/components/InvoiceStatistics.tsx';
 import { TicketStatistics } from '../../statistic/components/TicketStatistics.tsx';
 import { ProgressTasks } from '../../task/widgets/ProgressTasks.tsx';
 import { ProductWidget } from '../widgets/ProductWidget.tsx';
+import { VideoPresentation } from '../widgets/VideoPresentation.tsx';
 
 export const Home = () => {
   const title = 'Dashboard';
@@ -89,6 +91,18 @@ export const Home = () => {
         <ExtendKnowledge></ExtendKnowledge>
       </Row>
       {/* Extend Your Knowledge End */}
+      <Row>
+        <Col lg="4" className="mb-5">
+          <h2 className="small-title">
+            <FormattedMessage id="leads.recommend"></FormattedMessage>
+          </h2>
+          <LeadForm></LeadForm>
+        </Col>
+        <Col lg="8" className="mb-5">
+          <h2 className="small-title">Watch demo of Vtiger CRM</h2>
+          <VideoPresentation></VideoPresentation>
+        </Col>
+      </Row>
     </>
   );
 };

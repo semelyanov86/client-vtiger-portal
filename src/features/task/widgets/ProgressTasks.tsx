@@ -28,6 +28,7 @@ export const ProgressTasks = () => {
                 type="checkbox"
                 className="form-check-input"
                 checked={task.projecttaskstatus == 'Closed'}
+                readOnly={true}
               />
               <span className="form-check-label d-block">
                 <span>{task.projecttaskname}</span>

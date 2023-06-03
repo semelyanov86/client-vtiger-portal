@@ -230,6 +230,11 @@ const ruMessages = {
   'stat.invoices.paid': 'Paid Invoices and Amount',
   'stat.tasks.in-progress': 'Tasks in current projects and hours',
 
+  'leads.recommend': 'Recommend Us To Your Friend',
+  'leads.recommend-content':
+    'If you have a friend, who is interested in our services, just send us his contact\n' +
+    '        information, we will contact him shortly.',
+
   'menu.default': 'Default',
   'menu.visual': 'Visual',
   'menu.analytic': 'Analytic',
