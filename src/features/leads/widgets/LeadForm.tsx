@@ -7,6 +7,7 @@ import { z } from 'zod';
 
 import { NotifyError, NotifySuccess } from '../../../components/Notifications/Notification.tsx';
 import { createLead } from '../api/createLead.ts';
+import { LeadDTO } from '../types';
 
 const schema = z.object({
   lastname: z.string().min(3),
@@ -25,7 +26,7 @@ export const LeadForm = () => {
 
   const onSubmit = async (data: FieldValues) => {
     try {
-      await createLead(data.data);
+      await createLead(data as LeadDTO);
       NotifySuccess('Thank you. We will contact soon');
     } catch (e: any) {
       NotifyError(e.message);
