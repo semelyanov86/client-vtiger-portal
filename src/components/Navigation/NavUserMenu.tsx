@@ -105,7 +105,9 @@ const NavUserMenuContent = () => {
         <Col xs="6" className="ps-1 pe-1">
           <ul className="list-unstyled">
             <li>
-              <a href="#/!">Security</a>
+              <NavLink to="/app/user/security">
+                <FormattedMessage id="otp.header"></FormattedMessage>
+              </NavLink>
             </li>
             <li>
               <a href="#/!">Billing</a>

@@ -12,6 +12,10 @@ const { TicketsRoutes } = lazyImport(() => import('../features/help-desk'), 'Tic
 const { ProjectRoutes } = lazyImport(() => import('../features/project'), 'ProjectRoutes');
 const { FaqsRoutes } = lazyImport(() => import('../features/faq'), 'FaqsRoutes');
 const { UserEdit } = lazyImport(() => import('../features/auth/routes/UserEdit.tsx'), 'UserEdit');
+const { UserSecurity } = lazyImport(
+  () => import('../features/auth/routes/UserSecurity.tsx'),
+  'UserSecurity'
+);
 
 const App = () => {
   return (
@@ -50,6 +54,10 @@ export const protectedRoutes = [
       {
         path: 'user/edit',
         element: <UserEdit />,
+      },
+      {
+        path: 'user/security',
+        element: <UserSecurity />,
       },
       {
         path: 'tickets/*',

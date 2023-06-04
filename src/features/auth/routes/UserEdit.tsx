@@ -7,11 +7,11 @@ import { z } from 'zod';
 import { BreadcrumbList } from '../../../components/Elements/Breadcrumbs/BreadcrumbList.tsx';
 import { Head } from '../../../components/Head';
 import { NotifyError, NotifySuccess } from '../../../components/Notifications/Notification.tsx';
+import { queryClient } from '../../../lib/react-query.ts';
 import { useUserStore } from '../../../stores/user.ts';
 import { updateUser } from '../api/update.ts';
 import { UserSidebar } from '../components/UserSidebar.tsx';
 import { AuthUser } from '../types';
-import { queryClient } from '../../../lib/react-query.ts';
 
 const schema = z.object({
   email: z.string().min(1, 'Required').email('Should be a valid email address'),

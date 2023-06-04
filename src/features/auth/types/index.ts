@@ -28,10 +28,13 @@ export type AuthUser = {
   imagecontent: string;
   assigned_user_id: string;
   phone: string;
+  otp_enabled: boolean;
+  otp_verified: boolean;
 };
 
 export type Token = {
   id: number;
   token: string;
   expiry: string;
+  otp_enabled: boolean;
 };

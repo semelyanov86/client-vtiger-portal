@@ -54,6 +54,18 @@ const enMessages = {
   'user.other-street': 'Other Street',
   'user.other-po-box': 'Other PO Box',
   'user.update': 'Update',
+  'user.security-settings': 'Edit security settings',
+  'user.update-password': 'Update Password',
+  'user.old-password': 'Old Password',
+  'user.password': 'Password',
+  'user.confirm-password': 'Confirm Password',
+
+  'otp.header': 'Security',
+  'otp.tfa': 'Two-Factor Authentication',
+  'otp.enable-disable':
+    'You can protect your account by 2FA authentication. You will have to enter OTP code after entering your login and password',
+  'otp.enable': 'Enable OTP',
+  'otp.disable': 'Disable OTP',
 
   'manager.name': 'Name',
   'manager.email': 'Email',
