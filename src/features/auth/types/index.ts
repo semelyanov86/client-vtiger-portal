@@ -38,3 +38,8 @@ export type Token = {
   expiry: string;
   otp_enabled: boolean;
 };
+
+export type OtpData = {
+  base32: string;
+  otpauth_url: string;
+};

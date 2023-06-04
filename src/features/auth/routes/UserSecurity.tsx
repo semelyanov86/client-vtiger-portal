@@ -4,9 +4,9 @@ import { FormattedMessage } from 'react-intl';
 import { BreadcrumbList } from '../../../components/Elements/Breadcrumbs/BreadcrumbList.tsx';
 import { Head } from '../../../components/Head';
 import { useUserStore } from '../../../stores/user.ts';
+import { TwoFactorCard } from '../components/TwoFactorCard.tsx';
 import { UpdatePasswordForm } from '../components/UpdatePasswordForm.tsx';
 import { UserSidebar } from '../components/UserSidebar.tsx';
-import { TwoFactorCard } from '../components/TwoFactorCard.tsx';
 
 export const UserSecurity = () => {
   const { value: user } = useUserStore();
