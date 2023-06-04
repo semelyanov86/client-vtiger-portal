@@ -20,7 +20,7 @@ export const AllUsersWidget = () => {
     <Card className="h-50-card mb-n2">
       <Card.Body>
         {usersQuery.data.map((user) => (
-          <Row key={user.id} className="g-0 sh-10 sh-sm-7 mb-2">
+          <Row key={user.crmid} className="g-0 sh-10 sh-sm-7 mb-2">
             <Col xs="auto">
               {user.imagecontent ? (
                 <img
