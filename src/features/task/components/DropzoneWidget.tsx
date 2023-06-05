@@ -1,15 +1,32 @@
 import { FC } from 'react';
 import Dropzone, { defaultClassNames, IFileWithMeta } from 'react-dropzone-uploader';
+
 import 'react-dropzone-uploader/dist/styles.css';
+
 import DropzonePreview from '../../../components/File/DropzonePreview.tsx';
 import { SubmitButton } from '../../../components/File/SubmitButton.tsx';
+import { NotifySuccess } from '../../../components/Notifications/Notification.tsx';
+import { API_URL } from '../../../config';
+import { getToken } from '../../../lib/token.ts';
 
-export const DropzoneWidget: FC = () => {
-  const getUploadParams = () => ({ url: 'https://httpbin.org/post' });
+interface DropzoneWidgetProps {
+  url: string;
+}
+
+export const DropzoneWidget: FC<DropzoneWidgetProps> = ({ url }) => {
+  const access_token = getToken()?.value || null;
+
+  const getUploadParams = () => ({
+    url: API_URL + url,
+    headers: {
+      Authorization: `Bearer ${access_token}`,
+    },
+  });
 
   const onChangeStatus = (fileWithMeta: IFileWithMeta, status: string) => {
-    console.log(fileWithMeta);
-    console.log(status);
+    if (status == 'done') {
+      NotifySuccess(`File ${fileWithMeta.file.name} uploaded and attached to ticket!`);
+    }
   };
 
   return (
@@ -17,7 +34,7 @@ export const DropzoneWidget: FC = () => {
       getUploadParams={getUploadParams}
       PreviewComponent={DropzonePreview}
       submitButtonContent={null}
-      accept="text/*"
+      accept="*"
       SubmitButtonComponent={SubmitButton}
       inputWithFilesContent={null}
       onChangeStatus={onChangeStatus}

@@ -219,7 +219,9 @@ export const ProjectTask = () => {
               </h2>
               <Card>
                 <Card.Body className="mb-n3">
-                  <DropzoneWidget></DropzoneWidget>
+                  <DropzoneWidget
+                    url={`/projects/${projectId}/tasks/${taskId}/documents`}
+                  ></DropzoneWidget>
                 </Card.Body>
               </Card>
               {/* Rate the Conversation End */}
