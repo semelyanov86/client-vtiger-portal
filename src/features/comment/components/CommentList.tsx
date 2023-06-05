@@ -12,6 +12,7 @@ interface CommentListProps {
   onAddComment: (comment: CommentDTO) => void;
   parentId: string;
   isAddLoading: boolean;
+  rootId?: string;
 }
 
 export const CommentList = ({
@@ -19,6 +20,7 @@ export const CommentList = ({
   onAddComment,
   parentId,
   isAddLoading,
+  rootId = '',
 }: CommentListProps) => {
   return (
     <Card>
@@ -72,6 +74,7 @@ export const CommentList = ({
           onAddComment={onAddComment}
           parentId={parentId}
           isLoading={isAddLoading}
+          rootId={rootId}
         ></AddCommentForm>
       </Card.Body>
     </Card>

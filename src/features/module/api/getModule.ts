@@ -4,7 +4,7 @@ import { useQuery } from 'react-query';
 import { axios, DataResponse } from '../../../lib/axios';
 import { Module } from '../types';
 
-type ModuleName = 'HelpDesk' | 'Project';
+type ModuleName = 'HelpDesk' | 'Project' | 'ProjectTask';
 
 export const getModule = (name: ModuleName): Promise<Module> => {
   return axios.get<DataResponse<Module>>('/modules/' + name).then((res) => res.data.data);

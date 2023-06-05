@@ -11,11 +11,16 @@ import styles from './DocumentsWudget.module.css';
 interface DocumentsWidgetProps {
   parentId: string | undefined;
   module: string;
+  prefix?: string;
 }
 
-export const DocumentsWidget = ({ parentId, module }: DocumentsWidgetProps) => {
+export const DocumentsWidget = ({ parentId, module, prefix = '' }: DocumentsWidgetProps) => {
   const [selectedDocument, setSelectedDocument] = useState('');
-  const documentsQuery = useDocumentsFromTicket({ ticketId: parentId ?? '', module: module });
+  const documentsQuery = useDocumentsFromTicket({
+    ticketId: parentId ?? '',
+    module: module,
+    prefix: prefix,
+  });
   const contentQuery = useDocumentContent({
     ticketId: parentId ?? '',
     fileId: selectedDocument,
@@ -75,7 +80,13 @@ export const DocumentsWidget = ({ parentId, module }: DocumentsWidgetProps) => {
                 <p className={'mb-0 clamp-line ' + styles.filename} data-line="1">
                   {document.filename}
                 </p>
-                {getDownloadButton(document.imageattachmentids)}
+                {document.filelocationtype == 'E' ? (
+                  <a href={document.filename} target="_blank" rel="noreferrer">
+                    <FileText size={17} className="alternate-link"></FileText>
+                  </a>
+                ) : (
+                  getDownloadButton(document.imageattachmentids)
+                )}
               </div>
               <div className="text-small text-primary">{document.filesize}</div>
             </Col>

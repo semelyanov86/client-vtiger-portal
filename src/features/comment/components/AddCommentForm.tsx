@@ -12,6 +12,7 @@ interface AddCommentFormProps {
   onAddComment: (comment: CommentDTO) => void;
   parentId: string;
   isLoading: boolean;
+  rootId?: string;
 }
 
 const schema = z.object({
@@ -20,7 +21,12 @@ const schema = z.object({
 
 type FormData = z.infer<typeof schema>;
 
-export const AddCommentForm = ({ onAddComment, parentId, isLoading }: AddCommentFormProps) => {
+export const AddCommentForm = ({
+  onAddComment,
+  parentId,
+  isLoading,
+  rootId = '',
+}: AddCommentFormProps) => {
   const {
     register,
     handleSubmit,
@@ -36,6 +42,7 @@ export const AddCommentForm = ({ onAddComment, parentId, isLoading }: AddComment
           commentcontent: data.commentcontent,
         },
         parentId: parentId,
+        rootId: rootId,
       });
       reset();
       setValue('commentcontent', '');

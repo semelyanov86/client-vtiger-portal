@@ -2,9 +2,9 @@ import { Badge, Card, Col, Row, Spinner } from 'react-bootstrap';
 import { FormattedMessage } from 'react-intl';
 import { NavLink } from 'react-router-dom';
 
+import { ScrollByCount } from '../../../components/Scrollspy/ScrollByCount.tsx';
 import { Project } from '../../project/types';
 import { useTasksFromProject } from '../api/getFromProject.ts';
-import { ScrollByCount } from '../../../components/Scrollspy/ScrollByCount.tsx';
 
 interface ProjectTasksProps {
   project: Project;
@@ -30,7 +30,10 @@ export const ProjectTasks = ({ project }: ProjectTasksProps) => {
           <Card.Body className="pt-0 pb-0 h-100">
             <Row className="g-0 h-100 align-content-center">
               <Col md="3" className="d-flex align-items-center mb-2 mb-md-0">
-                <NavLink to="/quiz/result" className="body-link text-truncate stretched-link">
+                <NavLink
+                  to={`/app/projects/${project.id}/tasks/${task.id}`}
+                  className="body-link text-truncate stretched-link"
+                >
                   {task.projecttask_no}
                 </NavLink>
               </Col>
