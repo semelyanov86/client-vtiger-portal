@@ -43,3 +43,7 @@ export type OtpData = {
   base32: string;
   otpauth_url: string;
 };
+
+export type OtpDto = {
+  token: string;
+};

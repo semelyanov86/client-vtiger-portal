@@ -66,6 +66,19 @@ const deMessages = {
     'You can protect your account by 2FA authentication. You will have to enter OTP code after entering your login and password',
   'otp.enable': 'Enable OTP',
   'otp.disable': 'Disable OTP',
+  'otp.header2': 'Configuring Google Authenticator or Authy',
+  'otp.text2': 'You need to pass some simple steps to setup your 2-factor authentication',
+  'otp.li1': 'Install Google AUthenticator or Authy on your smartphone',
+  'otp.li2': 'In the authenticator app press + icon',
+  'otp.li3':
+    'Select &quot;Scan a barcode (or QR code)&quot; and use a phone camera to scan a QR code.',
+  'otp.scan-qr': 'Scan a QR code',
+  'otp.enter-manually': 'Or enter a code manually into your app',
+  'otp.secret-key': 'Secret Key',
+  'otp.verify-code': 'Verify code',
+  'otp.please-verify': 'For changing the settings, please verify the authentication code:',
+  'otp.do-verify': 'Verify and activate',
+  'otp.do-disable': 'Disable Two-Factor',
 
   'manager.name': 'Name',
   'manager.email': 'Email',
@@ -329,6 +342,8 @@ const deMessages = {
   'general.edit': 'Edit',
   'general.view': 'View',
   'general.no-data': 'No data available',
+  'general.close': 'Close',
+  'general.loading': 'Loading...',
 };
 
 export default deMessages;

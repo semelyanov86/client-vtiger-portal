@@ -1,21 +1,17 @@
 import { zodResolver } from '@hookform/resolvers/zod';
-import QRCode from 'qrcode';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Button, Form, Modal, Spinner } from 'react-bootstrap';
-import { QrCode } from 'react-bootstrap-icons';
 import { FieldValues, useForm } from 'react-hook-form';
 import { FormattedMessage } from 'react-intl';
 import { z } from 'zod';
 
 import { NotifyError, NotifySuccess } from '../../../components/Notifications/Notification.tsx';
 import { useUserStore } from '../../../stores/user.ts';
-import { verifyOtp } from '../api/verifyOtp.ts';
+import { disableOtp } from '../api/disableOtp.ts';
 import { OtpDto } from '../types';
 
-interface TwoFactorAuthProps {
+interface TwoFactorDisableProps {
   show: boolean;
-  otpauth_url: string;
-  base32: string;
   onHide: () => void;
 }
 
@@ -25,8 +21,7 @@ const schema = z.object({
 
 type FormData = z.infer<typeof schema>;
 
-export const TwoFactorAuth = ({ show, onHide, otpauth_url, base32 }: TwoFactorAuthProps) => {
-  const [qrcodeUrl, setqrCodeUrl] = useState('');
+export const TwoFactorDisable = ({ show, onHide }: TwoFactorDisableProps) => {
   const [loading, setLoading] = useState(false);
   const { setUser } = useUserStore();
 
@@ -39,10 +34,10 @@ export const TwoFactorAuth = ({ show, onHide, otpauth_url, base32 }: TwoFactorAu
 
   const onSubmit = (data: FieldValues) => {
     setLoading(true);
-    verifyOtp(data as OtpDto)
+    disableOtp(data as OtpDto)
       .then((user) => {
         setLoading(false);
-        NotifySuccess('Otp successfully enabled');
+        NotifySuccess('Otp disabled');
         onHide();
         setUser(user);
       })
@@ -59,57 +54,20 @@ export const TwoFactorAuth = ({ show, onHide, otpauth_url, base32 }: TwoFactorAu
       });
   };
 
-  useEffect(() => {
-    QRCode.toDataURL(otpauth_url).then(setqrCodeUrl);
-  }, [otpauth_url]);
-
   return (
-    <Modal show={show} onHide={() => onHide()} size="lg">
+    <Modal show={show} onHide={() => onHide()}>
       <Modal.Header closeButton>
         <Modal.Title>
-          <FormattedMessage id="otp.tfa"></FormattedMessage>
+          <FormattedMessage id="otp.disable-header"></FormattedMessage>
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <h1>
-          <FormattedMessage id="otp.header2"></FormattedMessage>
-        </h1>
         <p>
-          <FormattedMessage id="otp.text2"></FormattedMessage>
-        </p>
-        <ol className="ps-4 mb-0">
-          <li>
-            <FormattedMessage id="otp.li1"></FormattedMessage>
-          </li>
-          <li>
-            <FormattedMessage id="otp.li2"></FormattedMessage>
-          </li>
-          <li>
-            <FormattedMessage id="otp.li3"></FormattedMessage>
-          </li>
-        </ol>
-        <h1>
-          <FormattedMessage id="otp.scan-qr"></FormattedMessage>
-        </h1>
-        <p>
-          <img className="block w-64 h-64 object-contain" src={qrcodeUrl} alt="qrcode url" />
-        </p>
-        <h1>
-          <FormattedMessage id="otp.enter-manually"></FormattedMessage>
-        </h1>
-        <p>
-          <FormattedMessage id="otp.secret-key"></FormattedMessage>: {base32}
-        </p>
-        <h1>
-          <FormattedMessage id="otp.verify-code"></FormattedMessage>
-        </h1>
-        <p>
-          <FormattedMessage id="otp.please-verify"></FormattedMessage>
+          <FormattedMessage id="otp.disable-content"></FormattedMessage>
         </p>
         <Form onSubmit={handleSubmit(onSubmit)}>
           <div className="mb-7">
             <div className="mb-3 filled">
-              <QrCode></QrCode>
               <Form.Control type="text" placeholder="Authentication code" {...register('token')} />
               {errors.token && (
                 <div className="d-block invalid-tooltip">{errors.token.message}</div>
@@ -133,7 +91,7 @@ export const TwoFactorAuth = ({ show, onHide, otpauth_url, base32 }: TwoFactorAu
               onSubmit({ token: getValues('token') });
             }}
           >
-            <FormattedMessage id="otp.do-verify"></FormattedMessage>
+            <FormattedMessage id="otp.do-disable"></FormattedMessage>
           </Button>
         )}
       </Modal.Footer>
