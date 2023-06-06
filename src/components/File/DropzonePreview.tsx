@@ -49,13 +49,13 @@ const DropzonePreview: FC<IPreviewProps> = ({ meta, fileWithMeta }) => {
             <p className="mb-1 pe-2 sw-20 dzu-preview-file-name">{name}</p>
             <div className="text-small text-primary">{Math.round(size / 1000)} KB</div>
           </div>
-          {status !== 'preparing' &&
+          {/*{status !== 'preparing' &&
             status !== 'getting_upload_params' &&
             status !== 'uploading' && (
               <button className="btn btn-link p-0 sh-3 text-muted" type="button" onClick={remove}>
                 <i className="cs-bin" />
               </button>
-            )}
+            )}*/}
         </div>
       </Col>
     </Row>

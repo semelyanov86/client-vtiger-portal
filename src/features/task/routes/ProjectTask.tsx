@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Card, Col, Dropdown, Row, Spinner } from 'react-bootstrap';
+import { Button, Card, Col, Dropdown, Row, Spinner } from 'react-bootstrap';
 import { FormattedMessage } from 'react-intl';
 import { useParams } from 'react-router';
 
@@ -52,9 +52,9 @@ export const ProjectTask = () => {
   const title = 'Project Task ' + taskQuery.data.id;
   const breadcrumbs = [
     { to: '', text: 'Home' },
-    { to: '/app/projects', text: 'Projects' },
-    { to: '/app/projects/' + projectId, text: projectId ?? '' },
-    { to: '/app/projects/' + projectId + '/tasks/' + taskId, text: taskId ?? '' },
+    { to: 'app/projects', text: 'Projects' },
+    { to: 'app/projects/' + projectId, text: projectId ?? '' },
+    { to: 'app/projects/' + projectId + '/tasks/' + taskId, text: taskId ?? '' },
   ];
 
   const onChangeStatus = async (status: string) => {
@@ -127,6 +127,10 @@ export const ProjectTask = () => {
                     module="tasks"
                     prefix={`/projects/${projectId}/`}
                   ></DocumentsWidget>
+                  <DropzoneWidget
+                    url={`projects/${projectId}/tasks/${taskId}/documents`}
+                    parentId={taskId ?? ''}
+                  ></DropzoneWidget>
                 </Card.Body>
               </Card>
               <h2 className="small-title">
@@ -215,13 +219,21 @@ export const ProjectTask = () => {
 
               {/* Rate the Conversation Start */}
               <h2 className="small-title">
-                <FormattedMessage id="tasks.attach-document"></FormattedMessage>
+                <FormattedMessage id="tasks.tags"></FormattedMessage>
               </h2>
               <Card>
                 <Card.Body className="mb-n3">
-                  <DropzoneWidget
-                    url={`/projects/${projectId}/tasks/${taskId}/documents`}
-                  ></DropzoneWidget>
+                  {taskQuery.data.tags.length > 0 && taskQuery.data.tags[0] != '' ? (
+                    taskQuery.data.tags.map((tag) => (
+                      <Button size="sm" variant="outline-primary" className="mb-1 me-1">
+                        {tag}
+                      </Button>
+                    ))
+                  ) : (
+                    <p>
+                      <FormattedMessage id="tasks.no-tags"></FormattedMessage>
+                    </p>
+                  )}
                 </Card.Body>
               </Card>
               {/* Rate the Conversation End */}

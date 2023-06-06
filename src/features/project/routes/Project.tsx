@@ -23,6 +23,7 @@ import { InfoRow } from '../components/molecules/InfoRow.tsx';
 import { ManagerInfo } from '../components/organisms/ManagerInfo.tsx';
 import { ProjectStatisticsCard } from '../components/organisms/ProjectStatisticsCard.tsx';
 import { StatusSwitcher } from '../components/organisms/StatusSwitcher.tsx';
+import { DropzoneWidget } from '../../task/components/DropzoneWidget.tsx';
 
 export const Project = () => {
   const { projectId } = useParams();
@@ -300,6 +301,10 @@ export const Project = () => {
                 </p>
                 <Row className="g-0 mb-2">
                   <DocumentsWidget parentId={projectId} module="projects"></DocumentsWidget>
+                  <DropzoneWidget
+                    url={`projects/${projectId}/documents`}
+                    parentId={projectId ?? ''}
+                  ></DropzoneWidget>
                 </Row>
               </div>
             </Card.Body>

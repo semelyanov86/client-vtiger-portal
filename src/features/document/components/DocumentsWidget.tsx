@@ -78,7 +78,7 @@ export const DocumentsWidget = ({ parentId, module, prefix = '' }: DocumentsWidg
             <Col className="rounded-sm-end d-flex flex-column justify-content-center pe-3">
               <div className="d-flex justify-content-between">
                 <p className={'mb-0 clamp-line ' + styles.filename} data-line="1">
-                  {document.filename}
+                  {document.notes_title}
                 </p>
                 {document.filelocationtype == 'E' ? (
                   <a href={document.filename} target="_blank" rel="noreferrer">

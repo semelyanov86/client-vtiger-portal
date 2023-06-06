@@ -263,6 +263,8 @@ const ruMessages = {
   'tasks.projecttask_no': 'Task Number',
   'tasks.createdtime': 'Task was created',
   'tasks.attach-document': 'Attach Document to task',
+  'tasks.tags': 'Tags',
+  'tasks.no-tags': 'No tags available',
 
   'stat.tickets.total': 'Total Tickets',
   'stat.tickets.total-helper': 'Total number of Tickets',
