@@ -5,7 +5,7 @@ import 'react-dropzone-uploader/dist/styles.css';
 
 import DropzonePreview from '../../../components/File/DropzonePreview.tsx';
 import { SubmitButton } from '../../../components/File/SubmitButton.tsx';
-import { NotifySuccess } from '../../../components/Notifications/Notification.tsx';
+import { NotifyError, NotifySuccess } from '../../../components/Notifications/Notification.tsx';
 import { API_URL } from '../../../config';
 import { getToken } from '../../../lib/token.ts';
 
@@ -24,6 +24,9 @@ export const DropzoneWidget: FC<DropzoneWidgetProps> = ({ url }) => {
   });
 
   const onChangeStatus = (fileWithMeta: IFileWithMeta, status: string) => {
+    if (status == 'error_upload') {
+      NotifyError('There was an unexpected error during upload a file');
+    }
     if (status == 'done') {
       NotifySuccess(`File ${fileWithMeta.file.name} uploaded and attached to ticket!`);
     }
