@@ -1,6 +1,7 @@
 import { Button, Row, Col } from 'react-bootstrap';
 import { PencilSquare } from 'react-bootstrap-icons';
 import { FormattedMessage } from 'react-intl';
+import { Link } from 'react-router-dom';
 
 import { BreadcrumbList } from '../../../components/Elements/Breadcrumbs/BreadcrumbList.tsx';
 import { Head } from '../../../components/Head';
@@ -10,7 +11,6 @@ import { LoadManager } from '../../manager/LoadManager.tsx';
 import useManagerStore from '../../manager/stores/manager.ts';
 import { UserAbout } from '../components/UserAbout.tsx';
 import { UserSidebar } from '../components/UserSidebar.tsx';
-import { Link } from 'react-router-dom';
 
 export const UserInfo = () => {
   const { value: user } = useUserStore();

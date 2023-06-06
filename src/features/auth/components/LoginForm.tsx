@@ -7,8 +7,8 @@ import { z } from 'zod';
 
 import { NotifyError } from '../../../components/Notifications/Notification.tsx';
 import { useAuthContext } from '../../../lib/auth.tsx';
-import { setToken } from '../../../lib/token.ts';
 import { LoginCredentialsDTO } from '../api/login.ts';
+import { Token } from '../types';
 
 import { LogoAuth } from './LogoAuth.tsx';
 
@@ -20,7 +20,7 @@ const schema = z.object({
 type FormData = z.infer<typeof schema>;
 
 type LoginFormProps = {
-  onSuccess: () => void;
+  onSuccess: (token: Token) => void;
 };
 
 export const LoginForm = ({ onSuccess }: LoginFormProps) => {
@@ -34,8 +34,7 @@ export const LoginForm = ({ onSuccess }: LoginFormProps) => {
   const onSubmit = (data: FieldValues) => {
     login(data as LoginCredentialsDTO)
       .then((data) => {
-        setToken(data.data.token);
-        onSuccess();
+        onSuccess(data.data);
       })
       .catch((err) => NotifyError(err.message));
   };
