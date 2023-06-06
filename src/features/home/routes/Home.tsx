@@ -13,11 +13,15 @@ import { TicketStatistics } from '../../statistic/components/TicketStatistics.ts
 import { ProgressTasks } from '../../task/widgets/ProgressTasks.tsx';
 import { ProductWidget } from '../widgets/ProductWidget.tsx';
 import { VideoPresentation } from '../widgets/VideoPresentation.tsx';
+import { MyDocuments } from '../../document/widgets/MyDocuments.tsx';
+import { DropzoneWidget } from '../../task/components/DropzoneWidget.tsx';
+import { useUserStore } from '../../../stores/user.ts';
 
 export const Home = () => {
   const title = 'Dashboard';
   const { formatMessage: f } = useIntl();
   const statisticQuery = useStatistics();
+  const { value } = useUserStore();
 
   const breadcrumbs = [
     { to: '', text: 'Home' },
@@ -99,8 +103,14 @@ export const Home = () => {
           <LeadForm></LeadForm>
         </Col>
         <Col lg="8" className="mb-5">
-          <h2 className="small-title">Watch demo of Vtiger CRM</h2>
-          <VideoPresentation></VideoPresentation>
+          <h2 className="small-title">
+            <FormattedMessage id="stat.your-docs"></FormattedMessage>
+          </h2>
+          <MyDocuments></MyDocuments>
+          <DropzoneWidget
+            url={`/users/${value.crmid}/documents`}
+            parentId={value.id}
+          ></DropzoneWidget>
         </Col>
       </Row>
     </>

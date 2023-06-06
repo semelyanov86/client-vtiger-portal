@@ -286,6 +286,7 @@ const ruMessages = {
   'stat.invoices.open': 'Open Invoices and Amount',
   'stat.invoices.paid': 'Paid Invoices and Amount',
   'stat.tasks.in-progress': 'Tasks in current projects and hours',
+  'stat.your-docs': 'Your documents',
 
   'leads.recommend': 'Recommend Us To Your Friend',
   'leads.recommend-content':
