@@ -266,6 +266,10 @@ const ruMessages = {
   'tasks.tags': 'Tags',
   'tasks.no-tags': 'No tags available',
 
+  'documents.name': 'NAME',
+  'documents.date': 'DATE',
+  'documents.size': 'SIZE',
+
   'stat.tickets.total': 'Total Tickets',
   'stat.tickets.total-helper': 'Total number of Tickets',
   'stat.tickets.open': 'Open Tickets',

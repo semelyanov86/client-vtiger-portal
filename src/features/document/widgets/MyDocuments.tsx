@@ -34,13 +34,19 @@ export const MyDocuments = () => {
       {/* List Header Start */}
       <Row className="g-0 h-100 align-content-center d-none d-md-flex ps-4 pe-3 mb-2 custom-sort">
         <Col md="6" className="d-flex flex-column mb-lg-0 pe-3 d-flex">
-          <div className="text-muted text-small cursor-pointer sort">NAME</div>
+          <div className="text-muted text-small cursor-pointer sort">
+            <FormattedMessage id="documents.name"></FormattedMessage>
+          </div>
         </Col>
         <Col md="3" className="d-flex flex-column pe-1 justify-content-center">
-          <div className="text-muted text-small cursor-pointer sort">DATE</div>
+          <div className="text-muted text-small cursor-pointer sort">
+            <FormattedMessage id="documents.date"></FormattedMessage>
+          </div>
         </Col>
         <Col md="3" className="d-flex flex-column pe-1 justify-content-center">
-          <div className="text-muted text-small cursor-pointer sort">SIZE</div>
+          <div className="text-muted text-small cursor-pointer sort">
+            <FormattedMessage id="documents.size"></FormattedMessage>
+          </div>
         </Col>
       </Row>
       {/* List Header End */}
