@@ -3,19 +3,18 @@ import { FormattedMessage, useIntl } from 'react-intl';
 
 import { BreadcrumbList } from '../../../components/Elements/Breadcrumbs/BreadcrumbList.tsx';
 import { Head } from '../../../components/Head';
+import { useUserStore } from '../../../stores/user.ts';
 import { AllUsersWidget } from '../../auth/components/AllUsersWidget.tsx';
 import { CompanyWidget } from '../../company/components/CompanyWidget.tsx';
+import { MyDocuments } from '../../document/widgets/MyDocuments.tsx';
 import { ExtendKnowledge } from '../../faq/components/templates/ExtendKnowledge.tsx';
 import { LeadForm } from '../../leads/widgets/LeadForm.tsx';
 import { useStatistics } from '../../statistic/api/getStatistics.ts';
 import { InvoiceStatistics } from '../../statistic/components/InvoiceStatistics.tsx';
 import { TicketStatistics } from '../../statistic/components/TicketStatistics.tsx';
+import { DropzoneWidget } from '../../task/components/DropzoneWidget.tsx';
 import { ProgressTasks } from '../../task/widgets/ProgressTasks.tsx';
 import { ProductWidget } from '../widgets/ProductWidget.tsx';
-import { VideoPresentation } from '../widgets/VideoPresentation.tsx';
-import { MyDocuments } from '../../document/widgets/MyDocuments.tsx';
-import { DropzoneWidget } from '../../task/components/DropzoneWidget.tsx';
-import { useUserStore } from '../../../stores/user.ts';
 
 export const Home = () => {
   const title = 'Dashboard';
@@ -107,10 +106,6 @@ export const Home = () => {
             <FormattedMessage id="stat.your-docs"></FormattedMessage>
           </h2>
           <MyDocuments></MyDocuments>
-          <DropzoneWidget
-            url={`/users/${value.crmid}/documents`}
-            parentId={value.id}
-          ></DropzoneWidget>
         </Col>
       </Row>
     </>

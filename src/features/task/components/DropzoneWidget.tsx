@@ -4,11 +4,10 @@ import Dropzone, { defaultClassNames, IFileWithMeta } from 'react-dropzone-uploa
 import 'react-dropzone-uploader/dist/styles.css';
 
 import DropzonePreview from '../../../components/File/DropzonePreview.tsx';
-import { SubmitButton } from '../../../components/File/SubmitButton.tsx';
 import { NotifyError, NotifySuccess } from '../../../components/Notifications/Notification.tsx';
 import { API_URL } from '../../../config';
-import { getToken } from '../../../lib/token.ts';
 import { queryClient } from '../../../lib/react-query.ts';
+import { getToken } from '../../../lib/token.ts';
 
 interface DropzoneWidgetProps {
   url: string;

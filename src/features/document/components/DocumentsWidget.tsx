@@ -1,12 +1,11 @@
 import { useState } from 'react';
 import { Col, Row, Spinner } from 'react-bootstrap';
-import { Download, FileText } from 'react-bootstrap-icons';
-import { NavLink } from 'react-router-dom';
+import { FileText } from 'react-bootstrap-icons';
 
-import { useDocumentContent } from '../api/getDocumentContentFromModule.ts';
 import { useDocumentsFromTicket } from '../api/getDocumentsFromTicket.ts';
 
 import styles from './DocumentsWudget.module.css';
+import { DownloadButton } from './DownloadButton.tsx';
 
 interface DocumentsWidgetProps {
   parentId: string | undefined;
@@ -21,12 +20,6 @@ export const DocumentsWidget = ({ parentId, module, prefix = '' }: DocumentsWidg
     module: module,
     prefix: prefix,
   });
-  const contentQuery = useDocumentContent({
-    ticketId: parentId ?? '',
-    fileId: selectedDocument,
-    module: module,
-    enabled: selectedDocument != '' && selectedDocument != undefined,
-  });
 
   if (documentsQuery.isLoading) {
     return <Spinner animation="border" variant="primary"></Spinner>;
@@ -38,31 +31,6 @@ export const DocumentsWidget = ({ parentId, module, prefix = '' }: DocumentsWidg
 
   const handleDownload = (documentId: string) => {
     setSelectedDocument(documentId);
-  };
-
-  const getDownloadButton = (documentId: string) => {
-    if (documentId == '') {
-      return null;
-    }
-    if (selectedDocument == documentId && contentQuery.isLoading) {
-      return <Spinner animation="border" variant="secondary" />;
-    }
-    if (contentQuery.data && selectedDocument == documentId) {
-      return (
-        <a
-          href={'data:' + contentQuery.data.filetype + ';base64,' + contentQuery.data.filecontents}
-          target="_blank"
-          rel="noreferrer"
-        >
-          <FileText size={17} className="alternate-link"></FileText>;
-        </a>
-      );
-    }
-    return (
-      <NavLink to="#" onClick={() => handleDownload(documentId)}>
-        <Download size={17} className="alternate-link"></Download>
-      </NavLink>
-    );
   };
 
   return (
@@ -80,13 +48,13 @@ export const DocumentsWidget = ({ parentId, module, prefix = '' }: DocumentsWidg
                 <p className={'mb-0 clamp-line ' + styles.filename} data-line="1">
                   {document.notes_title}
                 </p>
-                {document.filelocationtype == 'E' ? (
-                  <a href={document.filename} target="_blank" rel="noreferrer">
-                    <FileText size={17} className="alternate-link"></FileText>
-                  </a>
-                ) : (
-                  getDownloadButton(document.imageattachmentids)
-                )}
+                <DownloadButton
+                  document={document}
+                  selectedDocument={selectedDocument}
+                  parentId={parentId}
+                  module={module}
+                  handleDownload={handleDownload}
+                ></DownloadButton>
               </div>
               <div className="text-small text-primary">{document.filesize}</div>
             </Col>
