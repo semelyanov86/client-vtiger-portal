@@ -13,6 +13,10 @@ const appRoot = DEFAULT_PATHS.APP.endsWith('/')
 
 const { Home } = lazyImport(() => import('../features/home/routes/Home.tsx'), 'Home');
 const { Tickets } = lazyImport(() => import('../features/help-desk/routes/Tickets.tsx'), 'Tickets');
+const { Invoices } = lazyImport(
+  () => import('../features/invoice/routes/Invoices.tsx'),
+  'Invoices'
+);
 const { Projects } = lazyImport(
   () => import('../features/project/routes/Projects.tsx'),
   'Projects'
@@ -44,6 +48,12 @@ export const menuRoutes: MenuRoutesInterface = {
       component: Projects,
       label: 'Projects',
       icon: 'Briefcase',
+    },
+    {
+      path: `${appRoot}/app/invoices`,
+      component: Invoices,
+      label: 'Invoices',
+      icon: 'Coin',
     },
     {
       path: `${appRoot}/app/faq`,
