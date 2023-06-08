@@ -17,13 +17,13 @@ import { formatToUserReadableDate } from '../../misc/services/Dates.ts';
 import { LoadProject } from '../../module/LoadProject.tsx';
 import { getPicklistValues } from '../../module/services/fields.ts';
 import useModulesStore from '../../module/stores/module.ts';
+import { DropzoneWidget } from '../../task/components/DropzoneWidget.tsx';
 import { ProjectTasks } from '../../task/components/ProjectTasks.tsx';
 import { useProject } from '../api/getProject.ts';
 import { InfoRow } from '../components/molecules/InfoRow.tsx';
 import { ManagerInfo } from '../components/organisms/ManagerInfo.tsx';
 import { ProjectStatisticsCard } from '../components/organisms/ProjectStatisticsCard.tsx';
 import { StatusSwitcher } from '../components/organisms/StatusSwitcher.tsx';
-import { DropzoneWidget } from '../../task/components/DropzoneWidget.tsx';
 
 export const Project = () => {
   const { projectId } = useParams();

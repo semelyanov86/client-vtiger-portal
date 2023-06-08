@@ -3,7 +3,6 @@ import { FormattedMessage, useIntl } from 'react-intl';
 
 import { BreadcrumbList } from '../../../components/Elements/Breadcrumbs/BreadcrumbList.tsx';
 import { Head } from '../../../components/Head';
-import { useUserStore } from '../../../stores/user.ts';
 import { AllUsersWidget } from '../../auth/components/AllUsersWidget.tsx';
 import { CompanyWidget } from '../../company/components/CompanyWidget.tsx';
 import { MyDocuments } from '../../document/widgets/MyDocuments.tsx';
@@ -12,7 +11,6 @@ import { LeadForm } from '../../leads/widgets/LeadForm.tsx';
 import { useStatistics } from '../../statistic/api/getStatistics.ts';
 import { InvoiceStatistics } from '../../statistic/components/InvoiceStatistics.tsx';
 import { TicketStatistics } from '../../statistic/components/TicketStatistics.tsx';
-import { DropzoneWidget } from '../../task/components/DropzoneWidget.tsx';
 import { ProgressTasks } from '../../task/widgets/ProgressTasks.tsx';
 import { ProductWidget } from '../widgets/ProductWidget.tsx';
 
@@ -20,7 +18,6 @@ export const Home = () => {
   const title = 'Dashboard';
   const { formatMessage: f } = useIntl();
   const statisticQuery = useStatistics();
-  const { value } = useUserStore();
 
   const breadcrumbs = [
     { to: '', text: 'Home' },

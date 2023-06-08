@@ -266,6 +266,7 @@ const enMessages = {
   'tasks.no-tags': 'No tags available',
 
   'invoices.list': 'List of Invoices',
+  'invoices.print': 'Print',
   'invoices.subject': 'Subject',
   'invoices.invoicedate': 'Invoice Date',
   'invoices.duedate': 'Due Date',
