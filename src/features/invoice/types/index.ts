@@ -1,4 +1,5 @@
 import { Entity } from '../../misc/types/entity.ts';
+import { Currency } from '../../misc/types/currency.ts';
 
 export interface Invoice extends Entity {
   subject: string;
@@ -50,6 +51,7 @@ export interface Invoice extends Entity {
   LineItems_FinalDetails: {
     [key: string]: LineItemFinalDetails;
   };
+  currency: Currency;
 }
 
 type LineItem = {

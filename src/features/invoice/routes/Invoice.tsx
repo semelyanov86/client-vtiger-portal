@@ -1,4 +1,4 @@
-import { Row, Col, Button, Card } from 'react-bootstrap';
+import { Row, Col, Button, Card, Form } from 'react-bootstrap';
 import { ChevronLeft, Printer } from 'react-bootstrap-icons';
 import { FormattedMessage } from 'react-intl';
 import { useParams } from 'react-router';
@@ -6,13 +6,16 @@ import { NavLink } from 'react-router-dom';
 
 import { Spinner as Spinner2 } from '../../../components/Elements';
 import { Head } from '../../../components/Head';
-import { useInvoice } from '../api/getInvoice.ts';
 import useCompanyStore from '../../company/stores/company.ts';
+import { useInvoice } from '../api/getInvoice.ts';
+import { useAccount } from '../../account/api/getAccount.ts';
+import { formatToUserReadableDate } from '../../misc/services/Dates.ts';
 
 export const Invoice = () => {
   const { invoiceId } = useParams();
   const invoiceQuery = useInvoice({ invoiceId: invoiceId ?? '' });
   const { value: company } = useCompanyStore();
+  const accountStore = useAccount(true);
 
   if (invoiceQuery.isLoading) {
     return <Spinner2></Spinner2>;
@@ -23,6 +26,7 @@ export const Invoice = () => {
   if (!company) {
     return <FormattedMessage id="general.no-data" />;
   }
+  const symbol = invoiceQuery.data.currency.currency_symbol;
 
   return (
     <>
@@ -87,195 +91,110 @@ export const Invoice = () => {
             <Col md="6" className="text-end">
               <div className="mb-2">{company.organizationname}</div>
               <div className="text-small text-muted">
-                4 Glamis Avenue, Strathmore Park, Wellington 6022, New Zealand
+                {company.address}, {company.city} {company.code}, {company.country}
               </div>
               <div className="text-small text-muted">{company.phone}</div>
             </Col>
           </Row>
           <div className="separator separator-light mt-5 mb-5" />
           <Row className="g-1 mb-5">
-            <Col md="8">
-              <div className="py-3">
-                <div>Blaine Cottrell</div>
-                <div>55 Esk Street, Invercargill 9810, New Zealand</div>
-              </div>
-            </Col>
+            {accountStore.isLoading ? (
+              <Spinner2></Spinner2>
+            ) : (
+              <Col md="8">
+                <div className="py-3">
+                  <div>{accountStore.data && accountStore.data.accountname}</div>
+                  <div>
+                    {invoiceQuery.data.bill_street}, {invoiceQuery.data.bill_code}{' '}
+                    {invoiceQuery.data.bill_city}, {invoiceQuery.data.bill_country}
+                  </div>
+                </div>
+              </Col>
+            )}
+
             <Col md="4">
               <div className="py-3 text-md-end">
-                <div>Invoice #: 741</div>
-                <div>02.02.2019</div>
+                <div>
+                  <FormattedMessage id="invoices.invoice"></FormattedMessage> #:{' '}
+                  {invoiceQuery.data.invoice_no}
+                </div>
+                <div>{formatToUserReadableDate(invoiceQuery.data.invoicedate)}</div>
               </div>
             </Col>
           </Row>
           <div>
             <Row className="mb-4 d-none d-sm-flex">
-              <Col xs="6">
-                <p className="mb-0 text-small text-muted">ITEM NAME</p>
+              <Col xs="4">
+                <p className="mb-0 text-small text-muted">
+                  <FormattedMessage id="invoices.item-name"></FormattedMessage>
+                </p>
               </Col>
-              <Col xs="3">
-                <p className="mb-0 text-small text-muted">COUNT</p>
+              <Col xs="2">
+                <p className="mb-0 text-small text-muted">
+                  <FormattedMessage id="invoices.count"></FormattedMessage>
+                </p>
               </Col>
               <Col xs="3" className="text-end">
-                <p className="mb-0 text-small text-muted">PRICE</p>
+                <p className="mb-0 text-small text-muted">
+                  <FormattedMessage id="invoices.price"></FormattedMessage>
+                </p>
+              </Col>
+              <Col xs="3" className="text-end">
+                <p className="mb-0 text-small text-muted">
+                  <FormattedMessage id="invoices.margin"></FormattedMessage>
+                </p>
               </Col>
             </Row>
-            <Row className="mb-4 mb-sm-2">
-              <Col sm="6">
-                <h6 className="mb-0">Spelt Bread</h6>
-              </Col>
-              <Col sm="3">
-                <p className="mb-0 text-alternate">3 pcs</p>
-              </Col>
-              <Col sm="3" className="text-sm-end">
-                <p className="mb-0 text-alternate">$ 14.82</p>
-              </Col>
-            </Row>
-            <Row className="mb-4 mb-sm-2">
-              <Col sm="6">
-                <h6 className="mb-0">Naan</h6>
-              </Col>
-              <Col sm="3">
-                <p className="mb-0 text-alternate">2 pcs</p>
-              </Col>
-              <Col sm="3" className="text-sm-end">
-                <p className="mb-0 text-alternate">$ 8.97</p>
-              </Col>
-            </Row>
-            <Row className="mb-4 mb-sm-2">
-              <Col sm="6">
-                <h6 className="mb-0">Cozonac</h6>
-              </Col>
-              <Col sm="3">
-                <p className="mb-0 text-alternate">2 pcs</p>
-              </Col>
-              <Col sm="3" className="text-sm-end">
-                <p className="mb-0 text-alternate">$ 18.24</p>
-              </Col>
-            </Row>
-            <Row className="mb-4 mb-sm-2">
-              <Col sm="6">
-                <h6 className="mb-0">Michetta</h6>
-              </Col>
-              <Col sm="3">
-                <p className="mb-0 text-alternate">2 pcs</p>
-              </Col>
-              <Col sm="3" className="text-sm-end">
-                <p className="mb-0 text-alternate">$ 4.24</p>
-              </Col>
-            </Row>
-            <Row className="mb-4 mb-sm-2">
-              <Col sm="6">
-                <h6 className="mb-0">Arepa</h6>
-              </Col>
-              <Col sm="3">
-                <p className="mb-0 text-alternate">3 pcs</p>
-              </Col>
-              <Col sm="3" className="text-sm-end">
-                <p className="mb-0 text-alternate">$ 6.27</p>
-              </Col>
-            </Row>
-            <Row className="mb-4 mb-sm-2">
-              <Col sm="6">
-                <h6 className="mb-0">Pita</h6>
-              </Col>
-              <Col sm="3">
-                <p className="mb-0 text-alternate">2 pcs</p>
-              </Col>
-              <Col sm="3" className="text-sm-end">
-                <p className="mb-0 text-alternate">$ 10.97</p>
-              </Col>
-            </Row>
-            <Row className="mb-4 mb-sm-2">
-              <Col sm="6">
-                <h6 className="mb-0">Zopf</h6>
-              </Col>
-              <Col sm="3">
-                <p className="mb-0 text-alternate">2 pcs</p>
-              </Col>
-              <Col sm="3" className="text-sm-end">
-                <p className="mb-0 text-alternate">$ 21.24</p>
-              </Col>
-            </Row>
-            <Row className="mb-4 mb-sm-2">
-              <Col sm="6">
-                <h6 className="mb-0">Kommissbrot</h6>
-              </Col>
-              <Col sm="3">
-                <p className="mb-0 text-alternate">3 pcs</p>
-              </Col>
-              <Col sm="3" className="text-sm-end">
-                <p className="mb-0 text-alternate">$ 42.15</p>
-              </Col>
-            </Row>
-            <Row className="mb-4 mb-sm-2">
-              <Col sm="6">
-                <h6 className="mb-0">Ruisreikäleipä</h6>
-              </Col>
-              <Col sm="3">
-                <p className="mb-0 text-alternate">1 pcs</p>
-              </Col>
-              <Col sm="3" className="text-sm-end">
-                <p className="mb-0 text-alternate">$ 11.15</p>
-              </Col>
-            </Row>
-            <Row className="mb-4 mb-sm-2">
-              <Col sm="6">
-                <h6 className="mb-0">Cornbread</h6>
-              </Col>
-              <Col sm="3">
-                <p className="mb-0 text-alternate">2 pcs</p>
-              </Col>
-              <Col sm="3" className="text-sm-end">
-                <p className="mb-0 text-alternate">$ 35.25</p>
-              </Col>
-            </Row>
-            <Row className="mb-4 mb-sm-2">
-              <Col sm="6">
-                <h6 className="mb-0">Yeast Karavai</h6>
-              </Col>
-              <Col sm="3">
-                <p className="mb-0 text-alternate">5 pcs</p>
-              </Col>
-              <Col sm="3" className="text-sm-end">
-                <p className="mb-0 text-alternate">$ 63.75</p>
-              </Col>
-            </Row>
-            <Row className="mb-4 mb-sm-2">
-              <Col sm="6">
-                <h6 className="mb-0">Bammy</h6>
-              </Col>
-              <Col sm="3">
-                <p className="mb-0 text-alternate">2 pcs</p>
-              </Col>
-              <Col sm="3" className="text-sm-end">
-                <p className="mb-0 text-alternate">$ 13.25</p>
-              </Col>
-            </Row>
-            <Row className="mb-4 mb-sm-2">
-              <Col sm="6">
-                <h6 className="mb-0">Buccellato di Lucca</h6>
-              </Col>
-              <Col sm="3">
-                <p className="mb-0 text-alternate">2 pcs</p>
-              </Col>
-              <Col sm="3" className="text-sm-end">
-                <p className="mb-0 text-alternate">$ 19.50</p>
-              </Col>
-            </Row>
+            {invoiceQuery.data.LineItems.map((item) => (
+              <Row key={item.id} className="mb-4 mb-sm-2">
+                <Col sm="4">
+                  <h6 className="mb-0">{item.product_name}</h6>
+                </Col>
+                <Col sm="2">
+                  <p className="mb-0 text-alternate">{item.quantity}</p>
+                </Col>
+                <Col sm="3" className="text-sm-end">
+                  <p className="mb-0 text-alternate">
+                    {symbol} {item.listprice}
+                  </p>
+                </Col>
+                <Col sm="3" className="text-sm-end">
+                  <p className="mb-0 text-alternate">
+                    {symbol} {item.margin}
+                  </p>
+                </Col>
+              </Row>
+            ))}
           </div>
           <div className="separator separator-light mt-5 mb-5" />
           <Row>
             <Col className="text-sm-end text-muted">
-              <div>Subtotal :</div>
-              <div>Tax :</div>
-              <div>Shipping :</div>
-              <div>Total :</div>
+              <div>
+                <FormattedMessage id="invoices.hdnSubTotal"></FormattedMessage> :
+              </div>
+              <div>
+                <FormattedMessage id="invoices.pre_tax_total"></FormattedMessage> :
+              </div>
+              <div>
+                <FormattedMessage id="invoices.shipping"></FormattedMessage> :
+              </div>
+              <div>
+                <FormattedMessage id="invoices.hdnGrandTotal"></FormattedMessage> :
+              </div>
             </Col>
             <Col xs="auto" className="text-end">
-              <div>$ 61.82</div>
-              <div>$ 2.18</div>
-              <div>$ 3.21</div>
-              <div>$ 68.14</div>
+              <div>
+                {symbol} {invoiceQuery.data.hdnSubTotal}
+              </div>
+              <div>
+                {symbol} {invoiceQuery.data.pre_tax_total}
+              </div>
+              <div>
+                {symbol} {invoiceQuery.data['shipping_&_handling']}
+              </div>
+              <div>
+                {symbol} {invoiceQuery.data.hdnGrandTotal}
+              </div>
             </Col>
           </Row>
           <div className="separator separator-light mt-5 mb-5" />

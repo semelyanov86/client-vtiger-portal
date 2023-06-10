@@ -311,6 +311,12 @@ const enMessages = {
   'invoices.Sent': 'Sent',
   'invoices.Credit Invoice': 'Credit Invoice',
   'invoices.Paid': 'Paid',
+  'invoices.invoice': 'Invoice',
+  'invoices.item-name': 'Item Name',
+  'invoices.count': 'Count',
+  'invoices.price': 'Price',
+  'invoices.shipping': 'Shipping',
+  'invoices.margin': 'Margin',
 
   'documents.name': 'NAME',
   'documents.date': 'DATE',
