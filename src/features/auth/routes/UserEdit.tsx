@@ -12,6 +12,7 @@ import { useUserStore } from '../../../stores/user.ts';
 import { updateUser } from '../api/update.ts';
 import { UserSidebar } from '../components/UserSidebar.tsx';
 import { AuthUser } from '../types';
+import { ImageUploadOptions, UserProfileImage } from '../components/UserProfileImage.tsx';
 
 const schema = z.object({
   email: z.string().min(1, 'Required').email('Should be a valid email address'),
@@ -34,6 +35,9 @@ const schema = z.object({
   otherstreet: z.string(),
   otherpobox: z.string(),
   phone: z.string().min(5),
+  imagename: z.string(),
+  imagetype: z.string(),
+  imagecontent: z.string(),
 });
 
 type FormData = z.infer<typeof schema>;
@@ -60,6 +64,7 @@ export const UserEdit = () => {
     register,
     handleSubmit,
     formState: { errors },
+    setValue,
   } = useForm<FormData>({
     resolver: zodResolver(schema),
     values: {
@@ -83,8 +88,17 @@ export const UserEdit = () => {
       otherstreet: user.otherstreet,
       otherzip: user.otherzip,
       phone: user.phone,
+      imagename: '',
+      imagetype: '',
+      imagecontent: '',
     },
   });
+
+  const handleImageUpload = (img: ImageUploadOptions) => {
+    setValue('imagename', img.imagename);
+    setValue('imagetype', img.imagetype);
+    setValue('imagecontent', img.imagecontent);
+  };
 
   return (
     <>
@@ -94,7 +108,9 @@ export const UserEdit = () => {
         <Row>
           {/* Title Start */}
           <Col md="7">
-            <h1 className="mb-0 pb-0 display-4">Edit profile information</h1>
+            <h1 className="mb-0 pb-0 display-4">
+              <FormattedMessage id="user.edit-profile-info"></FormattedMessage>
+            </h1>
             <BreadcrumbList items={breadcrumbs} />
           </Col>
           {/* Title End */}
@@ -110,10 +126,13 @@ export const UserEdit = () => {
         </Col>
         <Col xl="8" xxl="9">
           {/* Public Info Start */}
-          <h2 className="small-title">Public Info</h2>
+          <h2 className="small-title">
+            <FormattedMessage id="user.public-info"></FormattedMessage>
+          </h2>
           <Card className="mb-5">
             <Card.Body>
               <Form id="profileEditForm" onSubmit={handleSubmit(onSubmit)}>
+                <UserProfileImage user={user} onImageUpload={handleImageUpload}></UserProfileImage>
                 <Row className="mb-3">
                   <Col lg="2" md="3" sm="4">
                     <Form.Label className="col-form-label">

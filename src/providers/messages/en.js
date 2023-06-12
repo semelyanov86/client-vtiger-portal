@@ -62,6 +62,7 @@ const enMessages = {
   'user.old-password': 'Old Password',
   'user.password': 'Password',
   'user.confirm-password': 'Confirm Password',
+  'user.edit-profile-info': 'Edit Profile Information',
 
   'otp.header': 'Security',
   'otp.tfa': 'Two-Factor Authentication',
