@@ -1,6 +1,7 @@
 import { MenuItem } from '../components/Navigation/main-menu/MainMenuItems.tsx';
-import { DEFAULT_PATHS } from '../config';
+import { DEFAULT_PATHS, SUPPORTED_MODULES } from '../config';
 import { lazyImport } from '../utils/lazyImport.ts';
+import { notEmpty } from '../utils/array.ts';
 
 export interface MenuRoutesInterface {
   mainMenuItems: MenuItem[];
@@ -23,8 +24,8 @@ const { Projects } = lazyImport(
 );
 const { Faqs } = lazyImport(() => import('../features/faq/routes/Faqs.tsx'), 'Faqs');
 
-export const menuRoutes: MenuRoutesInterface = {
-  mainMenuItems: [
+function getMenuRoutes(): MenuItem[] {
+  const items: (MenuItem | null)[] = [
     {
       path: DEFAULT_PATHS.APP,
       exact: true,
@@ -37,30 +38,44 @@ export const menuRoutes: MenuRoutesInterface = {
       label: 'Dashboards',
       icon: 'House',
     },
-    {
-      path: `${appRoot}/app/tickets`,
-      component: Tickets,
-      label: 'Tickets',
-      icon: 'StickiesFill',
-    },
-    {
-      path: `${appRoot}/app/projects`,
-      component: Projects,
-      label: 'Projects',
-      icon: 'Briefcase',
-    },
-    {
-      path: `${appRoot}/app/invoices`,
-      component: Invoices,
-      label: 'Invoices',
-      icon: 'Coin',
-    },
-    {
-      path: `${appRoot}/app/faq`,
-      component: Faqs,
-      label: 'FAQ',
-      icon: 'QuestionSquare',
-    },
-  ],
+    SUPPORTED_MODULES.includes('HelpDesk')
+      ? {
+          path: `${appRoot}/app/tickets`,
+          component: Tickets,
+          label: 'Tickets',
+          icon: 'StickiesFill',
+        }
+      : null,
+    SUPPORTED_MODULES.includes('Project')
+      ? {
+          path: `${appRoot}/app/projects`,
+          component: Projects,
+          label: 'Projects',
+          icon: 'Briefcase',
+        }
+      : null,
+    SUPPORTED_MODULES.includes('Invoice')
+      ? {
+          path: `${appRoot}/app/invoices`,
+          component: Invoices,
+          label: 'Invoices',
+          icon: 'Coin',
+        }
+      : null,
+    SUPPORTED_MODULES.includes('Faq')
+      ? {
+          path: `${appRoot}/app/faq`,
+          component: Faqs,
+          label: 'FAQ',
+          icon: 'QuestionSquare',
+        }
+      : null,
+  ];
+
+  return items.filter(notEmpty);
+}
+
+export const menuRoutes: MenuRoutesInterface = {
+  mainMenuItems: getMenuRoutes(),
   sidebarItems: [],
 };

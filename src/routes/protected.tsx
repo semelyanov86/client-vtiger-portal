@@ -6,6 +6,8 @@ import { MainLayout } from '../components/Layout';
 import WithAuth from '../features/auth/components/WithAuth.tsx';
 import { UserInfo } from '../features/auth/routes/UserInfo.tsx';
 import { lazyImport } from '../utils/lazyImport';
+import { notEmpty } from '../utils/array.ts';
+import { SUPPORTED_MODULES } from '../config';
 
 const { Home } = lazyImport(() => import('../features/home/routes/Home.tsx'), 'Home');
 const { TicketsRoutes } = lazyImport(() => import('../features/help-desk'), 'TicketsRoutes');
@@ -34,6 +36,41 @@ const App = () => {
   );
 };
 
+interface RouteElement {
+  path: string;
+  element: JSX.Element;
+}
+
+function getModulesRoutes(): RouteElement[] {
+  const routes = [
+    SUPPORTED_MODULES.includes('HelpDesk')
+      ? {
+          path: 'tickets/*',
+          element: <TicketsRoutes />,
+        }
+      : null,
+    SUPPORTED_MODULES.includes('Project')
+      ? {
+          path: 'projects/*',
+          element: <ProjectRoutes />,
+        }
+      : null,
+    SUPPORTED_MODULES.includes('Faq')
+      ? {
+          path: 'faq/*',
+          element: <FaqsRoutes />,
+        }
+      : null,
+    SUPPORTED_MODULES.includes('Invoice')
+      ? {
+          path: 'invoices/*',
+          element: <InvoiceRoutes />,
+        }
+      : null,
+  ];
+  return routes.filter(notEmpty);
+}
+
 export const protectedRoutes = [
   {
     path: '/app',
@@ -60,22 +97,7 @@ export const protectedRoutes = [
         path: 'user/security',
         element: <UserSecurity />,
       },
-      {
-        path: 'tickets/*',
-        element: <TicketsRoutes />,
-      },
-      {
-        path: 'projects/*',
-        element: <ProjectRoutes />,
-      },
-      {
-        path: 'faq/*',
-        element: <FaqsRoutes />,
-      },
-      {
-        path: 'invoices/*',
-        element: <InvoiceRoutes />,
-      },
+      ...getModulesRoutes(),
     ],
   },
 ];

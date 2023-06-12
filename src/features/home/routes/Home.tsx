@@ -13,6 +13,7 @@ import { InvoiceStatistics } from '../../statistic/components/InvoiceStatistics.
 import { TicketStatistics } from '../../statistic/components/TicketStatistics.tsx';
 import { ProgressTasks } from '../../task/widgets/ProgressTasks.tsx';
 import { ProductWidget } from '../widgets/ProductWidget.tsx';
+import { SUPPORTED_MODULES } from '../../../config';
 
 export const Home = () => {
   const title = 'Dashboard';
@@ -43,10 +44,16 @@ export const Home = () => {
 
       <Row>
         <Col xl="6">
-          <h2 className="small-title">{f({ id: 'latestRegistration' })}</h2>
-          <AllUsersWidget></AllUsersWidget>
+          {SUPPORTED_MODULES.includes('Contacts') && (
+            <>
+              <h2 className="small-title">{f({ id: 'latestRegistration' })}</h2>
+              <AllUsersWidget></AllUsersWidget>
+            </>
+          )}
           {/* Stats Start */}
-          <h2 className="small-title mt-3">Stats</h2>
+          <h2 className="small-title mt-3">
+            <FormattedMessage id="stat.ticket-stat"></FormattedMessage>
+          </h2>
           {statisticQuery.isLoading ? (
             <Spinner animation="border" variant="primary"></Spinner>
           ) : (
@@ -62,17 +69,22 @@ export const Home = () => {
 
       <Row>
         {/* Tasks Start */}
-        <Col lg="6" className="mb-5">
-          <h2 className="small-title">
-            <FormattedMessage id="project.progress-tasks" />
-          </h2>
-          <ProgressTasks></ProgressTasks>
-        </Col>
+        {SUPPORTED_MODULES.includes('Project') && (
+          <Col lg="6" className="mb-5">
+            <h2 className="small-title">
+              <FormattedMessage id="project.progress-tasks" />
+            </h2>
+            <ProgressTasks></ProgressTasks>
+          </Col>
+        )}
+
         {/* Tasks End */}
 
         {/* Invoice Statistics */}
         <Col lg="6" className="mb-5">
-          <h2 className="small-title">Invoice Statistics</h2>
+          <h2 className="small-title">
+            <FormattedMessage id="stat.invoice-stat"></FormattedMessage>
+          </h2>
           {statisticQuery.isLoading ? (
             <Spinner animation="border" variant="primary"></Spinner>
           ) : (
@@ -84,26 +96,32 @@ export const Home = () => {
       </Row>
 
       {/* Extend Your Knowledge Start */}
-      <Row>
-        <h2 className="small-title">
-          <FormattedMessage id="faq.extend-knowledge"></FormattedMessage>
-        </h2>
-        <ExtendKnowledge></ExtendKnowledge>
-      </Row>
+      {SUPPORTED_MODULES.includes('Faq') && (
+        <Row>
+          <h2 className="small-title">
+            <FormattedMessage id="faq.extend-knowledge"></FormattedMessage>
+          </h2>
+          <ExtendKnowledge></ExtendKnowledge>
+        </Row>
+      )}
       {/* Extend Your Knowledge End */}
       <Row>
-        <Col lg="4" className="mb-5">
-          <h2 className="small-title">
-            <FormattedMessage id="leads.recommend"></FormattedMessage>
-          </h2>
-          <LeadForm></LeadForm>
-        </Col>
-        <Col lg="8" className="mb-5">
-          <h2 className="small-title">
-            <FormattedMessage id="stat.your-docs"></FormattedMessage>
-          </h2>
-          <MyDocuments></MyDocuments>
-        </Col>
+        {SUPPORTED_MODULES.includes('Lead') && (
+          <Col lg="4" className="mb-5">
+            <h2 className="small-title">
+              <FormattedMessage id="leads.recommend"></FormattedMessage>
+            </h2>
+            <LeadForm></LeadForm>
+          </Col>
+        )}
+        {SUPPORTED_MODULES.includes('Documents') && (
+          <Col lg="8" className="mb-5">
+            <h2 className="small-title">
+              <FormattedMessage id="stat.your-docs"></FormattedMessage>
+            </h2>
+            <MyDocuments></MyDocuments>
+          </Col>
+        )}
       </Row>
     </>
   );

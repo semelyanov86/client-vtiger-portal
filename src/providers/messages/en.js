@@ -344,6 +344,8 @@ const enMessages = {
   'stat.invoices.paid': 'Paid Invoices and Amount',
   'stat.tasks.in-progress': 'Tasks in current projects and hours',
   'stat.your-docs': 'Your documents',
+  'stat.ticket-stat': 'Ticket Statistics',
+  'stat.invoice-stat': 'Invoice Statistics',
 
   'leads.recommend': 'Recommend Us To Your Friend',
   'leads.recommend-content':
