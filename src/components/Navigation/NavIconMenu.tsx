@@ -1,25 +1,13 @@
-import classNames from 'classnames';
 import React, { useState } from 'react';
-import { Search, Pin, PinAngle, Moon, MoonFill } from 'react-bootstrap-icons';
+import { Search, Moon, MoonFill } from 'react-bootstrap-icons';
 
-import { MENU_BEHAVIOUR } from '../../config/constants.ts';
 import { SearchModal } from '../../features/global-search/components/SearchModal.tsx';
-import { useMenusStore } from '../../stores/menus.ts';
+import { Notifications } from '../../features/notification/components/Notifications.tsx';
 import { useSettingsStore } from '../../stores/settings.ts';
 
 export const NavIconMenu = () => {
-  const { pinButtonEnable, behaviour } = useMenusStore().value;
-  const { menuChangeBehaviour } = useMenusStore();
   const { color } = useSettingsStore().value;
   const { setColor } = useSettingsStore();
-
-  const onPinButtonClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault();
-    e.stopPropagation();
-    menuChangeBehaviour(
-      behaviour === MENU_BEHAVIOUR.Pinned ? MENU_BEHAVIOUR.Unpinned : MENU_BEHAVIOUR.Pinned
-    );
-  };
 
   const onLightDarkModeClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
@@ -43,7 +31,8 @@ export const NavIconMenu = () => {
             <Search size={18}></Search>
           </a>
         </li>
-        <li className="list-inline-item">
+        <Notifications></Notifications>
+        {/*<li className="list-inline-item">
           <a
             href="#/"
             id="pinButton"
@@ -56,7 +45,7 @@ export const NavIconMenu = () => {
               <PinAngle size={18}></PinAngle>
             )}
           </a>
-        </li>
+        </li>*/}
         <li className="list-inline-item">
           <a href="#/" id="colorButton" onClick={onLightDarkModeClick}>
             {color.includes('light') ? <Moon size={18}></Moon> : <MoonFill size={18}></MoonFill>}
