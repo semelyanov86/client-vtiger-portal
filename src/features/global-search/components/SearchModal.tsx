@@ -1,5 +1,6 @@
 import { Modal } from 'react-bootstrap';
 import { ArrowBarDown, ArrowLeft } from 'react-bootstrap-icons';
+import { FormattedMessage } from 'react-intl';
 
 import SearchInput from './SearchInput.tsx';
 
@@ -17,11 +18,15 @@ export const SearchModal = ({ show, setShow }: SearchModalProps) => {
       show={show}
       onHide={() => setShow(false)}
     >
-      <Modal.Header className="border-0 p-0" />
+      <Modal.Header className="">
+        <h3 className="card-title mb-4">
+          <FormattedMessage id="general.global-search"></FormattedMessage>
+        </h3>
+      </Modal.Header>
       <Modal.Body className="ps-5 pe-5 pb-0 border-0">
         <SearchInput show={show} setShow={setShow} />
       </Modal.Body>
-      <Modal.Footer className="border-top justify-content-start ps-5 pe-5 pb-3 pt-3 border-0">
+      <Modal.Footer className="border-top justify-content-start ps-5 pe-5 pb-3 pt-3 border-0 mt-3">
         <span className="text-alternate d-inline-block m-0 me-3">
           <ArrowBarDown size={15}></ArrowBarDown>
           <span className="align-middle text-medium">Navigate</span>

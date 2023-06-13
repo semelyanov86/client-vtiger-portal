@@ -3,10 +3,9 @@ import React, { useState } from 'react';
 import { Search, Pin, PinAngle, Moon, MoonFill } from 'react-bootstrap-icons';
 
 import { MENU_BEHAVIOUR } from '../../config/constants.ts';
+import { SearchModal } from '../../features/global-search/components/SearchModal.tsx';
 import { useMenusStore } from '../../stores/menus.ts';
 import { useSettingsStore } from '../../stores/settings.ts';
-
-import { SearchModal } from './search/SearchModal.tsx';
 
 export const NavIconMenu = () => {
   const { pinButtonEnable, behaviour } = useMenusStore().value;

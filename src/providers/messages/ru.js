@@ -440,6 +440,9 @@ const ruMessages = {
   'general.no-data': 'No data available',
   'general.close': 'Close',
   'general.loading': 'Loading...',
+  'general.navigate': 'Navigate',
+  'general.select': 'Select',
+  'general.global-search': 'Start typing to search in portal',
 };
 
 export default ruMessages;

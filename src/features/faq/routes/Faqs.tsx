@@ -1,12 +1,13 @@
 import { Accordion, Card, Col, Row } from 'react-bootstrap';
 import { FormattedMessage, useIntl } from 'react-intl';
 
+import { Spinner } from '../../../components/Elements';
 import { BreadcrumbList } from '../../../components/Elements/Breadcrumbs/BreadcrumbList.tsx';
 import { Head } from '../../../components/Head';
+import { useFaqs } from '../api/getFaqs.ts';
 import { CustomAccordionToggle } from '../components/CustomAccordionToggle.tsx';
 import { SidebarBlock } from '../components/templates/SidebarBlock.tsx';
-import { useFaqs } from '../api/getFaqs.ts';
-import { Spinner } from '../../../components/Elements';
+import { useSearchParams } from 'react-router-dom';
 
 export const Faqs = () => {
   const { formatMessage: f } = useIntl();
@@ -15,6 +16,7 @@ export const Faqs = () => {
     page: 1,
     size: 100,
   });
+  const [searchParams] = useSearchParams();
 
   const breadcrumbs = [
     { to: '', text: 'Home' },
@@ -33,6 +35,20 @@ export const Faqs = () => {
     );
   }
 
+  const calcDefaultKey = (): string => {
+    if (!faqsQuery.data || faqsQuery.data.length < 1) {
+      return '0';
+    }
+    if (!searchParams.get('crmid')) {
+      return '0';
+    }
+    const res = faqsQuery.data.findIndex((faq) => faq.id === searchParams.get('crmid'));
+    if (res < 1) {
+      return '0';
+    }
+    return res.toString();
+  };
+
   return (
     <>
       <Head title={title} />
@@ -47,7 +63,7 @@ export const Faqs = () => {
       <Row className="g-5">
         <Col xl="8" xxl="9" className="mb-5">
           {/* Content Start */}
-          <Accordion className="mb-n2" defaultActiveKey="0">
+          <Accordion className="mb-n2" defaultActiveKey={calcDefaultKey()}>
             {faqsQuery.data.map((faq, index) => {
               return (
                 <Card key={faq.id} className="d-flex mb-2 flex-grow-1">
