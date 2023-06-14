@@ -34,6 +34,8 @@ const SearchInput: React.FC<Props> = ({ show, setShow }) => {
       navigate('/app/tickets' + searchItem.crmid);
     } else if (searchItem.module == 'ProjectTask') {
       navigate('/app/projects/' + searchItem.parent + '/tasks/' + searchItem.crmid);
+    } else if (searchItem.module == 'Project') {
+      navigate('/app/projects/' + searchItem.crmid);
     }
   };
 
