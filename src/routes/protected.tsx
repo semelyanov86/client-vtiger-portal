@@ -3,16 +3,20 @@ import { Navigate, Outlet } from 'react-router-dom';
 
 import { Spinner } from '../components/Elements';
 import { MainLayout } from '../components/Layout';
+import { SUPPORTED_MODULES } from '../config';
 import WithAuth from '../features/auth/components/WithAuth.tsx';
 import { UserInfo } from '../features/auth/routes/UserInfo.tsx';
-import { lazyImport } from '../utils/lazyImport';
 import { notEmpty } from '../utils/array.ts';
-import { SUPPORTED_MODULES } from '../config';
+import { lazyImport } from '../utils/lazyImport';
 
 const { Home } = lazyImport(() => import('../features/home/routes/Home.tsx'), 'Home');
 const { TicketsRoutes } = lazyImport(() => import('../features/help-desk'), 'TicketsRoutes');
 const { ProjectRoutes } = lazyImport(() => import('../features/project'), 'ProjectRoutes');
 const { InvoiceRoutes } = lazyImport(() => import('../features/invoice'), 'InvoiceRoutes');
+const { SalesOrderRoutes } = lazyImport(
+  () => import('../features/sales-order'),
+  'SalesOrderRoutes'
+);
 const { FaqsRoutes } = lazyImport(() => import('../features/faq'), 'FaqsRoutes');
 const { UserEdit } = lazyImport(() => import('../features/auth/routes/UserEdit.tsx'), 'UserEdit');
 const { UserSecurity } = lazyImport(
@@ -65,6 +69,12 @@ function getModulesRoutes(): RouteElement[] {
       ? {
           path: 'invoices/*',
           element: <InvoiceRoutes />,
+        }
+      : null,
+    SUPPORTED_MODULES.includes('SalesOrder')
+      ? {
+          path: 'sales-orders/*',
+          element: <SalesOrderRoutes />,
         }
       : null,
   ];

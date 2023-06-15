@@ -1,5 +1,5 @@
-import { Entity } from '../../misc/types/entity.ts';
 import { Currency } from '../../misc/types/currency.ts';
+import { Entity } from '../../misc/types/entity.ts';
 
 export interface Invoice extends Entity {
   subject: string;
@@ -54,7 +54,7 @@ export interface Invoice extends Entity {
   currency: Currency;
 }
 
-type LineItem = {
+export type LineItem = {
   parent_id: string;
   productid: string;
   sequence_no: number;
@@ -77,7 +77,7 @@ type LineItem = {
   deleted: boolean;
 };
 
-type LineItemFinalDetails = {
+export type LineItemFinalDetails = {
   attachmentId1: null;
   attachmentName1: null;
   attachmentPath1: null;

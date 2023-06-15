@@ -52,3 +52,5 @@ export const DEFAULT_PAGE_COUNT = 10;
 export const DEFAULT_PRODUCT_MODULES = ['services'];
 
 export const NULLABLE_DATE = '0001-01-01T00:00:00Z';
+
+export const CURRENCY_POSITION_END = true;

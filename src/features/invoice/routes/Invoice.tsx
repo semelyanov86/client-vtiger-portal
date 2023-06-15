@@ -10,6 +10,7 @@ import useCompanyStore from '../../company/stores/company.ts';
 import { useInvoice } from '../api/getInvoice.ts';
 import { useAccount } from '../../account/api/getAccount.ts';
 import { formatToUserReadableDate } from '../../misc/services/Dates.ts';
+import { DisplayMoney } from '../../../utils/DisplayMoney.tsx';
 
 export const Invoice = () => {
   const { invoiceId } = useParams();
@@ -155,12 +156,12 @@ export const Invoice = () => {
                 </Col>
                 <Col sm="3" className="text-sm-end">
                   <p className="mb-0 text-alternate">
-                    {symbol} {item.listprice}
+                    <DisplayMoney classes="" symbol={symbol} amount={item.listprice}></DisplayMoney>
                   </p>
                 </Col>
                 <Col sm="3" className="text-sm-end">
                   <p className="mb-0 text-alternate">
-                    {symbol} {item.margin}
+                    <DisplayMoney classes="" symbol={symbol} amount={item.margin}></DisplayMoney>
                   </p>
                 </Col>
               </Row>
@@ -184,16 +185,32 @@ export const Invoice = () => {
             </Col>
             <Col xs="auto" className="text-end">
               <div>
-                {symbol} {invoiceQuery.data.hdnSubTotal}
+                <DisplayMoney
+                  classes=""
+                  symbol={symbol}
+                  amount={invoiceQuery.data.hdnSubTotal}
+                ></DisplayMoney>
               </div>
               <div>
-                {symbol} {invoiceQuery.data.pre_tax_total}
+                <DisplayMoney
+                  classes=""
+                  symbol={symbol}
+                  amount={invoiceQuery.data.pre_tax_total}
+                ></DisplayMoney>
               </div>
               <div>
-                {symbol} {invoiceQuery.data['shipping_&_handling']}
+                <DisplayMoney
+                  classes=""
+                  symbol={symbol}
+                  amount={invoiceQuery.data['shipping_&_handling']}
+                ></DisplayMoney>
               </div>
               <div>
-                {symbol} {invoiceQuery.data.hdnGrandTotal}
+                <DisplayMoney
+                  classes=""
+                  symbol={symbol}
+                  amount={invoiceQuery.data.hdnGrandTotal}
+                ></DisplayMoney>
               </div>
             </Col>
           </Row>

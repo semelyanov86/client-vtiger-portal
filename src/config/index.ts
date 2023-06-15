@@ -25,6 +25,7 @@ export const SUPPORTED_MODULES = [
   'Services',
   'Lead',
   'Documents',
+  'SalesOrder',
 ];
 
 // For detailed information: https://github.com/nfl/react-helmet#reference-guide

@@ -18,6 +18,10 @@ const { Invoices } = lazyImport(
   () => import('../features/invoice/routes/Invoices.tsx'),
   'Invoices'
 );
+const { SalesOrders } = lazyImport(
+  () => import('../features/sales-order/routes/SalesOrders.tsx'),
+  'SalesOrders'
+);
 const { Projects } = lazyImport(
   () => import('../features/project/routes/Projects.tsx'),
   'Projects'
@@ -60,6 +64,14 @@ function getMenuRoutes(): MenuItem[] {
           component: Invoices,
           label: 'Invoices',
           icon: 'Coin',
+        }
+      : null,
+    SUPPORTED_MODULES.includes('SalesOrder')
+      ? {
+          path: `${appRoot}/app/sales-orders`,
+          component: SalesOrders,
+          label: 'Sales Orders',
+          icon: 'Bank',
         }
       : null,
     SUPPORTED_MODULES.includes('Faq')
