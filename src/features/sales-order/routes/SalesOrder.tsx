@@ -12,22 +12,23 @@ import {
   Truck,
 } from 'react-bootstrap-icons';
 import { FormattedMessage } from 'react-intl';
-import { useParams } from 'react-router';
+import { useNavigate, useParams } from 'react-router';
 import { NavLink } from 'react-router-dom';
 
 import { Spinner as Spinner2 } from '../../../components/Elements';
 import { Head } from '../../../components/Head';
 import { NULLABLE_DATE } from '../../../config/constants.ts';
+import { DisplayMoney } from '../../../utils/DisplayMoney.tsx';
 import { useManager } from '../../manager/api/getManager.ts';
 import { formatToUserReadableDate } from '../../misc/services/Dates.ts';
 import { ManagerInfo } from '../../project/components/organisms/ManagerInfo.tsx';
 import { useSalesOrder } from '../api/getSalesOrder.ts';
-import { DisplayMoney } from '../../../utils/DisplayMoney.tsx';
 
 export const SalesOrder = () => {
   const { salesOrderId } = useParams();
   const salesOrderQuery = useSalesOrder({ soId: salesOrderId ?? '' });
   const [isManagerQueryEnabled, setIsManagerQueryEnabled] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (salesOrderQuery.data) {
@@ -84,19 +85,27 @@ export const SalesOrder = () => {
                 <FormattedMessage id={'so.' + salesOrderQuery.data.sostatus}></FormattedMessage>
               </Dropdown.Toggle>
             </Dropdown>
-            <Dropdown className="ms-1">
-              <Dropdown.Toggle
-                className="btn-icon btn-icon-only dropdown-toggle-no-arrow"
-                variant="outline-primary"
-              >
-                <ThreeDots></ThreeDots>
-              </Dropdown.Toggle>
-              <Dropdown.Menu>
-                <Dropdown.Item>
-                  <FormattedMessage id="so.view-invoice"></FormattedMessage>
-                </Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown>
+            {salesOrderQuery.data.invoices?.length > 0 && (
+              <Dropdown className="ms-1">
+                <Dropdown.Toggle
+                  className="btn-icon btn-icon-only dropdown-toggle-no-arrow"
+                  variant="outline-primary"
+                >
+                  <ThreeDots></ThreeDots>
+                </Dropdown.Toggle>
+                <Dropdown.Menu>
+                  {salesOrderQuery.data.invoices.map((invoice) => (
+                    <Dropdown.Item
+                      key={invoice.id}
+                      onClick={() => navigate('/app/invoices/' + invoice.id)}
+                    >
+                      <FormattedMessage id="so.view-invoice"></FormattedMessage>{' '}
+                      {invoice.invoice_no}
+                    </Dropdown.Item>
+                  ))}
+                </Dropdown.Menu>
+              </Dropdown>
+            )}
           </Col>
           {/* Top Buttons End */}
         </Row>

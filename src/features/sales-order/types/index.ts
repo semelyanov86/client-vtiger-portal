@@ -1,4 +1,4 @@
-import { LineItem, LineItemFinalDetails } from '../../invoice/types';
+import { Invoice, LineItem, LineItemFinalDetails } from '../../invoice/types';
 import { Currency } from '../../misc/types/currency.ts';
 
 export type SalesOrder = {
@@ -66,4 +66,5 @@ export type SalesOrder = {
   LineItems_FinalDetails: {
     [key: string]: LineItemFinalDetails;
   };
+  invoices: Invoice[];
 };
