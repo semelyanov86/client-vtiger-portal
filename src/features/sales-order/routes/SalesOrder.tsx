@@ -21,6 +21,8 @@ import { NULLABLE_DATE } from '../../../config/constants.ts';
 import { DisplayMoney } from '../../../utils/DisplayMoney.tsx';
 import { useManager } from '../../manager/api/getManager.ts';
 import { formatToUserReadableDate } from '../../misc/services/Dates.ts';
+import { CardPayment } from '../../payment/components/CardPayment.tsx';
+import { PaymentForm } from '../../payment/components/PaymentForm.tsx';
 import { ManagerInfo } from '../../project/components/organisms/ManagerInfo.tsx';
 import { useSalesOrder } from '../api/getSalesOrder.ts';
 
@@ -311,7 +313,19 @@ export const SalesOrder = () => {
             <FormattedMessage id="so.payment"></FormattedMessage>
           </h2>
           <Card className="mb-5">
-            <Card.Body>{salesOrderQuery.data.terms_conditions}</Card.Body>
+            <Card.Body>
+              {salesOrderQuery.data.terms_conditions}
+              <p></p>
+              <PaymentForm>
+                <CardPayment
+                  currency={salesOrderQuery.data.currency.currency_code}
+                  paymentMethodType="card"
+                  invoice_id=""
+                  so_id={salesOrderQuery.data.id}
+                  amount={salesOrderQuery.data.hdnGrandTotal}
+                ></CardPayment>
+              </PaymentForm>
+            </Card.Body>
           </Card>
           {/* Activity End */}
 

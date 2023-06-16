@@ -150,6 +150,11 @@ const ruMessages = {
   'tickets.no-tags': 'No tags available for this ticket',
   'tickets.comments': 'Related Comments',
 
+  'payments.card': 'Card',
+  'payments.make-payment': 'Make a payment',
+  'payments.pay-now': 'Pay this order now!',
+  'payments.processing': 'Processing...',
+
   'comments.no-data': 'No comments available',
   'comments.send': 'Send',
   'comments.sending': 'Sending',

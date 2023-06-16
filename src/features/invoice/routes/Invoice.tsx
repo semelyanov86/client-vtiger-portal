@@ -11,6 +11,8 @@ import { useInvoice } from '../api/getInvoice.ts';
 import { useAccount } from '../../account/api/getAccount.ts';
 import { formatToUserReadableDate } from '../../misc/services/Dates.ts';
 import { DisplayMoney } from '../../../utils/DisplayMoney.tsx';
+import { PaymentForm } from '../../payment/components/PaymentForm.tsx';
+import { CardPayment } from '../../payment/components/CardPayment.tsx';
 
 export const Invoice = () => {
   const { invoiceId } = useParams();
@@ -218,6 +220,19 @@ export const Invoice = () => {
           <div className="text-small text-muted text-center">
             {invoiceQuery.data.terms_conditions}
           </div>
+        </Card.Body>
+      </Card>
+      <Card className="mb-5">
+        <Card.Body>
+          <PaymentForm>
+            <CardPayment
+              currency={invoiceQuery.data.currency.currency_code}
+              paymentMethodType="card"
+              invoice_id={invoiceQuery.data.id}
+              so_id=""
+              amount={invoiceQuery.data.hdnGrandTotal}
+            ></CardPayment>
+          </PaymentForm>
         </Card.Body>
       </Card>
       {/* Standard End */}
