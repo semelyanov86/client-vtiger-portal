@@ -6,7 +6,7 @@ import { Col, Dropdown, Row } from 'react-bootstrap';
 import { Question, File, Gear, Lock, PersonFill } from 'react-bootstrap-icons';
 import { useNavigate } from 'react-router';
 
-import { MENU_PLACEMENT } from '../../config/constants.ts';
+import { HELP_URL, MENU_PLACEMENT } from '../../config/constants.ts';
 import { AuthUser } from '../../features/auth';
 import { useAuthContext } from '../../lib/auth.tsx';
 import { useLayoutsStore } from '../../stores/layouts.ts';
@@ -88,7 +88,9 @@ const NavUserMenuContent = () => {
     <div>
       <Row className="mb-3 ms-0 me-0">
         <Col xs="12" className="ps-1 mb-2">
-          <div className="text-extra-small text-primary">ACCOUNT</div>
+          <div className="text-extra-small text-primary">
+            <FormattedMessage id="menu.account"></FormattedMessage>
+          </div>
         </Col>
         <Col xs="6" className="ps-1 pe-1">
           <ul className="list-unstyled">
@@ -98,7 +100,9 @@ const NavUserMenuContent = () => {
               </NavLink>
             </li>
             <li>
-              <a href="#/!">Preferences</a>
+              <a href="#/!">
+                <FormattedMessage id="menu.preferencies"></FormattedMessage>
+              </a>
             </li>
           </ul>
         </Col>
@@ -110,7 +114,9 @@ const NavUserMenuContent = () => {
               </NavLink>
             </li>
             <li>
-              <a href="#/!">Billing</a>
+              <a href="#/!">
+                <FormattedMessage id="menu.billing"></FormattedMessage>
+              </a>
             </li>
           </ul>
         </Col>
@@ -122,13 +128,11 @@ const NavUserMenuContent = () => {
         <Col xs="6" className="ps-1 pe-1">
           <ul className="list-unstyled">
             <li>
-              <a href="#/!">
-                <Question size={17} /> <span className="align-middle">Help</span>
-              </a>
-            </li>
-            <li>
-              <a href="#/!">
-                <File size={17} /> <span className="align-middle">Docs</span>
+              <a href={HELP_URL} target="_blank" rel="noreferrer">
+                <Question size={17} />{' '}
+                <span className="align-middle">
+                  <FormattedMessage id="menu.help"></FormattedMessage>
+                </span>
               </a>
             </li>
           </ul>
@@ -136,13 +140,11 @@ const NavUserMenuContent = () => {
         <Col xs="6" className="pe-1 ps-1">
           <ul className="list-unstyled">
             <li>
-              <a href="#/!">
-                <Gear size={17} /> <span className="align-middle">Settings</span>
-              </a>
-            </li>
-            <li>
               <a href="#" onClick={onLogout}>
-                <Lock size={17} /> <span className="align-middle">Logout</span>
+                <Lock size={17} />{' '}
+                <span className="align-middle">
+                  <FormattedMessage id="menu.logout"></FormattedMessage>
+                </span>
               </a>
             </li>
           </ul>

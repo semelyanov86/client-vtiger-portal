@@ -464,6 +464,12 @@ const deMessages = {
   'menu.validation': 'Validation',
   'menu.wizard': 'Wizard',
   'menu.input-group': 'Input Group',
+  'menu.preferencies': 'Preferencies',
+  'menu.billing': 'Billing',
+  'menu.help': 'Help',
+  'menu.logout': 'Logout',
+  'menu.account': 'ACCOUNT',
+
   'register.left-header': 'Customer Portal',
   'register.left-subheader': 'Manage your tickets',
   'register.left-text':

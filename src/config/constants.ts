@@ -56,3 +56,5 @@ export const NULLABLE_DATE = '0001-01-01T00:00:00Z';
 export const CURRENCY_POSITION_END = true;
 
 export const IS_PAYMENT_SUPPORTED = true;
+
+export const HELP_URL = 'https://itvolga.com/contacts';
