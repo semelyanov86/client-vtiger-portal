@@ -55,6 +55,10 @@ export const CardPayment = ({
             },
           })
           .then((paymentIntent) => {
+            if (paymentIntent.error) {
+              NotifyError(paymentIntent.error.message ?? 'There was an error during payment');
+              return;
+            }
             if (paymentIntent.paymentIntent) {
               confirmPayment(paymentIntent.paymentIntent).catch((error) =>
                 NotifyError('can not confirm payment: ' + error.message)
