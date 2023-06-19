@@ -30,8 +30,9 @@ const ruMessages = {
   'company.enterpreneurreg': 'ОГРНИП',
   'company.okpo': 'ОКПО',
   'layout.go-to-website': 'Наш сайт',
+  'company.requisites': 'Наши реквизиты',
 
-  'user.info': 'Информация о пользователе',
+  'user.info': 'Профиль',
   'user.description': 'Описание',
   'user.about': 'Обо мне',
   'user.edit': 'Изменить',
@@ -344,6 +345,11 @@ const ruMessages = {
   'invoices.shipping': 'Доставка',
   'invoices.margin': 'Прибыль',
 
+  'lead.name': 'Имя',
+  'lead.email': 'Email',
+  'lead.phone': 'Телефон',
+  'lead.send': 'Рекомендовать',
+
   'so.list': 'Заказы',
   'so.salesorder_no': '№ заказа',
   'so.subject': 'Тема',
@@ -446,7 +452,7 @@ const ruMessages = {
   'menu.mailing': 'Mailing',
   'menu.empty': 'Empty',
   'menu.portfolio': 'Portfolio',
-  'menu.profile': 'Profile',
+  'menu.profile': 'Профиль',
   'menu.standard': 'Standard',
   'menu.settings': 'Настройки',
   'menu.blocks': 'Blocks',

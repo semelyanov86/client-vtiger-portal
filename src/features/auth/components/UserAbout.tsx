@@ -30,7 +30,9 @@ export const UserAbout = ({ user }: UserSidebarProps) => {
           <p>{user.description}</p>
         </div>
         <div className="mb-5">
-          <p className="text-small text-muted mb-2">CONTACT</p>
+          <p className="text-small text-muted mb-2">
+            <FormattedMessage id="manager.contact"></FormattedMessage>
+          </p>
           <NavLink to="#" className="d-block body-link mb-1">
             <CalendarDate className="me-2" size="17" />
             <span className="align-middle">

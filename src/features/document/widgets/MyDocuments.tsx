@@ -57,8 +57,8 @@ export const MyDocuments = () => {
           <Card.Body className="py-0 ps-4 pe-3 sh-14 sh-md-6">
             <Row className="g-0 h-100 align-content-center cursor-default">
               <Col
-                xs="11"
-                md="6"
+                xs="2"
+                md="2"
                 className="d-flex flex-column justify-content-center mb-1 mb-md-0 h-md-100 position-relative"
               >
                 <DownloadButton
@@ -68,6 +68,13 @@ export const MyDocuments = () => {
                   module="users"
                   handleDownload={handleDownload}
                 ></DownloadButton>
+              </Col>
+              <Col
+                xs="9"
+                md="4"
+                className="d-flex flex-column justify-content-center mb-1 mb-md-0 h-md-100 position-relative"
+              >
+                <div className="text-alternate">{document.filename}</div>
               </Col>
               <Col
                 md="2"

@@ -9,7 +9,9 @@ export const CompanyWidget = () => {
   const { value: company } = useCompanyStore();
   return (
     <>
-      <h2 className="small-title mt-2">Our requisites</h2>
+      <h2 className="small-title mt-2">
+        <FormattedMessage id="company.requisites"></FormattedMessage>
+      </h2>
       <Card className={styles.scrollcard} body>
         <Card.Text>
           <b>

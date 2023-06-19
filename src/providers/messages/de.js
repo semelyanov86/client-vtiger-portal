@@ -29,6 +29,7 @@ const deMessages = {
   'company.enterpreneur': 'Enterpreneur',
   'company.enterpreneurreg': 'Enterpreneur Registration number',
   'company.okpo': 'OKPO',
+  'company.requisites': 'Our requisites',
   'layout.go-to-website': 'Our Website',
 
   'user.info': 'User Info',
@@ -338,6 +339,11 @@ const deMessages = {
   'invoices.price': 'Price',
   'invoices.shipping': 'Shipping',
   'invoices.margin': 'Margin',
+
+  'lead.name': 'Name',
+  'lead.email': 'Email',
+  'lead.phone': 'Phone',
+  'lead.send': 'Send',
 
   'so.list': 'Sales Orders',
   'so.salesorder_no': 'Sales Order No',

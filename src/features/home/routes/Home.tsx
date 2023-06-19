@@ -3,6 +3,7 @@ import { FormattedMessage, useIntl } from 'react-intl';
 
 import { BreadcrumbList } from '../../../components/Elements/Breadcrumbs/BreadcrumbList.tsx';
 import { Head } from '../../../components/Head';
+import { SUPPORTED_MODULES } from '../../../config';
 import { AllUsersWidget } from '../../auth/components/AllUsersWidget.tsx';
 import { CompanyWidget } from '../../company/components/CompanyWidget.tsx';
 import { MyDocuments } from '../../document/widgets/MyDocuments.tsx';
@@ -13,7 +14,6 @@ import { InvoiceStatistics } from '../../statistic/components/InvoiceStatistics.
 import { TicketStatistics } from '../../statistic/components/TicketStatistics.tsx';
 import { ProgressTasks } from '../../task/widgets/ProgressTasks.tsx';
 import { ProductWidget } from '../widgets/ProductWidget.tsx';
-import { SUPPORTED_MODULES } from '../../../config';
 
 export const Home = () => {
   const title = 'Dashboard';
