@@ -13,3 +13,17 @@ export type PaymentIntentDto = {
   so_id: string;
   amount: number;
 };
+
+export type Payment = {
+  id: number;
+  stripe_payment_id: string;
+  user_id: string;
+  account_id: string;
+  amount: number;
+  currency: string;
+  payment_method: string;
+  status: number;
+  parent_id: string;
+  created_at: string;
+  updated_at: string;
+};

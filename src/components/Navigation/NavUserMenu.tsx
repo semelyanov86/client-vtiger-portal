@@ -114,9 +114,9 @@ const NavUserMenuContent = () => {
               </NavLink>
             </li>
             <li>
-              <a href="#/!">
+              <NavLink to="/app/user/payments">
                 <FormattedMessage id="menu.billing"></FormattedMessage>
-              </a>
+              </NavLink>
             </li>
           </ul>
         </Col>

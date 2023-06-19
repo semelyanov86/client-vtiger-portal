@@ -162,6 +162,13 @@ const ruMessages = {
   'payments.make-payment': 'Make a payment',
   'payments.pay-now': 'Pay this order now!',
   'payments.processing': 'Processing...',
+  'payments.id': 'ID',
+  'payments.amount': 'Amount',
+  'payments.status': 'Status',
+  'payments.status.1': 'Completed',
+  'payments.status.0': 'Created',
+  'payments.date': 'Date',
+  'payments.payments': 'Your Payments',
 
   'comments.no-data': 'No comments available',
   'comments.send': 'Send',
