@@ -6,7 +6,7 @@ import { FormattedMessage, useIntl } from 'react-intl';
 import { NavLink } from 'react-router-dom';
 
 import { Spinner } from '../../../components/Elements';
-import { BreadcrumbList } from '../../../components/Elements/Breadcrumbs/BreadcrumbList.tsx';
+import { ListPageTitle } from '../../../components/Elements/ListPage/ListPageTitle.tsx';
 import { Head } from '../../../components/Head';
 import SearchInput from '../../../components/Table/Atoms/SearchInput.tsx';
 import { ControlsPageSize } from '../../../components/Table/ControlsPageSize.tsx';
@@ -33,10 +33,6 @@ export const SalesOrders = () => {
   };
 
   const soQuery = useSalesOrders(query);
-  const breadcrumbs = [
-    { to: '', text: 'Home' },
-    { to: '/app/sales-orders', text: 'Sales Orders' },
-  ];
 
   const onChangePage = useCallback(
     (pageIndex: number) => {
@@ -82,17 +78,9 @@ export const SalesOrders = () => {
       <Head title={title} />
 
       <Col>
-        {/* Title Start */}
-        <div className="page-title-container mb-3">
-          <Row>
-            <Col className="mb-2">
-              <h1 className="mb-2 pb-0 display-4">{title}</h1>
-              <BreadcrumbList items={breadcrumbs} />
-            </Col>
-            <Col xs="12" sm="auto" className="d-flex align-items-center justify-content-end"></Col>
-          </Row>
-        </div>
-        {/* Title End */}
+        <ListPageTitle title={title} breadcrumb={{ to: 'app/sales-orders', text: 'Sales Orders' }}>
+          <></>
+        </ListPageTitle>
 
         <Row className="mb-3">
           <Col md="5" lg="3" xxl="2" className="mb-1">

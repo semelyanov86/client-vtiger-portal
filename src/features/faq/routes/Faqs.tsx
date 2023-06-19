@@ -1,13 +1,13 @@
 import { Accordion, Card, Col, Row } from 'react-bootstrap';
 import { FormattedMessage, useIntl } from 'react-intl';
+import { useSearchParams } from 'react-router-dom';
 
 import { Spinner } from '../../../components/Elements';
-import { BreadcrumbList } from '../../../components/Elements/Breadcrumbs/BreadcrumbList.tsx';
+import { ListPageTitle } from '../../../components/Elements/ListPage/ListPageTitle.tsx';
 import { Head } from '../../../components/Head';
 import { useFaqs } from '../api/getFaqs.ts';
 import { CustomAccordionToggle } from '../components/CustomAccordionToggle.tsx';
 import { SidebarBlock } from '../components/templates/SidebarBlock.tsx';
-import { useSearchParams } from 'react-router-dom';
 
 export const Faqs = () => {
   const { formatMessage: f } = useIntl();
@@ -17,11 +17,6 @@ export const Faqs = () => {
     size: 100,
   });
   const [searchParams] = useSearchParams();
-
-  const breadcrumbs = [
-    { to: '', text: 'Home' },
-    { to: '/app/faqs', text: 'Faqs' },
-  ];
 
   if (faqsQuery.isLoading) {
     return <Spinner></Spinner>;
@@ -53,12 +48,9 @@ export const Faqs = () => {
     <>
       <Head title={title} />
 
-      {/* Title Start */}
-      <div className="page-title-container">
-        <h1 className="mb-0 pb-0 display-4">{title}</h1>
-        <BreadcrumbList items={breadcrumbs} />
-      </div>
-      {/* Title End */}
+      <ListPageTitle title={title} breadcrumb={{ to: 'app/faqs', text: 'Faqs' }}>
+        <></>
+      </ListPageTitle>
 
       <Row className="g-5">
         <Col xl="8" xxl="9" className="mb-5">

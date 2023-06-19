@@ -7,6 +7,7 @@ const ruMessages = {
   products: 'Продукты',
   services: 'Услуги',
   Invoices: 'Счета',
+  Home: 'Главная',
   'Sales Orders': 'Заказы',
   'company.name': 'Наименование компании',
   'company.address': 'Адрес компании',
@@ -505,7 +506,7 @@ const ruMessages = {
   'register.button': 'Learn More',
 
   'general.item-count': 'Количество элементов',
-  'general.items': 'Элементы',
+  'general.items': 'Элементов',
   'general.search': 'Поиск',
   'general.add-new': 'Добавить новый',
   'general.cancel': 'Отменить',

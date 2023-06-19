@@ -6,7 +6,7 @@ import { FormattedMessage, useIntl } from 'react-intl';
 import { NavLink } from 'react-router-dom';
 
 import { Spinner } from '../../../components/Elements';
-import { BreadcrumbList } from '../../../components/Elements/Breadcrumbs/BreadcrumbList.tsx';
+import { ListPageTitle } from '../../../components/Elements/ListPage/ListPageTitle.tsx';
 import { Head } from '../../../components/Head';
 import { ControlsPageSize } from '../../../components/Table/ControlsPageSize.tsx';
 import { TablePagination } from '../../../components/Table/TablePagination.tsx';
@@ -31,10 +31,6 @@ export const Projects = () => {
     sort: sort,
   };
   const projectsQuery = useProjects(query);
-  const breadcrumbs = [
-    { to: '', text: 'Home' },
-    { to: '/app/projects', text: 'Projects' },
-  ];
 
   const onChangePage = useCallback(
     (pageIndex: number) => {
@@ -72,7 +68,7 @@ export const Projects = () => {
   }
 
   if (!projectsQuery.data) {
-    return <p>No projects available</p>;
+    return <FormattedMessage id="general.no-data"></FormattedMessage>;
   }
 
   return (
@@ -80,17 +76,9 @@ export const Projects = () => {
       <Head title={title} />
 
       <Col>
-        {/* Title Start */}
-        <div className="page-title-container mb-3">
-          <Row>
-            <Col className="mb-2">
-              <h1 className="mb-2 pb-0 display-4">{title}</h1>
-              <BreadcrumbList items={breadcrumbs} />
-            </Col>
-            <Col xs="12" sm="auto" className="d-flex align-items-center justify-content-end"></Col>
-          </Row>
-        </div>
-        {/* Title End */}
+        <ListPageTitle title={title} breadcrumb={{ to: 'app/projects', text: 'Projects' }}>
+          <></>
+        </ListPageTitle>
 
         <Row className="mb-3">
           <Col md="5" lg="3" xxl="2" className="mb-1">
@@ -103,6 +91,7 @@ export const Projects = () => {
                 onChange={(e) => {
                   setSearchFilter(e.target.value);
                 }}
+                /* eslint-disable-next-line jsx-a11y/no-autofocus */
                 autoFocus={true}
               />
               <span className="search-magnifier-icon">

@@ -7,6 +7,7 @@ const enMessages = {
   products: 'Products',
   services: 'Services',
   Invoices: 'Invoices',
+  Home: 'Home',
   'Sales Orders': 'Sales Orders',
   'company.name': 'Company Name',
   'company.address': 'Company Address',

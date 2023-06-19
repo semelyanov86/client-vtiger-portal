@@ -11,11 +11,10 @@ import {
   useTable,
 } from 'react-table';
 
-import { BreadcrumbList } from '../../../components/Elements/Breadcrumbs/BreadcrumbList.tsx';
+import { ListPageTitle } from '../../../components/Elements/ListPage/ListPageTitle.tsx';
 import { Head } from '../../../components/Head';
 import { NotifyError } from '../../../components/Notifications/Notification.tsx';
 import { ButtonsAddNew } from '../../../components/Table/ButtonsAddNew.tsx';
-import { ButtonsCheckAll } from '../../../components/Table/ButtonsCheckAll.tsx';
 import { ControlsAdd } from '../../../components/Table/ControlsAdd.tsx';
 import { ControlsEdit } from '../../../components/Table/ControlsEdit.tsx';
 import { ControlsPageSize } from '../../../components/Table/ControlsPageSize.tsx';
@@ -36,10 +35,6 @@ export const Tickets = () => {
   const title = f({ id: 'tickets.list' });
   const [currentPageSize, setCurrentPageSize] = useState(DEFAULT_PAGE_COUNT);
 
-  const breadcrumbs = [
-    { to: '', text: 'Home' },
-    { to: 'tickets', text: 'Tickets' },
-  ];
   const [editTicketId, setEditTicketId] = useState('');
 
   const columns: Column<HelpDesk>[] = getColumns({ onEdit: setEditTicketId });
@@ -150,18 +145,11 @@ export const Tickets = () => {
       <LoadHelpDesk></LoadHelpDesk>
       <Row>
         <Col>
-          <div className="page-title-container">
-            <Row>
-              <Col xs="12" md="7">
-                <h1 className="mb-0 pb-0 display-4">{title}</h1>
-                <BreadcrumbList items={breadcrumbs} />
-              </Col>
-              <Col xs="12" md="5" className="d-flex align-items-start justify-content-end">
-                <ButtonsAddNew onClick={addButtonClick} />{' '}
-                <ButtonsCheckAll tableInstance={tableInstance} />
-              </Col>
-            </Row>
-          </div>
+          <ListPageTitle title={title} breadcrumb={{ to: 'app/tickets', text: 'Tickets' }}>
+            <>
+              <ButtonsAddNew onClick={addButtonClick} />{' '}
+            </>
+          </ListPageTitle>
 
           <div>
             <Row className="mb-3">
