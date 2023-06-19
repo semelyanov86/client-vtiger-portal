@@ -65,6 +65,14 @@ const ruMessages = {
   'user.confirm-password': 'Confirm Password',
   'user.edit-profile-info': 'Edit Profile Information',
 
+  'user-settings.cf_1372': 'Нужны оригиналы закрывающих документов',
+  'user-settings.cf_1374': 'Отправлять новости по электронной почте',
+  'user-settings.cf_1376': 'Отправлять информацию от партнеров',
+  'user-settings.cf_1378': 'Отправлять уведомления по электронной почте',
+  'user-settings.donotcall': 'Не звонить',
+  'user-settings.emailoptout': 'Не отправлять электронные сообщения',
+  'user-settings.settings': 'Настройки пользователя',
+
   'otp.header': 'Security',
   'otp.tfa': 'Two-Factor Authentication',
   'otp.enable-disable':

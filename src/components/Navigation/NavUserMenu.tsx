@@ -1,10 +1,11 @@
 import { ToggleMetadata } from '@restart/ui/Dropdown';
 import classNames from 'classnames';
-import { NavLink } from 'react-router-dom';
 import React, { CSSProperties, useEffect } from 'react';
 import { Col, Dropdown, Row } from 'react-bootstrap';
-import { Question, File, Gear, Lock, PersonFill } from 'react-bootstrap-icons';
+import { Question, Lock, PersonFill } from 'react-bootstrap-icons';
+import { FormattedMessage } from 'react-intl';
 import { useNavigate } from 'react-router';
+import { NavLink } from 'react-router-dom';
 
 import { HELP_URL, MENU_PLACEMENT } from '../../config/constants.ts';
 import { AuthUser } from '../../features/auth';
@@ -12,7 +13,6 @@ import { useAuthContext } from '../../lib/auth.tsx';
 import { useLayoutsStore } from '../../stores/layouts.ts';
 import { useMenusStore } from '../../stores/menus.ts';
 import { useSettingsStore } from '../../stores/settings.ts';
-import { FormattedMessage } from 'react-intl';
 
 const MENU_NAME = 'NavUserMenu';
 
@@ -100,9 +100,9 @@ const NavUserMenuContent = () => {
               </NavLink>
             </li>
             <li>
-              <a href="#/!">
+              <NavLink to="/app/user/settings">
                 <FormattedMessage id="menu.preferencies"></FormattedMessage>
-              </a>
+              </NavLink>
             </li>
           </ul>
         </Col>

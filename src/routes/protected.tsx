@@ -23,6 +23,10 @@ const { UserSecurity } = lazyImport(
   () => import('../features/auth/routes/UserSecurity.tsx'),
   'UserSecurity'
 );
+const { UserSettings } = lazyImport(
+  () => import('../features/auth/routes/UserSettings.tsx'),
+  'UserSettings'
+);
 
 const App = () => {
   return (
@@ -106,6 +110,10 @@ export const protectedRoutes = [
       {
         path: 'user/security',
         element: <UserSecurity />,
+      },
+      {
+        path: 'user/settings',
+        element: <UserSettings />,
       },
       ...getModulesRoutes(),
     ],

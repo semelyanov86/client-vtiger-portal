@@ -65,6 +65,14 @@ const deMessages = {
   'user.confirm-password': 'Confirm Password',
   'user.edit-profile-info': 'Edit Profile Information',
 
+  'user-settings.cf_1372': 'Need paper documents',
+  'user-settings.cf_1374': 'Send news by email',
+  'user-settings.cf_1376': 'Need partner information',
+  'user-settings.cf_1378': 'Need notifications by email',
+  'user-settings.donotcall': 'Do not call',
+  'user-settings.emailoptout': 'Do not send emails',
+  'user-settings.settings': 'Настройки пользователя',
+
   'otp.header': 'Security',
   'otp.tfa': 'Two-Factor Authentication',
   'otp.enable-disable':

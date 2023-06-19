@@ -47,3 +47,7 @@ export type OtpData = {
 export type OtpDto = {
   token: string;
 };
+
+export type UserSettings = {
+  [key: string]: boolean;
+};
