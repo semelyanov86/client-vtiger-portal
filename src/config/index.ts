@@ -7,6 +7,7 @@ import {
   THEME_COLOR,
   USER_ROLE,
 } from './constants.ts';
+import { ConfigCustomModules } from '../features/custom-module/types';
 
 export const API_URL = import.meta.env.VITE_APP_API_URL as string;
 export const JWT_SECRET = '123456' as string;
@@ -28,10 +29,18 @@ export const SUPPORTED_MODULES = [
   'SalesOrder',
 ];
 
+export const CUSTOM_MODULES: ConfigCustomModules = {
+  SPPayments: {
+    default_sort: 'pay_no',
+    list_fields: ['pay_no', 'amount', 'pay_date', 'type_payment', 'spstatus'],
+    icon: 'Wallet',
+  },
+};
+
 // For detailed information: https://github.com/nfl/react-helmet#reference-guide
 export const REACT_HELMET_PROPS = {
-  defaultTitle: 'Acorn Admin Template',
-  titleTemplate: '%s | Acorn Admin Template',
+  defaultTitle: 'Customer Portal',
+  titleTemplate: '%s | Customer Portal',
 };
 
 export const DEFAULT_PATHS = {
@@ -63,5 +72,3 @@ export const DEFAULT_USER = {
   role: USER_ROLE.Admin,
   email: 'lisajackson@gmail.com',
 };
-
-export const REDUX_PERSIST_KEY = 'classic-dashboard';

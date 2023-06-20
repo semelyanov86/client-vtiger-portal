@@ -2,13 +2,11 @@ import { Button, OverlayTrigger, Tooltip } from 'react-bootstrap';
 import { Pencil } from 'react-bootstrap-icons';
 import { TableInstance } from 'react-table';
 
-import HelpDesk from '../../features/help-desk/types';
-
-interface ControlsEditProps {
-  tableInstance: TableInstance<HelpDesk>;
+interface ControlsEditProps<T extends object> {
+  tableInstance: TableInstance<T>;
 }
 
-export const ControlsEdit = ({ tableInstance }: ControlsEditProps) => {
+export const ControlsEdit = <T extends object>({ tableInstance }: ControlsEditProps<T>) => {
   const { selectedFlatRows, setIsOpenAddEditModal } = tableInstance;
   if (selectedFlatRows.length !== 1) {
     return (

@@ -1,6 +1,7 @@
 import { useCallback, useMemo, useState } from 'react';
 import { Col, Row } from 'react-bootstrap';
-import { useIntl } from 'react-intl';
+import { FormattedMessage, useIntl } from 'react-intl';
+import { useParams } from 'react-router';
 import {
   Column,
   useGlobalFilter,
@@ -21,28 +22,34 @@ import { ControlsPageSize } from '../../../components/Table/ControlsPageSize.tsx
 import { ControlsSearch } from '../../../components/Table/ControlsSearch.tsx';
 import { Table } from '../../../components/Table/Table.tsx';
 import { TablePagination } from '../../../components/Table/TablePagination.tsx';
+import { CUSTOM_MODULES } from '../../../config';
 import { DEFAULT_PAGE_COUNT } from '../../../config/constants.ts';
 import { convertSortingToSort } from '../../../lib/requests.ts';
-import { LoadHelpDesk } from '../../module/LoadHelpDesk.tsx';
-import { useTickets } from '../api/getTickets.ts';
-import { AddTicketModal } from '../components/AddTicketModal.tsx';
-import { EditTicketModal } from '../components/EditTicketModal.tsx';
-import { getColumns } from '../table/getColumns.tsx';
-import HelpDesk from '../types';
+import { LoadCustomModule } from '../../module/LoadCustomModule.tsx';
+import useModulesStore from '../../module/stores/module.ts';
+import { useEntities } from '../api/getEntities.ts';
+import { getModuleColumns } from '../table/getModuleColumns.tsx';
+import { CustomModule } from '../types';
 
-export const Tickets = () => {
+export const Entities = () => {
+  const { moduleName } = useParams();
+  useModulesStore();
   const { formatMessage: f } = useIntl();
-  const title = f({ id: 'tickets.list' });
+  const title = f({ id: 'entities.list' });
   const [currentPageSize, setCurrentPageSize] = useState(DEFAULT_PAGE_COUNT);
 
-  const [editTicketId, setEditTicketId] = useState('');
+  const [_, setEditEntityId] = useState('');
 
-  const columns: Column<HelpDesk>[] = getColumns({ onEdit: setEditTicketId });
+  const columns: Column<CustomModule>[] = getModuleColumns({
+    onEdit: setEditEntityId,
+    module: moduleName ?? '',
+  });
 
   const [pageCount, setPageCount] = useState(0);
   const [term, setTerm] = useState('');
   const [page, setPage] = useState(1);
-  const [sort, setSort] = useState({ id: 'ticket_no', desc: true });
+  const moduleConfig = CUSTOM_MODULES[moduleName ?? ''];
+  const [sort, setSort] = useState({ id: moduleConfig.default_sort, desc: true });
 
   const query = {
     page: page,
@@ -51,9 +58,9 @@ export const Tickets = () => {
     sort: convertSortingToSort(sort),
   };
 
-  const { data, error, isLoading } = useTickets(query);
+  const { data, error, isLoading } = useEntities(query, moduleName ?? '');
 
-  const tickets = useMemo(() => {
+  const entities = useMemo(() => {
     if (data === undefined) {
       return [];
     }
@@ -76,7 +83,7 @@ export const Tickets = () => {
   const tableInstance = useTable(
     {
       columns,
-      data: tickets ?? [],
+      data: entities ?? [],
       isOpenAddEditModal,
       setIsOpenAddEditModal,
       manualPagination: true,
@@ -139,13 +146,17 @@ export const Tickets = () => {
     setIsOpenAddEditModal(true);
   };
 
+  if (!moduleName) {
+    return <FormattedMessage id="general.no-data"></FormattedMessage>;
+  }
+
   return (
     <>
       <Head title={title} />
-      <LoadHelpDesk></LoadHelpDesk>
+      <LoadCustomModule moduleName={moduleName}></LoadCustomModule>
       <Row>
         <Col>
-          <ListPageTitle title={title} breadcrumb={{ to: 'app/tickets', text: 'Tickets' }}>
+          <ListPageTitle title={title} breadcrumb={{ to: 'app/' + moduleName, text: moduleName }}>
             <>
               <ButtonsAddNew onClick={addButtonClick} />{' '}
             </>
@@ -155,13 +166,16 @@ export const Tickets = () => {
             <Row className="mb-3">
               <Col sm="12" md="5" lg="3" xxl="2">
                 <div className="d-inline-block float-md-start me-1 mb-1 mb-md-0 search-input-container w-100 shadow bg-foreground">
-                  <ControlsSearch<HelpDesk> tableInstance={tableInstance} onChange={searchItem} />
+                  <ControlsSearch<CustomModule>
+                    tableInstance={tableInstance}
+                    onChange={searchItem}
+                  />
                 </div>
               </Col>
               <Col sm="12" md="7" lg="9" xxl="10" className="text-end">
                 <div className="d-inline-block me-0 me-sm-3 float-start float-md-none">
-                  <ControlsAdd<HelpDesk> tableInstance={tableInstance} />{' '}
-                  <ControlsEdit<HelpDesk> tableInstance={tableInstance} />{' '}
+                  <ControlsAdd<CustomModule> tableInstance={tableInstance} />{' '}
+                  <ControlsEdit<CustomModule> tableInstance={tableInstance} />{' '}
                 </div>
                 <div className="d-inline-block">
                   <ControlsPageSize
@@ -173,19 +187,13 @@ export const Tickets = () => {
             </Row>
             <Row>
               <Col xs="12">
-                <Table<HelpDesk> className="react-table rows" tableInstance={tableInstance} />
+                <Table<CustomModule> className="react-table rows" tableInstance={tableInstance} />
               </Col>
               <Col xs="12">
                 <TablePagination page={page} pageCount={pageCount} gotoPage={onChangePage} />
               </Col>
             </Row>
           </div>
-          <AddTicketModal
-            isModalOpen={isOpenAddEditModal}
-            onHide={setIsOpenAddEditModal}
-            query={query}
-          />
-          <EditTicketModal ticketId={editTicketId} onHide={setEditTicketId} query={query} />
         </Col>
       </Row>
     </>

@@ -1,14 +1,15 @@
 import classNames from 'classnames';
 import { TableInstance } from 'react-table';
 
-import HelpDesk from '../../features/help-desk/types';
-
-interface TableProps {
-  tableInstance: TableInstance<HelpDesk>;
+interface TableProps<T extends object> {
+  tableInstance: TableInstance<T>;
   className?: string;
 }
 
-export const Table = ({ tableInstance, className = 'react-table boxed' }: TableProps) => {
+export const Table = <T extends object>({
+  tableInstance,
+  className = 'react-table boxed',
+}: TableProps<T>) => {
   const {
     getTableProps,
     headerGroups,

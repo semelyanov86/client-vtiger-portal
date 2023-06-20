@@ -18,6 +18,10 @@ const { SalesOrderRoutes } = lazyImport(
   'SalesOrderRoutes'
 );
 const { FaqsRoutes } = lazyImport(() => import('../features/faq'), 'FaqsRoutes');
+const { CustomModuleRoutes } = lazyImport(
+  () => import('../features/custom-module'),
+  'CustomModuleRoutes'
+);
 const { UserEdit } = lazyImport(() => import('../features/auth/routes/UserEdit.tsx'), 'UserEdit');
 const { UserSecurity } = lazyImport(
   () => import('../features/auth/routes/UserSecurity.tsx'),
@@ -85,6 +89,10 @@ function getModulesRoutes(): RouteElement[] {
           element: <SalesOrderRoutes />,
         }
       : null,
+    {
+      path: 'custom/*',
+      element: <CustomModuleRoutes />,
+    },
   ];
   return routes.filter(notEmpty);
 }

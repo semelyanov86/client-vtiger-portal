@@ -1,7 +1,7 @@
 import { MenuItem } from '../components/Navigation/main-menu/MainMenuItems.tsx';
-import { DEFAULT_PATHS, SUPPORTED_MODULES } from '../config';
-import { lazyImport } from '../utils/lazyImport.ts';
+import { CUSTOM_MODULES, DEFAULT_PATHS, SUPPORTED_MODULES } from '../config';
 import { notEmpty } from '../utils/array.ts';
+import { lazyImport } from '../utils/lazyImport.ts';
 
 export interface MenuRoutesInterface {
   mainMenuItems: MenuItem[];
@@ -27,6 +27,10 @@ const { Projects } = lazyImport(
   'Projects'
 );
 const { Faqs } = lazyImport(() => import('../features/faq/routes/Faqs.tsx'), 'Faqs');
+const { Entities } = lazyImport(
+  () => import('../features/custom-module/routes/Entities.tsx'),
+  'Entities'
+);
 
 function getMenuRoutes(): MenuItem[] {
   const items: (MenuItem | null)[] = [
@@ -84,6 +88,15 @@ function getMenuRoutes(): MenuItem[] {
       : null,
   ];
 
+  for (const key in CUSTOM_MODULES) {
+    const moduleCfg = CUSTOM_MODULES[key];
+    items.push({
+      path: `${appRoot}/app/custom/${key}`,
+      component: Entities,
+      label: key,
+      icon: moduleCfg.icon,
+    });
+  }
   return items.filter(notEmpty);
 }
 

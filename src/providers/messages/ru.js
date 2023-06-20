@@ -8,6 +8,7 @@ const ruMessages = {
   services: 'Услуги',
   Invoices: 'Счета',
   Home: 'Главная',
+  SPPayments: 'Общие платежи',
   'Sales Orders': 'Заказы',
   'company.name': 'Наименование компании',
   'company.address': 'Адрес компании',
@@ -505,6 +506,14 @@ const ruMessages = {
     '            Communicate with our managers easily. If you have a questions, feel free to contact us...',
   'register.button': 'Learn More',
 
+  'entities.list': 'Записи модуля ',
+
+  'SPPayments.pay_no': 'Платеж #',
+  'SPPayments.amount': 'Сумма',
+  'SPPayments.pay_date': 'Дата',
+  'SPPayments.type_payment': 'Тип',
+  'SPPayments.spstatus': 'Статус',
+
   'general.item-count': 'Количество элементов',
   'general.items': 'Элементов',
   'general.search': 'Поиск',
@@ -518,6 +527,7 @@ const ruMessages = {
   'general.navigate': 'Перейти',
   'general.select': 'Выбрать',
   'general.global-search': 'Начните печатать, для запуска поиска',
+  'general.action': ' ',
 };
 
 export default ruMessages;

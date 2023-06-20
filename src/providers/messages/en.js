@@ -8,6 +8,7 @@ const enMessages = {
   services: 'Services',
   Invoices: 'Invoices',
   Home: 'Home',
+  SPPayments: 'Global Payments',
   'Sales Orders': 'Sales Orders',
   'company.name': 'Company Name',
   'company.address': 'Company Address',
@@ -500,6 +501,14 @@ const enMessages = {
     '            Communicate with our managers easily. If you have a questions, feel free to contact us...',
   'register.button': 'Learn More',
 
+  'entities.list': 'Entities list ',
+
+  'SPPayments.pay_no': 'Payment #',
+  'SPPayments.amount': 'Amount',
+  'SPPayments.pay_date': 'Pay Date',
+  'SPPayments.type_payment': 'Payment type',
+  'SPPayments.spstatus': 'Payment Status',
+
   'general.item-count': 'Item Count',
   'general.items': 'Items',
   'general.search': 'Search',
@@ -513,6 +522,7 @@ const enMessages = {
   'general.navigate': 'Navigate',
   'general.select': 'Select',
   'general.global-search': 'Start typing to search in portal',
+  'general.action': ' ',
 };
 
 export default enMessages;

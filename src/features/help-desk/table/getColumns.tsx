@@ -3,8 +3,8 @@ import { FormattedMessage } from 'react-intl';
 import { Link } from 'react-router-dom';
 import { CellProps, Column } from 'react-table';
 
-import HelpDesk from '../types';
 import { formatToUserReadableDate } from '../../misc/services/Dates.ts';
+import HelpDesk from '../types';
 
 interface getColumnsOptions {
   onEdit: (ticketId: string) => void;

@@ -162,7 +162,7 @@ export const SalesOrders = () => {
           {soQuery.data.data.map((order) => {
             return (
               <Card key={order.id} className="hover-border-primary mb-2">
-                <Card.Body className="pt-0 pb-0 sh-22 sh-md-7">
+                <Card.Body className="pt-0 pb-0 sh-md-7">
                   <Row className="g-0 h-100 align-content-center cursor-default">
                     <Col
                       xs="6"

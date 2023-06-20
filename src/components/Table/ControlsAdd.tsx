@@ -2,13 +2,11 @@ import { Button, OverlayTrigger, Tooltip } from 'react-bootstrap';
 import { Plus } from 'react-bootstrap-icons';
 import { TableInstance } from 'react-table';
 
-import HelpDesk from '../../features/help-desk/types';
-
-interface ControlsAddProps {
-  tableInstance: TableInstance<HelpDesk>;
+interface ControlsAddProps<T extends object> {
+  tableInstance: TableInstance<T>;
 }
 
-export const ControlsAdd = ({ tableInstance }: ControlsAddProps) => {
+export const ControlsAdd = <T extends object>({ tableInstance }: ControlsAddProps<T>) => {
   const { toggleAllPageRowsSelected, setIsOpenAddEditModal } = tableInstance;
   const addButtonClick = () => {
     toggleAllPageRowsSelected(false);

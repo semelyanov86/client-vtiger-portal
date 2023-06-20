@@ -2,14 +2,15 @@ import { useState } from 'react';
 import { XSquareFill, Search } from 'react-bootstrap-icons';
 import { TableInstance } from 'react-table';
 
-import HelpDesk from '../../features/help-desk/types';
-
-interface ControlsSearchProps {
-  tableInstance: TableInstance<HelpDesk>;
+interface ControlsSearchProps<T extends object> {
+  tableInstance: TableInstance<T>;
   onChange: (value: string) => void;
 }
 
-export const ControlsSearch = ({ tableInstance, onChange }: ControlsSearchProps) => {
+export const ControlsSearch = <T extends object>({
+  tableInstance,
+  onChange,
+}: ControlsSearchProps<T>) => {
   const {
     state: { globalFilter },
   } = tableInstance;
