@@ -16,6 +16,12 @@ import { getSortingValue } from '../../../utils/sorting.ts';
 import { formatToUserReadableDate } from '../../misc/services/Dates.ts';
 import { useInvoices } from '../api/getInvoices.ts';
 
+const HEADER_CONTENT_CLASSES = ['d-flex', 'flex-column', 'pe-1', 'justify-content-center'];
+
+const ROW_TABLE_CLASSES = ['d-flex', 'flex-column', 'justify-content-center', 'mb-2', 'mb-md-0'];
+
+const ROW_TABLE_FIELD_CLASSES = ['text-muted', 'text-small', 'd-md-none'];
+
 export const Invoices = () => {
   const { formatMessage: f } = useIntl();
   const title = f({ id: 'invoices.list' });
@@ -118,7 +124,7 @@ export const Invoices = () => {
             </Col>
             <Col
               md="5"
-              className="d-flex flex-column pe-1 justify-content-center"
+              className={classNames(...HEADER_CONTENT_CLASSES)}
               onClick={() => setSort(getSortingValue('subject', sort))}
             >
               <div className={headerClasses('subject')}>
@@ -128,7 +134,7 @@ export const Invoices = () => {
             <Col
               md="2"
               xs="6"
-              className="d-flex flex-column pe-1 justify-content-center"
+              className={classNames(...HEADER_CONTENT_CLASSES)}
               onClick={() => setSort(getSortingValue('hdnGrandTotal', sort))}
             >
               <div className="text-muted text-small cursor-pointer sort">
@@ -137,7 +143,7 @@ export const Invoices = () => {
             </Col>
             <Col
               md="2"
-              className="d-flex flex-column pe-1 justify-content-center"
+              className={classNames(...HEADER_CONTENT_CLASSES)}
               onClick={() => setSort(getSortingValue('invoicedate', sort))}
             >
               <div className={headerClasses('invoicedate')}>
@@ -160,14 +166,19 @@ export const Invoices = () => {
           {invoicesQuery.data.data.map((invoice) => {
             return (
               <Card key={invoice.id} className="hover-border-primary mb-2">
-                <Card.Body className="pt-0 pb-0 sh-22 sh-md-7">
+                <Card.Body className="pt-0 pb-0 sh-md-7">
                   <Row className="g-0 h-100 align-content-center cursor-default">
                     <Col
                       xs="6"
                       md="1"
-                      className="d-flex flex-column justify-content-center mb-2 mb-md-0 order-1 order-md-1 h-md-100 "
+                      className={classNames(
+                        ...ROW_TABLE_CLASSES,
+                        'order-1',
+                        'order-md-1',
+                        'h-md-100'
+                      )}
                     >
-                      <div className="text-muted text-small d-md-none">
+                      <div className={classNames(...ROW_TABLE_FIELD_CLASSES)}>
                         <FormattedMessage id="invoices.invoice_no"></FormattedMessage>
                       </div>
                       <NavLink
@@ -185,9 +196,9 @@ export const Invoices = () => {
                     <Col
                       xs="6"
                       md="5"
-                      className="d-flex flex-column justify-content-center mb-2 mb-md-0 order-3 order-md-2"
+                      className={classNames(...ROW_TABLE_CLASSES, 'order-3', 'order-md-2')}
                     >
-                      <div className="text-muted text-small d-md-none">
+                      <div className={classNames(...ROW_TABLE_FIELD_CLASSES)}>
                         <FormattedMessage id="invoices.subject"></FormattedMessage>
                       </div>
                       <div
@@ -201,9 +212,9 @@ export const Invoices = () => {
                     <Col
                       xs="12"
                       md="2"
-                      className="d-flex flex-column justify-content-center mb-2 mb-md-0 order-3 order-md-2"
+                      className={classNames(...ROW_TABLE_CLASSES, 'order-3', 'order-md-2')}
                     >
-                      <div className="text-muted text-small d-md-none">
+                      <div className={classNames(...ROW_TABLE_FIELD_CLASSES)}>
                         <FormattedMessage id="invoices.hdnGrandTotal"></FormattedMessage>
                       </div>
                       <div
@@ -217,9 +228,9 @@ export const Invoices = () => {
                     <Col
                       xs="12"
                       md="2"
-                      className="d-flex flex-column justify-content-center mb-2 mb-md-0 order-4 order-md-3"
+                      className={classNames(...ROW_TABLE_CLASSES, 'order-4', 'order-md-3')}
                     >
-                      <div className="text-muted text-small d-md-none">
+                      <div className={classNames(...ROW_TABLE_FIELD_CLASSES)}>
                         <FormattedMessage id="invoices.invoicedate"></FormattedMessage>
                       </div>
                       <div className="text-body">
@@ -229,9 +240,14 @@ export const Invoices = () => {
                     <Col
                       xs="6"
                       md="2"
-                      className="d-flex flex-column justify-content-center align-items-md-end mb-2 mb-md-0 order-2 order-md-5"
+                      className={classNames(
+                        ...ROW_TABLE_CLASSES,
+                        'order-2',
+                        'order-md-5',
+                        'align-items-md-center'
+                      )}
                     >
-                      <div className="text-muted text-small d-md-none">
+                      <div className={classNames(...ROW_TABLE_FIELD_CLASSES)}>
                         <FormattedMessage id="invoices.invoicestatus"></FormattedMessage>
                       </div>
                       <div>

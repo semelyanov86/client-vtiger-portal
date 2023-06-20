@@ -16,6 +16,12 @@ import { getSortingValue } from '../../../utils/sorting.ts';
 import { formatToUserReadableDate } from '../../misc/services/Dates.ts';
 import { useSalesOrders } from '../api/getSalesOrders.ts';
 
+const HEADER_CONTENT_CLASSES = ['d-flex', 'flex-column', 'pe-1', 'justify-content-center'];
+
+const ROW_TABLE_CLASSES = ['d-flex', 'flex-column', 'justify-content-center', 'mb-2', 'mb-md-0'];
+
+const ROW_TABLE_FIELD_CLASSES = ['text-muted', 'text-small', 'd-md-none'];
+
 export const SalesOrders = () => {
   const { formatMessage: f } = useIntl();
   const title = f({ id: 'so.list' });
@@ -118,7 +124,7 @@ export const SalesOrders = () => {
             </Col>
             <Col
               md="5"
-              className="d-flex flex-column pe-1 justify-content-center"
+              className={classNames(...HEADER_CONTENT_CLASSES)}
               onClick={() => setSort(getSortingValue('subject', sort))}
             >
               <div className={headerClasses('subject')}>
@@ -128,21 +134,21 @@ export const SalesOrders = () => {
             <Col
               md="2"
               xs="6"
-              className="d-flex flex-column pe-1 justify-content-center"
+              className={classNames(...HEADER_CONTENT_CLASSES)}
               onClick={() => setSort(getSortingValue('hdnGrandTotal', sort))}
             >
               <div className="text-muted text-small cursor-pointer sort">
                 <FormattedMessage id="so.hdnGrandTotal"></FormattedMessage>
               </div>
             </Col>
-            <Col md="2" className="d-flex flex-column pe-1 justify-content-center">
+            <Col md="2" className={classNames(...HEADER_CONTENT_CLASSES)}>
               <div className={headerClasses('createdtime')}>
                 <FormattedMessage id="so.createdtime"></FormattedMessage>
               </div>
             </Col>
             <Col
               md="2"
-              className="d-flex flex-column pe-1 justify-content-end text-end"
+              className={classNames(...HEADER_CONTENT_CLASSES, 'text-end')}
               onClick={() => setSort(getSortingValue('sostatus', sort))}
             >
               <div className={headerClasses('sostatus')}>
@@ -161,9 +167,14 @@ export const SalesOrders = () => {
                     <Col
                       xs="6"
                       md="1"
-                      className="d-flex flex-column justify-content-center mb-2 mb-md-0 order-1 order-md-1 h-md-100 "
+                      className={classNames(
+                        ...ROW_TABLE_CLASSES,
+                        'order-1',
+                        'order-md-1',
+                        'h-md-100'
+                      )}
                     >
-                      <div className="text-muted text-small d-md-none">
+                      <div className={classNames(...ROW_TABLE_FIELD_CLASSES)}>
                         <FormattedMessage id="so.salesorder_no"></FormattedMessage>
                       </div>
                       <NavLink
@@ -181,9 +192,9 @@ export const SalesOrders = () => {
                     <Col
                       xs="6"
                       md="5"
-                      className="d-flex flex-column justify-content-center mb-2 mb-md-0 order-3 order-md-2"
+                      className={classNames(...ROW_TABLE_CLASSES, 'order-3', 'order-md-2')}
                     >
-                      <div className="text-muted text-small d-md-none">
+                      <div className={classNames(...ROW_TABLE_FIELD_CLASSES)}>
                         <FormattedMessage id="so.subject"></FormattedMessage>
                       </div>
                       <div
@@ -197,9 +208,9 @@ export const SalesOrders = () => {
                     <Col
                       xs="12"
                       md="2"
-                      className="d-flex flex-column justify-content-center mb-2 mb-md-0 order-3 order-md-2"
+                      className={classNames(...ROW_TABLE_CLASSES, 'order-3', 'order-md-2')}
                     >
-                      <div className="text-muted text-small d-md-none">
+                      <div className={classNames(...ROW_TABLE_FIELD_CLASSES)}>
                         <FormattedMessage id="so.hdnGrandTotal"></FormattedMessage>
                       </div>
                       <div
@@ -213,9 +224,9 @@ export const SalesOrders = () => {
                     <Col
                       xs="12"
                       md="2"
-                      className="d-flex flex-column justify-content-center mb-2 mb-md-0 order-4 order-md-3"
+                      className={classNames(...ROW_TABLE_CLASSES, 'order-4', 'order-md-3')}
                     >
-                      <div className="text-muted text-small d-md-none">
+                      <div className={classNames(...ROW_TABLE_FIELD_CLASSES)}>
                         <FormattedMessage id="so.createdtime"></FormattedMessage>
                       </div>
                       <div className="text-body">{formatToUserReadableDate(order.createdtime)}</div>
@@ -223,9 +234,14 @@ export const SalesOrders = () => {
                     <Col
                       xs="6"
                       md="2"
-                      className="d-flex flex-column justify-content-center align-items-md-end mb-2 mb-md-0 order-2 order-md-5"
+                      className={classNames(
+                        ...ROW_TABLE_CLASSES,
+                        'order-2',
+                        'order-md-5',
+                        'align-items-end'
+                      )}
                     >
-                      <div className="text-muted text-small d-md-none">
+                      <div className={classNames(...ROW_TABLE_FIELD_CLASSES)}>
                         <FormattedMessage id="so.sostatus"></FormattedMessage>
                       </div>
                       <div>

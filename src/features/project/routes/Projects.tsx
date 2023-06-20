@@ -15,6 +15,12 @@ import { getSortingValue } from '../../../utils/sorting.ts';
 import { formatToUserReadableDate } from '../../misc/services/Dates.ts';
 import { useProjects } from '../api/getProjects.ts';
 
+const HEADER_CONTENT_CLASSES = ['d-flex', 'flex-column', 'pe-1', 'justify-content-center'];
+
+const ROW_TABLE_CLASSES = ['d-flex', 'flex-column', 'justify-content-center', 'mb-2', 'mb-md-0'];
+
+const ROW_TABLE_FIELD_CLASSES = ['text-muted', 'text-small', 'd-md-none'];
+
 export const Projects = () => {
   const { formatMessage: f } = useIntl();
   const title = f({ id: 'project.list' });
@@ -124,7 +130,7 @@ export const Projects = () => {
             </Col>
             <Col
               md="6"
-              className="d-flex flex-column pe-1 justify-content-center"
+              className={classNames(...HEADER_CONTENT_CLASSES)}
               onClick={() => setSort(getSortingValue('projectname', sort))}
             >
               <div className={headerClasses('projectname')}>
@@ -133,7 +139,7 @@ export const Projects = () => {
             </Col>
             <Col
               md="3"
-              className="d-flex flex-column pe-1 justify-content-center"
+              className={classNames(...HEADER_CONTENT_CLASSES)}
               onClick={() => setSort(getSortingValue('startdate', sort))}
             >
               <div className={headerClasses('startdate')}>
@@ -142,7 +148,7 @@ export const Projects = () => {
             </Col>
             <Col
               md="2"
-              className="d-flex flex-column pe-1 justify-content-end text-end"
+              className={classNames(...HEADER_CONTENT_CLASSES, 'text-end')}
               onClick={() => setSort(getSortingValue('projectstatus', sort))}
             >
               <div className={headerClasses('projectstatus')}>
@@ -161,9 +167,14 @@ export const Projects = () => {
                     <Col
                       xs="6"
                       md="1"
-                      className="d-flex flex-column justify-content-center mb-2 mb-md-0 order-1 order-md-1 h-md-100 "
+                      className={classNames(
+                        ...ROW_TABLE_CLASSES,
+                        'order-1',
+                        'order-md-1',
+                        'h-md-100'
+                      )}
                     >
-                      <div className="text-muted text-small d-md-none">
+                      <div className={classNames(...ROW_TABLE_FIELD_CLASSES)}>
                         <FormattedMessage id="project.project_no"></FormattedMessage>
                       </div>
                       <NavLink
@@ -181,9 +192,9 @@ export const Projects = () => {
                     <Col
                       xs="12"
                       md="6"
-                      className="d-flex flex-column justify-content-center mb-2 mb-md-0 order-3 order-md-2"
+                      className={classNames(...ROW_TABLE_CLASSES, 'order-3', 'order-md-2')}
                     >
-                      <div className="text-muted text-small d-md-none">
+                      <div className={classNames(...ROW_TABLE_FIELD_CLASSES)}>
                         <FormattedMessage id="project.projectname"></FormattedMessage>
                       </div>
                       <div
@@ -197,9 +208,9 @@ export const Projects = () => {
                     <Col
                       xs="12"
                       md="3"
-                      className="d-flex flex-column justify-content-center mb-2 mb-md-0 order-4 order-md-3"
+                      className={classNames(...ROW_TABLE_CLASSES, 'order-4', 'order-md-3')}
                     >
-                      <div className="text-muted text-small d-md-none">
+                      <div className={classNames(...ROW_TABLE_FIELD_CLASSES)}>
                         <FormattedMessage id="project.startdate"></FormattedMessage>
                       </div>
                       <div className="text-body">{formatToUserReadableDate(project.startdate)}</div>
@@ -207,9 +218,14 @@ export const Projects = () => {
                     <Col
                       xs="6"
                       md="2"
-                      className="d-flex flex-column justify-content-center align-items-md-end mb-2 mb-md-0 order-2 order-md-5"
+                      className={classNames(
+                        ...ROW_TABLE_CLASSES,
+                        'order-2',
+                        'order-md-5',
+                        'align-items-md-end'
+                      )}
                     >
-                      <div className="text-muted text-small d-md-none">
+                      <div className={classNames(...ROW_TABLE_FIELD_CLASSES)}>
                         <FormattedMessage id="project.projectstatus"></FormattedMessage>
                       </div>
                       <div>
