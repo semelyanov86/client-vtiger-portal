@@ -4,10 +4,10 @@ export function getPicklistValues(
   module: Module,
   fieldName: string
 ): Array<{ label: string; value: string }> {
-  if (!module.fields) {
+  const field = getFieldByName(module, fieldName);
+  if (!field) {
     return [];
   }
-  const field = module.fields.find((field) => field.name === fieldName);
 
   if (field && field.type.name === 'picklist') {
     return (
@@ -20,4 +20,11 @@ export function getPicklistValues(
   } else {
     return [];
   }
+}
+
+export function getFieldByName(module: Module, fieldName: string) {
+  if (!module.fields) {
+    return undefined;
+  }
+  return module.fields.find((field) => field.name === fieldName);
 }

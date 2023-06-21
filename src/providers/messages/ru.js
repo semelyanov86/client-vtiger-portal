@@ -513,6 +513,8 @@ const ruMessages = {
   'SPPayments.pay_date': 'Дата',
   'SPPayments.type_payment': 'Тип',
   'SPPayments.spstatus': 'Статус',
+  'SPPayments.Наличные': 'Наличные',
+  'SPPayments.Executed': 'Завершен',
 
   'general.item-count': 'Количество элементов',
   'general.items': 'Элементов',

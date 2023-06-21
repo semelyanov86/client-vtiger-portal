@@ -27,6 +27,12 @@ type FieldType =
     }
   | {
       name: 'datetime';
+    }
+  | {
+      name: 'date';
+    }
+  | {
+      name: 'currency';
     };
 
 export type Module = {

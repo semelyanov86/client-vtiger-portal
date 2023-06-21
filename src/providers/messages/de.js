@@ -507,6 +507,8 @@ const deMessages = {
   'SPPayments.pay_date': 'Pay Date',
   'SPPayments.type_payment': 'Payment type',
   'SPPayments.spstatus': 'Payment Status',
+  'SPPayments.Наличные': 'Cash',
+  'SPPayments.Executed': 'Executed',
 
   'general.item-count': 'Item Count',
   'general.items': 'Items',

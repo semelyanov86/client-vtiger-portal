@@ -1,6 +1,6 @@
 import * as icons from 'react-bootstrap-icons';
 
-interface RelatedField {
+export interface RelatedField {
   label: string;
   id: string;
 }

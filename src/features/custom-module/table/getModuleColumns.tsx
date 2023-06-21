@@ -5,6 +5,7 @@ import { CellProps, Column } from 'react-table';
 
 import { CUSTOM_MODULES } from '../../../config';
 import { CustomModule } from '../types';
+import { DisplayCellValue } from './uitypes/DisplayCellValue.tsx';
 
 interface getColumnsOptions {
   onEdit: (ticketId: string) => void;
@@ -20,9 +21,12 @@ export function getModuleColumns({ onEdit, module }: getColumnsOptions): Column<
       headerClassName: 'text-muted text-small text-uppercase w-30',
       Cell: ({ cell: { value }, row: { values } }: CellProps<CustomModule>) => {
         return (
-          <Link to={'/app/' + module + '/' + values.id} className="list-item-heading body">
-            {value}
-          </Link>
+          <DisplayCellValue
+            value={value}
+            field={field}
+            module={module}
+            id={values.id}
+          ></DisplayCellValue>
         );
       },
     };
