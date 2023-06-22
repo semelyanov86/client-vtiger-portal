@@ -2,27 +2,35 @@ import { AxiosError } from 'axios';
 import { useMutation } from 'react-query';
 
 import { NotifyError, NotifySuccess } from '../../../components/Notifications/Notification.tsx';
-import { axios, ValidationError } from '../../../lib/axios';
+import { axios, ValidationError } from '../../../lib/axios.ts';
 import { MutationConfig, queryClient } from '../../../lib/react-query.ts';
 import { RequestQuery } from '../../misc/types/query.ts';
 import { CustomModule } from '../types';
 
-export type CreateEntityDTO = {
+export type UpdateEntityDTO = {
   data: CustomModule;
-  name: string;
-};
-
-export const createEntity = ({ data, name }: CreateEntityDTO): Promise<CustomModule> => {
-  return axios.post<CustomModule>('/custom-modules/' + name, data).then((res) => res.data);
-};
-
-type UseCreateTicketOptions = {
-  query: RequestQuery;
-  config?: MutationConfig<typeof createEntity>;
+  entityId: string;
   module: string;
 };
 
-export const useCreateEntity = ({ config, query, module }: UseCreateTicketOptions) => {
+export const updateEntity = ({
+  data,
+  entityId,
+  module,
+}: UpdateEntityDTO): Promise<CustomModule> => {
+  return axios
+    .patch<CustomModule>(`/custom-modules/${module}/${entityId}`, data)
+    .then((res) => res.data);
+};
+
+type UseUpdateEntityOptions = {
+  query: RequestQuery;
+  config?: MutationConfig<typeof updateEntity>;
+  module: string;
+  id: string;
+};
+
+export const useUpdateEntity = ({ query, config, module, id }: UseUpdateEntityOptions) => {
   return useMutation({
     onError: (e: AxiosError<ValidationError>, __, context: any) => {
       if (context?.previousTickets) {
@@ -35,10 +43,11 @@ export const useCreateEntity = ({ config, query, module }: UseCreateTicketOption
       }
     },
     onSuccess: () => {
+      queryClient.refetchQueries([module, id]);
       queryClient.invalidateQueries({ queryKey: [module, query] });
-      NotifySuccess('Entity created!');
+      NotifySuccess('Entity successfully updated!');
     },
     ...config,
-    mutationFn: createEntity,
+    mutationFn: updateEntity,
   });
 };

@@ -7,9 +7,10 @@ import { NumberField } from './NumberField.tsx';
 import { PicklistField } from './PicklistField.tsx';
 import { StringField } from './StringField.tsx';
 import { TextareaField } from './TextareaField.tsx';
+import { RelatedField } from '../../types';
 
 interface GenerateFieldTypeProps extends FormField {
-  value: string;
+  value: string | number | boolean | RelatedField | string[];
 }
 
 export const GenerateFieldType = ({
@@ -32,7 +33,7 @@ export const GenerateFieldType = ({
         register={register}
         errors={errors}
         module={module}
-        value={value}
+        value={String(value)}
         onChange={onChange}
       ></DateField>
     );
@@ -43,7 +44,7 @@ export const GenerateFieldType = ({
         register={register}
         errors={errors}
         module={module}
-        value={value}
+        value={String(value)}
         onChange={onChange}
       ></PicklistField>
     );
@@ -69,7 +70,7 @@ export const GenerateFieldType = ({
         register={register}
         errors={errors}
         module={module}
-        value={value}
+        value={String(value)}
         onChange={onChange}
       ></TextareaField>
     );
@@ -91,7 +92,7 @@ export const GenerateFieldType = ({
       register={register}
       errors={errors}
       module={module}
-      value={value}
+      value={String(value)}
       onChange={onChange}
     ></StringField>
   );

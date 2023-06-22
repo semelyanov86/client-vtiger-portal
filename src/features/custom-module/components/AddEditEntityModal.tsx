@@ -4,19 +4,22 @@ import { FieldValues, useForm } from 'react-hook-form';
 import { FormattedMessage } from 'react-intl';
 import { z } from 'zod';
 
-import { NotifyError } from '../../../components/Notifications/Notification.tsx';
+import { Spinner } from '../../../components/Elements';
 import { CUSTOM_MODULES } from '../../../config';
 import { RequestQuery } from '../../misc/types/query.ts';
 import useModulesStore from '../../module/stores/module.ts';
 import { useCreateEntity } from '../api/createEntity.ts';
+import { useEntity } from '../api/getEntity.ts';
+import { useUpdateEntity } from '../api/updateEntity.ts';
 import { GenerateFieldType } from '../forms/uitypes/GenerateFieldType.tsx';
-import { RelatedField } from '../types';
+import { useEffect } from 'react';
 
-interface AddEntityModalProps {
+interface AddEditEntityModalProps {
   isModalOpen: boolean;
   onHide: (hide: boolean) => void;
   query: RequestQuery;
   moduleName: string;
+  id: string;
 }
 
 const schema = z.record(
@@ -26,33 +29,65 @@ const schema = z.record(
 
 type FormData = z.infer<typeof schema>;
 
-export const AddEntityModal = ({ isModalOpen, onHide, query, moduleName }: AddEntityModalProps) => {
+export const AddEditEntityModal = ({
+  isModalOpen,
+  onHide,
+  query,
+  moduleName,
+  id,
+}: AddEditEntityModalProps) => {
   const { customModules } = useModulesStore();
   const createEntityMutation = useCreateEntity({ query: query, module: moduleName });
+  const updateEntityMutation = useUpdateEntity({ query: query, module: moduleName, id });
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isLoading },
     setValue,
   } = useForm<FormData>({ resolver: zodResolver(schema) });
+  const entityQuery = useEntity({ entityId: id, module: moduleName, enabled: id != '' });
+
+  useEffect(() => {
+    if (entityQuery.data) {
+      Object.keys(entityQuery.data).forEach((key) => {
+        let value = entityQuery.data[key];
+        if (typeof value == 'object') {
+          value = String(value);
+        }
+        /*const regex = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z$/;
+        if (typeof value == 'string' && regex.test(value)) {
+          const date = new Date(value);
+          const year = date.getFullYear();
+          const month = ('0' + (date.getMonth() + 1)).slice(-2); // Months are 0-based
+          const day = ('0' + date.getDate()).slice(-2);
+
+          value = `${year}-${month}-${day}`;
+        }*/
+
+        if (CUSTOM_MODULES[moduleName].edit_fields.includes(key)) {
+          setValue(key, value);
+        }
+      });
+    }
+  }, [entityQuery.data]);
+
   if (!customModules[moduleName]) {
     return null;
   }
   const onSubmit = async (data: FieldValues) => {
-    console.log(data);
-    try {
+    if (id) {
+      await updateEntityMutation.mutateAsync({
+        data: data,
+        module: moduleName,
+        entityId: id,
+      });
+    } else {
       await createEntityMutation.mutateAsync({
         data: data,
         name: moduleName,
       });
-      onHide(false);
-    } catch (e: any) {
-      if (e.response && e.response.data && e.response.data.message) {
-        NotifyError(e.response.data.message);
-      } else {
-        NotifyError(e.message);
-      }
     }
+    onHide(false);
   };
 
   const onChangeUitypeField = (field: string, value: boolean | string | number | Date) => {
@@ -62,6 +97,9 @@ export const AddEntityModal = ({ isModalOpen, onHide, query, moduleName }: AddEn
   const moduleConfig = CUSTOM_MODULES[moduleName];
   if (!moduleConfig) {
     return null;
+  }
+  if (entityQuery.isLoading) {
+    return <Spinner></Spinner>;
   }
 
   return (
@@ -90,8 +128,12 @@ export const AddEntityModal = ({ isModalOpen, onHide, query, moduleName }: AddEn
         <Button variant="outline-primary" onClick={() => onHide(false)}>
           <FormattedMessage id="general.cancel"></FormattedMessage>
         </Button>
-        <Button variant="primary" onClick={handleSubmit(onSubmit)}>
-          <FormattedMessage id="general.save"></FormattedMessage>
+        <Button variant="primary" onClick={handleSubmit(onSubmit)} disabled={isLoading}>
+          {isLoading ? (
+            <FormattedMessage id="general.loading"></FormattedMessage>
+          ) : (
+            <FormattedMessage id="general.save"></FormattedMessage>
+          )}
         </Button>
       </Modal.Footer>
     </Modal>

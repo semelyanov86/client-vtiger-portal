@@ -16,6 +16,10 @@ export interface DataPaginationResponse<T> {
   size: number;
 }
 
+export interface ValidationError {
+  message?: string;
+}
+
 function authRequestInterceptor(config: InternalAxiosRequestConfig) {
   const access_token = getToken()?.value || null;
   if (!config.headers) {

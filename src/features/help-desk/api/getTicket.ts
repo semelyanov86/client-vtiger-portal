@@ -1,3 +1,4 @@
+import ms from 'ms';
 import { useQuery } from 'react-query';
 
 import { axios, DataResponse } from '../../../lib/axios.ts';
@@ -20,5 +21,9 @@ export const useTicket = ({ ticketId, config }: UseTicketOptions) => {
     ...config,
     queryKey: ['ticket', ticketId],
     queryFn: () => getTicket({ ticketId }),
+    retry: 3,
+    cacheTime: ms('2 hours'),
+    staleTime: ms('1 hour'),
+    useErrorBoundary: false,
   });
 };

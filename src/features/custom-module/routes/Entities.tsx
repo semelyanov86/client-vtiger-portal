@@ -28,9 +28,9 @@ import { convertSortingToSort } from '../../../lib/requests.ts';
 import { LoadCustomModule } from '../../module/LoadCustomModule.tsx';
 import useModulesStore from '../../module/stores/module.ts';
 import { useEntities } from '../api/getEntities.ts';
+import { AddEditEntityModal } from '../components/AddEditEntityModal.tsx';
 import { getModuleColumns } from '../table/getModuleColumns.tsx';
 import { CustomModule } from '../types';
-import { AddEntityModal } from '../components/AddEntityModal.tsx';
 
 export const Entities = () => {
   const { moduleName } = useParams();
@@ -39,10 +39,16 @@ export const Entities = () => {
   const title = f({ id: 'entities.list' });
   const [currentPageSize, setCurrentPageSize] = useState(DEFAULT_PAGE_COUNT);
 
-  const [_, setEditEntityId] = useState('');
+  const [editEntityId, setEditEntityId] = useState('');
+  const [isOpenAddEditModal, setIsOpenAddEditModal] = useState(false);
+
+  const onEditClick = (id: string) => {
+    setEditEntityId(id);
+    setIsOpenAddEditModal(true);
+  };
 
   const columns: Column<CustomModule>[] = getModuleColumns({
-    onEdit: setEditEntityId,
+    onEdit: onEditClick,
     module: moduleName ?? '',
   });
 
@@ -78,8 +84,6 @@ export const Entities = () => {
   if (error) {
     NotifyError(error.message);
   }
-
-  const [isOpenAddEditModal, setIsOpenAddEditModal] = useState(false);
 
   const tableInstance = useTable(
     {
@@ -144,6 +148,7 @@ export const Entities = () => {
 
   const addButtonClick = () => {
     toggleAllPageRowsSelected(false);
+    setEditEntityId('');
     setIsOpenAddEditModal(true);
   };
 
@@ -206,12 +211,16 @@ export const Entities = () => {
           </div>
         </Col>
       </Row>
-      <AddEntityModal
+      <AddEditEntityModal
         isModalOpen={isOpenAddEditModal}
-        onHide={() => setIsOpenAddEditModal(false)}
+        onHide={() => {
+          setIsOpenAddEditModal(false);
+          setEditEntityId('');
+        }}
         query={query}
         moduleName={moduleName}
-      ></AddEntityModal>
+        id={editEntityId}
+      ></AddEditEntityModal>
     </>
   );
 };
