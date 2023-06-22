@@ -521,6 +521,10 @@ const enMessages = {
   'SPPayments.Запланирован': 'Planned',
   'SPPayments.Delayed': 'Delayed',
   'SPPayments.Canceled': 'Cancelled',
+  'SPPayments.': '',
+  'SPPayments.Cash Payment': 'Cash',
+  'SPPayments.Receipt': 'Receipt',
+  'SPPayments.Scheduled': 'Scheduled',
 
   'general.item-count': 'Item Count',
   'general.items': 'Items',

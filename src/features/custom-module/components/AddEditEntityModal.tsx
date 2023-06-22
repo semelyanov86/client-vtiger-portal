@@ -54,7 +54,7 @@ export const AddEditEntityModal = ({
         if (typeof value == 'object') {
           value = String(value);
         }
-        /*const regex = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z$/;
+        const regex = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z$/;
         if (typeof value == 'string' && regex.test(value)) {
           const date = new Date(value);
           const year = date.getFullYear();
@@ -62,7 +62,7 @@ export const AddEditEntityModal = ({
           const day = ('0' + date.getDate()).slice(-2);
 
           value = `${year}-${month}-${day}`;
-        }*/
+        }
 
         if (CUSTOM_MODULES[moduleName].edit_fields.includes(key)) {
           setValue(key, value);
@@ -114,7 +114,7 @@ export const AddEditEntityModal = ({
           {moduleConfig.edit_fields.map((field) => (
             <GenerateFieldType
               key={field}
-              value=""
+              value={entityQuery.data ? entityQuery.data[field] : ''}
               field={field}
               register={register}
               errors={errors}
