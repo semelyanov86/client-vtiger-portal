@@ -1,13 +1,14 @@
-import { RelatedField } from '../../types';
-import { BooleanCell } from './BooleanCell.tsx';
-import useModulesStore from '../../../module/stores/module.ts';
-import { StringCell } from './StringCell.tsx';
 import { getFieldByName } from '../../../module/services/fields.ts';
+import useModulesStore from '../../../module/stores/module.ts';
+import { RelatedField } from '../../types';
+
 import { AmountCell } from './AmountCell.tsx';
-import { NumberCell } from './NumberCell.tsx';
-import { TagsCell } from './TagsCell.tsx';
-import { PickListCell } from './PickListCell.tsx';
+import { BooleanCell } from './BooleanCell.tsx';
 import { DateCell } from './DateCell.tsx';
+import { NumberCell } from './NumberCell.tsx';
+import { PickListCell } from './PickListCell.tsx';
+import { StringCell } from './StringCell.tsx';
+import { TagsCell } from './TagsCell.tsx';
 
 interface DisplayCellValueProps {
   value: boolean | string | number | RelatedField | string[];

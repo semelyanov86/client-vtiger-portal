@@ -515,6 +515,17 @@ const ruMessages = {
   'SPPayments.spstatus': 'Статус',
   'SPPayments.Наличные': 'Наличные',
   'SPPayments.Executed': 'Завершен',
+  'SPPayments.pay_type': 'Вид платежа',
+  'SPPayments.description': 'Описание',
+  'SPPayments.doc_no': 'Номер документа',
+  'SPPayments.pay_details': 'Основание платежа',
+  'SPPayments.cf_1380': 'Нужна конвертация',
+  'SPPayments.Приход': 'Приход',
+  'SPPayments.Expense': 'Расход',
+  'SPPayments.Cashless Transfer': 'Безналичный перевод',
+  'SPPayments.Запланирован': 'Запланирован',
+  'SPPayments.Delayed': 'Просрочен',
+  'SPPayments.Canceled': 'Cancelled',
 
   'general.item-count': 'Количество элементов',
   'general.items': 'Элементов',
@@ -530,6 +541,8 @@ const ruMessages = {
   'general.select': 'Выбрать',
   'general.global-search': 'Начните печатать, для запуска поиска',
   'general.action': ' ',
+  'general.not-supported': 'Данная операция не поддерживается',
+  'general.save': 'Сохранить',
 };
 
 export default ruMessages;

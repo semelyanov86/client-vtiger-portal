@@ -17,4 +17,5 @@ type CustomModuleFieldConfiguration = {
   default_sort: string;
   list_fields: string[];
   icon: keyof typeof icons;
+  edit_fields: string[];
 };

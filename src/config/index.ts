@@ -34,6 +34,17 @@ export const CUSTOM_MODULES: ConfigCustomModules = {
     default_sort: 'pay_no',
     list_fields: ['pay_no', 'amount', 'pay_date', 'type_payment', 'spstatus'],
     icon: 'Wallet',
+    edit_fields: [
+      'pay_date',
+      'pay_type',
+      'type_payment',
+      'amount',
+      'spstatus',
+      'description',
+      'doc_no',
+      'pay_details',
+      'cf_1380',
+    ],
   },
 };
 

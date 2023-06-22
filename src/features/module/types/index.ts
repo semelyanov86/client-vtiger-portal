@@ -26,10 +26,19 @@ type FieldType =
       name: 'double';
     }
   | {
+      name: 'integer';
+    }
+  | {
       name: 'datetime';
     }
   | {
+      name: 'text';
+    }
+  | {
       name: 'date';
+    }
+  | {
+      name: 'boolean';
     }
   | {
       name: 'currency';

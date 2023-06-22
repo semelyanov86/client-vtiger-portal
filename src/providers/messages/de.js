@@ -509,6 +509,17 @@ const deMessages = {
   'SPPayments.spstatus': 'Payment Status',
   'SPPayments.Наличные': 'Cash',
   'SPPayments.Executed': 'Executed',
+  'SPPayments.pay_type': 'Type of payment',
+  'SPPayments.description': 'Description',
+  'SPPayments.doc_no': 'Document no',
+  'SPPayments.pay_details': 'Pay Details',
+  'SPPayments.cf_1380': 'Need currency conversion',
+  'SPPayments.Приход': 'Income',
+  'SPPayments.Expense': 'Expense',
+  'SPPayments.Cashless Transfer': 'Cashless Transfer',
+  'SPPayments.Запланирован': 'Planned',
+  'SPPayments.Delayed': 'Delayed',
+  'SPPayments.Canceled': 'Cancelled',
 
   'general.item-count': 'Item Count',
   'general.items': 'Items',
@@ -524,6 +535,8 @@ const deMessages = {
   'general.select': 'Select',
   'general.global-search': 'Start typing to search in portal',
   'general.action': ' ',
+  'general.not-supported': 'This action is not supported',
+  'general.save': 'Save',
 };
 
 export default deMessages;

@@ -30,6 +30,7 @@ import useModulesStore from '../../module/stores/module.ts';
 import { useEntities } from '../api/getEntities.ts';
 import { getModuleColumns } from '../table/getModuleColumns.tsx';
 import { CustomModule } from '../types';
+import { AddEntityModal } from '../components/AddEntityModal.tsx';
 
 export const Entities = () => {
   const { moduleName } = useParams();
@@ -150,6 +151,10 @@ export const Entities = () => {
     return <FormattedMessage id="general.no-data"></FormattedMessage>;
   }
 
+  if (!moduleConfig) {
+    return <FormattedMessage id="general.not-supported"></FormattedMessage>;
+  }
+
   return (
     <>
       <Head title={title} />
@@ -158,7 +163,7 @@ export const Entities = () => {
         <Col>
           <ListPageTitle title={title} breadcrumb={{ to: 'app/' + moduleName, text: moduleName }}>
             <>
-              <ButtonsAddNew onClick={addButtonClick} />{' '}
+              {moduleConfig.edit_fields.length > 0 && <ButtonsAddNew onClick={addButtonClick} />}{' '}
             </>
           </ListPageTitle>
 
@@ -174,8 +179,13 @@ export const Entities = () => {
               </Col>
               <Col sm="12" md="7" lg="9" xxl="10" className="text-end">
                 <div className="d-inline-block me-0 me-sm-3 float-start float-md-none">
-                  <ControlsAdd<CustomModule> tableInstance={tableInstance} />{' '}
-                  <ControlsEdit<CustomModule> tableInstance={tableInstance} />{' '}
+                  {moduleConfig.edit_fields.length > 0 && (
+                    <>
+                      {' '}
+                      <ControlsAdd<CustomModule> tableInstance={tableInstance} />{' '}
+                      <ControlsEdit<CustomModule> tableInstance={tableInstance} />{' '}
+                    </>
+                  )}
                 </div>
                 <div className="d-inline-block">
                   <ControlsPageSize
@@ -196,6 +206,12 @@ export const Entities = () => {
           </div>
         </Col>
       </Row>
+      <AddEntityModal
+        isModalOpen={isOpenAddEditModal}
+        onHide={() => setIsOpenAddEditModal(false)}
+        query={query}
+        moduleName={moduleName}
+      ></AddEntityModal>
     </>
   );
 };
