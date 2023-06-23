@@ -1,11 +1,10 @@
 import { useEffect, useState } from 'react';
 import { Row, Col, Card, Spinner } from 'react-bootstrap';
-import { ChevronLeft } from 'react-bootstrap-icons';
 import { FormattedMessage } from 'react-intl';
 import { useParams } from 'react-router';
-import { NavLink } from 'react-router-dom';
 
 import { Spinner as Spinner2 } from '../../../components/Elements';
+import { DetailPageTitle } from '../../../components/Elements/DetailPage/DetailPageTitle.tsx';
 import { Head } from '../../../components/Head';
 import { NULLABLE_DATE } from '../../../config/constants.ts';
 import { useCreateToProjectComment } from '../../comment/api/createToProject.ts';
@@ -61,34 +60,14 @@ export const Project = () => {
       <Head title={title} />
       <LoadProject></LoadProject>
       <div className="page-title-container">
-        <Row className="g-0">
-          {/* Title Start */}
-          <Col className="col-auto mb-3 mb-sm-0 me-auto">
-            <NavLink
-              className="muted-link pb-1 d-inline-block hidden breadcrumb-back"
-              to="/app/projects"
-            >
-              <ChevronLeft size={13}></ChevronLeft>
-              <span className="align-middle text-small ms-1">
-                <FormattedMessage id="Projects"></FormattedMessage>
-              </span>
-            </NavLink>
-            <h1 className="mb-0 pb-0 display-4" id="title">
-              {title}
-            </h1>
-          </Col>
-          {/* Title End */}
-
-          {/* Top Buttons Start */}
-          <Col
-            xs="12"
-            sm="auto"
-            className="d-flex align-items-end justify-content-end mb-2 mb-sm-0 order-sm-3"
-          >
-            <StatusSwitcher statuses={statuses} project={projectQuery.data}></StatusSwitcher>
-          </Col>
-          {/* Top Buttons End */}
-        </Row>
+        <DetailPageTitle
+          title={title}
+          modified={projectQuery.data.modified_time}
+          target={{ to: 'app/projects/' + projectId, text: projectId ?? '' }}
+          parent={{ to: 'app/projects', text: 'Projects' }}
+        >
+          <StatusSwitcher statuses={statuses} project={projectQuery.data}></StatusSwitcher>
+        </DetailPageTitle>
       </div>
 
       <Row>

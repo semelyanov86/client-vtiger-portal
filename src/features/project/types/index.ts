@@ -12,6 +12,7 @@ export interface Project extends Entity {
   targetbudget: string;
   projecturl: string;
   projectpriority: string;
+  modified_time: string;
   progress: string;
   potentialid: string;
   statistics: CurrentProjectStatistics;

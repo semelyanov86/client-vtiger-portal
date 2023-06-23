@@ -542,6 +542,7 @@ const enMessages = {
   'general.action': ' ',
   'general.not-supported': 'This action is not supported',
   'general.save': 'Save',
+  'general.was-updated': 'Last update of record: ',
 };
 
 export default enMessages;

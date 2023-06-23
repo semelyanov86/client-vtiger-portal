@@ -1,18 +1,17 @@
-import { Row, Col, Button, Card, Form } from 'react-bootstrap';
-import { ChevronLeft, Printer } from 'react-bootstrap-icons';
+import { Row, Col, Button, Card } from 'react-bootstrap';
+import { Printer } from 'react-bootstrap-icons';
 import { FormattedMessage } from 'react-intl';
 import { useParams } from 'react-router';
-import { NavLink } from 'react-router-dom';
 
-import { Spinner as Spinner2 } from '../../../components/Elements';
+import { DetailPageTitle, Spinner as Spinner2 } from '../../../components/Elements';
 import { Head } from '../../../components/Head';
-import useCompanyStore from '../../company/stores/company.ts';
-import { useInvoice } from '../api/getInvoice.ts';
-import { useAccount } from '../../account/api/getAccount.ts';
-import { formatToUserReadableDate } from '../../misc/services/Dates.ts';
 import { DisplayMoney } from '../../../utils/DisplayMoney.tsx';
-import { PaymentForm } from '../../payment/components/PaymentForm.tsx';
+import { useAccount } from '../../account/api/getAccount.ts';
+import useCompanyStore from '../../company/stores/company.ts';
+import { formatToUserReadableDate } from '../../misc/services/Dates.ts';
 import { CardPayment } from '../../payment/components/CardPayment.tsx';
+import { PaymentForm } from '../../payment/components/PaymentForm.tsx';
+import { useInvoice } from '../api/getInvoice.ts';
 
 export const Invoice = () => {
   const { invoiceId } = useParams();
@@ -35,30 +34,13 @@ export const Invoice = () => {
     <>
       <Head title={invoiceQuery.data.subject} />
       <div className="page-title-container">
-        <Row className="g-0">
-          {/* Title Start */}
-          <Col className="col-auto mb-3 mb-sm-0 me-auto">
-            <NavLink
-              className="muted-link pb-1 d-inline-block hidden breadcrumb-back"
-              to="/app/invoices"
-            >
-              <ChevronLeft size={13}></ChevronLeft>
-              <span className="align-middle text-small ms-1">
-                <FormattedMessage id="invoices.list"></FormattedMessage>
-              </span>
-            </NavLink>
-            <h1 className="mb-0 pb-0 display-4" id="title">
-              {invoiceQuery.data.subject}
-            </h1>
-          </Col>
-          {/* Title End */}
-
-          {/* Top Buttons Start */}
-          <Col
-            xs="12"
-            sm="auto"
-            className="d-flex align-items-end justify-content-end mb-2 mb-sm-0 order-sm-3"
-          >
+        <DetailPageTitle
+          title={invoiceQuery.data.subject}
+          modified={invoiceQuery.data.modifiedtime}
+          target={{ to: 'app/invoices/' + invoiceId, text: invoiceId ?? '' }}
+          parent={{ to: 'app/invoices', text: 'Invoices' }}
+        >
+          <>
             <Button
               variant="outline-primary"
               className="btn-icon btn-icon-start w-100 w-md-auto"
@@ -76,9 +58,8 @@ export const Invoice = () => {
               <FormattedMessage id="invoices.invoicestatus"></FormattedMessage>:{' '}
               {invoiceQuery.data.invoicestatus}
             </Button>
-          </Col>
-          {/* Top Buttons End */}
-        </Row>
+          </>
+        </DetailPageTitle>
       </div>
 
       {/* Standard Start */}

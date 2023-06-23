@@ -3,17 +3,13 @@ import { Col, Row } from 'react-bootstrap';
 import { useIntl } from 'react-intl';
 
 import { BreadcrumbList } from '../Breadcrumbs/BreadcrumbList.tsx';
+import { BreadcrumbProp } from '../index.ts';
 
 interface ListPageTitleProps {
   title: string | ReactNode;
   children: ReactNode;
   breadcrumb: BreadcrumbProp;
 }
-
-type BreadcrumbProp = {
-  to: string;
-  text: string;
-};
 
 export const ListPageTitle = ({ children, title, breadcrumb }: ListPageTitleProps) => {
   const { formatMessage: f } = useIntl();

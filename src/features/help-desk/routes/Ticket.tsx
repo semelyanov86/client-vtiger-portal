@@ -13,7 +13,7 @@ import { FormattedMessage, useIntl } from 'react-intl';
 import { useParams } from 'react-router';
 
 import { Spinner as Spinner2 } from '../../../components/Elements';
-import { BreadcrumbList } from '../../../components/Elements/Breadcrumbs/BreadcrumbList.tsx';
+import { DetailPageTitle } from '../../../components/Elements/DetailPage/DetailPageTitle.tsx';
 import { Head } from '../../../components/Head';
 import { NotifyError } from '../../../components/Notifications/Notification.tsx';
 import { useCreateToTicketComment } from '../../comment/api/createToTicket.ts';
@@ -62,12 +62,6 @@ export const Ticket = () => {
     return null;
   }
 
-  const breadcrumbs = [
-    { to: '', text: 'Home' },
-    { to: '/app/tickets', text: 'Tickets' },
-    { to: '/app/tickets/' + ticketId, text: ticketId ?? '' },
-  ];
-
   const onChangeStatus = async (status: string) => {
     try {
       await changeStatusMutation.mutateAsync({
@@ -86,31 +80,26 @@ export const Ticket = () => {
       <Head title={title} />
       <LoadHelpDesk></LoadHelpDesk>
       <div className="page-title-container">
-        <Row>
-          <Col className="mb-2">
-            <h1 className="mb-0 pb-0 display-4">{title}</h1>
-            <div className="text-muted font-heading text-small">
-              <FormattedMessage id="tickets.was-updated"></FormattedMessage>{' '}
-              {formatToUserReadableDate(ticketQuery.data.modifiedtime)}
-            </div>
-            <BreadcrumbList items={breadcrumbs} />
-          </Col>
-          <Col xs="12" sm="auto" className="d-flex align-items-center justify-content-end">
-            <Dropdown className="ms-1 w-100 w-md-auto" align="end">
-              <Dropdown.Toggle className="end w-100 w-md-auto" variant="outline-primary">
-                <FormattedMessage id="tickets.ticketstatus" />: {ticketQuery.data.ticketstatus}
-              </Dropdown.Toggle>
-              <Dropdown.Menu>
-                {statuses.map((item) => (
-                  <Dropdown.Item onClick={() => onChangeStatus(item.value)} key={item.value}>
-                    <FormattedMessage id="tickets.ticketstatus" />:{' '}
-                    <FormattedMessage id={'tickets.' + item.value}></FormattedMessage>
-                  </Dropdown.Item>
-                ))}
-              </Dropdown.Menu>
-            </Dropdown>
-          </Col>
-        </Row>
+        <DetailPageTitle
+          title={title}
+          modified={ticketQuery.data.modifiedtime}
+          parent={{ to: 'app/tickets', text: 'Tickets' }}
+          target={{ to: 'app/tickets/' + ticketId, text: ticketId ?? '' }}
+        >
+          <Dropdown className="ms-1 w-100 w-md-auto" align="end">
+            <Dropdown.Toggle className="end w-100 w-md-auto" variant="outline-primary">
+              <FormattedMessage id="tickets.ticketstatus" />: {ticketQuery.data.ticketstatus}
+            </Dropdown.Toggle>
+            <Dropdown.Menu>
+              {statuses.map((item) => (
+                <Dropdown.Item onClick={() => onChangeStatus(item.value)} key={item.value}>
+                  <FormattedMessage id="tickets.ticketstatus" />:{' '}
+                  <FormattedMessage id={'tickets.' + item.value}></FormattedMessage>
+                </Dropdown.Item>
+              ))}
+            </Dropdown.Menu>
+          </Dropdown>
+        </DetailPageTitle>
         <Row>
           <Col className="mt-2 mb-1 mb-xxl-0">
             <h2 className="small-title">{ticketQuery.data.ticket_title}</h2>

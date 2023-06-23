@@ -547,6 +547,7 @@ const ruMessages = {
   'general.action': ' ',
   'general.not-supported': 'Данная операция не поддерживается',
   'general.save': 'Сохранить',
+  'general.was-updated': 'Последнее обновление записи: ',
 };
 
 export default ruMessages;

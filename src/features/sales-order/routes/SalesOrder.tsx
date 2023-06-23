@@ -15,7 +15,7 @@ import { FormattedMessage } from 'react-intl';
 import { useNavigate, useParams } from 'react-router';
 import { NavLink } from 'react-router-dom';
 
-import { Spinner as Spinner2 } from '../../../components/Elements';
+import { DetailPageTitle, Spinner as Spinner2 } from '../../../components/Elements';
 import { Head } from '../../../components/Head';
 import { NULLABLE_DATE } from '../../../config/constants.ts';
 import { DisplayMoney } from '../../../utils/DisplayMoney.tsx';
@@ -57,30 +57,13 @@ export const SalesOrder = () => {
       <Head title={title} />
 
       <div className="page-title-container">
-        <Row className="g-0">
-          {/* Title Start */}
-          <Col className="col-auto mb-3 mb-sm-0 me-auto">
-            <NavLink
-              className="muted-link pb-1 d-inline-block hidden breadcrumb-back"
-              to="/sales-orders"
-            >
-              <ChevronLeft size={13}></ChevronLeft>
-              <span className="align-middle text-small ms-1">
-                <FormattedMessage id="so.list"></FormattedMessage>
-              </span>
-            </NavLink>
-            <h1 className="mb-0 pb-0 display-4" id="title">
-              {title}
-            </h1>
-          </Col>
-          {/* Title End */}
-
-          {/* Top Buttons Start */}
-          <Col
-            xs="12"
-            sm="auto"
-            className="d-flex align-items-end justify-content-end mb-2 mb-sm-0 order-sm-3"
-          >
+        <DetailPageTitle
+          title={title}
+          modified={salesOrderQuery.data.modifiedtime}
+          target={{ to: 'app/sales-orders/' + salesOrderId, text: salesOrderId ?? '' }}
+          parent={{ to: 'app/sales-orders', text: 'Sales Orders' }}
+        >
+          <>
             <Dropdown className="w-100 w-md-auto">
               <Dropdown.Toggle className="w-100 w-md-auto" variant="outline-primary">
                 <FormattedMessage id="so.sostatus"></FormattedMessage>:{' '}
@@ -108,9 +91,8 @@ export const SalesOrder = () => {
                 </Dropdown.Menu>
               </Dropdown>
             )}
-          </Col>
-          {/* Top Buttons End */}
-        </Row>
+          </>
+        </DetailPageTitle>
       </div>
 
       <Row>
