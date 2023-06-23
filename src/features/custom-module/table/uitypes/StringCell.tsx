@@ -8,7 +8,7 @@ interface StringCellProps {
 
 export const StringCell = ({ value, id, module }: StringCellProps) => {
   return (
-    <Link to={'/app/' + module + '/' + id} className="list-item-heading body">
+    <Link to={'/app/custom/' + module + '/' + id} className="list-item-heading body">
       {value}
     </Link>
   );

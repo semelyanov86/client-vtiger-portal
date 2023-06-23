@@ -12,7 +12,7 @@ import {
   useTable,
 } from 'react-table';
 
-import { ListPageTitle } from '../../../components/Elements/ListPage/ListPageTitle.tsx';
+import { ListPageTitle } from '../../../components/Elements';
 import { Head } from '../../../components/Head';
 import { NotifyError } from '../../../components/Notifications/Notification.tsx';
 import { ButtonsAddNew } from '../../../components/Table/ButtonsAddNew.tsx';

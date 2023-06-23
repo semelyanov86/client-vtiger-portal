@@ -502,6 +502,16 @@ const enMessages = {
   'register.button': 'Learn More',
 
   'entities.list': 'Entities list ',
+  'entities.main-details': 'Main Details',
+  'entities.label': 'Subject',
+  'entities.createdtime': 'Created Time',
+  'entities.tags': 'Tags',
+  'entities.starred': 'Starred',
+  'entities.description': 'Description',
+  'entities.manager': 'Assigned manager',
+  'entities.comments': 'Related comments',
+  'entities.id': 'ID',
+  'entities.additional-details': 'Additional Details',
 
   'SPPayments.pay_no': 'Payment #',
   'SPPayments.amount': 'Amount',
@@ -543,6 +553,7 @@ const enMessages = {
   'general.not-supported': 'This action is not supported',
   'general.save': 'Save',
   'general.was-updated': 'Last update of record: ',
+  'general.no-tags': 'No tags available',
 };
 
 export default enMessages;

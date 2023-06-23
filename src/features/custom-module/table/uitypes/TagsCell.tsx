@@ -1,4 +1,4 @@
-import { Badge } from 'react-bootstrap';
+import { TagsList } from '../../../../components/Elements/DetailPage/TagsList.tsx';
 
 interface TagsCellProps {
   value: string[];
@@ -10,13 +10,7 @@ export const TagsCell = ({ value }: TagsCellProps) => {
   }
   return (
     <>
-      {value.map((text) => (
-        <>
-          <Badge bg="quaternary" className="text-uppercase">
-            {text}
-          </Badge>{' '}
-        </>
-      ))}
+      <TagsList tags={value}></TagsList>
     </>
   );
 };

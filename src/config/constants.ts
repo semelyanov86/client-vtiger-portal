@@ -58,3 +58,17 @@ export const CURRENCY_POSITION_END = true;
 export const IS_PAYMENT_SUPPORTED = true;
 
 export const HELP_URL = 'https://itvolga.com/contacts';
+
+export const GENERAL_FIELDS = [
+  'id',
+  'tags',
+  'assigned_user_id',
+  'label',
+  'description',
+  'modifiedtime',
+  'createdtime',
+  'created_user_id',
+  'source',
+  'modifiedby',
+  'starred',
+];

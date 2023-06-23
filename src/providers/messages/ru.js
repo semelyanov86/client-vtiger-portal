@@ -507,6 +507,16 @@ const ruMessages = {
   'register.button': 'Learn More',
 
   'entities.list': 'Записи модуля ',
+  'entities.main-details': 'Общая информация',
+  'entities.label': 'Заголовок',
+  'entities.createdtime': 'Дата создания',
+  'entities.tags': 'Тэги',
+  'entities.starred': 'В избранном',
+  'entities.description': 'Описание',
+  'entities.manager': 'Назначенный менеджер',
+  'entities.comments': 'Комментарии',
+  'entities.id': 'Идентификатор',
+  'entities.additional-details': 'Дополнительная информация',
 
   'SPPayments.pay_no': 'Платеж #',
   'SPPayments.amount': 'Сумма',
@@ -548,6 +558,7 @@ const ruMessages = {
   'general.not-supported': 'Данная операция не поддерживается',
   'general.save': 'Сохранить',
   'general.was-updated': 'Последнее обновление записи: ',
+  'general.no-tags': 'Нет доступных тэгов',
 };
 
 export default ruMessages;

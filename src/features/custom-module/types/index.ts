@@ -18,4 +18,5 @@ type CustomModuleFieldConfiguration = {
   list_fields: string[];
   icon: keyof typeof icons;
   edit_fields: string[];
+  related: string[];
 };

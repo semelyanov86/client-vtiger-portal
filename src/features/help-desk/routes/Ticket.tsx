@@ -13,7 +13,7 @@ import { FormattedMessage, useIntl } from 'react-intl';
 import { useParams } from 'react-router';
 
 import { Spinner as Spinner2 } from '../../../components/Elements';
-import { DetailPageTitle } from '../../../components/Elements/DetailPage/DetailPageTitle.tsx';
+import { DetailPageTitle } from '../../../components/Elements';
 import { Head } from '../../../components/Head';
 import { NotifyError } from '../../../components/Notifications/Notification.tsx';
 import { useCreateToTicketComment } from '../../comment/api/createToTicket.ts';
@@ -29,6 +29,8 @@ import useModulesStore from '../../module/stores/module.ts';
 import { useChangeTicketStatus } from '../api/changeTicketStatus.ts';
 import { useTicket } from '../api/getTicket.ts';
 import { StatCard } from '../components/StatCard.tsx';
+import { BlockHeader } from '../../../components/Elements/DetailPage/BlockHeader.tsx';
+import { TagsList } from '../../../components/Elements/DetailPage/TagsList.tsx';
 
 export const Ticket = () => {
   const { ticketId } = useParams();
@@ -102,7 +104,7 @@ export const Ticket = () => {
         </DetailPageTitle>
         <Row>
           <Col className="mt-2 mb-1 mb-xxl-0">
-            <h2 className="small-title">{ticketQuery.data.ticket_title}</h2>
+            <BlockHeader>{ticketQuery.data.ticket_title}</BlockHeader>
             <Card className="mb-2">
               <Card.Body>
                 <div className="mb-4 pb-4 border-bottom border-separator-light">
@@ -144,9 +146,9 @@ export const Ticket = () => {
         </Row>
         <Row>
           <Col>
-            <h2 className="small-title">
+            <BlockHeader>
               <FormattedMessage id="tickets.additional-information" />
-            </h2>
+            </BlockHeader>
             <Row className="g-2 mb-5">
               <StatCard
                 header={<FormattedMessage id="tickets.ticketpriorities" />}
@@ -186,17 +188,7 @@ export const Ticket = () => {
               </StatCard>
               <StatCard
                 header={<FormattedMessage id="tickets.tags" />}
-                value={
-                  ticketQuery.data.tags.length > 0 && ticketQuery.data.tags[0] != '' ? (
-                    ticketQuery.data.tags.map((tag) => (
-                      <Badge key={tag} bg="outline-primary">
-                        {tag}
-                      </Badge>
-                    ))
-                  ) : (
-                    <FormattedMessage id="tickets.no-tags"></FormattedMessage>
-                  )
-                }
+                value={<TagsList tags={ticketQuery.data.tags}></TagsList>}
               >
                 <Tag className="text-primary"></Tag>
               </StatCard>
@@ -205,17 +197,17 @@ export const Ticket = () => {
         </Row>
         <Row className="g-2 mb-5">
           <Col>
-            <h2 className="small-title">
+            <BlockHeader>
               <FormattedMessage id="tickets.assigned_user_id" />
-            </h2>
+            </BlockHeader>
             <ManagerInfo manager={managerQuery.data} />
           </Col>
         </Row>
         <Row className="g-2 mb-5">
           <Col>
-            <h2 className="small-title">
+            <BlockHeader>
               <FormattedMessage id="tickets.comments" />
-            </h2>
+            </BlockHeader>
             {commentsQuery.isLoading && <Spinner animation="border" variant="primary" />}
             {commentsQuery.data && (
               <CommentList

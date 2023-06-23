@@ -3,7 +3,6 @@ import { Row, Col, Dropdown, Card } from 'react-bootstrap';
 import {
   BoxSeam,
   Calendar,
-  ChevronLeft,
   Clipboard,
   Pencil,
   Tag,
@@ -13,7 +12,6 @@ import {
 } from 'react-bootstrap-icons';
 import { FormattedMessage } from 'react-intl';
 import { useNavigate, useParams } from 'react-router';
-import { NavLink } from 'react-router-dom';
 
 import { DetailPageTitle, Spinner as Spinner2 } from '../../../components/Elements';
 import { Head } from '../../../components/Head';

@@ -20,6 +20,7 @@ import { InfoRow } from '../../project/components/molecules/InfoRow.tsx';
 import { useChangeTaskStatus } from '../api/changeTaskStatus.ts';
 import { useTask } from '../api/getTask.ts';
 import { DropzoneWidget } from '../components/DropzoneWidget.tsx';
+import { TagsList } from '../../../components/Elements/DetailPage/TagsList.tsx';
 
 export const ProjectTask = () => {
   const { projectId, taskId } = useParams();
@@ -223,17 +224,7 @@ export const ProjectTask = () => {
               </h2>
               <Card>
                 <Card.Body className="mb-n3">
-                  {taskQuery.data.tags.length > 0 && taskQuery.data.tags[0] != '' ? (
-                    taskQuery.data.tags.map((tag) => (
-                      <Button size="sm" variant="outline-primary" className="mb-1 me-1">
-                        {tag}
-                      </Button>
-                    ))
-                  ) : (
-                    <p>
-                      <FormattedMessage id="tasks.no-tags"></FormattedMessage>
-                    </p>
-                  )}
+                  <TagsList tags={taskQuery.data.tags}></TagsList>
                 </Card.Body>
               </Card>
               {/* Rate the Conversation End */}

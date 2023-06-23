@@ -45,6 +45,7 @@ export const CUSTOM_MODULES: ConfigCustomModules = {
       'pay_details',
       'cf_1380',
     ],
+    related: ['Documents'],
   },
 };
 

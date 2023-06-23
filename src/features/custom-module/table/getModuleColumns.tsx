@@ -1,10 +1,10 @@
 import { Button } from 'react-bootstrap';
 import { FormattedMessage } from 'react-intl';
-import { Link } from 'react-router-dom';
 import { CellProps, Column } from 'react-table';
 
 import { CUSTOM_MODULES } from '../../../config';
 import { CustomModule } from '../types';
+
 import { DisplayCellValue } from './uitypes/DisplayCellValue.tsx';
 
 interface getColumnsOptions {

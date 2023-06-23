@@ -31,4 +31,5 @@ export type CommentDTO = {
   };
   parentId: string;
   rootId?: string;
+  parentModule?: string;
 };
