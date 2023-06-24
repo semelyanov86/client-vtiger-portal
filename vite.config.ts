@@ -10,4 +10,10 @@ export default defineConfig({
   resolve: {
     alias: [{ find: '@', replacement: path.resolve(__dirname, 'src') }],
   },
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  test: {
+    globals: true,
+    environment: 'happy-dom',
+  },
 });

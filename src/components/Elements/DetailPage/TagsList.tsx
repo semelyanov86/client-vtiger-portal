@@ -1,4 +1,4 @@
-import { Badge, Button } from 'react-bootstrap';
+import { Badge } from 'react-bootstrap';
 import { FormattedMessage } from 'react-intl';
 
 interface TagsListProps {
@@ -10,7 +10,7 @@ export const TagsList = ({ tags }: TagsListProps) => {
     return (
       <>
         {tags.map((tag) => (
-          <Badge key={tag} bg="outline-primary">
+          <Badge key={tag} bg="outline-primary" data-testid="tagTest">
             {tag}
           </Badge>
         ))}
