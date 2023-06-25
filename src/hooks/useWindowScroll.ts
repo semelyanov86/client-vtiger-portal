@@ -5,14 +5,16 @@ export const useWindowScroll = () => {
   const offset = 80;
   let windowScrolled = false;
   let prevScrollPos = window.pageYOffset;
-
+  // eslint-disable-next-line
   const handleLoad = () => {
     prevScrollPos = window.pageYOffset;
   };
+  // eslint-disable-next-line
   const handleScroll = () => {
     windowScrolled = true;
   };
   // Horizontal menu hiding and showing based on menu behaviour and scroll position
+  // eslint-disable-next-line
   const onWindowScrollInterval = () => {
     if (windowScrolled) {
       const currentScrollPos = window.pageYOffset;
@@ -42,7 +44,7 @@ export const useWindowScroll = () => {
       window.removeEventListener('scroll', handleScroll);
       window.removeEventListener('load', handleLoad);
     };
-  }, []);
+  }, [handleLoad, handleScroll, onWindowScrollInterval]);
 
   return scrolled;
 };

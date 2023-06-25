@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 
-import { DEFAULT_PATHS } from '../../config';
 import useCompanyStore from '../../features/company/stores/company.ts';
 
 export const NavLogo = () => {

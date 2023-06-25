@@ -2,8 +2,8 @@ import ms from 'ms';
 import { useQuery } from 'react-query';
 
 import { axios, DataResponse } from '../../../lib/axios';
-import { Module } from '../types';
 import { CustomModule } from '../../custom-module/types';
+import { Module } from '../types';
 
 type ModuleName = 'HelpDesk' | 'Project' | 'ProjectTask' | keyof CustomModule;
 

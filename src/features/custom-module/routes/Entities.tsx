@@ -73,7 +73,7 @@ export const Entities = () => {
     }
     setPageCount(Math.ceil(data.count / data.size));
     return data.data;
-  }, [data, currentPageSize, page, sort]);
+  }, [data]);
 
   if (isLoading) {
     document.body.classList.add('spinner');
@@ -159,7 +159,6 @@ export const Entities = () => {
   if (!moduleConfig) {
     return <FormattedMessage id="general.not-supported"></FormattedMessage>;
   }
-
   return (
     <>
       <Head title={title} />

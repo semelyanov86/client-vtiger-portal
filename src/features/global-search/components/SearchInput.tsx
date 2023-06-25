@@ -84,14 +84,12 @@ const SearchInput: React.FC<Props> = ({ show, setShow }) => {
     } else {
       setQuery('');
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [show]);
 
   useEffect(() => {
     setMySelectedIndex(0);
     resultCount.current = 0;
     selectedItem.current = { label: '', crmid: '', module: '', parent: '' };
-    // eslint-disable-next-line
   }, [query]);
 
   return (

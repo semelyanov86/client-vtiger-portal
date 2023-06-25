@@ -17,8 +17,8 @@ import {
 } from '../features/auth/api/restore.ts';
 import { useUserStore } from '../stores/user.ts';
 
-import { removeToken } from './token.ts';
 import { DataResponse } from './axios.ts';
+import { removeToken } from './token.ts';
 
 interface AuthProps {
   children: ReactNode;
@@ -55,4 +55,5 @@ export const AuthProvider = ({ children }: AuthProps) => {
     </AuthContext.Provider>
   );
 };
+// eslint-disable-next-line
 export const useAuthContext = () => useContext(AuthContext);

@@ -1,9 +1,9 @@
+import { useState } from 'react';
 import { Button, Card, Col, Modal, Spinner } from 'react-bootstrap';
 import { ArrowBarRight } from 'react-bootstrap-icons';
 import { FormattedMessage } from 'react-intl';
 
 import { useStarredFaqs } from '../../api/getStarred.ts';
-import { useState } from 'react';
 import { Faq } from '../../types';
 
 export const ExtendKnowledge = () => {

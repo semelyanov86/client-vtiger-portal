@@ -1,5 +1,6 @@
 import { ReactNode } from 'react';
 import { Card, OverlayTrigger, Tooltip } from 'react-bootstrap';
+
 import { Glide } from '../../../../components/Elements/Carousel/Glide.tsx';
 
 interface StatCardProps {

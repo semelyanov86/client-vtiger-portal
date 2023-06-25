@@ -1,7 +1,9 @@
 import { useEffect } from 'react';
-import useModalPaddingFix from './useModalPaddingFix';
-import { useSettingsStore } from '../stores/settings.ts';
+
 import { useMenusStore } from '../stores/menus.ts';
+import { useSettingsStore } from '../stores/settings.ts';
+
+import useModalPaddingFix from './useModalPaddingFix';
 
 const useLayout = () => {
   const { value, setThemeValues } = useSettingsStore();

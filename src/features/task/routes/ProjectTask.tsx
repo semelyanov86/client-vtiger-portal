@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
-import { Button, Card, Col, Dropdown, Row, Spinner } from 'react-bootstrap';
+import { Card, Col, Dropdown, Row, Spinner } from 'react-bootstrap';
 import { FormattedMessage } from 'react-intl';
 import { useParams } from 'react-router';
 
 import { BreadcrumbList } from '../../../components/Elements/Breadcrumbs/BreadcrumbList.tsx';
+import { TagsList } from '../../../components/Elements/DetailPage/TagsList.tsx';
 import { Head } from '../../../components/Head';
 import { NULLABLE_DATE } from '../../../config/constants.ts';
 import { useCreateToTaskComment } from '../../comment/api/createToTask.ts';
@@ -20,7 +21,6 @@ import { InfoRow } from '../../project/components/molecules/InfoRow.tsx';
 import { useChangeTaskStatus } from '../api/changeTaskStatus.ts';
 import { useTask } from '../api/getTask.ts';
 import { DropzoneWidget } from '../components/DropzoneWidget.tsx';
-import { TagsList } from '../../../components/Elements/DetailPage/TagsList.tsx';
 
 export const ProjectTask = () => {
   const { projectId, taskId } = useParams();

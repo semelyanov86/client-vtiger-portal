@@ -35,7 +35,7 @@ const { UserPayments } = lazyImport(
   () => import('../features/payment/routes/UserPayments.tsx'),
   'UserPayments'
 );
-
+// eslint-disable-next-line
 const App = () => {
   return (
     <MainLayout>

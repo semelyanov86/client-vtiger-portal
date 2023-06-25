@@ -3,8 +3,8 @@ import { loadStripe } from '@stripe/stripe-js';
 import { ReactNode } from 'react';
 
 import { Spinner } from '../../../components/Elements';
-import { usePaymentConfig } from '../api/getPaymentConfig.ts';
 import { IS_PAYMENT_SUPPORTED } from '../../../config/constants.ts';
+import { usePaymentConfig } from '../api/getPaymentConfig.ts';
 
 interface PaymentFormProps {
   children: ReactNode;

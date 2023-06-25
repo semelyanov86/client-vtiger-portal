@@ -42,6 +42,7 @@ export const Projects = () => {
     (pageIndex: number) => {
       setPage(pageIndex);
     },
+    // eslint-disable-next-line
     [page]
   );
 

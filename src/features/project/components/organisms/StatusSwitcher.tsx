@@ -1,6 +1,7 @@
-import { Project } from '../../types';
 import { Dropdown } from 'react-bootstrap';
 import { FormattedMessage } from 'react-intl';
+
+import { Project } from '../../types';
 
 interface StatusSwitcherProps {
   statuses: { label: string; value: string }[];

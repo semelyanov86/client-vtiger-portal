@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { MenuButton } from 'react-bootstrap-icons';
 
 import { useMenusStore } from '../../stores/menus.ts';
@@ -41,7 +41,7 @@ export const NavMobileButtons = () => {
   };
 
   // Starts mobile menu closing sequence
-  const hideMobileMenu = () => {
+  const hideMobileMenu = useCallback(() => {
     let newNavClasses = {
       ...navClasses,
       'mobile-side-out': true,
@@ -70,7 +70,7 @@ export const NavMobileButtons = () => {
       menuChangeNavClasses(newNavClasses);
       menuChangeAttrMobile(false);
     }, 230);
-  };
+  }, [menuChangeAttrMobile, menuChangeNavClasses, navClasses]);
 
   useEffect(() => {
     if (navClasses && navClasses['mobile-side-in']) {

@@ -59,7 +59,7 @@ export const Tickets = () => {
     }
     setPageCount(Math.ceil(data.count / data.size));
     return data.data;
-  }, [data, currentPageSize, page, sort]);
+  }, [data]);
 
   if (isLoading) {
     document.body.classList.add('spinner');

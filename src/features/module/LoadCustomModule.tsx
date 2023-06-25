@@ -19,7 +19,7 @@ export const LoadCustomModule: React.FC<LoadCustomModuleProps> = ({ moduleName }
     } else if (error) {
       NotifyError(error.message);
     }
-  }, [error, data, setCustomModule]);
+  }, [error, data, setCustomModule, moduleName]);
 
   return null;
 };

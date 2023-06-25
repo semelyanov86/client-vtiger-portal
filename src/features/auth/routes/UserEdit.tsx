@@ -10,9 +10,9 @@ import { NotifyError, NotifySuccess } from '../../../components/Notifications/No
 import { queryClient } from '../../../lib/react-query.ts';
 import { useUserStore } from '../../../stores/user.ts';
 import { updateUser } from '../api/update.ts';
+import { ImageUploadOptions, UserProfileImage } from '../components/UserProfileImage.tsx';
 import { UserSidebar } from '../components/UserSidebar.tsx';
 import { AuthUser } from '../types';
-import { ImageUploadOptions, UserProfileImage } from '../components/UserProfileImage.tsx';
 
 const schema = z.object({
   email: z.string().min(1, 'Required').email('Should be a valid email address'),

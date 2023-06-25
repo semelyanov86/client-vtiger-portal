@@ -1,17 +1,16 @@
-import { z } from 'zod';
-import { Token } from '../types';
-import { FieldValues, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { LoginCredentialsDTO } from '../api/login.ts';
-import { NotifyError } from '../../../components/Notifications/Notification.tsx';
-import { LogoAuth } from './LogoAuth.tsx';
-import { NavLink } from 'react-router-dom';
-import { Envelope, Lock, QrCode } from 'react-bootstrap-icons';
 import { Button, Form } from 'react-bootstrap';
-import { validateOtp } from '../api/validateOtp.ts';
+import { QrCode } from 'react-bootstrap-icons';
+import { FieldValues, useForm } from 'react-hook-form';
+import { z } from 'zod';
+
+import { NotifyError } from '../../../components/Notifications/Notification.tsx';
 import { setToken } from '../../../lib/token.ts';
-import { useNavigate } from 'react-router';
 import { useUserStore } from '../../../stores/user.ts';
+import { validateOtp } from '../api/validateOtp.ts';
+import { Token } from '../types';
+
+import { LogoAuth } from './LogoAuth.tsx';
 
 const schema = z.object({
   code: z.string().min(4, 'Required'),
@@ -25,7 +24,6 @@ type OtpFormProps = {
 };
 
 export const OtpForm = ({ onSuccess, token }: OtpFormProps) => {
-  const navigate = useNavigate();
   const { setUser } = useUserStore();
 
   const {

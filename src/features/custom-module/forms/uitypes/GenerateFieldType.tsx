@@ -1,4 +1,5 @@
 import { getFieldByName } from '../../../module/services/fields.ts';
+import { RelatedField } from '../../types';
 
 import { CheckboxField } from './CheckboxField.tsx';
 import { DateField } from './DateField.tsx';
@@ -7,7 +8,6 @@ import { NumberField } from './NumberField.tsx';
 import { PicklistField } from './PicklistField.tsx';
 import { StringField } from './StringField.tsx';
 import { TextareaField } from './TextareaField.tsx';
-import { RelatedField } from '../../types';
 
 interface GenerateFieldTypeProps extends FormField {
   value: string | number | boolean | RelatedField | string[];

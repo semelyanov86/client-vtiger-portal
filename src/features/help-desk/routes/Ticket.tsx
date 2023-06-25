@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Badge, Card, Col, Dropdown, Row, Spinner } from 'react-bootstrap';
+import { Card, Col, Dropdown, Row, Spinner } from 'react-bootstrap';
 import {
   Asterisk,
   Calendar,
@@ -12,8 +12,9 @@ import {
 import { FormattedMessage, useIntl } from 'react-intl';
 import { useParams } from 'react-router';
 
-import { Spinner as Spinner2 } from '../../../components/Elements';
-import { DetailPageTitle } from '../../../components/Elements';
+import { DetailPageTitle, Spinner as Spinner2 } from '../../../components/Elements';
+import { BlockHeader } from '../../../components/Elements/DetailPage/BlockHeader.tsx';
+import { TagsList } from '../../../components/Elements/DetailPage/TagsList.tsx';
 import { Head } from '../../../components/Head';
 import { NotifyError } from '../../../components/Notifications/Notification.tsx';
 import { useCreateToTicketComment } from '../../comment/api/createToTicket.ts';
@@ -29,8 +30,6 @@ import useModulesStore from '../../module/stores/module.ts';
 import { useChangeTicketStatus } from '../api/changeTicketStatus.ts';
 import { useTicket } from '../api/getTicket.ts';
 import { StatCard } from '../components/StatCard.tsx';
-import { BlockHeader } from '../../../components/Elements/DetailPage/BlockHeader.tsx';
-import { TagsList } from '../../../components/Elements/DetailPage/TagsList.tsx';
 
 export const Ticket = () => {
   const { ticketId } = useParams();

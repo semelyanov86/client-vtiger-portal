@@ -69,7 +69,7 @@ export const AddEditEntityModal = ({
         }
       });
     }
-  }, [entityQuery.data]);
+  }, [entityQuery.data, moduleName, setValue]);
 
   if (!customModules[moduleName]) {
     return null;

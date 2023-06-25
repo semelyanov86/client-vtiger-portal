@@ -44,6 +44,7 @@ export const SalesOrders = () => {
     (pageIndex: number) => {
       setPage(pageIndex);
     },
+    // eslint-disable-next-line
     [page]
   );
 

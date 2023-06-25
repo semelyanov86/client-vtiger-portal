@@ -1,3 +1,4 @@
+// eslint-disable-next-line
 type Statistics = {
   tickets: {
     total: number;

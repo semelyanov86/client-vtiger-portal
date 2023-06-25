@@ -2,15 +2,15 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { Button, Form } from 'react-bootstrap';
 import { Lock } from 'react-bootstrap-icons';
 import { FieldValues, useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router';
 import { NavLink } from 'react-router-dom';
 import { z } from 'zod';
 
 import { NotifyError } from '../../../components/Notifications/Notification.tsx';
+import useQuery from '../../../hooks/useQuery.ts';
 import { useAuthContext } from '../../../lib/auth.tsx';
 
 import { LogoAuth } from './LogoAuth.tsx';
-import useQuery from '../../../hooks/useQuery.ts';
-import { useNavigate } from 'react-router';
 
 const schema = z
   .object({

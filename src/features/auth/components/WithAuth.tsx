@@ -25,7 +25,7 @@ const WithAuth = (props: Props) => {
         navigate('/auth/login');
       }
     }
-  }, [isTokenFetchingActive]);
+  }, [isTokenFetchingActive, navigate]);
 
   const renderContent = () => {
     return isAuthenticated ? children : null;

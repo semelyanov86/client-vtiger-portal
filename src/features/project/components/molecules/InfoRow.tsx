@@ -1,5 +1,5 @@
-import { Col, Row } from 'react-bootstrap';
 import { ReactNode } from 'react';
+import { Col, Row } from 'react-bootstrap';
 
 interface InfoRowProps {
   header: string | ReactNode;

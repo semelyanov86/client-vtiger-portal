@@ -42,7 +42,7 @@ export const ForgotPasswordForm = ({ onSuccess }: ForgotPasswordProps) => {
         <LogoAuth></LogoAuth>
         <div className="mb-5">
           <h2 className="cta-1 mb-0 text-primary">Password is gone?</h2>
-          <h2 className="cta-1 text-primary">Let's reset it!</h2>
+          <h2 className="cta-1 text-primary">Let us reset it!</h2>
         </div>
         <div className="mb-5">
           <p className="h6">Please enter your email to receive a link to reset your password.</p>
