@@ -57,6 +57,17 @@ jobs:
       - name: Build the project
         run: npm run build
 
+      - name: Pre deployment script
+        uses: appleboy/ssh-action@v0.1.4
+        with:
+          host: ${{ secrets.TIMEWEB_HOST }}
+          username: ${{ secrets.TIMEWEB_USERNAME }}
+          key: ${{ secrets.DEPLOY_KEY }}
+          port: ${{ secrets.TIMEWEB_PORT }}
+          script: |
+            rm -rf ~/public_html
+            mkdir ~/public_html
+
       - name: Deploy to Timeweb Hosting
         uses: appleboy/scp-action@v0.1.1
         with:
