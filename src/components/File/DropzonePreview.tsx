@@ -2,8 +2,7 @@ import { FC } from 'react';
 import { Col, Row, Spinner } from 'react-bootstrap';
 import { IPreviewProps } from 'react-dropzone-uploader';
 
-const DropzonePreview: FC<IPreviewProps> = ({ meta, fileWithMeta }) => {
-  const { remove } = fileWithMeta;
+const DropzonePreview: FC<IPreviewProps> = ({ meta }) => {
   const { name, status, previewUrl, size } = meta;
 
   return (

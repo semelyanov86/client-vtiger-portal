@@ -34,7 +34,7 @@ export const NavLanguageSwitcher = () => {
 
   useEffect(() => {
     layoutShowingNavMenu('');
-  }, [attrMenuAnimate, behaviourHtmlData, attrMobile, color]);
+  }, [attrMenuAnimate, behaviourHtmlData, attrMobile, color, layoutShowingNavMenu]);
 
   return (
     <div className="language-switch-container">

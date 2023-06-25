@@ -13,7 +13,7 @@ import { NavUserMenu } from './NavUserMenu.tsx';
 
 const DELAY = 80;
 
-export const Nav: React.FC = () => {
+const Nav: React.FC = () => {
   const { navClasses, placementStatus, behaviourStatus, attrMobile, menuPadding } =
     useMenusStore().value;
 
@@ -94,4 +94,4 @@ export const Nav: React.FC = () => {
     </div>
   );
 };
-export default React.memo(Nav);
+export default Nav;

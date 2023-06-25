@@ -11,7 +11,7 @@ export const NavLogo = () => {
   }
   return (
     <div className="logo position-relative">
-      <Link to={DEFAULT_PATHS.APP}>{logo}</Link>
+      <Link to="/app">{logo}</Link>
     </div>
   );
 };

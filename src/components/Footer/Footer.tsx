@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
 import { Container, Row, Col, Breadcrumb } from 'react-bootstrap';
-import useCompanyStore from '../../features/company/stores/company.ts';
 import { FormattedMessage } from 'react-intl';
+
+import useCompanyStore from '../../features/company/stores/company.ts';
 
 export const Footer = React.memo(() => {
   const { value: company } = useCompanyStore();

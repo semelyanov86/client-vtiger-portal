@@ -133,9 +133,8 @@ const MainMenu = () => {
           menuChangeBehaviourStatus(behaviourStatusCB);
         }
       }
-      // eslint-disable-next-line
     },
-    [behaviourStatus, placementStatus, breakpoints]
+    [placementStatus, behaviourStatus, menuChangePlacementStatus, menuChangeBehaviourStatus]
   );
 
   useEffect(() => {
@@ -183,4 +182,4 @@ const MainMenu = () => {
   return <></>;
 };
 
-export default React.memo(MainMenu);
+export default MainMenu;
