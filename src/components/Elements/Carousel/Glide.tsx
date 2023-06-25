@@ -107,7 +107,7 @@ export const Glide = ({
       if (!glideRef.current) {
         return;
       }
-      // eslint-disable-next-line no-unsafe-optional-chaining
+
       const { perView } = glideRef.current.settings;
       const total = isElement(glideRef.current.selector)
         ? glideRef.current.selector.querySelectorAll('.glide__slide').length

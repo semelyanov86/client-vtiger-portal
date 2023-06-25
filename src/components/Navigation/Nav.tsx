@@ -4,18 +4,19 @@ import React, { useRef } from 'react';
 import { MENU_BEHAVIOUR, MENU_PLACEMENT } from '../../config/constants.ts';
 import { useMenusStore } from '../../stores/menus.ts';
 
+import MainMenu from './main-menu/MainMenu.tsx';
 import { NavIconMenu } from './NavIconMenu.tsx';
 import { NavLanguageSwitcher } from './NavLanguageSwitcher.tsx';
 import { NavLogo } from './NavLogo.tsx';
 import { NavMobileButtons } from './NavMobileButtons.tsx';
 import { NavUserMenu } from './NavUserMenu.tsx';
-import MainMenu from './main-menu/MainMenu.tsx';
 
 const DELAY = 80;
 
-const Nav: React.FC = () => {
+export const Nav: React.FC = () => {
   const { navClasses, placementStatus, behaviourStatus, attrMobile, menuPadding } =
     useMenusStore().value;
+
   const { menuChangeCollapseAll, menuChangeAttrMenuAnimate } = useMenusStore();
   const mouseActionTimer = useRef<NodeJS.Timeout | null>(null);
 
@@ -64,7 +65,13 @@ const Nav: React.FC = () => {
   return (
     <div
       id="nav"
-      className={classNames('nav-container d-flex', { navClasses })}
+      className={classNames('nav-container d-flex', {
+        'mobile-side-in': navClasses ? navClasses['mobile-side-in'] : false,
+        'mobile-side-ready': navClasses ? navClasses['mobile-side-ready'] : false,
+        'mobile-top-out': navClasses ? navClasses['mobile-top-out'] : false,
+        'mobile-top-in': navClasses ? navClasses['mobile-top-in'] : false,
+        'mobile-top-ready': navClasses ? navClasses['mobile-top-ready'] : false,
+      })}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
     >

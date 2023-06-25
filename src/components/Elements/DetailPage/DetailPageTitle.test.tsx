@@ -1,12 +1,13 @@
 import { render, screen } from '@testing-library/react';
+import chai from 'chai';
+import chaiDom from 'chai-dom';
 import { IntlProvider } from 'react-intl';
 import { expect, vi } from 'vitest';
 
-import { DetailPageTitle } from './DetailPageTitle';
-import { messages } from '../../../providers/messages/messages.ts';
 import { formatToUserReadableDate } from '../../../features/misc/services/Dates.ts';
-import chai from 'chai';
-import chaiDom from 'chai-dom';
+import { messages } from '../../../providers/messages/messages.ts';
+
+import { DetailPageTitle } from './DetailPageTitle';
 
 chai.use(chaiDom);
 
