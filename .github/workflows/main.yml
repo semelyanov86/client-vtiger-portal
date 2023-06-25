@@ -1,11 +1,11 @@
-name: linting, testing, building
+name: linting, testing, building, deployment
 on:
   push:
     branches: [ main ]
   pull_request:
     branches: [ main ]
 jobs:
-  pipeline:
+  build:
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -36,3 +36,33 @@ jobs:
       - name: check format
         run: npm run check-format
         if: always()
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 17.x
+
+      - name: Install dependencies
+        run: npm ci --force
+
+      - name: Create .env file
+        run: echo "${{ secrets.ENV_FILE_CONTENTS }}" > .env
+
+      - name: Build the project
+        run: npm run build
+
+      - name: Deploy to Timeweb Hosting
+        uses: appleboy/scp-action@v0.1.1
+        with:
+          host: ${{ secrets.TIMEWEB_HOST }}
+          username: ${{ secrets.TIMEWEB_USERNAME }}
+          key: ${{ secrets.DEPLOY_KEY }}
+          port: ${{ secrets.TIMEWEB_PORT }}
+          source: "build/*"
+          target: "~/public_html"
