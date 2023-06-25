@@ -64,5 +64,5 @@ jobs:
           username: ${{ secrets.TIMEWEB_USERNAME }}
           key: ${{ secrets.DEPLOY_KEY }}
           port: ${{ secrets.TIMEWEB_PORT }}
-          source: "build/*"
+          source: "dist/*"
           target: "~/public_html"
