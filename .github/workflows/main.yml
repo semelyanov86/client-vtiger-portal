@@ -66,3 +66,14 @@ jobs:
           port: ${{ secrets.TIMEWEB_PORT }}
           source: "dist/*"
           target: "~/public_html"
+
+      - name: Post deployment script
+        uses: appleboy/ssh-action@v0.1.4
+        with:
+          host: ${{ secrets.TIMEWEB_HOST }}
+          username: ${{ secrets.TIMEWEB_USERNAME }}
+          key: ${{ secrets.DEPLOY_KEY }}
+          port: ${{ secrets.TIMEWEB_PORT }}
+          script: |
+            mv ~/public_html/dist/* ~/public_html/
+            rm -rf ~/public_html/dist
