@@ -14,6 +14,6 @@ export default defineConfig({
   // @ts-ignore
   test: {
     globals: true,
-    environment: 'happy-dom',
+    environment: 'jsdom',
   },
 });
