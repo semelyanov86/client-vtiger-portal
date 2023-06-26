@@ -14,6 +14,7 @@ export default defineConfig({
   // @ts-ignore
   test: {
     globals: true,
-    environment: 'jsdom',
+    environment: 'happy-dom',
+    setupFiles: ['./src/setupVitest.ts'],
   },
 });

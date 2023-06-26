@@ -2,9 +2,9 @@ import { Accordion, Card, Col, Row } from 'react-bootstrap';
 import { FormattedMessage, useIntl } from 'react-intl';
 import { useSearchParams } from 'react-router-dom';
 
-import { Spinner } from '../../../components/Elements';
 import { ListPageTitle } from '../../../components/Elements/ListPage/ListPageTitle.tsx';
 import { Head } from '../../../components/Head';
+import { Loading } from '../../../components/Loading/Loading.tsx';
 import { useFaqs } from '../api/getFaqs.ts';
 import { CustomAccordionToggle } from '../components/CustomAccordionToggle.tsx';
 import { SidebarBlock } from '../components/templates/SidebarBlock.tsx';
@@ -19,7 +19,7 @@ export const Faqs = () => {
   const [searchParams] = useSearchParams();
 
   if (faqsQuery.isLoading) {
-    return <Spinner></Spinner>;
+    return <Loading></Loading>;
   }
 
   if (!faqsQuery.data) {

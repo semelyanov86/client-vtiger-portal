@@ -13,26 +13,26 @@ const DropzonePreview: FC<IPreviewProps> = ({ meta }) => {
           <img src={previewUrl} alt="preview image" className="sw-12 sh-9 rounded-sm-start" />
         ) : (
           <div className="sw-12 sh-9 d-flex justify-content-center align-items-center">
-            <i className="cs-file-text dzu-preview-icon" />
+            <i className="cs-file-text dzu-preview-icon" data-testid="fallback-icon" />
           </div>
         )}
         {(status === 'error_upload_params' ||
           status === 'exception_upload' ||
           status === 'error_upload') && (
           <div className="dzu-preview-error">
-            <i className="cs-close-circle" />
+            <i className="cs-close-circle" data-testid="close-icon" />
           </div>
         )}
         {status === 'done' && (
           <div className="dzu-preview-success">
-            <i className="cs-check" />
+            <i className="cs-check" data-testid="check-icon" />
           </div>
         )}
         {status !== 'error_upload_params' &&
           status !== 'exception_upload' &&
           status !== 'error_upload' &&
           status !== 'done' && (
-            <div className="dzu-preview-spinner">
+            <div className="dzu-preview-spinner" data-testid="preview-spinner">
               <Spinner
                 animation="border"
                 size="sm"
@@ -48,13 +48,6 @@ const DropzonePreview: FC<IPreviewProps> = ({ meta }) => {
             <p className="mb-1 pe-2 sw-20 dzu-preview-file-name">{name}</p>
             <div className="text-small text-primary">{Math.round(size / 1000)} KB</div>
           </div>
-          {/*{status !== 'preparing' &&
-            status !== 'getting_upload_params' &&
-            status !== 'uploading' && (
-              <button className="btn btn-link p-0 sh-3 text-muted" type="button" onClick={remove}>
-                <i className="cs-bin" />
-              </button>
-            )}*/}
         </div>
       </Col>
     </Row>

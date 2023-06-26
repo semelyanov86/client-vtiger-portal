@@ -156,7 +156,7 @@ export const Glide = ({
   }, [width, placementStatus, behaviourStatus, attrMobile]);
 
   return (
-    <div ref={carouselRef} className={`glide ${className}`}>
+    <div ref={carouselRef} className={`glide ${className}`} data-testid="glilde">
       <div className="glide__track" data-glide-el="track">
         <div className="glide__slides">{children}</div>
         {!noControls && (

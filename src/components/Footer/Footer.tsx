@@ -14,7 +14,7 @@ export const Footer = React.memo(() => {
   }, []);
 
   return (
-    <footer>
+    <footer data-testid="footer">
       <div className="footer-content">
         <Container>
           <Row>
