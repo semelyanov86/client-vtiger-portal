@@ -6,6 +6,7 @@ import { NavLink } from 'react-router-dom';
 import { z } from 'zod';
 
 import { NotifyError } from '../../../components/Notifications/Notification.tsx';
+import { DEFAULT_PATHS } from '../../../config';
 import { useAuthContext } from '../../../lib/auth.tsx';
 import { RestorePasswordDTO } from '../api/restore.ts';
 
@@ -47,7 +48,7 @@ export const ForgotPasswordForm = ({ onSuccess }: ForgotPasswordProps) => {
         <div className="mb-5">
           <p className="h6">Please enter your email to receive a link to reset your password.</p>
           <p className="h6">
-            If you are a member, please <NavLink to="/auth/login">login</NavLink>.
+            If you are a member, please <NavLink to={DEFAULT_PATHS.LOGIN}>login</NavLink>.
           </p>
         </div>
         <div>

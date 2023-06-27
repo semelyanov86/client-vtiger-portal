@@ -11,6 +11,7 @@ import { Head } from '../../../components/Head';
 import SearchInput from '../../../components/Table/Atoms/SearchInput.tsx';
 import { ControlsPageSize } from '../../../components/Table/ControlsPageSize.tsx';
 import { TablePagination } from '../../../components/Table/TablePagination.tsx';
+import { DEFAULT_PATHS } from '../../../config';
 import { DEFAULT_PAGE_COUNT } from '../../../config/constants.ts';
 import { getSortingValue } from '../../../utils/sorting.ts';
 import { formatToUserReadableDate } from '../../misc/services/Dates.ts';
@@ -183,7 +184,7 @@ export const Invoices = () => {
                         <FormattedMessage id="invoices.invoice_no"></FormattedMessage>
                       </div>
                       <NavLink
-                        to={'/app/invoices/' + invoice.id}
+                        to={DEFAULT_PATHS.INVOICE + '/' + invoice.id}
                         className={classNames(
                           'stretched-link h-100 d-flex body-link align-items-center',
                           {

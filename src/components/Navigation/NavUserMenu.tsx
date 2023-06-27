@@ -7,6 +7,7 @@ import { FormattedMessage } from 'react-intl';
 import { useNavigate } from 'react-router';
 import { NavLink } from 'react-router-dom';
 
+import { DEFAULT_PATHS } from '../../config';
 import { HELP_URL, MENU_PLACEMENT } from '../../config/constants.ts';
 import { AuthUser } from '../../features/auth';
 import { useAuthContext } from '../../lib/auth.tsx';
@@ -95,12 +96,12 @@ const NavUserMenuContent = () => {
         <Col xs="6" className="ps-1 pe-1">
           <ul className="list-unstyled">
             <li>
-              <NavLink to="/app/user/info">
+              <NavLink to={DEFAULT_PATHS.USER_INFO}>
                 <FormattedMessage id="user.info"></FormattedMessage>
               </NavLink>
             </li>
             <li>
-              <NavLink to="/app/user/settings">
+              <NavLink to={DEFAULT_PATHS.USER_SETTINGS}>
                 <FormattedMessage id="menu.preferencies"></FormattedMessage>
               </NavLink>
             </li>
@@ -109,12 +110,12 @@ const NavUserMenuContent = () => {
         <Col xs="6" className="ps-1 pe-1">
           <ul className="list-unstyled">
             <li>
-              <NavLink to="/app/user/security">
+              <NavLink to={DEFAULT_PATHS.USER_SECURITY}>
                 <FormattedMessage id="otp.header"></FormattedMessage>
               </NavLink>
             </li>
             <li>
-              <NavLink to="/app/user/payments">
+              <NavLink to={DEFAULT_PATHS.USER_PAYMENTS}>
                 <FormattedMessage id="menu.billing"></FormattedMessage>
               </NavLink>
             </li>

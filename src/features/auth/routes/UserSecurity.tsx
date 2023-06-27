@@ -3,7 +3,9 @@ import { FormattedMessage } from 'react-intl';
 
 import { BreadcrumbList } from '../../../components/Elements/Breadcrumbs/BreadcrumbList.tsx';
 import { Head } from '../../../components/Head';
+import { DEFAULT_PATHS } from '../../../config';
 import { useUserStore } from '../../../stores/user.ts';
+import { clearRouteDelimeter } from '../../../utils/format.ts';
 import { TwoFactorCard } from '../components/TwoFactorCard.tsx';
 import { UpdatePasswordForm } from '../components/UpdatePasswordForm.tsx';
 import { UserSidebar } from '../components/UserSidebar.tsx';
@@ -12,9 +14,9 @@ export const UserSecurity = () => {
   const { value: user } = useUserStore();
   const title = 'Profile security settings';
   const breadcrumbs = [
-    { to: '', text: 'Home' },
-    { to: '/app/auth/info', text: 'Profile' },
-    { to: '/app/auth/security', text: 'Security' },
+    { to: clearRouteDelimeter(DEFAULT_PATHS.DASHBOARD), text: 'Home' },
+    { to: clearRouteDelimeter(DEFAULT_PATHS.USER_INFO), text: 'Profile' },
+    { to: clearRouteDelimeter(DEFAULT_PATHS.USER_SECURITY), text: 'Security' },
   ];
 
   return (

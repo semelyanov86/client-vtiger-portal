@@ -15,6 +15,7 @@ import { useNavigate, useParams } from 'react-router';
 
 import { DetailPageTitle, Spinner as Spinner2 } from '../../../components/Elements';
 import { Head } from '../../../components/Head';
+import { DEFAULT_PATHS } from '../../../config';
 import { NULLABLE_DATE } from '../../../config/constants.ts';
 import { DisplayMoney } from '../../../utils/DisplayMoney.tsx';
 import { useManager } from '../../manager/api/getManager.ts';
@@ -80,7 +81,7 @@ export const SalesOrder = () => {
                   {salesOrderQuery.data.invoices.map((invoice) => (
                     <Dropdown.Item
                       key={invoice.id}
-                      onClick={() => navigate('/app/invoices/' + invoice.id)}
+                      onClick={() => navigate(DEFAULT_PATHS.INVOICE + '/' + invoice.id)}
                     >
                       <FormattedMessage id="so.view-invoice"></FormattedMessage>{' '}
                       {invoice.invoice_no}

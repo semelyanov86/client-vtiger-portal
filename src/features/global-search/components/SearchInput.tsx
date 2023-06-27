@@ -3,6 +3,7 @@ import Autosuggest from 'react-autosuggest';
 import { Spinner } from 'react-bootstrap';
 import { useNavigate } from 'react-router';
 
+import { DEFAULT_PATHS } from '../../../config';
 import { useGlobalSearch } from '../api/getSearchItems.ts';
 import { SearchItem } from '../types';
 
@@ -29,13 +30,13 @@ const SearchInput: React.FC<Props> = ({ show, setShow }) => {
   const onResultClick = (searchItem: SearchItem) => {
     setShow(false);
     if (searchItem.module == 'Faq') {
-      navigate('/app/faq' + '?crmid=' + searchItem.crmid);
+      navigate(DEFAULT_PATHS.FAQ + '?crmid=' + searchItem.crmid);
     } else if (searchItem.module == 'HelpDesk') {
-      navigate('/app/tickets' + searchItem.crmid);
+      navigate(DEFAULT_PATHS.HELPDESK + '/' + searchItem.crmid);
     } else if (searchItem.module == 'ProjectTask') {
-      navigate('/app/projects/' + searchItem.parent + '/tasks/' + searchItem.crmid);
+      navigate(DEFAULT_PATHS.PROJECT + '/' + searchItem.parent + '/tasks/' + searchItem.crmid);
     } else if (searchItem.module == 'Project') {
-      navigate('/app/projects/' + searchItem.crmid);
+      navigate(DEFAULT_PATHS.PROJECT + '/' + searchItem.crmid);
     }
   };
 

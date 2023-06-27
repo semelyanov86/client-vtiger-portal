@@ -6,6 +6,7 @@ import { NavLink } from 'react-router-dom';
 import { z } from 'zod';
 
 import { NotifyError } from '../../../components/Notifications/Notification.tsx';
+import { DEFAULT_PATHS } from '../../../config';
 import { useAuthContext } from '../../../lib/auth.tsx';
 import { LoginCredentialsDTO } from '../api/login.ts';
 import { Token } from '../types';
@@ -50,7 +51,7 @@ export const LoginForm = ({ onSuccess }: LoginFormProps) => {
         <div className="mb-5">
           <p className="h6">Please use your credentials to login.</p>
           <p className="h6">
-            If you are not a member, please <NavLink to="/auth/register">register</NavLink>.
+            If you are not a member, please <NavLink to={DEFAULT_PATHS.REGISTER}>register</NavLink>.
           </p>
         </div>
         <div>
@@ -65,7 +66,10 @@ export const LoginForm = ({ onSuccess }: LoginFormProps) => {
             <div className="mb-3 filled form-group tooltip-end-top">
               <Lock></Lock>
               <Form.Control {...register('password')} type="password" placeholder="Password" />
-              <NavLink className="text-small position-absolute t-3 e-3" to="/auth/forgot">
+              <NavLink
+                className="text-small position-absolute t-3 e-3"
+                to={DEFAULT_PATHS.FORGOT_PASSWORD}
+              >
                 Forgot?
               </NavLink>
               {errors.password && (

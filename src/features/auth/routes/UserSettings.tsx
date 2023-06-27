@@ -5,7 +5,9 @@ import { Spinner } from '../../../components/Elements';
 import { BreadcrumbList } from '../../../components/Elements/Breadcrumbs/BreadcrumbList.tsx';
 import { Head } from '../../../components/Head';
 import { NotifyError } from '../../../components/Notifications/Notification.tsx';
+import { DEFAULT_PATHS } from '../../../config';
 import { useUserStore } from '../../../stores/user.ts';
+import { clearRouteDelimeter } from '../../../utils/format.ts';
 import { useChangeSettings } from '../api/changeSettings.ts';
 import { useUserSettings } from '../api/getUserSettings.ts';
 import { UserSidebar } from '../components/UserSidebar.tsx';
@@ -16,8 +18,8 @@ export const UserSettings = () => {
   const mutationQuery = useChangeSettings();
   const title = 'Your preferences';
   const breadcrumbs = [
-    { to: '/app', text: 'Home' },
-    { to: '/app/user/settings', text: 'Profile Settings' },
+    { to: clearRouteDelimeter(DEFAULT_PATHS.DASHBOARD), text: 'Home' },
+    { to: clearRouteDelimeter(DEFAULT_PATHS.USER_SETTINGS), text: 'Profile Settings' },
   ];
 
   if (settingsQuery.isLoading) {

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router';
 
+import { DEFAULT_PATHS } from '../../../config';
 import { setToken } from '../../../lib/token.ts';
 import { Layout } from '../components/Layout';
 import { LoginForm } from '../components/LoginForm';
@@ -13,7 +14,7 @@ export const Login = () => {
   const [tokenResult, setTokenResult] = useState<Token | null>(null);
   const [showOtp, setShowOtp] = useState(false);
   const onValidate = () => {
-    navigate('/app');
+    navigate(DEFAULT_PATHS.DASHBOARD);
     if (tokenResult) {
       setToken(tokenResult.token);
     }
@@ -35,7 +36,7 @@ export const Login = () => {
               setShowOtp(true);
             } else {
               setToken(token.token);
-              navigate('/app');
+              navigate(DEFAULT_PATHS.DASHBOARD);
             }
           },
         })}

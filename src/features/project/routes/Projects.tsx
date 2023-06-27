@@ -5,15 +5,17 @@ import { Search, XCircle } from 'react-bootstrap-icons';
 import { FormattedMessage, useIntl } from 'react-intl';
 import { NavLink } from 'react-router-dom';
 
-import { Spinner } from '../../../components/Elements';
-import { ListPageTitle } from '../../../components/Elements/ListPage/ListPageTitle.tsx';
+import { Spinner, ListPageTitle } from '../../../components/Elements';
 import { Head } from '../../../components/Head';
 import { ControlsPageSize } from '../../../components/Table/ControlsPageSize.tsx';
 import { TablePagination } from '../../../components/Table/TablePagination.tsx';
+import { DEFAULT_PATHS } from '../../../config';
 import { DEFAULT_PAGE_COUNT } from '../../../config/constants.ts';
+import { clearRouteDelimeter } from '../../../utils/format.ts';
 import { getSortingValue } from '../../../utils/sorting.ts';
 import { formatToUserReadableDate } from '../../misc/services/Dates.ts';
 import { useProjects } from '../api/getProjects.ts';
+import { Project } from '../types';
 
 const HEADER_CONTENT_CLASSES = ['d-flex', 'flex-column', 'pe-1', 'justify-content-center'];
 
@@ -70,6 +72,8 @@ export const Projects = () => {
     [setCurrentPageSize]
   );
 
+  const isProjectInProgress = (project: Project) => project.projectstatus == 'Выполняется';
+
   if (projectsQuery.isLoading) {
     return <Spinner></Spinner>;
   }
@@ -83,7 +87,10 @@ export const Projects = () => {
       <Head title={title} />
 
       <Col>
-        <ListPageTitle title={title} breadcrumb={{ to: 'app/projects', text: 'Projects' }}>
+        <ListPageTitle
+          title={title}
+          breadcrumb={{ to: clearRouteDelimeter(DEFAULT_PATHS.PROJECT), text: 'Projects' }}
+        >
           <></>
         </ListPageTitle>
 
@@ -179,11 +186,11 @@ export const Projects = () => {
                         <FormattedMessage id="project.project_no"></FormattedMessage>
                       </div>
                       <NavLink
-                        to={'/app/projects/' + project.id}
+                        to={DEFAULT_PATHS.PROJECT + '/' + project.id}
                         className={classNames(
                           'stretched-link h-100 d-flex body-link align-items-center',
                           {
-                            'fw-bold': project.projectstatus == 'Выполняется',
+                            'fw-bold': isProjectInProgress(project),
                           }
                         )}
                       >
@@ -200,7 +207,7 @@ export const Projects = () => {
                       </div>
                       <div
                         className={classNames('text-body', {
-                          'fw-bold': project.projectstatus == 'Выполняется',
+                          'fw-bold': isProjectInProgress(project),
                         })}
                       >
                         {project.projectname}

@@ -7,8 +7,10 @@ import { z } from 'zod';
 import { BreadcrumbList } from '../../../components/Elements/Breadcrumbs/BreadcrumbList.tsx';
 import { Head } from '../../../components/Head';
 import { NotifyError, NotifySuccess } from '../../../components/Notifications/Notification.tsx';
+import { DEFAULT_PATHS } from '../../../config';
 import { queryClient } from '../../../lib/react-query.ts';
 import { useUserStore } from '../../../stores/user.ts';
+import { clearRouteDelimeter } from '../../../utils/format.ts';
 import { updateUser } from '../api/update.ts';
 import { ImageUploadOptions, UserProfileImage } from '../components/UserProfileImage.tsx';
 import { UserSidebar } from '../components/UserSidebar.tsx';
@@ -46,9 +48,9 @@ export const UserEdit = () => {
   const { value: user } = useUserStore();
   const title = 'Edit Profile';
   const breadcrumbs = [
-    { to: '', text: 'Home' },
-    { to: '/app/auth/info', text: 'Profile' },
-    { to: '/app/auth/edit', text: 'Edit' },
+    { to: clearRouteDelimeter(DEFAULT_PATHS.DASHBOARD), text: 'Home' },
+    { to: clearRouteDelimeter(DEFAULT_PATHS.USER_INFO), text: 'Profile' },
+    { to: clearRouteDelimeter(DEFAULT_PATHS.USER_EDIT), text: 'Edit' },
   ];
 
   const onSubmit = (data: FieldValues) => {

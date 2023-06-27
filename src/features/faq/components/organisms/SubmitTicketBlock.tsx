@@ -3,6 +3,8 @@ import { QuestionCircle } from 'react-bootstrap-icons';
 import { FormattedMessage } from 'react-intl';
 import { useNavigate } from 'react-router';
 
+import { DEFAULT_PATHS } from '../../../../config';
+
 export const SubmitTicketBlock = () => {
   const navigate = useNavigate();
 
@@ -21,7 +23,7 @@ export const SubmitTicketBlock = () => {
         <Button
           variant="outline-primary"
           className="btn-icon btn-icon-start sw-15 stretched-link"
-          onClick={() => navigate('/app/tickets')}
+          onClick={() => navigate(DEFAULT_PATHS.HELPDESK)}
         >
           <QuestionCircle></QuestionCircle>{' '}
           <span>

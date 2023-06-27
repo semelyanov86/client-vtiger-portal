@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 
+import { DEFAULT_PATHS } from '../../config';
 import useCompanyStore from '../../features/company/stores/company.ts';
 
 export const NavLogo = () => {
@@ -10,7 +11,7 @@ export const NavLogo = () => {
   }
   return (
     <div className="logo position-relative">
-      <Link to="/app">{logo}</Link>
+      <Link to={DEFAULT_PATHS.DASHBOARD}>{logo}</Link>
     </div>
   );
 };

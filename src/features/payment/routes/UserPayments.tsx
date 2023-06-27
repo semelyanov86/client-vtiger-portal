@@ -4,6 +4,7 @@ import { FormattedMessage } from 'react-intl';
 import { Spinner } from '../../../components/Elements';
 import { BreadcrumbList } from '../../../components/Elements/Breadcrumbs/BreadcrumbList.tsx';
 import { Head } from '../../../components/Head';
+import { DEFAULT_PATHS } from '../../../config';
 import { useUserStore } from '../../../stores/user.ts';
 import { UserSidebar } from '../../auth/components/UserSidebar.tsx';
 import { formatToUserReadableDate } from '../../misc/services/Dates.ts';
@@ -14,8 +15,8 @@ export const UserPayments = () => {
   const paymentsQuery = useUserPayments();
   const title = 'Your payments';
   const breadcrumbs = [
-    { to: '/app', text: 'Home' },
-    { to: '/app/user/payments', text: 'Your payments' },
+    { to: DEFAULT_PATHS.DASHBOARD, text: 'Home' },
+    { to: DEFAULT_PATHS.USER_PAYMENTS, text: 'Your payments' },
   ];
 
   if (paymentsQuery.isLoading) {

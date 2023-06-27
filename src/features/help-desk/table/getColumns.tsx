@@ -3,6 +3,7 @@ import { FormattedMessage } from 'react-intl';
 import { Link } from 'react-router-dom';
 import { CellProps, Column } from 'react-table';
 
+import { DEFAULT_PATHS } from '../../../config';
 import { formatToUserReadableDate } from '../../misc/services/Dates.ts';
 import HelpDesk from '../types';
 
@@ -19,7 +20,7 @@ export function getColumns({ onEdit }: getColumnsOptions): Column<HelpDesk>[] {
       headerClassName: 'text-muted text-small text-uppercase w-30',
       Cell: ({ cell: { value }, row: { values } }: CellProps<HelpDesk>) => {
         return (
-          <Link to={'/app/tickets/' + values.id} className="list-item-heading body">
+          <Link to={DEFAULT_PATHS.HELPDESK + '/' + values.id} className="list-item-heading body">
             {value}
           </Link>
         );
@@ -32,7 +33,7 @@ export function getColumns({ onEdit }: getColumnsOptions): Column<HelpDesk>[] {
       headerClassName: 'text-muted text-small text-uppercase w-10',
       Cell: ({ cell: { value }, row: { values } }: CellProps<HelpDesk>) => {
         return (
-          <Link to={'/app/tickets/' + values.id} className="list-item-heading body">
+          <Link to={DEFAULT_PATHS.HELPDESK + '/' + values.id} className="list-item-heading body">
             {value}
           </Link>
         );

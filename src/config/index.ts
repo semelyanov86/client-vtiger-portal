@@ -58,15 +58,29 @@ export const REACT_HELMET_PROPS = {
 
 export const DEFAULT_PATHS = {
   APP: '/',
-  LOGIN: '/login',
-  REGISTER: '/register',
-  FORGOT_PASSWORD: '/forgot-password',
+  LOGIN: '/auth/login',
+  REGISTER: '/auth/register',
+  FORGOT_PASSWORD: '/auth/forgot',
+  DASHBOARD: '/app',
   RESET_PASSWORD: '/reset-password',
   USER_WELCOME: '/dashboards/default',
   NOTFOUND: '/page-not-found',
   UNAUTHORIZED: '/unauthorized',
   INVALID_ACCESS: '/invalid-access',
+  USER_INFO: '/app/user/info',
+  USER_SETTINGS: '/app/user/settings',
+  USER_SECURITY: '/app/user/security',
+  USER_PAYMENTS: '/app/user/payments',
+  USER_EDIT: '/app/user/edit',
+  HELPDESK: '/app/tickets',
+  PROJECT: '/app/projects',
+  FAQ: '/app/faq',
+  INVOICE: '/app/invoices',
+  SALES_ORDER: '/app/sales-orders',
+  CUSTOM_MODULES: '/app/custom',
 };
+
+export const TERMS_AND_CONDITIONS_URL = 'https://itvolga.com/privacy';
 
 export const DEFAULT_SETTINGS = {
   MENU_PLACEMENT: MENU_PLACEMENT.Horizontal,

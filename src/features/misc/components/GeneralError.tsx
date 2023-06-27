@@ -1,12 +1,15 @@
 import { House } from 'react-bootstrap-icons';
 import { NavLink } from 'react-router-dom';
 
+import { DEFAULT_PATHS } from '../../../config';
+import { HELP_URL } from '../../../config/constants.ts';
+
 export const GeneralError = () => {
   return (
     <div className="sw-lg-80 min-h-100 bg-foreground d-flex justify-content-center align-items-center shadow-deep py-5 full-page-content-right-border">
       <div className="sw-lg-60 px-5">
         <div className="sh-11">
-          <NavLink to="/">
+          <NavLink to={DEFAULT_PATHS.APP}>
             <div className="logo-default" />
           </NavLink>
         </div>
@@ -17,11 +20,11 @@ export const GeneralError = () => {
         <div className="mb-5">
           <p className="h6">It looks like There was an error during loading a page</p>
           <p className="h6">
-            If you think that is a mistake, please <NavLink to="/">contact</NavLink> us.
+            If you think that is a mistake, please <NavLink to={HELP_URL}>contact</NavLink> us.
           </p>
         </div>
         <div>
-          <NavLink to="/" className="btn btn-icon btn-icon-start btn-primary">
+          <NavLink to={DEFAULT_PATHS.APP} className="btn btn-icon btn-icon-start btn-primary">
             <House /> <span>Back to Home</span>
           </NavLink>
         </div>

@@ -6,6 +6,7 @@ import { NavLink } from 'react-router-dom';
 import { z } from 'zod';
 
 import { NotifyError } from '../../../components/Notifications/Notification.tsx';
+import { DEFAULT_PATHS, TERMS_AND_CONDITIONS_URL } from '../../../config';
 import { useAuthContext } from '../../../lib/auth.tsx';
 import { RegisterCredentialsDTO } from '../api/register.ts';
 
@@ -59,7 +60,7 @@ export const RegisterForm = ({ onSuccess }: RegisterFormProps) => {
           <div className="mb-5">
             <p className="h6">Please use the form to register.</p>
             <p className="h6">
-              If you are a member, please <NavLink to="/auth/login">login</NavLink>.
+              If you are a member, please <NavLink to={DEFAULT_PATHS.LOGIN}>login</NavLink>.
             </p>
           </div>
           <div>
@@ -105,7 +106,7 @@ export const RegisterForm = ({ onSuccess }: RegisterFormProps) => {
                   <input {...register('terms')} type="checkbox" className="form-check-input" />
                   <label className="form-check-label">
                     I have read and accept the{' '}
-                    <NavLink to="/" target="_blank">
+                    <NavLink to={TERMS_AND_CONDITIONS_URL} target="_blank">
                       terms and conditions.
                     </NavLink>
                   </label>

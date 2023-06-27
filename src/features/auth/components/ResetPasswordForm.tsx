@@ -7,6 +7,7 @@ import { NavLink } from 'react-router-dom';
 import { z } from 'zod';
 
 import { NotifyError } from '../../../components/Notifications/Notification.tsx';
+import { DEFAULT_PATHS } from '../../../config';
 import useQuery from '../../../hooks/useQuery.ts';
 import { useAuthContext } from '../../../lib/auth.tsx';
 
@@ -65,7 +66,7 @@ export const ResetPasswordForm = ({ onSuccess }: ResetPasswordProps) => {
         <div className="mb-5">
           <p className="h6">Please use below form to reset your password.</p>
           <p className="h6">
-            If you are a member, please <NavLink to="/auth/login">login</NavLink>.
+            If you are a member, please <NavLink to={DEFAULT_PATHS.LOGIN}>login</NavLink>.
           </p>
         </div>
         <div>

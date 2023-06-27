@@ -3,6 +3,7 @@ import { FormattedMessage } from 'react-intl';
 import { NavLink } from 'react-router-dom';
 
 import { ScrollByCount } from '../../../components/Scrollspy/ScrollByCount.tsx';
+import { DEFAULT_PATHS } from '../../../config';
 import { Project } from '../../project/types';
 import { useTasksFromProject } from '../api/getFromProject.ts';
 
@@ -31,7 +32,7 @@ export const ProjectTasks = ({ project }: ProjectTasksProps) => {
             <Row className="g-0 h-100 align-content-center">
               <Col md="3" className="d-flex align-items-center mb-2 mb-md-0">
                 <NavLink
-                  to={`/app/projects/${project.id}/tasks/${task.id}`}
+                  to={`${DEFAULT_PATHS.PROJECT}/${project.id}/tasks/${task.id}`}
                   className="body-link text-truncate stretched-link"
                 >
                   {task.projecttask_no}

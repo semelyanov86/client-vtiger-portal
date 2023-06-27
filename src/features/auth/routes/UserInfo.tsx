@@ -5,7 +5,9 @@ import { Link } from 'react-router-dom';
 
 import { BreadcrumbList } from '../../../components/Elements/Breadcrumbs/BreadcrumbList.tsx';
 import { Head } from '../../../components/Head';
+import { DEFAULT_PATHS } from '../../../config';
 import { useUserStore } from '../../../stores/user.ts';
+import { clearRouteDelimeter } from '../../../utils/format.ts';
 import { ManagerInfo } from '../../manager/components/ManagerInfo.tsx';
 import { LoadManager } from '../../manager/LoadManager.tsx';
 import useManagerStore from '../../manager/stores/manager.ts';
@@ -17,8 +19,8 @@ export const UserInfo = () => {
   const { manager } = useManagerStore();
   const title = 'Your profile: ' + user.firstname + ' ' + user.lastname;
   const breadcrumbs = [
-    { to: '', text: 'Home' },
-    { to: '/auth/info', text: 'Profile' },
+    { to: clearRouteDelimeter(DEFAULT_PATHS.DASHBOARD), text: 'Home' },
+    { to: clearRouteDelimeter(DEFAULT_PATHS.USER_INFO), text: 'Profile' },
   ];
 
   return (
@@ -36,7 +38,7 @@ export const UserInfo = () => {
 
           {/* Top Buttons Start */}
           <Col md="5" className="d-flex align-items-start justify-content-end">
-            <Link to="/app/user/edit">
+            <Link to={DEFAULT_PATHS.USER_EDIT}>
               <Button
                 variant="outline-primary"
                 className="btn-icon btn-icon-start btn-icon w-100 w-md-auto ms-1"

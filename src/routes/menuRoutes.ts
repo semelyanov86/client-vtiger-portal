@@ -38,17 +38,17 @@ function getMenuRoutes(): MenuItem[] {
       path: DEFAULT_PATHS.APP,
       exact: true,
       redirect: true,
-      to: `${appRoot}/app`,
+      to: `${appRoot}${DEFAULT_PATHS.DASHBOARD}`,
     },
     {
-      path: `${appRoot}/app`,
+      path: `${appRoot}${DEFAULT_PATHS.DASHBOARD}`,
       component: Home,
       label: 'Dashboards',
       icon: 'House',
     },
     SUPPORTED_MODULES.includes('HelpDesk')
       ? {
-          path: `${appRoot}/app/tickets`,
+          path: `${appRoot}${DEFAULT_PATHS.HELPDESK}`,
           component: Tickets,
           label: 'Tickets',
           icon: 'StickiesFill',
@@ -56,7 +56,7 @@ function getMenuRoutes(): MenuItem[] {
       : null,
     SUPPORTED_MODULES.includes('Project')
       ? {
-          path: `${appRoot}/app/projects`,
+          path: `${appRoot}${DEFAULT_PATHS.PROJECT}`,
           component: Projects,
           label: 'Projects',
           icon: 'Briefcase',
@@ -64,7 +64,7 @@ function getMenuRoutes(): MenuItem[] {
       : null,
     SUPPORTED_MODULES.includes('Invoice')
       ? {
-          path: `${appRoot}/app/invoices`,
+          path: `${appRoot}${DEFAULT_PATHS.INVOICE}`,
           component: Invoices,
           label: 'Invoices',
           icon: 'Coin',
@@ -72,7 +72,7 @@ function getMenuRoutes(): MenuItem[] {
       : null,
     SUPPORTED_MODULES.includes('SalesOrder')
       ? {
-          path: `${appRoot}/app/sales-orders`,
+          path: `${appRoot}${DEFAULT_PATHS.SALES_ORDER}`,
           component: SalesOrders,
           label: 'Sales Orders',
           icon: 'Bank',
@@ -80,7 +80,7 @@ function getMenuRoutes(): MenuItem[] {
       : null,
     SUPPORTED_MODULES.includes('Faq')
       ? {
-          path: `${appRoot}/app/faq`,
+          path: `${appRoot}${DEFAULT_PATHS.FAQ}`,
           component: Faqs,
           label: 'FAQ',
           icon: 'QuestionSquare',
@@ -91,7 +91,7 @@ function getMenuRoutes(): MenuItem[] {
   for (const key in CUSTOM_MODULES) {
     const moduleCfg = CUSTOM_MODULES[key];
     items.push({
-      path: `${appRoot}/app/custom/${key}`,
+      path: `${appRoot}${DEFAULT_PATHS.CUSTOM_MODULES}/${key}`,
       component: Entities,
       label: key,
       icon: moduleCfg.icon,

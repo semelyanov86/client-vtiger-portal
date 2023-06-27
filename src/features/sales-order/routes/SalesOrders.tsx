@@ -5,16 +5,17 @@ import { Search, XCircle } from 'react-bootstrap-icons';
 import { FormattedMessage, useIntl } from 'react-intl';
 import { NavLink } from 'react-router-dom';
 
-import { Spinner } from '../../../components/Elements';
-import { ListPageTitle } from '../../../components/Elements/ListPage/ListPageTitle.tsx';
+import { Spinner, ListPageTitle } from '../../../components/Elements';
 import { Head } from '../../../components/Head';
 import SearchInput from '../../../components/Table/Atoms/SearchInput.tsx';
 import { ControlsPageSize } from '../../../components/Table/ControlsPageSize.tsx';
 import { TablePagination } from '../../../components/Table/TablePagination.tsx';
+import { DEFAULT_PATHS } from '../../../config';
 import { DEFAULT_PAGE_COUNT } from '../../../config/constants.ts';
 import { getSortingValue } from '../../../utils/sorting.ts';
 import { formatToUserReadableDate } from '../../misc/services/Dates.ts';
 import { useSalesOrders } from '../api/getSalesOrders.ts';
+import { SalesOrder } from '../types';
 
 const HEADER_CONTENT_CLASSES = ['d-flex', 'flex-column', 'pe-1', 'justify-content-center'];
 
@@ -71,6 +72,8 @@ export const SalesOrders = () => {
     },
     [setCurrentPageSize]
   );
+
+  const isOrderCreated = (order: SalesOrder) => order.sostatus == 'Created';
 
   if (soQuery.isLoading) {
     return <Spinner></Spinner>;
@@ -179,11 +182,11 @@ export const SalesOrders = () => {
                         <FormattedMessage id="so.salesorder_no"></FormattedMessage>
                       </div>
                       <NavLink
-                        to={'/app/sales-orders/' + order.id}
+                        to={DEFAULT_PATHS.SALES_ORDER + '/' + order.id}
                         className={classNames(
                           'stretched-link h-100 d-flex body-link align-items-center',
                           {
-                            'fw-bold': order.sostatus == 'Created',
+                            'fw-bold': isOrderCreated(order),
                           }
                         )}
                       >
@@ -200,7 +203,7 @@ export const SalesOrders = () => {
                       </div>
                       <div
                         className={classNames('text-body', {
-                          'fw-bold': order.sostatus == 'Created',
+                          'fw-bold': isOrderCreated(order),
                         })}
                       >
                         {order.subject}
@@ -216,7 +219,7 @@ export const SalesOrders = () => {
                       </div>
                       <div
                         className={classNames('text-body', {
-                          'fw-bold': order.sostatus == 'Created',
+                          'fw-bold': isOrderCreated(order),
                         })}
                       >
                         {order.hdnGrandTotal}

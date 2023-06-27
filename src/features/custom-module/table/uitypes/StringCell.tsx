@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom';
 
+import { DEFAULT_PATHS } from '../../../../config';
+
 interface StringCellProps {
   value: string;
   id: string;
@@ -8,7 +10,10 @@ interface StringCellProps {
 
 export const StringCell = ({ value, id, module }: StringCellProps) => {
   return (
-    <Link to={'/app/custom/' + module + '/' + id} className="list-item-heading body">
+    <Link
+      to={DEFAULT_PATHS.CUSTOM_MODULES + '/' + module + '/' + id}
+      className="list-item-heading body"
+    >
       {value}
     </Link>
   );

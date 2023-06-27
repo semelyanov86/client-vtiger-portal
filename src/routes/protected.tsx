@@ -3,7 +3,7 @@ import { Navigate, Outlet } from 'react-router-dom';
 
 import { Spinner } from '../components/Elements';
 import { MainLayout } from '../components/Layout';
-import { SUPPORTED_MODULES } from '../config';
+import { DEFAULT_PATHS, SUPPORTED_MODULES } from '../config';
 import WithAuth from '../features/auth/components/WithAuth.tsx';
 import { UserInfo } from '../features/auth/routes/UserInfo.tsx';
 import { notEmpty } from '../utils/array.ts';
@@ -61,36 +61,36 @@ function getModulesRoutes(): RouteElement[] {
   const routes = [
     SUPPORTED_MODULES.includes('HelpDesk')
       ? {
-          path: 'tickets/*',
+          path: clearRoutePath(DEFAULT_PATHS.HELPDESK) + '/*',
           element: <TicketsRoutes />,
         }
       : null,
     SUPPORTED_MODULES.includes('Project')
       ? {
-          path: 'projects/*',
+          path: clearRoutePath(DEFAULT_PATHS.PROJECT) + '/*',
           element: <ProjectRoutes />,
         }
       : null,
     SUPPORTED_MODULES.includes('Faq')
       ? {
-          path: 'faq/*',
+          path: clearRoutePath(DEFAULT_PATHS.FAQ) + '/*',
           element: <FaqsRoutes />,
         }
       : null,
     SUPPORTED_MODULES.includes('Invoice')
       ? {
-          path: 'invoices/*',
+          path: clearRoutePath(DEFAULT_PATHS.INVOICE) + '/*',
           element: <InvoiceRoutes />,
         }
       : null,
     SUPPORTED_MODULES.includes('SalesOrder')
       ? {
-          path: 'sales-orders/*',
+          path: clearRoutePath(DEFAULT_PATHS.SALES_ORDER) + '/*',
           element: <SalesOrderRoutes />,
         }
       : null,
     {
-      path: 'custom/*',
+      path: clearRoutePath(DEFAULT_PATHS.CUSTOM_MODULES) + '/*',
       element: <CustomModuleRoutes />,
     },
   ];
@@ -99,7 +99,7 @@ function getModulesRoutes(): RouteElement[] {
 
 export const protectedRoutes = [
   {
-    path: '/app',
+    path: DEFAULT_PATHS.DASHBOARD,
     element: (
       <WithAuth>
         <App />
@@ -112,26 +112,30 @@ export const protectedRoutes = [
       },
       { path: '*', element: <Navigate to="." /> },
       {
-        path: 'user/info',
+        path: clearRoutePath(DEFAULT_PATHS.USER_INFO),
         element: <UserInfo />,
       },
       {
-        path: 'user/edit',
+        path: clearRoutePath(DEFAULT_PATHS.USER_EDIT),
         element: <UserEdit />,
       },
       {
-        path: 'user/security',
+        path: clearRoutePath(DEFAULT_PATHS.USER_SECURITY),
         element: <UserSecurity />,
       },
       {
-        path: 'user/settings',
+        path: clearRoutePath(DEFAULT_PATHS.USER_SETTINGS),
         element: <UserSettings />,
       },
       {
-        path: 'user/payments',
+        path: clearRoutePath(DEFAULT_PATHS.USER_PAYMENTS),
         element: <UserPayments />,
       },
       ...getModulesRoutes(),
     ],
   },
 ];
+
+function clearRoutePath(str: string): string {
+  return str.replace(/^\/app\//, '');
+}
