@@ -82,9 +82,15 @@ export const NavMobileButtons = () => {
   }, [hideMobileMenu, navClasses]);
 
   return (
-    <div className="mobile-buttons-container">
+    <div className="mobile-buttons-container" data-testid="mobile-buttons-container">
       {scrollspyItems && scrollspyItems.length > 0 && <ScrollspyMobile items={scrollspyItems} />}
-      <a href="#/" id="mobileMenuButton" className="menu-button" onClick={showMobileMenu}>
+      <a
+        href="#/"
+        id="mobileMenuButton"
+        className="menu-button"
+        onClick={showMobileMenu}
+        data-testid="menu-button"
+      >
         <MenuButton></MenuButton>
       </a>
     </div>

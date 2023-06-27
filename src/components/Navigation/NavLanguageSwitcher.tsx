@@ -3,6 +3,7 @@ import classNames from 'classnames';
 import { useEffect } from 'react';
 import { Dropdown } from 'react-bootstrap';
 
+import { USE_MULTI_LANGUAGE } from '../../config';
 import { MENU_PLACEMENT } from '../../config/constants.ts';
 import { useLanguagesStore } from '../../stores/languages.ts';
 import { useLayoutsStore } from '../../stores/layouts.ts';
@@ -36,8 +37,12 @@ export const NavLanguageSwitcher = () => {
     layoutShowingNavMenu('');
   }, [attrMenuAnimate, behaviourHtmlData, attrMobile, color, layoutShowingNavMenu]);
 
+  if (!USE_MULTI_LANGUAGE) {
+    return null;
+  }
+
   return (
-    <div className="language-switch-container">
+    <div className="language-switch-container" data-testid="language-switch-container">
       <Dropdown onToggle={onToggle} show={showingNavMenu === MENU_NAME} align="end">
         <Dropdown.Toggle
           variant="empty"
@@ -49,6 +54,7 @@ export const NavLanguageSwitcher = () => {
         </Dropdown.Toggle>
 
         <Dropdown.Menu
+          data-testid="languagelistmenu"
           popperConfig={{
             modifiers: [
               {

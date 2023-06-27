@@ -32,20 +32,6 @@ export const NavIconMenu = () => {
           </a>
         </li>
         <Notifications></Notifications>
-        {/*<li className="list-inline-item">
-          <a
-            href="#/"
-            id="pinButton"
-            onClick={onPinButtonClick}
-            className={classNames('pin-button', { disabled: !pinButtonEnable })}
-          >
-            {behaviour === MENU_BEHAVIOUR.Pinned ? (
-              <Pin size={18}></Pin>
-            ) : (
-              <PinAngle size={18}></PinAngle>
-            )}
-          </a>
-        </li>*/}
         <li className="list-inline-item">
           <a href="#/" id="colorButton" onClick={onLightDarkModeClick}>
             {color.includes('light') ? <Moon size={18}></Moon> : <MoonFill size={18}></MoonFill>}
