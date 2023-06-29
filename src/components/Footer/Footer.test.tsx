@@ -2,8 +2,8 @@ import { render, screen } from '@testing-library/react';
 import { IntlProvider } from 'react-intl';
 import { expect, test, describe } from 'vitest';
 
+import { Company } from '../../features/company';
 import useCompanyStore from '../../features/company/stores/company.ts';
-import { Company } from '../../features/company/types';
 import { messages } from '../../providers/messages/messages.ts';
 
 import { Footer } from './Footer.tsx';

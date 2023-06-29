@@ -14,7 +14,7 @@ export const RegisterLeft = () => {
               <FormattedMessage id="register.left-subheader" />
             </h1>
           </div>
-          <p className="h6 text-white lh-1-5 mb-5">
+          <p className="h6 text-white lh-1-5 mb-5" data-testid="register-paragraf">
             <FormattedMessage id="register.left-text" />
           </p>
           <div className="mb-5">

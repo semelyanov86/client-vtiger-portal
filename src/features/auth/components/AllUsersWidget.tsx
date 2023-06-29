@@ -7,11 +7,11 @@ export const AllUsersWidget = () => {
   const usersQuery = useAllUsers();
 
   if (usersQuery.isLoading) {
-    return <Spinner animation="border" variant="primary"></Spinner>;
+    return <Spinner animation="border" variant="primary" data-testid="spinner"></Spinner>;
   }
-  if (!usersQuery.data) {
+  if (!usersQuery.data || usersQuery.data.length < 1) {
     return (
-      <p>
+      <p data-testid="no-data-message">
         <FormattedMessage id="general.no-data"></FormattedMessage>
       </p>
     );
