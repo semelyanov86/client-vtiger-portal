@@ -103,7 +103,12 @@ export const RegisterForm = ({ onSuccess }: RegisterFormProps) => {
               </div>
               <div className="mb-3 position-relative form-group">
                 <div className="form-check">
-                  <input {...register('terms')} type="checkbox" className="form-check-input" />
+                  <input
+                    {...register('terms')}
+                    type="checkbox"
+                    className="form-check-input"
+                    data-testid="terms"
+                  />
                   <label className="form-check-label">
                     I have read and accept the{' '}
                     <NavLink to={TERMS_AND_CONDITIONS_URL} target="_blank">
