@@ -31,20 +31,20 @@ export const SUPPORTED_MODULES = [
 ];
 
 export const CUSTOM_MODULES: ConfigCustomModules = {
-  SPPayments: {
-    default_sort: 'pay_no',
-    list_fields: ['pay_no', 'amount', 'pay_date', 'type_payment', 'spstatus'],
+  Assets: {
+    default_sort: 'asset_no',
+    list_fields: ['asset_no', 'assetstatus', 'assetname', 'datesold', 'serialnumber'],
     icon: 'Wallet',
     edit_fields: [
-      'pay_date',
-      'pay_type',
-      'type_payment',
-      'amount',
-      'spstatus',
+      'assetstatus',
+      'assetname',
+      'datesold',
+      'product',
+      'assetstatus',
       'description',
-      'doc_no',
-      'pay_details',
-      'cf_1380',
+      'dateinservice',
+      'shippingmethod',
+      'shippingtrackingnumber',
     ],
     related: ['Documents'],
   },
