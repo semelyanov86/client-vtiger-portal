@@ -7,7 +7,7 @@ import { useProducts } from '../api/getProducts.ts';
 export const ProductListWidget = () => {
   const productsQuery = useProducts({
     page: 1,
-    size: 10,
+    size: 5,
     search: '',
     sort: '',
     discontinued: true,
