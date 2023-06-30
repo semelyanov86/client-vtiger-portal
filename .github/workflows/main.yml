@@ -54,9 +54,6 @@ jobs:
       - name: Create .env file
         run: echo "${{ secrets.ENV_FILE_CONTENTS }}" > .env
 
-      - name: Create .htaccess file
-        run: echo "${{ secrets.HTACCESS_CONTENT }}" > .htaccess
-
       - name: Build the project
         run: npm run build
 
@@ -70,6 +67,7 @@ jobs:
           script: |
             rm -rf ~/public_html
             mkdir ~/public_html
+            echo "${{ secrets.HTACCESS_CONTENT }}" > ~/public_html/.htaccess
 
       - name: Deploy to Timeweb Hosting
         uses: appleboy/scp-action@v0.1.1
