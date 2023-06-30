@@ -9,6 +9,7 @@ const enMessages = {
   Invoices: 'Invoices',
   Home: 'Home',
   SPPayments: 'Global Payments',
+  Assets: 'Assets',
   'Sales Orders': 'Sales Orders',
   'company.name': 'Company Name',
   'company.address': 'Company Address',

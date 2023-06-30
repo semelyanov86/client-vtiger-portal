@@ -9,6 +9,7 @@ const ruMessages = {
   Invoices: 'Счета',
   Home: 'Главная',
   SPPayments: 'Общие платежи',
+  Assets: 'Активы',
   'Sales Orders': 'Заказы',
   'company.name': 'Наименование компании',
   'company.address': 'Адрес компании',

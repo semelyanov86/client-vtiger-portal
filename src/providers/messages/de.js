@@ -9,6 +9,7 @@ const deMessages = {
   Invoices: 'Rechnungen',
   Home: 'Zuhause',
   SPPayments: 'Global Payments',
+  Assets: 'Assets',
   'Sales Orders': 'Kundenaufträge',
   'company.name': 'Firmenname',
   'company.address': 'Firmenadresse',
