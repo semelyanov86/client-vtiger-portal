@@ -1,12 +1,12 @@
 import { render, screen } from '@testing-library/react';
+import { HelmetProvider } from 'react-helmet-async';
 import { expect, test, describe } from 'vitest';
-import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom';
 
-import { TableCard, QueryRequest, HeadersData } from './TableCard.tsx';
-import { ServiceContract } from '../../service-contract/types';
 import { WrapToRouterAndIntl } from '../../../lib/tests.tsx';
-import { HelmetProvider } from 'react-helmet-async';
+import { ServiceContract } from '../../service-contract/types';
+
+import { TableCard, QueryRequest, HeadersData } from './TableCard.tsx';
 
 const mockEntities: ServiceContract[] = [
   {
