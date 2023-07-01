@@ -16,15 +16,15 @@ const mockEntities: ServiceContract[] = [
     start_date: '2021-01-01',
     end_date: '2021-01-01',
     contract_status: 'In Progress',
-    createdtime: '2021-01-01',
-    modifiedtime: '2021-01-01',
+    createdtime: '2021-01-01 00:00:00',
+    modifiedtime: '2021-01-01 00:00:00',
     contract_type: 'Support',
     contract_priority: 'Low',
     sc_related_to: '16x2',
     tracking_unit: 'Hours',
     total_units: 10,
-    used_units: 5,
-    due_date: '2021-01-01',
+    used_units: 524,
+    due_date: '2021-01-01 00:00:00',
     description: 'Some test description',
     planned_duration: 10,
     actual_duration: 5,
@@ -40,7 +40,7 @@ const mockEntities: ServiceContract[] = [
 const mockHeaders: HeadersData<ServiceContract>[] = [
   { header: 'contract_no', md: 1, xs: 12, type: 'string' },
   { header: 'subject', md: 5, xs: 12, type: 'string' },
-  { header: 'start_date', md: 2, xs: 12, type: 'date' },
+  { header: 'used_units', md: 2, xs: 12, type: 'string' },
   { header: 'end_date', md: 2, xs: 12, type: 'date' },
   { header: 'contract_status', md: 2, xs: 12, type: 'badge' },
 ];
@@ -127,10 +127,10 @@ describe('TableCard', () => {
     const contractStatus = screen.getByText('In Progress');
     expect(contractStatus).toBeInTheDocument();
 
-    const link = screen.getAllByText('2021-01-01 01:00:00');
-    expect(link[0]).toBeInTheDocument();
+    const link = screen.getByText('524');
+    expect(link).toBeInTheDocument();
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
-    expect(link[0].href).toEqual('/app/service-contracts/15x322');
+    expect(link.href).toEqual('/app/service-contracts/15x322');
   });
 });
