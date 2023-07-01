@@ -13,6 +13,10 @@ const { Home } = lazyImport(() => import('../features/home/routes/Home.tsx'), 'H
 const { TicketsRoutes } = lazyImport(() => import('../features/help-desk'), 'TicketsRoutes');
 const { ProjectRoutes } = lazyImport(() => import('../features/project'), 'ProjectRoutes');
 const { InvoiceRoutes } = lazyImport(() => import('../features/invoice'), 'InvoiceRoutes');
+const { ServiceContractRoutes } = lazyImport(
+  () => import('../features/service-contract'),
+  'ServiceContractRoutes'
+);
 const { SalesOrderRoutes } = lazyImport(
   () => import('../features/sales-order'),
   'SalesOrderRoutes'
@@ -87,6 +91,12 @@ function getModulesRoutes(): RouteElement[] {
       ? {
           path: clearRoutePath(DEFAULT_PATHS.SALES_ORDER) + '/*',
           element: <SalesOrderRoutes />,
+        }
+      : null,
+    SUPPORTED_MODULES.includes('ServiceContract')
+      ? {
+          path: clearRoutePath(DEFAULT_PATHS.SERVICE_CONTRACT) + '/*',
+          element: <ServiceContractRoutes />,
         }
       : null,
     {

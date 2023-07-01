@@ -28,6 +28,7 @@ export const SUPPORTED_MODULES = [
   'Lead',
   'Documents',
   'SalesOrder',
+  'ServiceContract',
 ];
 
 export const CUSTOM_MODULES: ConfigCustomModules = {
@@ -78,6 +79,7 @@ export const DEFAULT_PATHS = {
   INVOICE: '/app/invoices',
   SALES_ORDER: '/app/sales-orders',
   CUSTOM_MODULES: '/app/custom',
+  SERVICE_CONTRACT: '/app/service-contracts',
 };
 
 export const TERMS_AND_CONDITIONS_URL = 'https://itvolga.com/privacy';

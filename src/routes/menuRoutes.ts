@@ -22,6 +22,10 @@ const { SalesOrders } = lazyImport(
   () => import('../features/sales-order/routes/SalesOrders.tsx'),
   'SalesOrders'
 );
+const { ServiceContracts } = lazyImport(
+  () => import('../features/service-contract/routes/ServiceContracts.tsx'),
+  'ServiceContracts'
+);
 const { Projects } = lazyImport(
   () => import('../features/project/routes/Projects.tsx'),
   'Projects'
@@ -76,6 +80,14 @@ function getMenuRoutes(): MenuItem[] {
           component: SalesOrders,
           label: 'Sales Orders',
           icon: 'Bank',
+        }
+      : null,
+    SUPPORTED_MODULES.includes('ServiceContract')
+      ? {
+          path: `${appRoot}${DEFAULT_PATHS.SERVICE_CONTRACT}`,
+          component: ServiceContracts,
+          label: 'Service Contracts',
+          icon: 'Tools',
         }
       : null,
     SUPPORTED_MODULES.includes('Faq')
