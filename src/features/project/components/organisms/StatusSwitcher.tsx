@@ -12,13 +12,13 @@ export const StatusSwitcher = ({ statuses, project }: StatusSwitcherProps) => {
   return (
     <Dropdown className="w-100 w-md-auto">
       <Dropdown.Toggle className="w-100 w-md-auto" variant="outline-primary">
-        <FormattedMessage id="project.projectstatus"></FormattedMessage>: {project.projectstatus}
+        <FormattedMessage id="projects.projectstatus"></FormattedMessage>: {project.projectstatus}
       </Dropdown.Toggle>
       <Dropdown.Menu>
         {statuses.map((item) => (
           <Dropdown.Item key={item.value}>
-            <FormattedMessage id="project.projectstatus" />:{' '}
-            <FormattedMessage id={'project.' + item.value}></FormattedMessage>
+            <FormattedMessage id="projects.projectstatus" />:{' '}
+            <FormattedMessage id={'projects.' + item.value}></FormattedMessage>
           </Dropdown.Item>
         ))}
       </Dropdown.Menu>
