@@ -65,8 +65,10 @@ export const SalesOrder = () => {
           <>
             <Dropdown className="w-100 w-md-auto">
               <Dropdown.Toggle className="w-100 w-md-auto" variant="outline-primary">
-                <FormattedMessage id="so.sostatus"></FormattedMessage>:{' '}
-                <FormattedMessage id={'so.' + salesOrderQuery.data.sostatus}></FormattedMessage>
+                <FormattedMessage id="sales-orders.sostatus"></FormattedMessage>:{' '}
+                <FormattedMessage
+                  id={'sales-orders.' + salesOrderQuery.data.sostatus}
+                ></FormattedMessage>
               </Dropdown.Toggle>
             </Dropdown>
             {salesOrderQuery.data.invoices?.length > 0 && (
@@ -83,7 +85,7 @@ export const SalesOrder = () => {
                       key={invoice.id}
                       onClick={() => navigate(DEFAULT_PATHS.INVOICE + '/' + invoice.id)}
                     >
-                      <FormattedMessage id="so.view-invoice"></FormattedMessage>{' '}
+                      <FormattedMessage id="sales-orders.view-invoice"></FormattedMessage>{' '}
                       {invoice.invoice_no}
                     </Dropdown.Item>
                   ))}
@@ -98,7 +100,7 @@ export const SalesOrder = () => {
         <Col xl="8" xxl="9">
           {/* Status Start */}
           <h2 className="small-title">
-            <FormattedMessage id="so.main-info"></FormattedMessage>
+            <FormattedMessage id="sales-orders.main-info"></FormattedMessage>
           </h2>
           <Row className="g-2 mb-5">
             <Col sm="6">
@@ -112,7 +114,7 @@ export const SalesOrder = () => {
                     </Col>
                     <Col>
                       <div className="d-flex align-items-center lh-1-25">
-                        <FormattedMessage id="so.salesorder_no"></FormattedMessage>
+                        <FormattedMessage id="sales-orders.salesorder_no"></FormattedMessage>
                       </div>
                       <div className="text-primary">{salesOrderQuery.data.salesorder_no}</div>
                     </Col>
@@ -131,7 +133,7 @@ export const SalesOrder = () => {
                     </Col>
                     <Col>
                       <div className="d-flex align-items-center lh-1-25">
-                        <FormattedMessage id="so.pending"></FormattedMessage>
+                        <FormattedMessage id="sales-orders.pending"></FormattedMessage>
                       </div>
                       <div className="text-primary">{salesOrderQuery.data.pending}</div>
                     </Col>
@@ -150,7 +152,7 @@ export const SalesOrder = () => {
                     </Col>
                     <Col>
                       <div className="d-flex align-items-center lh-1-25">
-                        <FormattedMessage id="so.carrier"></FormattedMessage>
+                        <FormattedMessage id="sales-orders.carrier"></FormattedMessage>
                       </div>
                       <div className="text-primary">{salesOrderQuery.data.carrier}</div>
                     </Col>
@@ -169,10 +171,11 @@ export const SalesOrder = () => {
                     </Col>
                     <Col>
                       <div className="d-flex align-items-center lh-1-25">
-                        <FormattedMessage id="so.duedate"></FormattedMessage>
+                        <FormattedMessage id="sales-orders.duedate"></FormattedMessage>
                       </div>
                       <div className="text-primary">
-                        {salesOrderQuery.data.duedate == NULLABLE_DATE
+                        {salesOrderQuery.data.duedate == NULLABLE_DATE ||
+                        salesOrderQuery.data.duedate == ''
                           ? '--'
                           : formatToUserReadableDate(salesOrderQuery.data.duedate)}
                       </div>
@@ -186,7 +189,7 @@ export const SalesOrder = () => {
 
           {/* Cart Start */}
           <h2 className="small-title">
-            <FormattedMessage id="so.cart"></FormattedMessage>
+            <FormattedMessage id="sales-orders.cart"></FormattedMessage>
           </h2>
           <Card className="mb-5">
             <Card.Body>
@@ -238,7 +241,7 @@ export const SalesOrder = () => {
               <div>
                 <Row className="g-0 mb-2">
                   <Col xs="auto" className="ms-auto ps-3 text-muted">
-                    <FormattedMessage id="so.hdnSubTotal"></FormattedMessage>
+                    <FormattedMessage id="sales-orders.hdnSubTotal"></FormattedMessage>
                   </Col>
                   <Col xs="auto" className="sw-13 text-end">
                     <DisplayMoney
@@ -250,7 +253,7 @@ export const SalesOrder = () => {
                 </Row>
                 <Row className="g-0 mb-2">
                   <Col xs="auto" className="ms-auto ps-3 text-muted">
-                    <FormattedMessage id="so.shipping"></FormattedMessage>
+                    <FormattedMessage id="sales-orders.shipping"></FormattedMessage>
                   </Col>
                   <Col xs="auto" className="sw-13 text-end">
                     <DisplayMoney
@@ -262,7 +265,7 @@ export const SalesOrder = () => {
                 </Row>
                 <Row className="g-0 mb-2">
                   <Col xs="auto" className="ms-auto ps-3 text-muted">
-                    <FormattedMessage id="so.tax"></FormattedMessage>
+                    <FormattedMessage id="sales-orders.tax"></FormattedMessage>
                   </Col>
                   <Col xs="auto" className="sw-13 text-end">
                     <DisplayMoney
@@ -274,7 +277,7 @@ export const SalesOrder = () => {
                 </Row>
                 <Row className="g-0 mb-2">
                   <Col xs="auto" className="ms-auto ps-3 text-muted">
-                    <FormattedMessage id="so.hdnGrandTotal"></FormattedMessage>
+                    <FormattedMessage id="sales-orders.hdnGrandTotal"></FormattedMessage>
                   </Col>
                   <Col xs="auto" className="sw-13 text-end">
                     <DisplayMoney
@@ -291,7 +294,7 @@ export const SalesOrder = () => {
 
           {/* Activity Start */}
           <h2 className="small-title">
-            <FormattedMessage id="so.payment"></FormattedMessage>
+            <FormattedMessage id="sales-orders.payment"></FormattedMessage>
           </h2>
           <Card className="mb-5">
             <Card.Body>
@@ -311,11 +314,11 @@ export const SalesOrder = () => {
           {/* Activity End */}
 
           <h2 className="small-title">
-            <FormattedMessage id="so.manager"></FormattedMessage>
+            <FormattedMessage id="sales-orders.manager"></FormattedMessage>
           </h2>
           <div className="mb-5">
             <p className="text-small text-muted mb-2">
-              <FormattedMessage id="project.manager"></FormattedMessage>
+              <FormattedMessage id="sales-orders.manager"></FormattedMessage>
             </p>
             <Card className="mb-5">
               <Card.Body>
@@ -328,18 +331,18 @@ export const SalesOrder = () => {
         <Col xl="4" xxl="3">
           {/* Address Start */}
           <h2 className="small-title">
-            <FormattedMessage id="so.address"></FormattedMessage>
+            <FormattedMessage id="sales-orders.address"></FormattedMessage>
           </h2>
           <Card className="mb-5">
             <Card.Body className="mb-n5">
               <div className="mb-5">
                 <p className="text-small text-muted mb-2">
-                  <FormattedMessage id="so.billing-address"></FormattedMessage>
+                  <FormattedMessage id="sales-orders.billing-address"></FormattedMessage>
                 </p>
                 <Row className="g-0 mb-2">
                   <Col xs="auto">
                     <div className="me-1">
-                      <FormattedMessage id="so.bill_street"></FormattedMessage>:
+                      <FormattedMessage id="sales-orders.bill_street"></FormattedMessage>:
                     </div>
                   </Col>
                   <Col className="text-alternate">{salesOrderQuery.data.bill_street}</Col>
@@ -347,7 +350,7 @@ export const SalesOrder = () => {
                 <Row className="g-0 mb-2">
                   <Col xs="auto">
                     <div className="me-1">
-                      <FormattedMessage id="so.bill_city"></FormattedMessage>:
+                      <FormattedMessage id="sales-orders.bill_city"></FormattedMessage>:
                     </div>
                   </Col>
                   <Col className="text-alternate">{salesOrderQuery.data.bill_city}</Col>
@@ -355,7 +358,7 @@ export const SalesOrder = () => {
                 <Row className="g-0 mb-2">
                   <Col xs="auto">
                     <div className="me-1">
-                      <FormattedMessage id="so.bill_state"></FormattedMessage>:
+                      <FormattedMessage id="sales-orders.bill_state"></FormattedMessage>:
                     </div>
                   </Col>
                   <Col className="text-alternate">{salesOrderQuery.data.bill_state}</Col>
@@ -363,7 +366,7 @@ export const SalesOrder = () => {
                 <Row className="g-0 mb-2">
                   <Col xs="auto">
                     <div className="me-1">
-                      <FormattedMessage id="so.bill_code"></FormattedMessage>:
+                      <FormattedMessage id="sales-orders.bill_code"></FormattedMessage>:
                     </div>
                   </Col>
                   <Col className="text-alternate">{salesOrderQuery.data.bill_code}</Col>
@@ -371,7 +374,7 @@ export const SalesOrder = () => {
                 <Row className="g-0 mb-2">
                   <Col xs="auto">
                     <div className="me-1">
-                      <FormattedMessage id="so.bill_country"></FormattedMessage>:
+                      <FormattedMessage id="sales-orders.bill_country"></FormattedMessage>:
                     </div>
                   </Col>
                   <Col className="text-alternate">{salesOrderQuery.data.bill_country}</Col>
@@ -379,12 +382,12 @@ export const SalesOrder = () => {
               </div>
               <div className="mb-5">
                 <p className="text-small text-muted mb-2">
-                  <FormattedMessage id="so.shipping-address"></FormattedMessage>
+                  <FormattedMessage id="sales-orders.shipping-address"></FormattedMessage>
                 </p>
                 <Row className="g-0 mb-2">
                   <Col xs="auto">
                     <div className="me-1">
-                      <FormattedMessage id="so.ship_street"></FormattedMessage>:
+                      <FormattedMessage id="sales-orders.ship_street"></FormattedMessage>:
                     </div>
                   </Col>
                   <Col className="text-alternate">{salesOrderQuery.data.ship_street}</Col>
@@ -392,7 +395,7 @@ export const SalesOrder = () => {
                 <Row className="g-0 mb-2">
                   <Col xs="auto">
                     <div className="me-1">
-                      <FormattedMessage id="so.ship_city"></FormattedMessage>:
+                      <FormattedMessage id="sales-orders.ship_city"></FormattedMessage>:
                     </div>
                   </Col>
                   <Col className="text-alternate">{salesOrderQuery.data.ship_city}</Col>
@@ -400,7 +403,7 @@ export const SalesOrder = () => {
                 <Row className="g-0 mb-2">
                   <Col xs="auto">
                     <div className="me-1">
-                      <FormattedMessage id="so.ship_state"></FormattedMessage>:
+                      <FormattedMessage id="sales-orders.ship_state"></FormattedMessage>:
                     </div>
                   </Col>
                   <Col className="text-alternate">{salesOrderQuery.data.ship_state}</Col>
@@ -408,7 +411,7 @@ export const SalesOrder = () => {
                 <Row className="g-0 mb-2">
                   <Col xs="auto">
                     <div className="me-1">
-                      <FormattedMessage id="so.ship_code"></FormattedMessage>:
+                      <FormattedMessage id="sales-orders.ship_code"></FormattedMessage>:
                     </div>
                   </Col>
                   <Col className="text-alternate">{salesOrderQuery.data.ship_code}</Col>
@@ -416,7 +419,7 @@ export const SalesOrder = () => {
                 <Row className="g-0 mb-2">
                   <Col xs="auto">
                     <div className="me-1">
-                      <FormattedMessage id="so.ship_country"></FormattedMessage>:
+                      <FormattedMessage id="sales-orders.ship_country"></FormattedMessage>:
                     </div>
                   </Col>
                   <Col className="text-alternate">{salesOrderQuery.data.ship_country}</Col>
@@ -424,7 +427,7 @@ export const SalesOrder = () => {
               </div>
               <div className="mb-5">
                 <p className="text-small text-muted mb-2">
-                  <FormattedMessage id="so.description"></FormattedMessage>
+                  <FormattedMessage id="sales-orders.description"></FormattedMessage>
                 </p>
                 <Row className="g-0 mb-2">
                   <Col xs="auto">

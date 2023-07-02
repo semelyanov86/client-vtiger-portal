@@ -1,7 +1,8 @@
 import { Invoice, LineItem, LineItemFinalDetails } from '../../invoice/types';
 import { Currency } from '../../misc/types/currency.ts';
+import { Entity } from '../../misc/types/entity.ts';
 
-export type SalesOrder = {
+export interface SalesOrder extends Entity {
   salesorder_no: string;
   subject: string;
   potential_id: string;
@@ -23,10 +24,6 @@ export type SalesOrder = {
   hdnDiscountAmount: string;
   hdnS_H_Amount: string;
   account_id: string;
-  assigned_user_id: string;
-  createdtime: string;
-  modifiedtime: string;
-  modifiedby: string;
   currency_id: string;
   conversion_rate: string;
   bill_street: string;
@@ -57,8 +54,6 @@ export type SalesOrder = {
   source: string;
   starred: boolean;
   region_id: string;
-  id: string;
-  label: string;
   'shipping_&_handling': number;
   'shipping_&_handling_shtax1': number;
   currency: Currency;
@@ -67,4 +62,4 @@ export type SalesOrder = {
     [key: string]: LineItemFinalDetails;
   };
   invoices: Invoice[];
-};
+}
