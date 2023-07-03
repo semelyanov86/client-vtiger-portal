@@ -127,10 +127,8 @@ describe('TableCard', () => {
     const contractStatus = screen.getByText('In Progress');
     expect(contractStatus).toBeInTheDocument();
 
-    const link = screen.getByText('524');
+    const link = screen.getByText('524') as HTMLAnchorElement;
     expect(link).toBeInTheDocument();
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
     expect(link.href).toEqual('/app/service-contracts/15x322');
   });
 });

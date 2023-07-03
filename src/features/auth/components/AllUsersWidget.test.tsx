@@ -89,10 +89,8 @@ describe('AllUsersWidget', async () => {
     );
     expect(mockFn).toBeCalledTimes(1);
     await waitForElementToBeRemoved(() => screen.queryByTestId('spinner'), { timeout: 10 });
-    const img = screen.getByRole('img');
+    const img = screen.getByRole('img') as HTMLImageElement;
     expect(img).toBeInTheDocument();
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
     expect(img.src).toEqual('/img/profile/profile-11.webp');
     expect(screen.getByText('Director')).toBeInTheDocument();
     expect(screen.getByText('se@sergeyem.ru')).toBeInTheDocument();
@@ -119,10 +117,8 @@ describe('AllUsersWidget', async () => {
     );
     expect(mockFn).toBeCalledTimes(1);
     await waitForElementToBeRemoved(() => screen.queryByTestId('spinner'), { timeout: 10 });
-    const img = screen.getByRole('img');
+    const img = screen.getByRole('img') as HTMLImageElement;
     expect(img).toBeInTheDocument();
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
     expect(img.src).toEqual('data:image/png;base64, decodedimage');
 
     view.unmount();

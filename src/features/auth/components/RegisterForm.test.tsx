@@ -35,16 +35,12 @@ describe('RegisterForm', async () => {
     const code = screen.getByPlaceholderText('Code');
     expect(code).toBeInTheDocument();
 
-    const password = screen.getByPlaceholderText('Password');
+    const password = screen.getByPlaceholderText('Password') as HTMLInputElement;
     expect(password).toBeInTheDocument();
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
     expect(password.type).toBe('password');
 
-    const passwordConfirm = screen.getByPlaceholderText('Confirm Password');
+    const passwordConfirm = screen.getByPlaceholderText('Confirm Password') as HTMLInputElement;
     expect(passwordConfirm).toBeInTheDocument();
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
     expect(passwordConfirm.type).toBe('password');
 
     const btn = screen.getByRole('button', { name: 'Signup' });
