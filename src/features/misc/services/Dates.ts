@@ -1,4 +1,9 @@
+import { NULLABLE_DATE } from '../../../config/constants.ts';
+
 export function formatToUserReadableDate(value: string): string {
+  if (value == NULLABLE_DATE) {
+    return '--';
+  }
   const date = new Date(value);
 
   const year = date.getFullYear();

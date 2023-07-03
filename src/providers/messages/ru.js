@@ -368,6 +368,9 @@ const ruMessages = {
   'service-contracts.contract_priority': 'Приоритет контракта',
   'service-contracts.contract_type': 'Тип контракта',
   'service-contracts.progress': 'Прогресс',
+  'service-contracts.detail': 'Contract Detail',
+  'service-contracts.id': 'ID',
+  'service-contracts.info': 'Additional Information',
 
   'lead.name': 'Имя',
   'lead.email': 'Email',

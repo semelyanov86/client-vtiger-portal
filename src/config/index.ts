@@ -28,7 +28,7 @@ export const SUPPORTED_MODULES = [
   'Lead',
   'Documents',
   'SalesOrder',
-  'ServiceContract',
+  // 'ServiceContract',
 ];
 
 export const CUSTOM_MODULES: ConfigCustomModules = {

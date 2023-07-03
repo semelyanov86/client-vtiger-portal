@@ -7,6 +7,7 @@ interface ModulesState {
   HelpDesk: Module;
   Project: Module;
   ProjectTask: Module;
+  ServiceContract: Module;
   customModules: {
     [key: string]: Module;
   };
@@ -14,12 +15,14 @@ interface ModulesState {
   setHelpDesk: (value: Module) => void;
   setProject: (value: Module) => void;
   setProjectTask: (value: Module) => void;
+  setServiceContract: (value: Module) => void;
 }
 
 const useModulesStore = create<ModulesState>((set) => ({
   HelpDesk: {} as Module,
   Project: {} as Module,
   ProjectTask: {} as Module,
+  ServiceContract: {} as Module,
   customModules: {},
   setHelpDesk: (value: Module) =>
     set(() => ({
@@ -32,6 +35,10 @@ const useModulesStore = create<ModulesState>((set) => ({
   setProjectTask: (value: Module) =>
     set(() => ({
       ProjectTask: value,
+    })),
+  setServiceContract: (value: Module) =>
+    set(() => ({
+      ServiceContract: value,
     })),
   setCustomModule: (value: Module, name: string) =>
     set((state) => ({

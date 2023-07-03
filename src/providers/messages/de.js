@@ -365,6 +365,9 @@ const deMessages = {
   'service-contracts.contract_priority': 'Contract Priority',
   'service-contracts.contract_type': 'Contract Type',
   'service-contracts.progress': 'Progress',
+  'service-contracts.detail': 'Contract Detail',
+  'service-contracts.id': 'ID',
+  'service-contracts.info': 'Additional Information',
 
   'lead.name': 'Name',
   'lead.email': 'Email',
