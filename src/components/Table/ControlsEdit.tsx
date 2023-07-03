@@ -13,6 +13,7 @@ export const ControlsEdit = <T extends object>({ tableInstance }: ControlsEditPr
       <Button
         variant="foreground-alternate"
         className="btn-icon btn-icon-only shadow edit-datatable"
+        data-testid="edit-button-controls"
         disabled
       >
         <Pencil></Pencil>
@@ -25,6 +26,7 @@ export const ControlsEdit = <T extends object>({ tableInstance }: ControlsEditPr
         onClick={() => setIsOpenAddEditModal(true)}
         variant="foreground-alternate"
         className="btn-icon btn-icon-only shadow edit-datatable"
+        data-testid="edit-button-controls"
       >
         <Pencil></Pencil>
       </Button>

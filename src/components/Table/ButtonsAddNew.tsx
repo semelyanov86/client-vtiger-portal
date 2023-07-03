@@ -12,6 +12,7 @@ export const ButtonsAddNew = ({ onClick }: ButtonsAddNewProps) => {
       variant="outline-primary"
       className="btn-icon btn-icon-start w-100 w-md-auto add-datatable"
       onClick={onClick}
+      data-testid={'add-new-button'}
     >
       <Plus></Plus>{' '}
       <span>

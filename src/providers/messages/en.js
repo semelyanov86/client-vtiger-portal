@@ -593,6 +593,7 @@ const enMessages = {
   'general.save': 'Save',
   'general.was-updated': 'Last update of record: ',
   'general.no-tags': 'No tags available',
+  'general.add': 'Add',
 };
 
 export default enMessages;

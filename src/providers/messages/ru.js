@@ -598,6 +598,7 @@ const ruMessages = {
   'general.save': 'Сохранить',
   'general.was-updated': 'Последнее обновление записи: ',
   'general.no-tags': 'Нет доступных тэгов',
+  'general.add': 'Add',
 };
 
 export default ruMessages;

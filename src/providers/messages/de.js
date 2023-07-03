@@ -595,6 +595,7 @@ const deMessages = {
   'general.save': 'Speichern',
   'general.was-updated': 'Letzte Aktualisierung des Datensatzes: ',
   'general.no-tags': 'Keine Tags verfügbar',
+  'general.add': 'Add',
 };
 
 export default deMessages;

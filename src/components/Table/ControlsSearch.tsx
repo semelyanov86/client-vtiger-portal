@@ -27,6 +27,7 @@ export const ControlsSearch = <T extends object>({
           onChange(e.target.value);
         }}
         placeholder="Search"
+        data-testid="search-input"
       />
       {value && value.length > 0 ? (
         // eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions
@@ -36,6 +37,7 @@ export const ControlsSearch = <T extends object>({
             setValue('');
             onChange('');
           }}
+          data-testid="search-delete-icon"
         >
           <XSquareFill></XSquareFill>
         </span>

@@ -20,7 +20,7 @@ export const ControlsPageSize = ({ onSelectPageSize, pageSize }: ControlsPageSiz
       }
     >
       {({ ref, ...triggerHandler }) => (
-        <Dropdown className="d-inline-block" align="end">
+        <Dropdown className="d-inline-block" align="end" data-testid="controls-page-size">
           <Dropdown.Toggle
             ref={ref}
             {...triggerHandler}
