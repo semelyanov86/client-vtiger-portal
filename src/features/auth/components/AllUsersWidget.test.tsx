@@ -3,7 +3,8 @@ import { expect, test, describe, vi } from 'vitest';
 
 import '@testing-library/jest-dom';
 import { axios } from '../../../lib/axios.ts';
-import { mockedUser, WrapToRouterAndIntl } from '../../../lib/tests.tsx';
+import { mockedUser } from '../../../lib/testMocks.ts';
+import { WrapToRouterAndIntl } from '../../../lib/tests.tsx';
 
 import { AllUsersWidget } from './AllUsersWidget.tsx';
 
