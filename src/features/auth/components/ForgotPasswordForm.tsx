@@ -27,18 +27,20 @@ export const ForgotPasswordForm = ({ onSuccess }: ForgotPasswordProps) => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isValid, isDirty },
   } = useForm<FormData>({ resolver: zodResolver(schema) });
 
   const onSubmit = (data: FieldValues) => {
-    console.log(data);
     restore(data as RestorePasswordDTO)
       .then(() => onSuccess())
       .catch((err) => NotifyError(err.message));
   };
 
   return (
-    <div className="sw-lg-70 min-h-100 bg-foreground d-flex justify-content-center align-items-center shadow-deep py-5 full-page-content-right-border">
+    <div
+      className="sw-lg-70 min-h-100 bg-foreground d-flex justify-content-center align-items-center shadow-deep py-5 full-page-content-right-border"
+      data-testid="forgot-password-form"
+    >
       <div className="sw-lg-50 px-5">
         <LogoAuth></LogoAuth>
         <div className="mb-5">
@@ -64,7 +66,12 @@ export const ForgotPasswordForm = ({ onSuccess }: ForgotPasswordProps) => {
                 <div className="d-block invalid-tooltip">{errors.email.message}</div>
               )}
             </div>
-            <Button size="lg" type="submit">
+            <Button
+              size="lg"
+              type="submit"
+              data-testid="submit-button"
+              disabled={!isDirty || !isValid}
+            >
               Send Reset Email
             </Button>
           </form>

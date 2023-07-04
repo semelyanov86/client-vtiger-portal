@@ -41,7 +41,10 @@ export const LoginForm = ({ onSuccess }: LoginFormProps) => {
   };
 
   return (
-    <div className="sw-lg-70 min-h-100 bg-foreground d-flex justify-content-center align-items-center shadow-deep py-5 full-page-content-right-border">
+    <div
+      className="sw-lg-70 min-h-100 bg-foreground d-flex justify-content-center align-items-center shadow-deep py-5 full-page-content-right-border"
+      data-testid="login-form"
+    >
       <div className="sw-lg-50 px-5">
         <LogoAuth></LogoAuth>
         <div className="mb-5">
@@ -76,7 +79,7 @@ export const LoginForm = ({ onSuccess }: LoginFormProps) => {
                 <div className="d-block invalid-tooltip">{errors.password.message}</div>
               )}
             </div>
-            <Button size="lg" type="submit">
+            <Button size="lg" type="submit" data-testid="submit-btn">
               Login
             </Button>
           </form>
