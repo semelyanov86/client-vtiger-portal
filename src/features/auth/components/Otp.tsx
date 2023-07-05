@@ -2,6 +2,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { Button, Form, Modal } from 'react-bootstrap';
 import { QrCode } from 'react-bootstrap-icons';
 import { FieldValues, useForm } from 'react-hook-form';
+import { FormattedMessage } from 'react-intl';
 import { z } from 'zod';
 
 import { NotifyError } from '../../../components/Notifications/Notification.tsx';
@@ -46,7 +47,9 @@ export const Otp = ({ onSuccess, showPopup, onHide }: OtpFormProps) => {
   return (
     <Modal backdrop="static" keyboard={false} show={showPopup} onHide={() => onHide()}>
       <Modal.Header closeButton>
-        <Modal.Title id="staticBackdropLabel">Two-Factor Authentication</Modal.Title>
+        <Modal.Title id="staticBackdropLabel">
+          <FormattedMessage id="otp.tfa"></FormattedMessage>
+        </Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <div className="sw-lg-50 px-5">

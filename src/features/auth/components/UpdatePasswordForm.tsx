@@ -4,6 +4,10 @@ import { FieldValues, useForm } from 'react-hook-form';
 import { FormattedMessage } from 'react-intl';
 import { z } from 'zod';
 
+import { NotifyError, NotifySuccess } from '../../../components/Notifications/Notification.tsx';
+import { updateUser } from '../api/update.ts';
+import { AuthUser } from '../types';
+
 const schema = z
   .object({
     old_password: z.string().min(6, 'Required'),
@@ -25,21 +29,29 @@ export const UpdatePasswordForm = () => {
   } = useForm<FormData>({ resolver: zodResolver(schema) });
 
   const onSubmit = (data: FieldValues) => {
-    console.log(data);
+    updateUser(data as AuthUser)
+      .then(() => {
+        NotifySuccess('Password successfully updated!');
+      })
+      .catch((error) => NotifyError(error.message));
   };
 
   return (
     <Card className="mb-5">
       <Card.Body>
-        <Form id="profileEditForm" onSubmit={handleSubmit(onSubmit)}>
+        <Form
+          id="profileEditForm"
+          onSubmit={handleSubmit(onSubmit)}
+          data-testid="update-password-form"
+        >
           <Row className="mb-3">
             <Col lg="2" md="3" sm="4">
-              <Form.Label className="col-form-label">
+              <Form.Label className="col-form-label" htmlFor="old_password">
                 <FormattedMessage id="user.old-password"></FormattedMessage>
               </Form.Label>
             </Col>
             <Col sm="8" md="9" lg="10">
-              <Form.Control type="password" {...register('old_password')} />
+              <Form.Control id="old_password" type="password" {...register('old_password')} />
               {errors.old_password && (
                 <div className="d-block invalid-tooltip">{errors.old_password.message}</div>
               )}
@@ -47,12 +59,12 @@ export const UpdatePasswordForm = () => {
           </Row>
           <Row className="mb-3">
             <Col lg="2" md="3" sm="4">
-              <Form.Label className="col-form-label">
+              <Form.Label className="col-form-label" htmlFor="password">
                 <FormattedMessage id="user.password"></FormattedMessage>
               </Form.Label>
             </Col>
             <Col sm="8" md="9" lg="10">
-              <Form.Control type="password" {...register('password')} />
+              <Form.Control id="password" type="password" {...register('password')} />
               {errors.password && (
                 <div className="d-block invalid-tooltip">{errors.password.message}</div>
               )}
@@ -60,12 +72,16 @@ export const UpdatePasswordForm = () => {
           </Row>
           <Row className="mb-3">
             <Col lg="2" md="3" sm="4">
-              <Form.Label className="col-form-label">
+              <Form.Label className="col-form-label" htmlFor="confirm_password">
                 <FormattedMessage id="user.confirm-password"></FormattedMessage>
               </Form.Label>
             </Col>
             <Col sm="8" md="9" lg="10">
-              <Form.Control type="password" {...register('password')} />
+              <Form.Control
+                id="confirm_password"
+                type="password"
+                {...register('confirmPassword')}
+              />
               {errors.confirmPassword && (
                 <div className="d-block invalid-tooltip">{errors.confirmPassword.message}</div>
               )}
@@ -74,7 +90,12 @@ export const UpdatePasswordForm = () => {
           <Row className="mt-5">
             <Col lg="2" md="3" sm="4" />
             <Col sm="8" md="9" lg="10">
-              <Button type="submit" variant="outline-primary" className="mb-1">
+              <Button
+                type="submit"
+                variant="outline-primary"
+                className="mb-1"
+                data-testid="update-password-btn"
+              >
                 <FormattedMessage id="user.update"></FormattedMessage>
               </Button>
             </Col>

@@ -2,13 +2,11 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { Button, Form } from 'react-bootstrap';
 import { Lock } from 'react-bootstrap-icons';
 import { FieldValues, useForm } from 'react-hook-form';
-import { useNavigate } from 'react-router';
 import { NavLink } from 'react-router-dom';
 import { z } from 'zod';
 
 import { NotifyError } from '../../../components/Notifications/Notification.tsx';
 import { DEFAULT_PATHS } from '../../../config';
-import useQuery from '../../../hooks/useQuery.ts';
 import { useAuthContext } from '../../../lib/auth.tsx';
 
 import { LogoAuth } from './LogoAuth.tsx';
@@ -27,36 +25,32 @@ type FormData = z.infer<typeof schema>;
 
 type ResetPasswordProps = {
   onSuccess: () => void;
+  token: string;
 };
 
-export const ResetPasswordForm = ({ onSuccess }: ResetPasswordProps) => {
-  const navigate = useNavigate();
-
+export const ResetPasswordForm = ({ onSuccess, token }: ResetPasswordProps) => {
   const { reset } = useAuthContext();
-  const query = useQuery();
+
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<FormData>({ resolver: zodResolver(schema) });
 
-  if (!query.get('token')) {
-    NotifyError('You did not provide anu token for this page. Please ask for new restore link');
-    navigate('auth/forgot');
-  }
-
   const onSubmit = (data: FieldValues) => {
-    console.log(data);
     reset({
       password: data.password,
-      token: query.get('token') ?? '',
+      token: token,
     })
       .then(() => onSuccess())
       .catch((err) => NotifyError(err.message));
   };
 
   return (
-    <div className="sw-lg-70 min-h-100 bg-foreground d-flex justify-content-center align-items-center shadow-deep py-5 full-page-content-right-border">
+    <div
+      className="sw-lg-70 min-h-100 bg-foreground d-flex justify-content-center align-items-center shadow-deep py-5 full-page-content-right-border"
+      data-testid="reset-password-page"
+    >
       <div className="sw-lg-50 px-5">
         <LogoAuth></LogoAuth>
         <div className="mb-5">
@@ -89,7 +83,7 @@ export const ResetPasswordForm = ({ onSuccess }: ResetPasswordProps) => {
                 <div className="d-block invalid-tooltip">{errors.confirmPassword.message}</div>
               )}
             </div>
-            <Button size="lg" type="submit">
+            <Button size="lg" type="submit" data-testid="reset-password-button">
               Reset Password
             </Button>
           </form>
