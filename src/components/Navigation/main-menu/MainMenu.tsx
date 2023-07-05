@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
-import React, { useCallback, useEffect, useMemo } from 'react';
+import React, { memo, useCallback, useEffect, useMemo } from 'react';
 
 import { MENU_BEHAVIOUR, MENU_PLACEMENT } from '../../../config/constants.ts';
 import { useWindowScroll } from '../../../hooks/useWindowScroll.ts';
@@ -18,7 +18,7 @@ import {
 } from './helper.ts';
 import { MainMenuItems } from './MainMenuItems.tsx';
 
-const MainMenu = () => {
+export const MainMenu = memo(() => {
   const {
     placement,
     behaviour,
@@ -180,6 +180,6 @@ const MainMenu = () => {
     );
   }
   return <></>;
-};
+});
 
-export default MainMenu;
+MainMenu.displayName = 'MainMenu';

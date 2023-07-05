@@ -83,7 +83,8 @@ export const TableCard = <T extends Entity>({
       initialQuery2.size = entities.size;
       onChangeQuery(initialQuery2);
     }
-  }, [entities, initialQuery, onChangeQuery]);
+    // eslint-disable-next-line
+  }, [entities, onChangeQuery]);
 
   const headerClasses = useCallback(
     (column: string) => {

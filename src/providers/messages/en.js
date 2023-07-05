@@ -4,6 +4,7 @@ const enMessages = {
   Tickets: 'Tickets',
   Projects: 'Projects',
   FAQ: 'FAQ',
+  Faqs: 'FAQ',
   products: 'Products',
   services: 'Services',
   Invoices: 'Invoices',
@@ -562,6 +563,7 @@ const enMessages = {
   'SPPayments.Scheduled': 'Scheduled',
 
   'Assets.product': 'Product',
+  'Assets.asset_no': 'Asset Number',
   'Assets.serialnumber': 'Serial Number',
   'Assets.datesold': 'Date Sold',
   'Assets.dateinservice': 'Date in service',

@@ -4,6 +4,7 @@ const ruMessages = {
   Tickets: 'Тикеты',
   Projects: 'Проекты',
   FAQ: 'Ответы на вопросы',
+  Faqs: 'FAQ',
   products: 'Продукты',
   services: 'Услуги',
   Invoices: 'Счета',
@@ -567,6 +568,7 @@ const ruMessages = {
   'SPPayments.Scheduled': 'Запланирован',
 
   'Assets.product': 'Продукт',
+  'Assets.asset_no': 'Номер актива',
   'Assets.serialnumber': 'Серийный номер',
   'Assets.datesold': 'Дата продажи',
   'Assets.dateinservice': 'Дата начала сервиса',

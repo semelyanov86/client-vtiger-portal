@@ -4,6 +4,7 @@ const deMessages = {
   Tickets: 'Tickets',
   Projects: 'Projekte',
   FAQ: 'FAQ',
+  Faqs: 'FAQ',
   products: 'Produkte',
   services: 'Dienstleistungen',
   Invoices: 'Rechnungen',
@@ -564,6 +565,7 @@ const deMessages = {
   'SPPayments.Scheduled': 'Geplant',
 
   'Assets.product': 'Product',
+  'Assets.asset_no': 'Asset Number',
   'Assets.serialnumber': 'Serial Number',
   'Assets.datesold': 'Date Sold',
   'Assets.dateinservice': 'Date in service',

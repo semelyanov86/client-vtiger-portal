@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { memo, ReactNode } from 'react';
 import { Col, Row } from 'react-bootstrap';
 import { useIntl } from 'react-intl';
 
@@ -11,7 +11,7 @@ interface ListPageTitleProps {
   breadcrumb: BreadcrumbProp;
 }
 
-export const ListPageTitle = ({ children, title, breadcrumb }: ListPageTitleProps) => {
+export const ListPageTitle = memo(({ children, title, breadcrumb }: ListPageTitleProps) => {
   const { formatMessage: f } = useIntl();
 
   const breadcrumbs = [
@@ -32,4 +32,6 @@ export const ListPageTitle = ({ children, title, breadcrumb }: ListPageTitleProp
       </Row>
     </div>
   );
-};
+});
+
+ListPageTitle.displayName = 'ListPageTitle';

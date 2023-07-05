@@ -1,4 +1,4 @@
-import React from 'react';
+import { memo } from 'react';
 import * as icons from 'react-bootstrap-icons';
 
 import { DEFAULT_SETTINGS } from '../../../config';
@@ -25,7 +25,7 @@ interface MainMenuItemsProps {
   isSubItem: boolean;
 }
 
-export const MainMenuItems = React.memo<MainMenuItemsProps>(
+export const MainMenuItems = memo(
   ({
     menuItems = [],
     menuPlacement = DEFAULT_SETTINGS.MENU_PLACEMENT,

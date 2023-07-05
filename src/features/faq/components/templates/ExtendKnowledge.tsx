@@ -1,10 +1,10 @@
 import { useState } from 'react';
-import { Button, Card, Col, Modal, Spinner } from 'react-bootstrap';
-import { ArrowBarRight } from 'react-bootstrap-icons';
+import { Button, Col, Modal, Spinner } from 'react-bootstrap';
 import { FormattedMessage } from 'react-intl';
 
 import { useStarredFaqs } from '../../api/getStarred.ts';
 import { Faq } from '../../types';
+import { FaqCard } from '../organisms/FaqCard.tsx';
 
 export const ExtendKnowledge = () => {
   const faqsQuery = useStarredFaqs();
@@ -14,29 +14,17 @@ export const ExtendKnowledge = () => {
     return <Spinner animation="border" variant="primary"></Spinner>;
   }
   if (!faqsQuery.data) {
-    return <p>No faqs available</p>;
+    return (
+      <p>
+        <FormattedMessage id="general.no-data"></FormattedMessage>
+      </p>
+    );
   }
   return (
     <>
       {faqsQuery.data.map((faq) => (
         <Col key={faq.id} md="4" className="mb-5">
-          <Card className="w-100 sh-20 sh-md-22 hover-img-scale-up">
-            <div className="card-img-overlay d-flex flex-column justify-content-between bg-transparent">
-              <div className="d-flex flex-column h-100 justify-content-between align-items-start">
-                <div className="cta-3 text-black">{faq.question}</div>
-                <Button
-                  variant="primary"
-                  className="btn-icon btn-icon-start mt-3 stretched-link"
-                  onClick={() => setSelectedFaq(faq)}
-                >
-                  <ArrowBarRight />{' '}
-                  <span>
-                    <FormattedMessage id="faq.view"></FormattedMessage>
-                  </span>
-                </Button>
-              </div>
-            </div>
-          </Card>
+          <FaqCard faq={faq} onSelect={() => setSelectedFaq(faq)} />
         </Col>
       ))}
       <Modal show={selectedFaq != null} onHide={() => setSelectedFaq(null)}>

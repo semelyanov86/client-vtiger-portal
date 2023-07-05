@@ -1,9 +1,10 @@
+import { memo } from 'react';
 import { Link } from 'react-router-dom';
 
 import { DEFAULT_PATHS } from '../../config';
 import useCompanyStore from '../../features/company/stores/company.ts';
 
-export const NavLogo = () => {
+export const NavLogo = memo(() => {
   const { value: company } = useCompanyStore();
   let logo = <div className="img" data-testid="defaultlogo" />;
   if (company.logo) {
@@ -14,4 +15,6 @@ export const NavLogo = () => {
       <Link to={DEFAULT_PATHS.DASHBOARD}>{logo}</Link>
     </div>
   );
-};
+});
+
+NavLogo.displayName = 'NavLogo';

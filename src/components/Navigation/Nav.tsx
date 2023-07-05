@@ -4,7 +4,7 @@ import React, { useRef } from 'react';
 import { MENU_BEHAVIOUR, MENU_PLACEMENT } from '../../config/constants.ts';
 import { useMenusStore } from '../../stores/menus.ts';
 
-import MainMenu from './main-menu/MainMenu.tsx';
+import { MainMenu } from './main-menu/MainMenu.tsx';
 import { NavIconMenu } from './NavIconMenu.tsx';
 import { NavLanguageSwitcher } from './NavLanguageSwitcher.tsx';
 import { NavLogo } from './NavLogo.tsx';

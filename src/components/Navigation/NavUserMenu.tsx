@@ -1,6 +1,6 @@
 import { ToggleMetadata } from '@restart/ui/Dropdown';
 import classNames from 'classnames';
-import React, { CSSProperties, useEffect } from 'react';
+import React, { CSSProperties, memo, useEffect } from 'react';
 import { Dropdown } from 'react-bootstrap';
 
 import { MENU_PLACEMENT } from '../../config/constants.ts';
@@ -14,7 +14,7 @@ import { NavUserMenuDropdownToggle } from './NavUserMenuDropdownToggle.tsx';
 
 const MENU_NAME = 'NavUserMenu';
 
-export const NavUserMenu = () => {
+export const NavUserMenu = memo(() => {
   const {
     placementStatus: { view: placement },
     behaviourStatus: { behaviourHtmlData },
@@ -73,14 +73,16 @@ export const NavUserMenu = () => {
       />
     </Dropdown>
   );
-};
+});
+
+NavUserMenu.displayName = 'NavUserMenu';
 
 interface NavUserMenuDropdownMenuProps {
   style?: CSSProperties;
   className?: string;
 }
 
-const NavUserMenuDropdownMenu = React.memo(
+const NavUserMenuDropdownMenu = memo(
   React.forwardRef<HTMLDivElement, NavUserMenuDropdownMenuProps>(({ style, className }, ref) => {
     return (
       <div

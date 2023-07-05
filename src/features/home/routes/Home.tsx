@@ -72,7 +72,7 @@ export const Home = () => {
         {SUPPORTED_MODULES.includes('Project') && (
           <Col lg="6" className="mb-5">
             <h2 className="small-title">
-              <FormattedMessage id="project.progress-tasks" />
+              <FormattedMessage id="projects.progress-tasks" />
             </h2>
             <ProgressTasks></ProgressTasks>
           </Col>
