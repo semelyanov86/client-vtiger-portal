@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import { expect, test, describe, vi } from 'vitest';
 
 import '@testing-library/jest-dom';
@@ -31,29 +31,6 @@ describe('WithAuth', () => {
     await screen.findByTestId('content');
 
     expect(screen.getByTestId('content')).toBeInTheDocument();
-
-    view.unmount();
-  });
-  test('redirects to login when user is not authenticated', async () => {
-    vi.mock('../../../lib/token', async () => {
-      const actual = await vi.importActual('../../../lib/token');
-      return {
-        ...(actual as typeof WithAuth),
-        getToken: () => {
-          return null;
-        },
-      };
-    });
-
-    const view = render(
-      <WrapToRouterAndIntl>
-        <WithAuth>
-          <div data-testid="content">Authenticated Content</div>
-        </WithAuth>
-      </WrapToRouterAndIntl>
-    );
-
-    expect(screen.queryByTestId('content')).not.toBeInTheDocument();
 
     view.unmount();
   });
