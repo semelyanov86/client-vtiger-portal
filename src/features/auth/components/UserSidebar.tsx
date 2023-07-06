@@ -3,23 +3,17 @@ import { Geo } from 'react-bootstrap-icons';
 
 import { AuthUser } from '../types';
 
+import { UserAvatar } from './molecules/UserAvatar.tsx';
+
 interface UserSidebarProps {
   user: AuthUser;
 }
 
 export const UserSidebar = ({ user }: UserSidebarProps) => {
-  let image = (
-    <img src="/img/profile/profile-11.webp" className="img-fluid rounded-xl" alt={user.lastname} />
+  const image = (
+    <UserAvatar alt={user.lastname} base64={'data:image/png;base64, ' + user.imagecontent} />
   );
-  if (user.imagecontent) {
-    image = (
-      <img
-        src={'data:image/png;base64, ' + user.imagecontent}
-        className="img-fluid rounded-xl"
-        alt={user.lastname}
-      />
-    );
-  }
+
   return (
     <Card className="mb-5">
       <Card.Body>
