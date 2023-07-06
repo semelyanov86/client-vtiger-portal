@@ -52,7 +52,7 @@ export const AddCommentForm = ({
   };
 
   return (
-    <div className="input-group mt-5">
+    <div className="input-group mt-5" data-testid="comment-form">
       <InputGroup className="mb-3">
         <FormControl placeholder="Add a comment" {...register('commentcontent')} />
         {errors.commentcontent && (
@@ -63,6 +63,7 @@ export const AddCommentForm = ({
           variant="outline-primary"
           className="btn-icon btn-icon-end"
           disabled={isLoading}
+          data-testid="comment-form-submit"
         >
           <span>
             {isLoading ? (

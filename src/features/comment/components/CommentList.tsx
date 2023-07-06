@@ -2,6 +2,7 @@ import { Card, Col, Row } from 'react-bootstrap';
 import { FormattedMessage } from 'react-intl';
 import { NavLink } from 'react-router-dom';
 
+import { UserAvatar } from '../../auth/components/molecules/UserAvatar.tsx';
 import { formatToUserReadableDate } from '../../misc/services/Dates.ts';
 import { Comment, CommentDTO } from '../types';
 
@@ -39,19 +40,15 @@ export const CommentList = ({
                 <Row className="g-0 w-100">
                   <Col xs="auto">
                     <div className="sw-5 me-3">
-                      {comment.author.imagecontent ? (
-                        <img
-                          src={'data:image/png;base64, ' + comment.author.imagecontent}
-                          className="img-fluid rounded-xl"
-                          alt="thumb"
-                        />
-                      ) : (
-                        <img
-                          src="/img/profile/profile-5.webp"
-                          className="img-fluid rounded-xl"
-                          alt="thumb"
-                        />
-                      )}
+                      <UserAvatar
+                        alt={comment.author.firstname}
+                        base64={
+                          comment.author.imagecontent
+                            ? 'data:image/png;base64, ' + comment.author.imagecontent
+                            : ''
+                        }
+                        extra={['img-fluid']}
+                      />
                     </div>
                   </Col>
                   <Col className="pe-3">
