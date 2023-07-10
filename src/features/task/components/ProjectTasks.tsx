@@ -2,10 +2,11 @@ import { Badge, Card, Col, Row, Spinner } from 'react-bootstrap';
 import { FormattedMessage } from 'react-intl';
 import { NavLink } from 'react-router-dom';
 
-import { ScrollByCount } from '../../../components/Scrollspy/ScrollByCount.tsx';
 import { DEFAULT_PATHS } from '../../../config';
+import { ListEntities } from '../../misc/components/ListEntities.tsx';
 import { Project } from '../../project/types';
 import { useTasksFromProject } from '../api/getFromProject.ts';
+import { ProjectTask } from '../types';
 
 interface ProjectTasksProps {
   project: Project;
@@ -25,8 +26,11 @@ export const ProjectTasks = ({ project }: ProjectTasksProps) => {
   }
 
   return (
-    <ScrollByCount count={3}>
-      {tasksQuery.data.data.map((task) => (
+    <ListEntities
+      entities={tasksQuery.data.data}
+      headerExtractor={(task: ProjectTask) => task.projecttask_no}
+      statusExtractor={(task: ProjectTask) => task.projecttaskstatus}
+      renderEntity={(task: ProjectTask) => (
         <Card key={task.id} className="mb-2 sh-11 sh-md-8">
           <Card.Body className="pt-0 pb-0 h-100">
             <Row className="g-0 h-100 align-content-center">
@@ -64,7 +68,7 @@ export const ProjectTasks = ({ project }: ProjectTasksProps) => {
             </Row>
           </Card.Body>
         </Card>
-      ))}
-    </ScrollByCount>
+      )}
+    ></ListEntities>
   );
 };
