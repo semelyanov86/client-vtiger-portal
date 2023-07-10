@@ -15,6 +15,7 @@ const enMessages = {
   'Service Contracts': 'Сервисные контракты',
   'Sales Orders': 'Sales Orders',
   'company.name': 'Company Name',
+  'company.organizationname': 'Company Name',
   'company.address': 'Company Address',
   'company.city': 'City',
   'company.state': 'State',

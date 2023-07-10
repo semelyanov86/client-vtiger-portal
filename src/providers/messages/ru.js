@@ -15,6 +15,7 @@ const ruMessages = {
   'Service Contracts': 'Сервисные контракты',
   'Sales Orders': 'Заказы',
   'company.name': 'Наименование компании',
+  'company.organizationname': 'Наименование компании',
   'company.address': 'Адрес компании',
   'company.city': 'Город',
   'company.state': 'Регион',

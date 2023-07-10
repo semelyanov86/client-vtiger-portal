@@ -15,6 +15,7 @@ const deMessages = {
   'Service Contracts': 'Сервисные контракты',
   'Sales Orders': 'Kundenaufträge',
   'company.name': 'Firmenname',
+  'company.organizationname': 'Firmenname',
   'company.address': 'Firmenadresse',
   'company.city': 'Stadt',
   'company.state': 'Staat',
