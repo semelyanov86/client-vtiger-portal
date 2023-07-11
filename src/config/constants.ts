@@ -59,6 +59,10 @@ export const IS_PAYMENT_SUPPORTED = true;
 
 export const HELP_URL = 'https://itvolga.com/contacts';
 
+export const BLOG_URL = 'https://itvolga.com/blog';
+
+export const FORUM_URL = 'https://community.salesplatform.ru';
+
 export const GENERAL_FIELDS = [
   'id',
   'tags',

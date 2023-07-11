@@ -2,6 +2,8 @@ import { Button, Card } from 'react-bootstrap';
 import { FileText } from 'react-bootstrap-icons';
 import { FormattedMessage } from 'react-intl';
 
+import { BLOG_URL } from '../../../../config/constants.ts';
+
 export const DocksBlock = () => {
   return (
     <Card className="mb-2">
@@ -15,7 +17,7 @@ export const DocksBlock = () => {
         <div className="text-muted mb-4">
           <FormattedMessage id="faq.docs-content"></FormattedMessage>
         </div>
-        <a href="https://itvolga.com/blog" target="_blank" rel="noreferrer">
+        <a href={BLOG_URL} target="_blank" rel="noreferrer">
           <Button
             variant="outline-primary"
             className="btn-icon btn-icon-start sw-15 stretched-link"

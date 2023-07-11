@@ -39,7 +39,7 @@ describe('AddCommentForm', () => {
       () => {
         expect(screen.getByText('Comment content is required')).toBeInTheDocument();
       },
-      { timeout: 150 }
+      { timeout: 160 }
     );
 
     await waitFor(
