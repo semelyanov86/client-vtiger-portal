@@ -29,6 +29,7 @@ import { getPicklistValues } from '../../module/services/fields.ts';
 import useModulesStore from '../../module/stores/module.ts';
 import { useChangeTicketStatus } from '../api/changeTicketStatus.ts';
 import { useTicket } from '../api/getTicket.ts';
+import { TextareaDisplay } from '../components/molecules/TextareaDisplay.tsx';
 import { StatCard } from '../components/StatCard.tsx';
 
 export const Ticket = () => {
@@ -106,38 +107,8 @@ export const Ticket = () => {
             <BlockHeader>{ticketQuery.data.ticket_title}</BlockHeader>
             <Card className="mb-2">
               <Card.Body>
-                <div className="mb-4 pb-4 border-bottom border-separator-light">
-                  <Row className="g-0 sh-sm-5 h-auto">
-                    <Col className="">
-                      <Row className="h-100 g-2">
-                        <Col className="h-sm-100 d-flex flex-column justify-content-sm-center mb-1 mb-sm-0">
-                          <div>
-                            <FormattedMessage id="tickets.description"></FormattedMessage>:
-                          </div>
-                        </Col>
-                      </Row>
-                    </Col>
-                  </Row>
-                  <div>
-                    <div className="mt-4">{ticketQuery.data.description}</div>
-                  </div>
-                </div>
-                <div className="mb-4 pb-4">
-                  <Row className="g-0 sh-sm-5 h-auto">
-                    <Col className="">
-                      <Row className="h-100 g-2">
-                        <Col className="h-sm-100 d-flex flex-column justify-content-sm-center mb-1 mb-sm-0">
-                          <div>
-                            <FormattedMessage id="tickets.solution"></FormattedMessage>:
-                          </div>
-                        </Col>
-                      </Row>
-                    </Col>
-                  </Row>
-                  <div>
-                    <div className="mt-4">{ticketQuery.data.solution}</div>
-                  </div>
-                </div>
+                <TextareaDisplay value={ticketQuery.data.description} name="description" />
+                <TextareaDisplay value={ticketQuery.data.solution} name="solution" />
                 <DocumentsWidget parentId={ticketId} module="tickets"></DocumentsWidget>
               </Card.Body>
             </Card>
